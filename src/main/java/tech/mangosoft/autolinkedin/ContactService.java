@@ -70,7 +70,7 @@ public class ContactService {
             return null;
         }
         Location location = locationRepository.getLocationByLocation(p.getLocation());
-        if (p.getFirstDate().length() == 0 || p.getSecondDate().length() == 0) {
+        if (dateLengthEqualsNotZero(p)) {
             return contactRepository.findAllByLocationAndRoleContains(location, p.getPosition(), PageRequest.of(p.getPage() - 1, 40,  Sort.Direction.DESC, "id"));
         }
         Date firsDate = getDate(p.getFirstDate());
@@ -79,6 +79,17 @@ public class ContactService {
             return null;
         }
         return contactRepository.findAllByLocationAndRoleContainsAndCreateTimeBetween(location, p.getPosition(), firsDate, secondDate, PageRequest.of(p.getPage() - 1, 40,  Sort.Direction.DESC, "id"));
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get bollean length result
+     * @param p input object with param.
+     * @return true if length more then 0
+     */
+    private boolean dateLengthEqualsNotZero(ContactsMessage p){
+        return p.getFirstDate().length() == 0 || p.getSecondDate().length() == 0;
     }
 
     /**
@@ -183,8 +194,6 @@ public class ContactService {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             date = formatter.parse(s);
-            System.out.println(date);
-            System.out.println(formatter.format(date));
         } catch (ParseException e) {
             e.printStackTrace();
         }
