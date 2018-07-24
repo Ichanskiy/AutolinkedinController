@@ -73,7 +73,7 @@ public class Assignment {
     private Account account;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
-    private List<LinkedInContact> linkedInContacts = new ArrayList<>();
+    private List<ContactProcessing> contactProcessings = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
     private List<ProcessingReport> processingReports = new ArrayList<>();
@@ -277,18 +277,18 @@ public class Assignment {
         pr.setAssignment(null);
     }
 
-    public void addContact(LinkedInContact lc) {
-        linkedInContacts.add(lc);
-        lc.setAssignment(this);
+    public void addContact(ContactProcessing cp) {
+        contactProcessings.add(cp);
+        cp.setAssignment(this);
     }
 
-    public void removeContact(LinkedInContact lc) {
-        linkedInContacts.remove(lc);
-        lc.setAssignment(null);
+    public void removeContact(ContactProcessing cp) {
+        contactProcessings.remove(cp);
+        cp.setAssignment(null);
     }
 
-    public List<LinkedInContact> getLinkedInContacts() {
-        return linkedInContacts;
+    public List<ContactProcessing> getContactProcessings() {
+        return contactProcessings;
     }
 
     public List<ProcessingReport> getProcessingReports() {

@@ -49,6 +49,10 @@ public class ContactProcessing {
     @JoinColumn(name = "account_id")
     private Account account;
 
+    @ManyToOne
+    @JoinColumn(name = "assignment_id")
+    private Assignment assignment;
+
     public ContactProcessing() {
     }
 
@@ -114,6 +118,14 @@ public class ContactProcessing {
 
     public void setCompact(String compact) {
         this.compact = compact;
+    }
+
+    public Assignment getAssignment() {
+        return assignment;
+    }
+
+    public void setAssignment(Assignment assignment) {
+        this.assignment = assignment;
     }
 }
 

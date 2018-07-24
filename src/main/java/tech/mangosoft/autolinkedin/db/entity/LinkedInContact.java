@@ -65,10 +65,6 @@ public class LinkedInContact {
     private String comments;
 
     @ManyToOne
-    @JoinColumn(name = "assignment_id")
-    private Assignment assignment;
-
-    @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
 
@@ -279,13 +275,6 @@ public class LinkedInContact {
         return this;
     }
 
-    public Assignment getAssignment() {
-        return assignment;
-    }
-
-    public void setAssignment(Assignment assignment) {
-        this.assignment = assignment;
-    }
 }
 
 

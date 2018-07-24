@@ -7,8 +7,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import tech.mangosoft.autolinkedin.controller.messages.ContactsMessage;
 import tech.mangosoft.autolinkedin.controller.messages.UpdateContactMessage;
-import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
-import tech.mangosoft.autolinkedin.db.entity.Location;
+import tech.mangosoft.autolinkedin.db.entity.*;
+import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 import tech.mangosoft.autolinkedin.utils.CSVUtils;
@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * <h1> LinkedIn Service!</h1>
@@ -46,6 +47,9 @@ public class ContactService {
 
     @Autowired
     private ILocationRepository locationRepository;
+
+    @Autowired
+    private IContactProcessingRepository contactProcessingRepository;
 
     @Value("${storage.path}")
     private String path;
@@ -76,6 +80,67 @@ public class ContactService {
         }
         return contactRepository.findAllByLocationAndRoleContainsAndCreateTimeBetween(location, p.getPosition(), firsDate, secondDate, PageRequest.of(p.getPage() - 1, 40,  Sort.Direction.DESC, "id"));
     }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get contacts.
+     * @param account current account.
+     * @return object that contains statistics
+     */
+    public List<LinkedInContact> getProcessedContact(Account account, Assignment assignment) {
+        return contactProcessingRepository
+                .getAllByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
+                .stream()
+                .map(ContactProcessing::getContact)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get succeed contacts.
+     * @param account current account.
+     * @return object that contains statistics
+     */
+    public List<LinkedInContact> getContactsSucceed(Account account, Assignment assignment) {
+        return contactProcessingRepository
+                .getAllByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
+                .stream()
+                .map(ContactProcessing::getContact)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get saved contacts.
+     * @param account current account.
+     * @return object that contains statistics
+     */
+    public List<LinkedInContact> getContactsSaved(Account account, Assignment assignment) {
+        return contactProcessingRepository
+                .getAllByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
+                .stream()
+                .map(ContactProcessing::getContact)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get failed contacts.
+     * @param account current account.
+     * @return object that contains statistics
+     */
+    public List<LinkedInContact> getContactsFailed(Account account, Assignment assignment) {
+        return contactProcessingRepository
+                .getAllByAccountAndAssignmentAndStatus(account, assignment, ContactProcessing.STATUS_ERROR)
+                .stream()
+                .map(ContactProcessing::getContact)
+                .collect(Collectors.toList());
+    }
+
 
     public LinkedInContact update(LinkedInContact linkedInContactDB, UpdateContactMessage updateContactMessage) {
         Location location = locationRepository.getLocationByLocationLike(updateContactMessage.getLocation());

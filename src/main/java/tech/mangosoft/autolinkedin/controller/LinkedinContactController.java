@@ -106,31 +106,16 @@ public class LinkedinContactController {
         return new ResponseEntity<>(linkedInContactAfterUpdate, HttpStatus.OK);
     }
 
-    /*
-     * Get contact by assignment ()
-     */
     @CrossOrigin
-    @GetMapping(value = "/getContactByAssignment")
-    public ResponseEntity<List<LinkedInContact>> getContactByAssignment(Long id) {
-        if (id == null) {
-            logger.log(Level.WARNING, "ID must be not null");
+    @GetMapping(value = "/getContactsProcessed")
+    public ResponseEntity<List<LinkedInContact>> getProcessedContact(Long assignmentId, String login) {
+        Account account = accountRepository.getAccountByUsername(login);
+        if (account == null) {
+            logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Assignment assignment = assignmentRepository.getById(id);
-        if (assignment == null) {
-            logger.log(Level.WARNING, "Assignment must be not null");
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        assignmentId = assignment.getId();
-        List<LinkedInContact> linkedInContacts = assignment.getLinkedInContacts();
-        return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
-    }
-
-    @CrossOrigin
-    @GetMapping(value = "/getContactByAssignmentId")
-    public ResponseEntity<List<LinkedInContact>> getContactByAssignment() {
         if (assignmentId == null) {
-            logger.log(Level.WARNING, "ID must be not null");
+            logger.log(Level.WARNING, "Id must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Assignment assignment = assignmentRepository.getById(assignmentId);
@@ -138,7 +123,70 @@ public class LinkedinContactController {
             logger.log(Level.WARNING, "Assignment must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        List<LinkedInContact> linkedInContacts = assignment.getLinkedInContacts();
+        List<LinkedInContact> linkedInContacts = contactService.getProcessedContact(account, assignment);
+        return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/getContactsSucceed")
+    public ResponseEntity<List<LinkedInContact>> getContactsSucceed(Long assignmentId, String login) {
+        Account account = accountRepository.getAccountByUsername(login);
+        if (account == null) {
+            logger.log(Level.WARNING, "Account must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (assignmentId == null) {
+            logger.log(Level.WARNING, "Id must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Assignment assignment = assignmentRepository.getById(assignmentId);
+        if (assignment == null) {
+            logger.log(Level.WARNING, "Assignment must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<LinkedInContact> linkedInContacts = contactService.getContactsSucceed(account, assignment);
+        return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/getContactsFailed")
+    public ResponseEntity<List<LinkedInContact>> getContactsFailed(Long assignmentId, String login) {
+        Account account = accountRepository.getAccountByUsername(login);
+        if (account == null) {
+            logger.log(Level.WARNING, "Account must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (assignmentId == null) {
+            logger.log(Level.WARNING, "Id must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Assignment assignment = assignmentRepository.getById(assignmentId);
+        if (assignment == null) {
+            logger.log(Level.WARNING, "Assignment must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<LinkedInContact> linkedInContacts = contactService.getContactsFailed(account, assignment);
+        return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/getContactsSaved")
+    public ResponseEntity<List<LinkedInContact>> getContactsSaved(Long assignmentId, String login) {
+        Account account = accountRepository.getAccountByUsername(login);
+        if (account == null) {
+            logger.log(Level.WARNING, "Account must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (assignmentId == null) {
+            logger.log(Level.WARNING, "Id must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Assignment assignment = assignmentRepository.getById(assignmentId);
+        if (assignment == null) {
+            logger.log(Level.WARNING, "Assignment must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<LinkedInContact> linkedInContacts = contactService.getContactsSaved(account, assignment);
         return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
     }
 
