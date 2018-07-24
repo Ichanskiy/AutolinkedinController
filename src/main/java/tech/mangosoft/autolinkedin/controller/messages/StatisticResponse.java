@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class StatisticResponse {
 
     @JsonProperty
+    private Long assignmentId;
+
+    @JsonProperty
     private String assignmentName;
 
     @JsonProperty
@@ -30,7 +33,6 @@ public class StatisticResponse {
 
     public StatisticResponse() {
     }
-
 
     public String getAssignmentName() {
         return assignmentName;
@@ -94,5 +96,13 @@ public class StatisticResponse {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public Long getAssignmentId() {
+        return assignmentId;
+    }
+
+    public void setAssignmentId(Long assignmentId) {
+        this.assignmentId = assignmentId;
     }
 }

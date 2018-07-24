@@ -96,6 +96,7 @@ public class LinkedInService {
         List<Assignment> assignments = assignmentRepository.findAllByAccount(account, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id")).getContent();
         for (Assignment a : assignments) {
             StatisticResponse statistic = new StatisticResponse();
+            statistic.setAssignmentId(a.getId());
             statistic.setAssignmentName(concatAllString(a.getTask().name(), a.getPosition(), a.getIndustries(), a.getFullLocationString()));
             statistic.setErrorMessage(a.getErrorMessage());
             statistic.setStatus(a.getStatus().name());
