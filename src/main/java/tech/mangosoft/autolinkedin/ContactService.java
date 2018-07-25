@@ -140,6 +140,30 @@ public class ContactService {
     /**
      * @author  Ichanskiy
      *
+     * This is the method get count saved contacts.
+     * @param account current account.
+     * @return object that contains statistics
+     */
+    public Integer getCountSavedContact(Account account, Assignment assignment) {
+        return contactProcessingRepository
+                .countDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR);
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get count failed contacts.
+     * @param account current account.
+     * @return object that contains statistics
+     */
+    public Integer getCountFailedContact(Account account, Assignment assignment) {
+        return contactProcessingRepository
+                .countDistinctByAccountAndAssignmentAndStatus(account, assignment, ContactProcessing.STATUS_ERROR);
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
      * This is the method get failed contacts.
      * @param account current account.
      * @return object that contains statistics

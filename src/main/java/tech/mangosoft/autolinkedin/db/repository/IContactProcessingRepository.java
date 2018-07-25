@@ -16,5 +16,9 @@ public interface IContactProcessingRepository extends CrudRepository<ContactProc
 
     Page<ContactProcessing> getDistinctByAccountAndAssignmentAndStatusNot(Account account, Assignment assignment, Integer status, Pageable pageable);
 
+    Integer countDistinctByAccountAndAssignmentAndStatusNot(Account account, Assignment assignment, Integer status);
+
+    Integer countDistinctByAccountAndAssignmentAndStatus(Account account, Assignment assignment, Integer status);
+
     Page<ContactProcessing> getDistinctByAccountAndAssignmentAndStatus(Account account, Assignment assignment, Integer status, Pageable pageable);
 }
