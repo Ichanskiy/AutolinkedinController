@@ -2,6 +2,8 @@ package tech.mangosoft.autolinkedin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import tech.mangosoft.autolinkedin.ContactService;
 import tech.mangosoft.autolinkedin.controller.messages.ContactsMessage;
+import tech.mangosoft.autolinkedin.controller.messages.ProcessedContactMessage;
 import tech.mangosoft.autolinkedin.controller.messages.UpdateContactMessage;
 import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
@@ -27,6 +30,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/contact")
 public class LinkedinContactController {
 
+    private static final Integer COUNT_TO_PAGE = 40;
     private Logger logger = Logger.getLogger(LinkedinContactController.class.getName());
 
     @Autowired
@@ -108,8 +112,8 @@ public class LinkedinContactController {
 
     @CrossOrigin
     @GetMapping(value = "/getContactsProcessed")
-    public ResponseEntity<List<LinkedInContact>> getProcessedContact(Long assignmentId, String login) {
-        Account account = accountRepository.getAccountByUsername(login);
+    public ResponseEntity<PageImpl<LinkedInContact>> getProcessedContact(ProcessedContactMessage processedContactMessage) {
+        Account account = accountRepository.getAccountByUsername(processedContactMessage.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -123,14 +127,14 @@ public class LinkedinContactController {
             logger.log(Level.WARNING, "Assignment must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        List<LinkedInContact> linkedInContacts = contactService.getProcessedContact(account, assignment);
-        return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
+        List<LinkedInContact> linkedInContacts = contactService.getProcessedContact(account, assignment, processedContactMessage.getPage(), COUNT_TO_PAGE);
+        return new ResponseEntity<>(new PageImpl<>(linkedInContacts, PageRequest.of(processedContactMessage.getPage() - 1, COUNT_TO_PAGE), 10), HttpStatus.OK);
     }
 
     @CrossOrigin
     @GetMapping(value = "/getContactsSucceed")
-    public ResponseEntity<List<LinkedInContact>> getContactsSucceed(Long assignmentId, String login) {
-        Account account = accountRepository.getAccountByUsername(login);
+    public ResponseEntity<PageImpl<LinkedInContact>> getContactsSucceed(ProcessedContactMessage processedContactMessage) {
+        Account account = accountRepository.getAccountByUsername(processedContactMessage.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -144,14 +148,15 @@ public class LinkedinContactController {
             logger.log(Level.WARNING, "Assignment must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        List<LinkedInContact> linkedInContacts = contactService.getContactsSucceed(account, assignment);
-        return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
+        List<LinkedInContact> linkedInContacts = contactService.getContactsSucceed(account, assignment, processedContactMessage.getPage(), COUNT_TO_PAGE);
+
+        return new ResponseEntity<>(new PageImpl<>(linkedInContacts, PageRequest.of(processedContactMessage.getPage() - 1, COUNT_TO_PAGE), 10), HttpStatus.OK);
     }
 
     @CrossOrigin
     @GetMapping(value = "/getContactsFailed")
-    public ResponseEntity<List<LinkedInContact>> getContactsFailed(Long assignmentId, String login) {
-        Account account = accountRepository.getAccountByUsername(login);
+    public ResponseEntity<PageImpl<LinkedInContact>> getContactsFailed(ProcessedContactMessage processedContactMessage) {
+        Account account = accountRepository.getAccountByUsername(processedContactMessage.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -165,14 +170,14 @@ public class LinkedinContactController {
             logger.log(Level.WARNING, "Assignment must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        List<LinkedInContact> linkedInContacts = contactService.getContactsFailed(account, assignment);
-        return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
+        List<LinkedInContact> linkedInContacts = contactService.getContactsFailed(account, assignment, processedContactMessage.getPage(), COUNT_TO_PAGE);
+        return new ResponseEntity<>(new PageImpl<>(linkedInContacts, PageRequest.of(processedContactMessage.getPage() - 1, COUNT_TO_PAGE), 10), HttpStatus.OK);
     }
 
     @CrossOrigin
     @GetMapping(value = "/getContactsSaved")
-    public ResponseEntity<List<LinkedInContact>> getContactsSaved(Long assignmentId, String login) {
-        Account account = accountRepository.getAccountByUsername(login);
+    public ResponseEntity<PageImpl<LinkedInContact>> getContactsSaved(ProcessedContactMessage processedContactMessage) {
+        Account account = accountRepository.getAccountByUsername(processedContactMessage.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -186,8 +191,8 @@ public class LinkedinContactController {
             logger.log(Level.WARNING, "Assignment must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        List<LinkedInContact> linkedInContacts = contactService.getContactsSaved(account, assignment);
-        return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
+        List<LinkedInContact> linkedInContacts = contactService.getContactsSaved(account, assignment, processedContactMessage.getPage(), COUNT_TO_PAGE);
+        return new ResponseEntity<>(new PageImpl<>(linkedInContacts, PageRequest.of(processedContactMessage.getPage() - 1, COUNT_TO_PAGE), 10), HttpStatus.OK);
     }
 
     /*

@@ -99,9 +99,9 @@ public class ContactService {
      * @param account current account.
      * @return object that contains statistics
      */
-    public List<LinkedInContact> getProcessedContact(Account account, Assignment assignment) {
+    public List<LinkedInContact> getProcessedContact(Account account, Assignment assignment, int page, int size) {
         return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
+                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
                 .stream()
                 .map(ContactProcessing::getContact)
                 .collect(Collectors.toList());
@@ -114,9 +114,9 @@ public class ContactService {
      * @param account current account.
      * @return object that contains statistics
      */
-    public List<LinkedInContact> getContactsSucceed(Account account, Assignment assignment) {
+    public List<LinkedInContact> getContactsSucceed(Account account, Assignment assignment, int page, int size) {
         return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
+                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
                 .stream()
                 .map(ContactProcessing::getContact)
                 .collect(Collectors.toList());
@@ -129,9 +129,9 @@ public class ContactService {
      * @param account current account.
      * @return object that contains statistics
      */
-    public List<LinkedInContact> getContactsSaved(Account account, Assignment assignment) {
+    public List<LinkedInContact> getContactsSaved(Account account, Assignment assignment, int page, int size) {
         return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
+                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
                 .stream()
                 .map(ContactProcessing::getContact)
                 .collect(Collectors.toList());
@@ -144,9 +144,9 @@ public class ContactService {
      * @param account current account.
      * @return object that contains statistics
      */
-    public List<LinkedInContact> getContactsFailed(Account account, Assignment assignment) {
+    public List<LinkedInContact> getContactsFailed(Account account, Assignment assignment, int page, int size) {
         return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatus(account, assignment, ContactProcessing.STATUS_ERROR)
+                .getDistinctByAccountAndAssignmentAndStatus(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
                 .stream()
                 .map(ContactProcessing::getContact)
                 .collect(Collectors.toList());

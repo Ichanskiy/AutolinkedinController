@@ -1,5 +1,7 @@
 package tech.mangosoft.autolinkedin.db.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
@@ -12,7 +14,7 @@ public interface IContactProcessingRepository extends CrudRepository<ContactProc
 
     ContactProcessing findByAccountIdAndContactId(Long accountId, Long contactId);
 
-    List<ContactProcessing> getDistinctByAccountAndAssignmentAndStatusNot(Account account, Assignment assignment, Integer status);
+    Page<ContactProcessing> getDistinctByAccountAndAssignmentAndStatusNot(Account account, Assignment assignment, Integer status, Pageable pageable);
 
-    List<ContactProcessing> getDistinctByAccountAndAssignmentAndStatus(Account account, Assignment assignment, Integer status);
+    Page<ContactProcessing> getDistinctByAccountAndAssignmentAndStatus(Account account, Assignment assignment, Integer status, Pageable pageable);
 }
