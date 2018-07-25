@@ -135,10 +135,6 @@ public class LinkedinContactController {
     @CrossOrigin
     @GetMapping(value = "/getContactsSucceed")
     public ResponseEntity<PageImpl<LinkedInContact>> getContactsSucceed(ProcessedContactMessage processedContactMessage) {
-        processedContactMessage = new ProcessedContactMessage(39L, "abaranovskiy1985@gmail.com", 10);
-
-
-
         Account account = accountRepository.getAccountByUsername(processedContactMessage.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
