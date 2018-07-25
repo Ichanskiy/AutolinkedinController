@@ -12,7 +12,7 @@ public interface IContactProcessingRepository extends CrudRepository<ContactProc
 
     ContactProcessing findByAccountIdAndContactId(Long accountId, Long contactId);
 
-    List<ContactProcessing> getAllByAccountAndAssignmentAndStatusNot(Account account, Assignment assignment, Integer status);
+    List<ContactProcessing> getDistinctByAccountAndAssignmentAndStatusNot(Account account, Assignment assignment, Integer status);
 
-    List<ContactProcessing> getAllByAccountAndAssignmentAndStatus(Account account, Assignment assignment, Integer status);
+    List<ContactProcessing> getDistinctByAccountAndAssignmentAndStatus(Account account, Assignment assignment, Integer status);
 }

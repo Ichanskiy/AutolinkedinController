@@ -101,7 +101,7 @@ public class ContactService {
      */
     public List<LinkedInContact> getProcessedContact(Account account, Assignment assignment) {
         return contactProcessingRepository
-                .getAllByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
+                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
                 .stream()
                 .map(ContactProcessing::getContact)
                 .collect(Collectors.toList());
@@ -116,7 +116,7 @@ public class ContactService {
      */
     public List<LinkedInContact> getContactsSucceed(Account account, Assignment assignment) {
         return contactProcessingRepository
-                .getAllByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
+                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
                 .stream()
                 .map(ContactProcessing::getContact)
                 .collect(Collectors.toList());
@@ -131,7 +131,7 @@ public class ContactService {
      */
     public List<LinkedInContact> getContactsSaved(Account account, Assignment assignment) {
         return contactProcessingRepository
-                .getAllByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
+                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR)
                 .stream()
                 .map(ContactProcessing::getContact)
                 .collect(Collectors.toList());
@@ -146,7 +146,7 @@ public class ContactService {
      */
     public List<LinkedInContact> getContactsFailed(Account account, Assignment assignment) {
         return contactProcessingRepository
-                .getAllByAccountAndAssignmentAndStatus(account, assignment, ContactProcessing.STATUS_ERROR)
+                .getDistinctByAccountAndAssignmentAndStatus(account, assignment, ContactProcessing.STATUS_ERROR)
                 .stream()
                 .map(ContactProcessing::getContact)
                 .collect(Collectors.toList());
