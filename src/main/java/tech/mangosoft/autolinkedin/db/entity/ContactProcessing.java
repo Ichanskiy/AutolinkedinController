@@ -40,7 +40,7 @@ public class ContactProcessing {
     private Timestamp updateTime;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "contact_id")
     private LinkedInContact contact;
 
