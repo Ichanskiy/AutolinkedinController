@@ -84,6 +84,29 @@ public class ContactService {
     /**
      * @author  Ichanskiy
      *
+     * This is the method get count contact.
+     * @param p input object with param.
+     * @return count Contacts
+     */
+    public Integer getCountByParam(ContactsMessage p) {
+        if (p == null) {
+            return null;
+        }
+        Location location = locationRepository.getLocationByLocation(p.getLocation());
+        if (dateLengthEqualsNotZero(p)) {
+            return contactRepository.countAllByLocationAndRoleContains(location, p.getPosition());
+        }
+        Date firsDate = getDate(p.getFirstDate());
+        Date secondDate = getDate(p.getSecondDate());
+        if (secondDate == null || firsDate == null) {
+            return null;
+        }
+        return contactRepository.countAllByLocationAndRoleContainsAndCreateTimeBetween(location, p.getPosition(), firsDate, secondDate, PageRequest.of(p.getPage() - 1, 40, Sort.Direction.DESC, "id"));
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
      * This is the method get bollean length result
      * @param p input object with param.
      * @return true if length more then 0

@@ -18,6 +18,9 @@ public interface IAssignmentRepository extends CrudRepository<Assignment, Long> 
     List<Assignment> findByStatusOrderById(Status status);
 
     Page<Assignment> getAllByAccount(Account account, Pageable pageable);
+
     Page<Assignment> findAllByAccount(Account account, Pageable pageable);
+
+    Integer countAllByAccount(Account account);
 
 }

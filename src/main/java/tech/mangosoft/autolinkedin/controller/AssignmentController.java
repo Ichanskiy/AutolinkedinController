@@ -1,29 +1,26 @@
 package tech.mangosoft.autolinkedin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.mangosoft.autolinkedin.ContactService;
 import tech.mangosoft.autolinkedin.LinkedInService;
 import tech.mangosoft.autolinkedin.controller.messages.ConnectionMessage;
-import tech.mangosoft.autolinkedin.controller.messages.ContactsMessage;
 import tech.mangosoft.autolinkedin.controller.messages.GrabbingMessage;
 import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
 import tech.mangosoft.autolinkedin.db.entity.*;
-import tech.mangosoft.autolinkedin.db.entity.enums.Status;
-import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
-import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static tech.mangosoft.autolinkedin.controller.LinkedinContactController.COUNT_TO_PAGE;
 import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_CONNECTION;
 import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_GRABBING;
 
@@ -81,14 +78,15 @@ public class AssignmentController {
 
     @CrossOrigin
     @GetMapping(value = "/getStatistics")
-    public ResponseEntity<List<StatisticResponse>> getStatistics(String email, Integer page) {
+    public ResponseEntity<PageImpl<StatisticResponse>> getStatistics(String email, Integer page) {
         Account account = accountRepository.getAccountByUsername(email);
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        Integer count = linkedInService.getCountAssignment(account);
         List<StatisticResponse> statisticResponse = linkedInService.getStatistics(account, page, 20);
-        return new ResponseEntity<>(statisticResponse, HttpStatus.OK);
+        return new ResponseEntity<>(new PageImpl<>(statisticResponse, PageRequest.of(page - 1, COUNT_TO_PAGE), count), HttpStatus.OK);
     }
 
     @CrossOrigin

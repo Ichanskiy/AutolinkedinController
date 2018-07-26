@@ -40,7 +40,11 @@ public interface ILinkedInContactRepository extends JpaRepository<LinkedInContac
 
     List<LinkedInContact> findAllByLocationAndRoleContainsAndCreateTimeBetween(Location location, String role, Date after, Date before, Pageable pageable);
 
+    Integer countAllByLocationAndRoleContainsAndCreateTimeBetween(Location location, String role, Date after, Date before, Pageable pageable);
+
     List<LinkedInContact> findAllByLocationAndRoleContains(Location location, String industries, Pageable pageable);
+
+    Integer countAllByLocationAndRoleContains(Location location, String industries);
 
     List<LinkedInContact> findAllByLocation(Location location, Pageable pageable);
 
