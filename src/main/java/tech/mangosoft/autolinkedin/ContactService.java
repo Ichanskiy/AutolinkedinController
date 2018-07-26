@@ -88,7 +88,7 @@ public class ContactService {
      * @param p input object with param.
      * @return count Contacts
      */
-    public Integer getCountByParam(ContactsMessage p) {
+    public Long getCountByParam(ContactsMessage p) {
         if (p == null) {
             return null;
         }
@@ -101,7 +101,7 @@ public class ContactService {
         if (secondDate == null || firsDate == null) {
             return null;
         }
-        return contactRepository.countAllByLocationAndRoleContainsAndCreateTimeBetween(location, p.getPosition(), firsDate, secondDate, PageRequest.of(p.getPage() - 1, 40, Sort.Direction.DESC, "id"));
+        return contactRepository.countAllByLocationAndRoleContainsAndCreateTimeBetween(location, p.getPosition(), firsDate, secondDate);
     }
 
     /**
