@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/contact")
 public class LinkedinContactController {
 
-    private static final Integer COUNT_TO_PAGE = 40;
+    static final Integer COUNT_TO_PAGE = 40;
     private Logger logger = Logger.getLogger(LinkedinContactController.class.getName());
 
     @Autowired
@@ -57,13 +57,14 @@ public class LinkedinContactController {
 
     @CrossOrigin
     @GetMapping(value = "/getContacts")
-    public ResponseEntity<List<LinkedInContact>> getContacts(ContactsMessage contactsMessage) {
+    public ResponseEntity<PageImpl<LinkedInContact>> getContacts(ContactsMessage contactsMessage) {
         List<LinkedInContact> linkedInContacts = contactService.getContactsByParam(contactsMessage);
         if (linkedInContacts == null) {
             logger.log(Level.WARNING, "Param must be not null or error parsing date");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(linkedInContacts, HttpStatus.OK);
+        Integer count = contactService.getCountByParam(contactsMessage);
+        return new ResponseEntity<>(new PageImpl<>(linkedInContacts, PageRequest.of(contactsMessage.getPage() - 1, COUNT_TO_PAGE), count), HttpStatus.OK);
     }
 
     @CrossOrigin

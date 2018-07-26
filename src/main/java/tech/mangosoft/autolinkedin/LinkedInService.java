@@ -116,6 +116,17 @@ public class LinkedInService {
     /**
      * @author  Ichanskiy
      *
+     * This is the method get count assignment.
+     * @param account current account.
+     * @return object count assignment by account
+     */
+    public Integer getCountAssignment(Account account) {
+        return assignmentRepository.countAllByAccount(account);
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
      * This is the method concate all string.
      * @param s all strings.
      * @return final string after joining. Example: "SEO; Games; New York;"
