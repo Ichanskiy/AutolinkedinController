@@ -126,7 +126,7 @@ public class ContactService {
         return contactProcessingRepository
                 .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
                 .stream()
-                .map(ContactProcessing::getContact)
+                .map(contactProcessing -> contactProcessing.getContact().setComments(contactProcessing.getAuditLog()))
                 .collect(Collectors.toList());
     }
 
@@ -141,7 +141,7 @@ public class ContactService {
         return contactProcessingRepository
                 .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
                 .stream()
-                .map(ContactProcessing::getContact)
+                .map(contactProcessing -> contactProcessing.getContact().setComments(contactProcessing.getAuditLog()))
                 .collect(Collectors.toList());
     }
 
@@ -156,7 +156,7 @@ public class ContactService {
         return contactProcessingRepository
                 .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
                 .stream()
-                .map(ContactProcessing::getContact)
+                .map(contactProcessing -> contactProcessing.getContact().setComments(contactProcessing.getAuditLog()))
                 .collect(Collectors.toList());
     }
 

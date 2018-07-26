@@ -173,7 +173,7 @@ public class LinkedinContactController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         List<LinkedInContact> linkedInContacts = contactService.getContactsFailed(account, assignment, processedContactMessage.getPage(), COUNT_TO_PAGE);
-        Integer count = contactService.getCountSavedContact(account, assignment);
+        Integer count = contactService.getCountFailedContact(account, assignment);
         return new ResponseEntity<>(new PageImpl<>(linkedInContacts, PageRequest.of(processedContactMessage.getPage() - 1, COUNT_TO_PAGE), count), HttpStatus.OK);
     }
 

@@ -54,6 +54,9 @@ public class LinkedInContact {
 
     private String email;
 
+    @Transient
+    private String message;
+
     @Column(columnDefinition = "tinyint(4) default " + STATUS_IMPORTED)
     private Integer status;
 
@@ -248,6 +251,14 @@ public class LinkedInContact {
     public LinkedInContact setLocation(Location location) {
         this.location = location;
         return this;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Timestamp getUpdateTime() {
