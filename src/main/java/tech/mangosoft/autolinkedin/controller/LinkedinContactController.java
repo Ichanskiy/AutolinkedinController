@@ -63,7 +63,7 @@ public class LinkedinContactController {
             logger.log(Level.WARNING, "Param must be not null or error parsing date");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Integer count = contactService.getCountByParam(contactsMessage);
+        Long count = contactService.getCountByParam(contactsMessage);
         return new ResponseEntity<>(new PageImpl<>(linkedInContacts, PageRequest.of(contactsMessage.getPage() - 1, COUNT_TO_PAGE), count), HttpStatus.OK);
     }
 
