@@ -1,5 +1,8 @@
 package tech.mangosoft.autolinkedin.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import tech.mangosoft.autolinkedin.db.entity.enums.Role;
+
 import javax.persistence.*;
 
 import java.util.List;
@@ -35,8 +38,15 @@ public class Account {
     @Column( name = "last_page" )
     private Integer lastPage;
 
+    private Role role;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
     private List<ContactProcessing> contactProcessings;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
+    private Company company;
 
     public Account() {
     }
@@ -120,4 +130,24 @@ public class Account {
         return first + " " + last;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public Account setRole(Role role) {
+        this.role = role;
+        return this;
+    }
+
+    public void setContactProcessings(List<ContactProcessing> contactProcessings) {
+        this.contactProcessings = contactProcessings;
+    }
 }
