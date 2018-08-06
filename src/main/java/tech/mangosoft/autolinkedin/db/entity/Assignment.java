@@ -53,6 +53,8 @@ public class Assignment {
 
     private String position;
 
+    private Integer countsFound;
+
     private String industries;
 
     @Column(name = "message", length = 16000)
@@ -260,6 +262,14 @@ public class Assignment {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Integer getCountsFound() {
+        return countsFound;
+    }
+
+    public void setCountsFound(Integer countsFound) {
+        this.countsFound = countsFound;
     }
 
     public Assignment setDailyLimit(int dailyLimit) {

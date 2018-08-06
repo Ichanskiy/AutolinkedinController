@@ -17,6 +17,9 @@ public class StatisticResponse {
     private String errorMessage;
 
     @JsonProperty
+    private Integer countsFound;
+
+    @JsonProperty
     private long processed;
 
     @JsonProperty
@@ -104,5 +107,13 @@ public class StatisticResponse {
 
     public void setAssignmentId(Long assignmentId) {
         this.assignmentId = assignmentId;
+    }
+
+    public Integer getCountsFound() {
+        return countsFound;
+    }
+
+    public void setCountsFound(Integer countsFound) {
+        this.countsFound = countsFound;
     }
 }
