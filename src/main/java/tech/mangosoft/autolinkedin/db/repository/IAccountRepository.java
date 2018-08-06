@@ -9,4 +9,6 @@ public interface IAccountRepository extends CrudRepository<Account, Long> {
     Account getById(Long id);
 
     Account getAccountByUsername(@Param("username") String username);
+
+    Account getAccountByUsernameAndPassword(String username, String password);
 }
