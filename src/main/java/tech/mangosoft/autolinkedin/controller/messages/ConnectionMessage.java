@@ -22,16 +22,20 @@ public class ConnectionMessage {
     @JsonProperty
     private String message;
 
+    @JsonProperty
+    private Integer executionLimit;
+
     public ConnectionMessage() {
     }
 
-    public ConnectionMessage(String login, String location, String fullLocationString, String position, String industries, String message) {
+    public ConnectionMessage(String login, String location, String fullLocationString, String position, String industries, String message, Integer executionLimit) {
         this.login = login;
         this.location = location;
         this.fullLocationString = fullLocationString;
         this.position = position;
         this.industries = industries;
         this.message = message;
+        this.executionLimit = executionLimit;
     }
 
     public String getLogin() {
@@ -80,5 +84,13 @@ public class ConnectionMessage {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Integer getExecutionLimit() {
+        return executionLimit;
+    }
+
+    public void setExecutionLimit(Integer executionLimit) {
+        this.executionLimit = executionLimit;
     }
 }
