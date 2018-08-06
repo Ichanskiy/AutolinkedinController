@@ -94,8 +94,9 @@ public class Account {
         return executionLimit;
     }
 
-    public void setExecutionLimit(Integer executionLimit) {
+    public Account setExecutionLimit(Integer executionLimit) {
         this.executionLimit = executionLimit;
+        return this;
     }
 
     public Integer getGrabbingLimit() {

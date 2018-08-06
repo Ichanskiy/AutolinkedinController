@@ -50,7 +50,12 @@ public class AssignmentController {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Assignment assignment = new Assignment(TASK_GRABBING, gm.getLocation(), gm.getFullLocationString(), gm.getPosition(), gm.getIndustries(), account);
+        Assignment assignment = new Assignment(TASK_GRABBING,
+                gm.getLocation(),
+                gm.getFullLocationString(),
+                gm.getPosition(),
+                gm.getIndustries(),
+                account);
         if (linkedInService.checkAllField(assignment)) {
             logger.log(Level.WARNING, "Fields must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -67,7 +72,13 @@ public class AssignmentController {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Assignment assignment = new Assignment(TASK_CONNECTION, cm.getLocation(), cm.getFullLocationString(), cm.getPosition(), cm.getIndustries(), cm.getMessage(), account);
+        Assignment assignment = new Assignment(TASK_CONNECTION,
+                cm.getLocation(),
+                cm.getFullLocationString(),
+                cm.getPosition(),
+                cm.getIndustries(),
+                cm.getMessage(),
+                accountRepository.save(account.setExecutionLimit(cm.getExecutionLimit())));
         if (linkedInService.checkMessageAndPosition(assignment)) {
             logger.log(Level.WARNING, "Message or position must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
