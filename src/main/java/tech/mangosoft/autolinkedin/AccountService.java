@@ -44,8 +44,7 @@ public class AccountService {
         return account.getExecutionLimit() == null
                 || account.getGrabbingLimit() == null
                 || account.getPassword() == null
-                || account.getUsername() == null
-                || account.getPassword() == null;
+                || account.getUsername() == null;
     }
 
     /**

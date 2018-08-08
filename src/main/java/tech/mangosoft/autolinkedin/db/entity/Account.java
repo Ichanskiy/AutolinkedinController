@@ -1,6 +1,6 @@
 package tech.mangosoft.autolinkedin.db.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import tech.mangosoft.autolinkedin.db.entity.enums.Role;
 
 import javax.persistence.*;
@@ -17,33 +17,41 @@ public class Account {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
+    @JsonProperty
     @Column( length = 50 )
     private String first;
 
+    @JsonProperty
     @Column( length = 50 )
     private String last;
 
+    @JsonProperty
     @Column( length = 50, unique = true)
     private String username;
 
+    @JsonProperty
     @Column( length = 50 )
     private String password;
 
+    @JsonProperty
     @Column( name = "execution_limit" )
     private Integer executionLimit;
 
+    @JsonProperty
     @Column( name = "grabbing_limit" )
     private Integer grabbingLimit;
 
+    @JsonProperty
     @Column( name = "last_page" )
     private Integer lastPage;
 
+    @JsonProperty
     private Role role;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
     private List<ContactProcessing> contactProcessings;
 
-    @JsonIgnore
+    @JsonProperty
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Company company;
