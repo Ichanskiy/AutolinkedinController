@@ -35,7 +35,7 @@ public class AccountController {
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity<Account> createAccount(Account account) {
+    public ResponseEntity<Account> createAccount(@RequestBody Account account) {
         if (accountService.accountNotValid(account)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

@@ -1,6 +1,7 @@
 package tech.mangosoft.autolinkedin.db.entity;
 
-import tech.mangosoft.autolinkedin.db.entity.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,8 +17,10 @@ public class Company {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
+    @JsonProperty
     private String name;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", cascade = CascadeType.ALL)
     private List<Account> accounts = new ArrayList<>();
 
