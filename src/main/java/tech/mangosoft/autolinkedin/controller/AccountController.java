@@ -45,12 +45,12 @@ public class AccountController {
 
     @CrossOrigin
     @DeleteMapping
-    public ResponseEntity<Account> deleteAccount(Account account) {
-        Account accountDB = accountRepository.getAccountByUsername(account.getUsername());
+    public ResponseEntity<Account> deleteAccount(String login) {
+        Account accountDB = accountRepository.getAccountByUsername(login);
         if (accountDB == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        accountService.delete(account);
+        accountService.delete(accountDB);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
