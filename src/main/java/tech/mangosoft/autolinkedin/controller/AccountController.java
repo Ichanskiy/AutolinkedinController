@@ -45,7 +45,7 @@ public class AccountController {
 
     @CrossOrigin
     @DeleteMapping
-    public ResponseEntity<Account> deleteAccount(String login) {
+    public ResponseEntity<Account> deleteAccount(@RequestBody String login) {
         Account accountDB = accountRepository.getAccountByUsername(login);
         if (accountDB == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
