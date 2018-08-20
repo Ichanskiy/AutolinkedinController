@@ -8,10 +8,7 @@ public class ContactsMessage {
     private String location;
 
     @JsonProperty
-    private String firstDate;
-
-    @JsonProperty
-    private String secondDate;
+    private String industries;
 
     @JsonProperty
     private String position;
@@ -27,20 +24,12 @@ public class ContactsMessage {
         this.location = location;
     }
 
-    public String getFirstDate() {
-        return firstDate;
+    public String getIndustries() {
+        return industries;
     }
 
-    public void setFirstDate(String firstDate) {
-        this.firstDate = firstDate;
-    }
-
-    public String getSecondDate() {
-        return secondDate;
-    }
-
-    public void setSecondDate(String secondDate) {
-        this.secondDate = secondDate;
+    public void setIndustries(String industries) {
+        this.industries = industries;
     }
 
     public String getPosition() {

@@ -2,6 +2,7 @@ package tech.mangosoft.autolinkedin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -13,11 +14,19 @@ import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 import tech.mangosoft.autolinkedin.utils.CSVUtils;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -41,6 +50,9 @@ import java.util.stream.Collectors;
 public class ContactService {
 
     private static Logger logger = Logger.getLogger(ContactService.class.getName());
+    private static Integer COUNT_FOR_PAGE = 40;
+
+    private List<Predicate> predicates = new ArrayList<>();
 
     @Autowired
     private ILinkedInContactRepository contactRepository;
@@ -51,6 +63,9 @@ public class ContactService {
     @Autowired
     private IContactProcessingRepository contactProcessingRepository;
 
+    @PersistenceContext
+    EntityManager entityManager;
+
     @Value("${storage.path}")
     private String path;
 
@@ -58,61 +73,50 @@ public class ContactService {
     private String filename;
 
 
-    /**
-     * @author  Ichanskiy
-     *
-     * This is the method get list contact.
-     * @param p input object with param.
-     * @return list Contacts
-     */
-    public List<LinkedInContact> getContactsByParam(ContactsMessage p){
-        if (p == null) {
+    public PageImpl<LinkedInContact> getContactsByParam(ContactsMessage message){
+        if (message == null || message.getPage() == null) {
             return null;
         }
-        Location location = locationRepository.getLocationByLocation(p.getLocation());
-        if (dateLengthEqualsNotZero(p)) {
-            return contactRepository.findAllByLocationAndRoleContains(location, p.getPosition(), PageRequest.of(p.getPage() - 1, 40,  Sort.Direction.DESC, "id"));
-        }
-        Date firsDate = getDate(p.getFirstDate());
-        Date secondDate = getDate(p.getSecondDate());
-        if (secondDate == null || firsDate == null) {
-            return null;
-        }
-        return contactRepository.findAllByLocationAndRoleContainsAndCreateTimeBetween(location, p.getPosition(), firsDate, secondDate, PageRequest.of(p.getPage() - 1, 40,  Sort.Direction.DESC, "id"));
+
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
+        Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
+
+        getPredicatesByParam(message, root, builder);
+
+        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        TypedQuery<LinkedInContact> query = entityManager.createQuery(criteriaQuery);
+
+        query.setFirstResult((message.getPage() - 1) * COUNT_FOR_PAGE);
+        query.setMaxResults(COUNT_FOR_PAGE);
+
+        return new PageImpl<>(query.getResultList(), PageRequest.of(message.getPage(), COUNT_FOR_PAGE), getCountContactsByPredicates(predicates));
     }
 
-    /**
-     * @author  Ichanskiy
-     *
-     * This is the method get count contact.
-     * @param p input object with param.
-     * @return count Contacts
-     */
-    public Long getCountByParam(ContactsMessage p) {
-        if (p == null) {
-            return null;
+
+    private void getPredicatesByParam(ContactsMessage contactsMessage, Root<LinkedInContact> root, CriteriaBuilder builder) {
+        predicates.clear();
+        if (contactsMessage.getPosition() != null && !contactsMessage.getPosition().isEmpty()) {
+            predicates.add(builder.like(root.get("role"), contactsMessage.getPosition()));
         }
-        Location location = locationRepository.getLocationByLocation(p.getLocation());
-        if (dateLengthEqualsNotZero(p)) {
-            return contactRepository.countAllByLocationAndRoleContains(location, p.getPosition());
+        if (contactsMessage.getLocation() != null && !contactsMessage.getLocation().isEmpty()) {
+            Location location = locationRepository.getLocationByLocation(contactsMessage.getLocation());
+            if (location != null) {
+                predicates.add(builder.equal(root.get("location"), location));
+            }
         }
-        Date firsDate = getDate(p.getFirstDate());
-        Date secondDate = getDate(p.getSecondDate());
-        if (secondDate == null || firsDate == null) {
-            return null;
+        if (contactsMessage.getIndustries() != null && !contactsMessage.getIndustries().isEmpty()) {
+            predicates.add(builder.like(root.get("industries"), contactsMessage.getIndustries()));
         }
-        return contactRepository.countAllByLocationAndRoleContainsAndCreateTimeBetween(location, p.getPosition(), firsDate, secondDate);
     }
 
-    /**
-     * @author  Ichanskiy
-     *
-     * This is the method get bollean length result
-     * @param p input object with param.
-     * @return true if length more then 0
-     */
-    private boolean dateLengthEqualsNotZero(ContactsMessage p){
-        return p.getFirstDate().length() == 0 || p.getSecondDate().length() == 0;
+
+    private Long getCountContactsByPredicates(List<Predicate> predicates){
+        CriteriaBuilder qb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Long> cq = qb.createQuery(Long.class);
+        cq.select(qb.count(cq.from(LinkedInContact.class)));
+        cq.where(predicates.toArray(new Predicate[predicates.size()]));
+        return entityManager.createQuery(cq).getSingleResult();
     }
 
     /**
