@@ -13,32 +13,14 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public interface ILinkedInContactRepository extends JpaRepository<LinkedInContact, Long> {
-/*
-    @Query("SELECT c FROM LinkedInContact c WHERE c.status= 0 AND (LOWER(c.assignedLinkedinContact) = LOWER(:assignedContact) OR c.assignedLinkedinContact IS NULL ) ORDER BY c.id DESC")
-    public List<LinkedInContact> findLinkedInContactsFor(@Param("assignedContact") String assignedContact, Pageable pageable );
 
-    final String markContactQuery = "update linkedin_contacts c set c.assigned_linkedin_contact =:assignedContact, c.assigned_time = NOW(), c.status = "+ LinkedInContact.STATUS_ACQUIRED +
-            " WHERE c.status= "+LinkedInContact.STATUS_NEW +" AND (LOWER(c.assigned_linkedin_contact) = LOWER(:assignedContact) OR c.assigned_linkedin_contact IS NULL ) LIMIT 1";
-    @Modifying(flushAutomatically = true, clearAutomatically = true)
-    @Query(value = markContactQuery, nativeQuery = true)
-    void markContact(@Param("assignedContact") String assignedContact);
 
-    final String findAssignedLinkedInContactsForQuery = "SELECT c FROM LinkedInContact c " +
-            "WHERE c.status= "+ LinkedInContact.STATUS_ACQUIRED +" AND LOWER(c.assignedLinkedinContact) = LOWER(:assignedContact) ORDER BY c.id DESC";
-    @Query(findAssignedLinkedInContactsForQuery)
-    public List<LinkedInContact> findAssignedLinkedInContactsFor(@Param("assignedContact") String assignedContact, Pageable pageable );
-*/
-
-//    LinkedInContact findFirstByStatusAndLocationAndRoleLikeAndIndustriesLikeAndContactProcessingsIsNull(int status, Location location, String role, String industries);
-//    Page<LinkedInContact> findAllByStatus(int status, Pageable pageable);
-//    LinkedInContact findFirstByStatusAndRoleLikeAndIndustriesContainsAndLocation(int status, String role, String industries, Location location);
-//    LinkedInContact findFirstByStatusAndContactProcessingsIsNull(int status);
 
     LinkedInContact findFirstByStatusAndRoleContainsAndContactProcessingsIsNull(int status, String role);
 
     LinkedInContact findFirstByStatusAndLocationAndRoleContainsAndIndustriesContainsAndContactProcessingsIsNull(int status, Location location, String role, String industries);
 
-    List<LinkedInContact> findAllByLocationAndRoleContainsAndCreateTimeBetween(Location location, String role, Date after, Date before, Pageable pageable);
+    Page<LinkedInContact> countAllByLocationAndIndustriesContainsAndRoleContaining(Location location, String industries, String position, Pageable pageable);
 
     Long countAllByLocationAndRoleContainsAndCreateTimeBetween(Location location, String role, Date after, Date before);
 
@@ -47,6 +29,8 @@ public interface ILinkedInContactRepository extends JpaRepository<LinkedInContac
     Long countAllByLocationAndRoleContains(Location location, String industries);
 
     List<LinkedInContact> findAllByLocation(Location location, Pageable pageable);
+
+    List<LinkedInContact> findAllByLocation(Location location);
 
     LinkedInContact getById(Long id);
 
