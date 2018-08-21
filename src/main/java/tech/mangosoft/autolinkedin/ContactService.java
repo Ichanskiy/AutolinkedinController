@@ -98,13 +98,13 @@ public class ContactService {
         CSVUtils.writeLine(writer, Arrays.asList("company name", "first name", "last name", "role", "person linkedin", "location", "industries", "email"));
         for (LinkedInContact contact : contactsFromDb) {
             CSVUtils.writeLine(writer, Arrays
-                    .asList(!isNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().concat(" ").replace(",", ";") : " ",
-                            !isNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
-                            !isNullOrEmpty(contact.getLastName()) ? contact.getLastName().concat(" ").replace(",", ";") : " ",
-                            !isNullOrEmpty(contact.getRole()) ? contact.getRole().concat(" ").replace(",", ";") : " ",
-                            !isNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().concat(" ").replace(",", ";") : " ",
+                    .asList(isNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().concat(" ").replace(",", ";") : " ",
+                            isNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
+                            isNullOrEmpty(contact.getLastName()) ? contact.getLastName().concat(" ").replace(",", ";") : " ",
+                            isNullOrEmpty(contact.getRole()) ? contact.getRole().concat(" ").replace(",", ";") : " ",
+                            isNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().concat(" ").replace(",", ";") : " ",
                             contact.getLocation() == null ? contact.getLocation().getLocation().concat(" ").replace(",", ";") : " ",
-                            !isNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().concat(" ").replace(",", ";") : " ",
+                            isNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().concat(" ").replace(",", ";") : " ",
                             " "));
         }
         writer.flush();
@@ -131,7 +131,14 @@ public class ContactService {
         return new PageImpl<>(query.getResultList(), PageRequest.of(message.getPage(), COUNT_FOR_PAGE), getCountContactsByPredicates(predicates));
     }
 
-
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get predictes by input param.
+     * @param contactsMessage input object with param.
+     * @param root root object predicates.
+     * @param builder CriteriaBuilder object.
+     */
     private void getPredicatesByParam(ContactsMessage contactsMessage, Root<LinkedInContact> root, CriteriaBuilder builder) {
         predicates.clear();
         if (contactsMessage.getPosition() != null && !contactsMessage.getPosition().isEmpty()) {
@@ -148,7 +155,13 @@ public class ContactService {
         }
     }
 
-
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get count contacts by predicates.
+     * @param predicates input predicates.
+     * @return count contacts
+     */
     private Long getCountContactsByPredicates(List<Predicate> predicates){
         CriteriaBuilder qb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> cq = qb.createQuery(Long.class);
@@ -270,6 +283,6 @@ public class ContactService {
     }
 
     private boolean isNullOrEmpty(String s) {
-        return s == null || s.isEmpty();
+        return s != null && !s.isEmpty();
     }
 }
