@@ -8,7 +8,13 @@ import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
+import tech.mangosoft.autolinkedin.db.entity.ContactProcessing;
+import tech.mangosoft.autolinkedin.db.entity.ProcessingReport;
+import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
+import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
+import tech.mangosoft.autolinkedin.db.repository.IProcessingReportRepository;
+
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -33,10 +39,86 @@ public class LinkedInService {
     @Autowired
     private IAssignmentRepository assignmentRepository;
 
+    @Autowired
+    private IProcessingReportRepository processingReportRepository;
+
+    @Autowired
+    private IContactProcessingRepository contactProcessingRepository;
+
     /**
      * @author  Ichanskiy
      *
-     * This is the method chesk fields.
+     * This is the method change assignment status.
+     * @param idAssignment id Assignment object.
+     * @param idStatus id Status
+     */
+    public void changeStatus(Long idAssignment, Integer idStatus){
+        Assignment assignment = assignmentRepository.getById(idAssignment);
+        Status status = getStatusIfExist(idStatus);
+        if (status != null) {
+            assignment.setStatus(status);
+            assignmentRepository.save(assignment);
+        }
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get status by id if status found or return null else.
+     * @param idStatus id Status
+     * @return boolean status by id if status found or return null else
+     */
+    private Status getStatusIfExist(Integer idStatus) {
+        try {
+            return Status.getStatusById(idStatus);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This method delete assignment by id
+     * @param id assignment`s id.
+     */
+    public void deleteAssignmentById(Long id) {
+        Assignment assignment = assignmentRepository.getById(id);
+        deleteProcessingReportByAssignmentId(assignment);
+        deleteAssignmentIdFromContacts(assignment);
+        assignmentRepository.delete(assignment);
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This method delete processing report by assignment id
+     * @param assignment input assignment.
+     */
+    private void deleteProcessingReportByAssignmentId(Assignment assignment) {
+        for (ProcessingReport report : assignment.getProcessingReports()) {
+            processingReportRepository.deleteById(report.getId());
+        }
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is method delete assignment id from contacts
+     * @param assignment input assignment.
+     */
+    private void deleteAssignmentIdFromContacts(Assignment assignment) {
+        List<ContactProcessing> contactProcessings = contactProcessingRepository.getAllByAssignmentId(assignment.getId());
+        for (ContactProcessing contactProcessing : contactProcessings) {
+            contactProcessing.setAssignment(null);
+            contactProcessingRepository.save(contactProcessing);
+        }
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This method chesk fields.
      * @param assignment input object.
      * @return boolean true if field not null, else false
      */
@@ -54,7 +136,7 @@ public class LinkedInService {
     /**
      * @author  Ichanskiy
      *
-     * This is the method chesk all fields.
+     * This method chesk all fields.
      * @param assignment input object.
      * @return boolean true if all field not null, else false
      */
@@ -72,7 +154,7 @@ public class LinkedInService {
     /**
      * @author  Ichanskiy
      *
-     * This is the method chesk messege and posiion.
+     * This method chesk messege and posiion.
      * @param assignment input object.
      * @return boolean true if all field not null, else false
      */
@@ -87,7 +169,7 @@ public class LinkedInService {
     /**
      * @author  Ichanskiy
      *
-     * This is the method create statistic.
+     * This method create statistic.
      * @param account current account.
      * @return object that contains statistics
      */
@@ -117,7 +199,7 @@ public class LinkedInService {
     /**
      * @author  Ichanskiy
      *
-     * This is the method get count assignment.
+     * This method get count assignment.
      * @param account current account.
      * @return object count assignment by account
      */
@@ -128,7 +210,7 @@ public class LinkedInService {
     /**
      * @author  Ichanskiy
      *
-     * This is the method concate all string.
+     * This method concate all string.
      * @param s all strings.
      * @return final string after joining. Example: "SEO; Games; New York;"
      */
@@ -147,7 +229,7 @@ public class LinkedInService {
     /**
      * @author  Ichanskiy
      *
-     * This is the method who compare date.
+     * This method who compare date.
      * @param date1 first date.
      * @param date2 second date.
      * @return true if day of date equals, else false.

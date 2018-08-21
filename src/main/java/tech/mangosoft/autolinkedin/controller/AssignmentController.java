@@ -72,13 +72,14 @@ public class AssignmentController {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        Account accountAfterSave =  accountRepository.save(account.setExecutionLimit(cm.getExecutionLimit()));
         Assignment assignment = new Assignment(TASK_CONNECTION,
                 cm.getLocation(),
                 cm.getFullLocationString(),
                 cm.getPosition(),
                 cm.getIndustries(),
                 cm.getMessage(),
-                accountRepository.save(account.setExecutionLimit(cm.getExecutionLimit())));
+                accountAfterSave);
         if (linkedInService.checkMessageAndPosition(assignment)) {
             logger.log(Level.WARNING, "Message or position must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -109,6 +110,29 @@ public class AssignmentController {
             stringLocations.add(location.getLocation());
         }
         return new ResponseEntity<>(stringLocations, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteAssignment(@PathVariable Long id) {
+        Assignment assignment = assignmentRepository.getById(id);
+        if (assignment == null) {
+            logger.log(Level.WARNING, "Assignment must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PutMapping("/changeStatus")
+    public ResponseEntity<HttpStatus> changeAssignmentStatus(Long id, Integer status) {
+        Assignment assignment = assignmentRepository.getById(id);
+        if (assignment == null) {
+            logger.log(Level.WARNING, "Assignment must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        linkedInService.changeStatus(id, status);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
