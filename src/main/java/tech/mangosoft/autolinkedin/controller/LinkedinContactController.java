@@ -67,8 +67,6 @@ public class LinkedinContactController {
             logger.log(Level.WARNING, "Param must be not null or error parsing date");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Location location = locationRepository.getLocationByLocation("Vancouver, Canada Area");
-        contactService.createCsvFile(location);
         linkedInContactId = linkedInContact.getId();
         return new ResponseEntity<>(linkedInContact, HttpStatus.OK);
     }
@@ -196,14 +194,9 @@ public class LinkedinContactController {
      */
     @CrossOrigin
     @GetMapping("/all")
-    public List<String> getListFiles(String location) {
-        Location locationDB = locationRepository.getLocationByLocation(location);
-        if (locationDB == null) {
-            logger.log(Level.WARNING, "Location must be not null");
-            return null;
-        }
+    public List<String> getListFiles(@RequestBody ContactsMessage contactsMessage) {
         try {
-            contactService.createCsvFile(locationDB);
+            contactService.createCsvFileByParam(contactsMessage);
         } catch (IOException e) {
             logger.log(Level.WARNING, "Error create csv");
             return null;

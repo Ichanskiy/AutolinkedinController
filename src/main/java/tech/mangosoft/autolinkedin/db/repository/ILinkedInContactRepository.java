@@ -50,6 +50,6 @@ public interface ILinkedInContactRepository extends JpaRepository<LinkedInContac
 
     public boolean existsLinkedInContactByFirstNameAndLastNameAndCompanyName(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("companyName") String companyName);
 
-    @Query("select c.companyName, c.firstName, c.lastName, c.role, c.linkedin, l.location, c.email from LinkedInContact c join Location l on c.location = l.id  where  l.id = :locationId")
+    @Query("select c.companyName, c.firstName, c.lastName, c.role, c.linkedin, l.location, c.industries, c.email from LinkedInContact c join Location l on c.location = l.id  where  l.id = :locationId")
     List getContactsToCsv(@Param("locationId") Long locationId);
 }
