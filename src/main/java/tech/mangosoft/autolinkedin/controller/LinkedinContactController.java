@@ -193,7 +193,7 @@ public class LinkedinContactController {
      * Download Files
      */
     @CrossOrigin
-    @GetMapping("/all")
+    @PostMapping("/all")
     public List<String> getListFiles(@RequestBody ContactsMessage contactsMessage) {
         try {
             contactService.createCsvFileByParam(contactsMessage);
