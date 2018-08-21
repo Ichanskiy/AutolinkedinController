@@ -73,6 +73,44 @@ public class ContactService {
     private String filename;
 
 
+    public void createCsvFileByParam(ContactsMessage message) throws IOException {
+        List<LinkedInContact> contacts = getContactsByParamWithoutBound(message);
+        writeToCSVFile(contacts);
+    }
+
+    private List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
+        if (message == null || message.getPage() == null) {
+            return null;
+        }
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
+        Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
+        getPredicatesByParam(message, root, builder);
+        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        TypedQuery<LinkedInContact> query = entityManager.createQuery(criteriaQuery);
+        return query.getResultList();
+    }
+
+    private void writeToCSVFile(List<LinkedInContact> contactsFromDb) throws IOException {
+        String csvFile = path.concat(filename);
+        File file = new File(csvFile);
+        FileWriter writer = new FileWriter(file.getAbsoluteFile());
+        CSVUtils.writeLine(writer, Arrays.asList("company name", "first name", "last name", "role", "person linkedin", "location", "industries", "email"));
+        for (LinkedInContact contact : contactsFromDb) {
+            CSVUtils.writeLine(writer, Arrays
+                    .asList(!isNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().concat(" ").replace(",", ";") : " ",
+                            !isNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
+                            !isNullOrEmpty(contact.getLastName()) ? contact.getLastName().concat(" ").replace(",", ";") : " ",
+                            !isNullOrEmpty(contact.getRole()) ? contact.getRole().concat(" ").replace(",", ";") : " ",
+                            !isNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().concat(" ").replace(",", ";") : " ",
+                            contact.getLocation() == null ? contact.getLocation().getLocation().concat(" ").replace(",", ";") : " ",
+                            !isNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().concat(" ").replace(",", ";") : " ",
+                            " "));
+        }
+        writer.flush();
+        writer.close();
+    }
+
     public PageImpl<LinkedInContact> getContactsByParam(ContactsMessage message){
         if (message == null || message.getPage() == null) {
             return null;
@@ -220,26 +258,6 @@ public class ContactService {
                 .setComments(updateContactMessage.getComment()));
     }
 
-    public void createCsvFile(Location location) throws IOException {
-        String csvFile = path.concat(filename);
-        File file = new File(csvFile);
-        FileWriter writer = new FileWriter(file.getAbsoluteFile());
-        CSVUtils.writeLine(writer, Arrays.asList("company name", "first name", "last name", "role", "person linkedin", "location", "email"));
-        List<Object[]> resultList = contactRepository.getContactsToCsv(location.getId());
-        for (Object[] obj : resultList) {
-            CSVUtils.writeLine(writer, Arrays
-                    .asList(obj[0] != null ? obj[0].toString().concat(" ").replace(",", ";") : " ",
-                            obj[1] != null ? obj[1].toString().concat(" ").replace(",", ";") : " ",
-                            obj[2] != null ? obj[2].toString().concat(" ").replace(",", ";") : " ",
-                            obj[3] != null ? obj[3].toString().concat(" ").replace(",", ";") : " ",
-                            obj[4] != null ? obj[4].toString().concat(" ").replace(",", ";") : " ",
-                            obj[5] != null ? obj[5].toString().concat(" ").replace(",", ";") : " ",
-                            obj[6] != null ? obj[6].toString().concat(" ").replace(",", ";") : " "));
-        }
-        writer.flush();
-        writer.close();
-    }
-
     private static Date getDate(String s) {
         Date date = null;
         try {
@@ -249,5 +267,9 @@ public class ContactService {
             e.printStackTrace();
         }
         return date;
+    }
+
+    private boolean isNullOrEmpty(String s) {
+        return s == null || s.isEmpty();
     }
 }
