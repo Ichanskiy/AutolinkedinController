@@ -22,16 +22,16 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
+import static tech.mangosoft.autolinkedin.utils.CSVUtils.parseLine;
 
 /**
  * <h1> LinkedIn Service!</h1>
@@ -50,7 +50,10 @@ import java.util.stream.Collectors;
 public class ContactService {
 
     private static Logger logger = Logger.getLogger(ContactService.class.getName());
-    private static Integer COUNT_FOR_PAGE = 40;
+    private static final Integer COUNT_FOR_PAGE = 40;
+    private static final Integer FIRST_NAME_POSITION = 1;
+    private static final Integer LAST_NAME_POSITION = 2;
+    private static final Integer EMAIL_NAME_POSITION = 6;
 
     private List<Predicate> predicates = new ArrayList<>();
 
@@ -98,17 +101,44 @@ public class ContactService {
         CSVUtils.writeLine(writer, Arrays.asList("company name", "first name", "last name", "role", "person linkedin", "location", "industries", "email"));
         for (LinkedInContact contact : contactsFromDb) {
             CSVUtils.writeLine(writer, Arrays
-                    .asList(isNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().concat(" ").replace(",", ";") : " ",
-                            isNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
-                            isNullOrEmpty(contact.getLastName()) ? contact.getLastName().concat(" ").replace(",", ";") : " ",
-                            isNullOrEmpty(contact.getRole()) ? contact.getRole().concat(" ").replace(",", ";") : " ",
-                            isNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().concat(" ").replace(",", ";") : " ",
+                    .asList(isNotNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().concat(" ").replace(",", ";") : " ",
+                            isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
+                            isNotNullOrEmpty(contact.getLastName()) ? contact.getLastName().concat(" ").replace(",", ";") : " ",
+                            isNotNullOrEmpty(contact.getRole()) ? contact.getRole().concat(" ").replace(",", ";") : " ",
+                            isNotNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().concat(" ").replace(",", ";") : " ",
                             contact.getLocation() == null ? contact.getLocation().getLocation().concat(" ").replace(",", ";") : " ",
-                            isNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().concat(" ").replace(",", ";") : " ",
+                            isNotNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().concat(" ").replace(",", ";") : " ",
                             " "));
         }
         writer.flush();
         writer.close();
+    }
+
+    public void exportCSVFilesToDataBase(File file) throws FileNotFoundException {
+        Scanner scanner = new Scanner(file);
+        int i = 0;
+        while (scanner.hasNext()) {
+            List<String> line = parseLine(scanner.nextLine());
+            if (i == 0 || line.size() < EMAIL_NAME_POSITION) {
+                ++i;
+                continue;
+            }
+            String firstName = line.get(FIRST_NAME_POSITION);
+            String lastName = line.get(LAST_NAME_POSITION);
+            String email = line.get(EMAIL_NAME_POSITION);
+            if (isNotNullOrEmpty(firstName, lastName, email)) {
+                updateContactEmail(firstName, lastName, email);
+            }
+        }
+        scanner.close();
+    }
+
+    private void updateContactEmail(String firstName, String lastName, String email) {
+        LinkedInContact linkedInContact = contactRepository.getFirstByFirstNameAndLastName(firstName, lastName);
+        if (linkedInContact != null) {
+            linkedInContact.setEmail(email);
+            contactRepository.save(linkedInContact);
+        }
     }
 
     public PageImpl<LinkedInContact> getContactsByParam(ContactsMessage message){
@@ -282,7 +312,16 @@ public class ContactService {
         return date;
     }
 
-    private boolean isNullOrEmpty(String s) {
+    private boolean isNotNullOrEmpty(String s) {
         return s != null && !s.isEmpty();
+    }
+
+    private boolean isNotNullOrEmpty(String... s) {
+        for (String s1 : s) {
+            if (s1 == null || s1.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

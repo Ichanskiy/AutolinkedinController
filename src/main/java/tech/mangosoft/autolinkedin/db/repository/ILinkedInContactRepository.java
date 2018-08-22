@@ -34,6 +34,8 @@ public interface ILinkedInContactRepository extends JpaRepository<LinkedInContac
 
     LinkedInContact getById(Long id);
 
+    LinkedInContact getFirstByFirstNameAndLastName(String firstName, String lastName);
+
     @Query("select c.id " +
         "from LinkedInContact c " +
         "join ContactProcessing processing on c.id = processing.contact.id " +
