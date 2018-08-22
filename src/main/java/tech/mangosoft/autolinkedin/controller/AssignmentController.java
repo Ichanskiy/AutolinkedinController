@@ -120,6 +120,7 @@ public class AssignmentController {
             logger.log(Level.WARNING, "Assignment must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        linkedInService.deleteAssignmentById(assignment.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
