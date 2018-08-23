@@ -1,12 +1,15 @@
 package tech.mangosoft.autolinkedin.filestorage;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
+import tech.mangosoft.autolinkedin.ContactService;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -17,10 +20,13 @@ import java.util.stream.Stream;
 @Service
 public class FileStorageImpl implements FileStorage{
 
+    @Autowired
+    private ContactService contactService;
+
     private final Path rootLocation = Paths.get("data");
 
-//    @Value("${storage.path}")
-//    private String path;
+    @Value("${storage.uploadFileName}")
+    private String uploadFileName;
 
     @Value("${storage.filename}")
     private String filename;
@@ -40,13 +46,22 @@ public class FileStorageImpl implements FileStorage{
         }
     }
 
+    // TODO: 22.08.2018 fix this method
     @Override
-    public void store(MultipartFile file){
+    public boolean store(MultipartFile file){
         try {
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
-        } catch (Exception e) {
-            throw new RuntimeException("FAIL! -> message = " + e.getMessage());
+            File finalFile = new File(rootLocation.toString().concat(uploadFileName));
+            FileUtils.writeByteArrayToFile(finalFile, file.getBytes());
+            contactService.exportCSVFilesToDataBase(finalFile);
+            return true;
+        } catch (IOException e) {
+            return false;
         }
+//        try {
+//            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+//        } catch (Exception e) {
+//            throw new RuntimeException("FAIL! -> message = " + e.getMessage());
+//        }
     }
 
     @Override

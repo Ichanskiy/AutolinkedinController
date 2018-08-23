@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import tech.mangosoft.autolinkedin.ContactService;
 import tech.mangosoft.autolinkedin.controller.messages.ContactsMessage;
@@ -17,7 +18,6 @@ import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
-import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 import tech.mangosoft.autolinkedin.filestorage.FileStorage;
 
 import java.io.IOException;
@@ -43,15 +43,12 @@ public class LinkedinContactController {
     private ContactService contactService;
 
     @Autowired
-    private ILocationRepository locationRepository;
-
-    @Autowired
     private ILinkedInContactRepository contactRepository;
-
-    private Long linkedInContactId;
 
     @Autowired
     private FileStorage fileStorage;
+
+    private Long linkedInContactId;
 
     @CrossOrigin
     @PostMapping(value = "/getContacts")
@@ -71,9 +68,6 @@ public class LinkedinContactController {
         return new ResponseEntity<>(linkedInContact, HttpStatus.OK);
     }
 
-    /*
-     * Get contact to update
-     */
     @CrossOrigin
     @GetMapping(value = "/getContactToUpdate")
     public ResponseEntity<LinkedInContact> updateContact() {
@@ -216,4 +210,14 @@ public class LinkedinContactController {
                 .body(file);
     }
 
+    /*
+     * Upload Files
+     */
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadFile(@RequestPart("file") MultipartFile file) {
+        if (!fileStorage.store(file)) {
+            return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>("Done", HttpStatus.OK);
+    }
 }
