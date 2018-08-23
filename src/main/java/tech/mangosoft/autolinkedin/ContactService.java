@@ -101,6 +101,9 @@ public class ContactService {
         FileWriter writer = new FileWriter(file.getAbsoluteFile());
         CSVUtils.writeLine(writer, Arrays.asList("id", "company name", "first name", "last name", "role", "person linkedin", "location", "industries", "email"));
         for (LinkedInContact contact : contactsFromDb) {
+            if (!isNotNullOrEmpty(contact.getFirstName(), contact.getLastName())) {
+                continue;
+            }
             CSVUtils.writeLine(writer, Arrays
                     .asList(contact.getId() != null ? contact.getId().toString().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
@@ -126,6 +129,7 @@ public class ContactService {
                 ++i;
                 continue;
             }
+            String id = "";
             String firstName = line.get(FIRST_NAME_POSITION);
             String lastName = line.get(LAST_NAME_POSITION);
             String email = line.get(EMAIL_NAME_POSITION);
