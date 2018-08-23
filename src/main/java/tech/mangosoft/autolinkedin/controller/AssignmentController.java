@@ -10,6 +10,7 @@ import tech.mangosoft.autolinkedin.LinkedInService;
 import tech.mangosoft.autolinkedin.controller.messages.ConnectionMessage;
 import tech.mangosoft.autolinkedin.controller.messages.GrabbingMessage;
 import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
+import tech.mangosoft.autolinkedin.controller.messages.StatisticsByTwoDaysMessage;
 import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
@@ -99,6 +100,17 @@ public class AssignmentController {
         Integer count = linkedInService.getCountAssignment(account);
         List<StatisticResponse> statisticResponse = linkedInService.getStatistics(account, page, 20);
         return new ResponseEntity<>(new PageImpl<>(statisticResponse, PageRequest.of(page - 1, COUNT_TO_PAGE), count), HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/getStatisticsByDays")
+    public ResponseEntity<StatisticsByTwoDaysMessage> getStatisticsByTwoDays(String email) {
+        Account account = accountRepository.getAccountByUsername(email);
+        if (account == null) {
+            logger.log(Level.WARNING, "Account must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(linkedInService.getStatisticsByTwoDays(account), HttpStatus.OK);
     }
 
     @CrossOrigin
