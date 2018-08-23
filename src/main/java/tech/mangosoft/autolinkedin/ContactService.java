@@ -51,9 +51,10 @@ public class ContactService {
 
     private static Logger logger = Logger.getLogger(ContactService.class.getName());
     private static final Integer COUNT_FOR_PAGE = 40;
-    private static final Integer FIRST_NAME_POSITION = 1;
-    private static final Integer LAST_NAME_POSITION = 2;
-    private static final Integer EMAIL_NAME_POSITION = 6;
+    private Integer FIRST_NAME_POSITION = 1;
+    private Integer LAST_NAME_POSITION = 2;
+    private Integer EMAIL_NAME_POSITION = 6;
+    private Integer ID_POSITION = -1;
 
     private List<Predicate> predicates = new ArrayList<>();
 
@@ -98,10 +99,11 @@ public class ContactService {
         String csvFile = path.concat(filename);
         File file = new File(csvFile);
         FileWriter writer = new FileWriter(file.getAbsoluteFile());
-        CSVUtils.writeLine(writer, Arrays.asList("company name", "first name", "last name", "role", "person linkedin", "location", "industries", "email"));
+        CSVUtils.writeLine(writer, Arrays.asList("id", "company name", "first name", "last name", "role", "person linkedin", "location", "industries", "email"));
         for (LinkedInContact contact : contactsFromDb) {
             CSVUtils.writeLine(writer, Arrays
-                    .asList(isNotNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().concat(" ").replace(",", ";") : " ",
+                    .asList(contact.getId() != null ? contact.getId().toString().concat(" ").replace(",", ";") : " ",
+                            isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getLastName()) ? contact.getLastName().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getRole()) ? contact.getRole().concat(" ").replace(",", ";") : " ",
@@ -120,21 +122,48 @@ public class ContactService {
         while (scanner.hasNext()) {
             List<String> line = parseLine(scanner.nextLine());
             if (i == 0 || line.size() < EMAIL_NAME_POSITION) {
+                setIndex(line);
                 ++i;
                 continue;
             }
             String firstName = line.get(FIRST_NAME_POSITION);
             String lastName = line.get(LAST_NAME_POSITION);
             String email = line.get(EMAIL_NAME_POSITION);
+            if (ID_POSITION != -1) {
+                 id = line.get(ID_POSITION);
+            }
             if (isNotNullOrEmpty(firstName, lastName, email)) {
-                updateContactEmail(firstName, lastName, email);
+                if (isNotNullOrEmpty(id)) {
+                    updateContactEmail(id, email);
+                } else {
+                    updateContactEmail(firstName, lastName, email);
+                }
             }
         }
         scanner.close();
     }
 
+    private void setIndex(List<String> line){
+        FIRST_NAME_POSITION = line.indexOf("first_name");
+        LAST_NAME_POSITION = line.indexOf("last_name");
+        EMAIL_NAME_POSITION = line.indexOf("email");
+        if (line.contains("id")) {
+            ID_POSITION = line.indexOf("id");
+        } else {
+            ID_POSITION = -1;
+        }
+    }
+
     private void updateContactEmail(String firstName, String lastName, String email) {
         LinkedInContact linkedInContact = contactRepository.getFirstByFirstNameAndLastName(firstName, lastName);
+        if (linkedInContact != null) {
+            linkedInContact.setEmail(email);
+            contactRepository.save(linkedInContact);
+        }
+    }
+    private void updateContactEmail(String idString, String email) {
+        Long id = Long.valueOf(idString);
+        LinkedInContact linkedInContact = contactRepository.getById(id);
         if (linkedInContact != null) {
             linkedInContact.setEmail(email);
             contactRepository.save(linkedInContact);
