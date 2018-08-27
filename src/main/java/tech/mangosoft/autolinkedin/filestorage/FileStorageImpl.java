@@ -46,19 +46,19 @@ public class FileStorageImpl implements FileStorage{
         }
     }
 
-    // TODO: 22.08.2018 fix this method
     @Override
     public boolean store(MultipartFile file){
         try {
             File finalFile = new File(rootLocation.toString().concat(uploadFileName));
             FileUtils.writeByteArrayToFile(finalFile, file.getBytes());
-            contactService.exportCSVFilesToDataBase(finalFile);
+            if (!contactService.exportCSVFilesToDataBaseAndCheskIsCorrect(finalFile)) {
+                return false;
+            }
             return true;
         } catch (IOException e) {
             return false;
         }
 //        try {
-//            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
 //        } catch (Exception e) {
 //            throw new RuntimeException("FAIL! -> message = " + e.getMessage());
 //        }

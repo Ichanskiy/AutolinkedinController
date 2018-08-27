@@ -51,6 +51,10 @@ public class ContactService {
 
     private static Logger logger = Logger.getLogger(ContactService.class.getName());
     private static final Integer COUNT_FOR_PAGE = 40;
+    private String FIRST_NAME = "first_name";
+    private String LAST_NAME = "last_name";
+    private String EMAIL = "email";
+    private String ID = "id";
     private Integer FIRST_NAME_POSITION = 1;
     private Integer LAST_NAME_POSITION = 2;
     private Integer EMAIL_NAME_POSITION = 6;
@@ -119,14 +123,19 @@ public class ContactService {
         writer.close();
     }
 
-    public void exportCSVFilesToDataBase(File file) throws FileNotFoundException {
+    public boolean exportCSVFilesToDataBaseAndCheskIsCorrect(File file) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
         int i = 0;
         while (scanner.hasNext()) {
             List<String> line = parseLine(scanner.nextLine());
-            if (i == 0 || line.size() < EMAIL_NAME_POSITION) {
-                setIndex(line);
+            if (i == 0) {
+                if (!setIndexAndCheckIsCorrect(line)) {
+                    return false;
+                }
                 ++i;
+                continue;
+            }
+            if (line.size() < EMAIL_NAME_POSITION || line.size() < 1) {
                 continue;
             }
             String id = "";
@@ -145,17 +154,22 @@ public class ContactService {
             }
         }
         scanner.close();
+        return true;
     }
 
-    private void setIndex(List<String> line){
+    private boolean setIndexAndCheckIsCorrect(List<String> line){
+        if (!line.containsAll(Arrays.asList(FIRST_NAME, LAST_NAME, EMAIL))) {
+            return false;
+        }
+        EMAIL_NAME_POSITION = line.indexOf("email");
         FIRST_NAME_POSITION = line.indexOf("first_name");
         LAST_NAME_POSITION = line.indexOf("last_name");
-        EMAIL_NAME_POSITION = line.indexOf("email");
-        if (line.contains("id")) {
+        if (line.contains(ID)) {
             ID_POSITION = line.indexOf("id");
         } else {
             ID_POSITION = -1;
         }
+        return true;
     }
 
     private void updateContactEmail(String firstName, String lastName, String email) {
