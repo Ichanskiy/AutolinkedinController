@@ -51,10 +51,10 @@ public class ContactService {
 
     private static Logger logger = Logger.getLogger(ContactService.class.getName());
     private static final Integer COUNT_FOR_PAGE = 40;
-    private String FIRST_NAME = "first_name";
-    private String LAST_NAME = "last_name";
-    private String EMAIL = "email";
-    private String ID = "id";
+    private static final String FIRST_NAME = "first_name";
+    private static final String LAST_NAME = "last_name";
+    private static final String EMAIL = "email";
+    private static final String ID = "id";
     private Integer FIRST_NAME_POSITION = 1;
     private Integer LAST_NAME_POSITION = 2;
     private Integer EMAIL_NAME_POSITION = 6;
