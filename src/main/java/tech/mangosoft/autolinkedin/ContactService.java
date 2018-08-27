@@ -123,7 +123,7 @@ public class ContactService {
         writer.close();
     }
 
-    public boolean exportCSVFilesToDataBaseAndCheskIsCorrect(File file) throws FileNotFoundException {
+    public boolean exportCSVFilesToDataBaseAndCheckIsCorrect(File file) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
         int i = 0;
         while (scanner.hasNext()) {

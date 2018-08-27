@@ -51,7 +51,7 @@ public class FileStorageImpl implements FileStorage{
         try {
             File finalFile = new File(rootLocation.toString().concat(uploadFileName));
             FileUtils.writeByteArrayToFile(finalFile, file.getBytes());
-            if (!contactService.exportCSVFilesToDataBaseAndCheskIsCorrect(finalFile)) {
+            if (!contactService.exportCSVFilesToDataBaseAndCheckIsCorrect(finalFile)) {
                 return false;
             }
             return true;
