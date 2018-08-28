@@ -23,4 +23,7 @@ public interface IContactProcessingRepository extends CrudRepository<ContactProc
     Page<ContactProcessing> getDistinctByAccountAndAssignmentAndStatus(Account account, Assignment assignment, Integer status, Pageable pageable);
 
     List<ContactProcessing> getAllByAssignmentId(Long id);
+
+    ContactProcessing findFirstByAccountIdAndContactId(Long accountId, Long contactId);
+
 }

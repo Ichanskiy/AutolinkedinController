@@ -303,4 +303,7 @@ public class LinkedInService {
         return cal.getTime();
     }
 
+    public void getContactsByConnection(Long id, Integer status) {
+
+    }
 }
