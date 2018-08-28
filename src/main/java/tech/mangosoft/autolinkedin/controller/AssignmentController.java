@@ -147,17 +147,4 @@ public class AssignmentController {
         linkedInService.changeStatus(id, status);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    @CrossOrigin
-    @PutMapping("/changeStatus")
-    public ResponseEntity<HttpStatus> getContactsByConnection(Long id, Integer status) {
-        Assignment assignment = assignmentRepository.getById(id);
-        if (assignment == null) {
-            logger.log(Level.WARNING, "Assignment must be not null");
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        linkedInService.getContactsByConnection(id, status);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
 }
