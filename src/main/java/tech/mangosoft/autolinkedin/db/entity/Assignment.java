@@ -95,7 +95,7 @@ public class Assignment {
         this.dailyLimitUpdateDate = new Date();
     }
 
-    public Assignment(Task task, String location, String fullLocationString, String position, String industries, String message, Account account) {
+    public Assignment(Task task, String location, String fullLocationString, String position, String industries, String message, Integer countsFound, Account account) {
         this.page = 0;
         this.task = task;
         this.status = Status.STATUS_NEW;
@@ -105,6 +105,7 @@ public class Assignment {
         this.position = position;
         this.account = account;
         this.message = message;
+        this.countsFound = countsFound;
         this.dailyLimitUpdateDate = new Date();
     }
 //    public enum Task {

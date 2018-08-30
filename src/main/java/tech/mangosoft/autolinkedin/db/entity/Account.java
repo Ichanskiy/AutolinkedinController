@@ -33,9 +33,9 @@ public class Account {
     @Column( length = 50 )
     private String password;
 
-    @JsonProperty
-    @Column( name = "execution_limit" )
-    private Integer executionLimit;
+//    @JsonProperty
+//    @Column( name = "execution_limit" )
+//    private Integer executionLimit;
 
     @JsonProperty
     @Column( name = "grabbing_limit" )
@@ -59,12 +59,11 @@ public class Account {
     public Account() {
     }
 
-    public Account(String first, String last, String username, String password, Integer executionLimit, Integer grabbingLimit) {
+    public Account(String first, String last, String username, String password, Integer grabbingLimit) {
         this.first = first;
         this.last = last;
         this.username = username;
         this.password = password;
-        this.executionLimit = executionLimit;
         this.grabbingLimit = grabbingLimit;
     }
 
@@ -108,14 +107,14 @@ public class Account {
         this.password = password;
     }
 
-    public Integer getExecutionLimit() {
-        return executionLimit;
-    }
-
-    public Account setExecutionLimit(Integer executionLimit) {
-        this.executionLimit = executionLimit;
-        return this;
-    }
+//    public Integer getExecutionLimit() {
+//        return executionLimit;
+//    }
+//
+//    public Account setExecutionLimit(Integer executionLimit) {
+//        this.executionLimit = executionLimit;
+//        return this;
+//    }
 
     public Integer getGrabbingLimit() {
         return grabbingLimit;

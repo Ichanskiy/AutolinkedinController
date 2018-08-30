@@ -41,8 +41,7 @@ public class AccountService {
      * @return if valid then true, else false
      */
     public boolean accountNotValid(Account account) {
-        return account.getExecutionLimit() == null
-                || account.getGrabbingLimit() == null
+        return account.getGrabbingLimit() == null
                 || account.getPassword() == null
                 || account.getUsername() == null;
     }
@@ -56,7 +55,7 @@ public class AccountService {
      */
     public Account update(Account account) {
         Account accountDb = accountRepository.getAccountByUsername(account.getUsername());
-        accountDb.setExecutionLimit(account.getExecutionLimit());
+//        accountDb.setExecutionLimit(account.getExecutionLimit());
         accountDb.setGrabbingLimit(account.getGrabbingLimit());
         accountDb.setFirst(account.getFirst());
         accountDb.setLast(account.getLast());

@@ -6,13 +6,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
-import tech.mangosoft.autolinkedin.db.entity.Account;
-import tech.mangosoft.autolinkedin.db.entity.Assignment;
-import tech.mangosoft.autolinkedin.db.entity.ContactProcessing;
-import tech.mangosoft.autolinkedin.db.entity.ProcessingReport;
+import tech.mangosoft.autolinkedin.controller.messages.StatisticsByTwoDaysMessage;
+import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
+import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
 import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
+import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
 import tech.mangosoft.autolinkedin.db.repository.IProcessingReportRepository;
 
 import java.util.*;
@@ -196,6 +196,49 @@ public class LinkedInService {
         return statisticResponses;
     }
 
+
+    public StatisticsByTwoDaysMessage getStatisticsByTwoDays(Account account) {
+        List<Assignment> assignments = assignmentRepository.getAllByAccountAndStatusAndUpdateTime(account, Status.STATUS_FINISHED, getBeforeYesterday());
+        return getStatisticsByTwoDaysMessageByAssignment(assignments)
+                .setAccount(account);
+    }
+
+    private StatisticsByTwoDaysMessage getStatisticsByTwoDaysMessageByAssignment(List<Assignment> assignments){
+        StatisticsByTwoDaysMessage statistics = new StatisticsByTwoDaysMessage();
+        statistics.setConnectedContacts(getConnectedContactsByAssignments(assignments));
+        statistics.setGrabbingContacts(getGrabbingContactsByAssignments(assignments));
+        return statistics;
+    }
+
+    private List<LinkedInContact> getConnectedContactsByAssignments(List<Assignment> assignments) {
+        List<LinkedInContact> contacts = new ArrayList<>();
+        for (Assignment assignment : assignments) {
+            if (assignment.getTask().equals(Task.TASK_CONNECTION)){
+                contacts.addAll(getLinkedInContactFromAssignment(assignment));
+            }
+        }
+        return contacts;
+    }
+
+    private List<LinkedInContact> getGrabbingContactsByAssignments(List<Assignment> assignments) {
+        List<LinkedInContact> contacts = new ArrayList<>();
+        for (Assignment assignment : assignments) {
+            if (assignment.getTask().equals(Task.TASK_GRABBING)){
+                contacts.addAll(getLinkedInContactFromAssignment(assignment));
+            }
+        }
+        return contacts;
+    }
+
+    private List<LinkedInContact> getLinkedInContactFromAssignment(Assignment assignment){
+        List<LinkedInContact> contacts = new ArrayList<>();
+        List<ContactProcessing> contactProcessings = contactProcessingRepository.getAllByAssignmentId(assignment.getId());
+        for (ContactProcessing contactProcessing : contactProcessings) {
+            contacts.add(contactProcessing.getContact());
+        }
+        return contacts;
+    }
+
     /**
      * @author  Ichanskiy
      *
@@ -252,5 +295,15 @@ public class LinkedInService {
         return (cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
                 cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                 cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
+    }
+
+    private static Date getBeforeYesterday() {
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -2);
+        return cal.getTime();
+    }
+
+    public void getContactsByConnection(Long id, Integer status) {
+
     }
 }

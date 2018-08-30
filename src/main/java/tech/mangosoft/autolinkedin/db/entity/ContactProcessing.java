@@ -68,16 +68,18 @@ public class ContactProcessing {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public ContactProcessing setStatus(Integer status) {
         this.status = status;
+        return this;
     }
 
     public Account getAccount() {
         return account;
     }
 
-    public void setAccount(Account account) {
+    public ContactProcessing setAccount(Account account) {
         this.account = account;
+        return this;
     }
 
     public String getError() {
@@ -92,8 +94,9 @@ public class ContactProcessing {
         return auditLog;
     }
 
-    public void setAuditLog(String auditLog) {
+    public ContactProcessing setAuditLog(String auditLog) {
         this.auditLog = auditLog;
+        return this;
     }
 
     public Timestamp getUpdateTime() {
@@ -108,8 +111,9 @@ public class ContactProcessing {
         return contact;
     }
 
-    public void setContact(LinkedInContact contact) {
+    public ContactProcessing setContact(LinkedInContact contact) {
         this.contact = contact;
+        return this;
     }
 
     public String getCompact() {
@@ -124,9 +128,12 @@ public class ContactProcessing {
         return assignment;
     }
 
-    public void setAssignment(Assignment assignment) {
+    public ContactProcessing setAssignment(Assignment assignment) {
         this.assignment = assignment;
+        return this;
     }
+
+
 }
 
 

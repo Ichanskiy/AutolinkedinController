@@ -24,6 +24,7 @@ public class FileStorageImpl implements FileStorage{
     private ContactService contactService;
 
     private final Path rootLocation = Paths.get("data");
+    private final Path rootLocationUpload = Paths.get("dataUpload");
 
     @Value("${storage.uploadFileName}")
     private String uploadFileName;
@@ -46,19 +47,19 @@ public class FileStorageImpl implements FileStorage{
         }
     }
 
-    // TODO: 22.08.2018 fix this method
     @Override
     public boolean store(MultipartFile file){
         try {
-            File finalFile = new File(rootLocation.toString().concat(uploadFileName));
+            File finalFile = new File(rootLocationUpload.toString().concat(uploadFileName));
             FileUtils.writeByteArrayToFile(finalFile, file.getBytes());
-            contactService.exportCSVFilesToDataBase(finalFile);
+            if (!contactService.exportCSVFilesToDataBaseAndCheckIsCorrect(finalFile)) {
+                return false;
+            }
             return true;
         } catch (IOException e) {
             return false;
         }
 //        try {
-//            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
 //        } catch (Exception e) {
 //            throw new RuntimeException("FAIL! -> message = " + e.getMessage());
 //        }
@@ -73,6 +74,7 @@ public class FileStorageImpl implements FileStorage{
     public void init() {
         try {
             Files.createDirectory(rootLocation);
+            Files.createDirectory(rootLocationUpload);
         } catch (IOException e) {
             throw new RuntimeException("Could not initialize storage!");
         }
