@@ -7,10 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.mangosoft.autolinkedin.LinkedInService;
-import tech.mangosoft.autolinkedin.controller.messages.ConnectionMessage;
-import tech.mangosoft.autolinkedin.controller.messages.GrabbingMessage;
-import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
-import tech.mangosoft.autolinkedin.controller.messages.StatisticsByTwoDaysMessage;
+import tech.mangosoft.autolinkedin.controller.messages.*;
 import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
@@ -147,4 +144,27 @@ public class AssignmentController {
         linkedInService.changeStatus(id, status);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @GetMapping(value = "/getConnectionInfo/{id}")
+    public ResponseEntity<StatisticsByConnectionMessage> getConnectionInfoByAssignmentId(@PathVariable Long id) {
+        Assignment assignment = assignmentRepository.getById(id);
+        if (assignment == null) {
+            logger.log(Level.WARNING, "Assignment must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        linkedInService.getContactsByConnection(assignment);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+//    @CrossOrigin
+//    @GetMapping
+//    public ResponseEntity<HttpStatus> getTest() {
+//        Assignment assignment = assignmentRepository.getById(150L);
+//        if (assignment == null) {
+//            logger.log(Level.WARNING, "Assignment must be not null");
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 }

@@ -5,6 +5,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+ import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -74,6 +75,10 @@ public class LinkedInContact {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact", cascade = CascadeType.ALL)
     private List<ContactProcessing> contactProcessings;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact", cascade = CascadeType.ALL)
+    private List<Assignment> assignments = new ArrayList<>();
 
     /*
     @Column(name = "assigned_linkedin_contact")
@@ -192,40 +197,17 @@ public class LinkedInContact {
         this.status = status;
         return this;
     }
-/*
 
-    public String getAssignedLinkedinContact() {
-        return assignedLinkedinContact;
+    public void removeAssignment(Assignment a) {
+        assignments.remove(a);
+        a.setLinkedInContact(null);
     }
 
-    public void setAssignedLinkedinContact(String assignedLinkedinContact) {
-        this.assignedLinkedinContact = assignedLinkedinContact;
+    public void addAssignment(Assignment a) {
+        assignments.add(a);
+        a.setLinkedInContact(this);
     }
 
-    public Date getAssignedTime() {
-        return assignedTime;
-    }
-
-    public void setAssignedTime(Date assignedTime) {
-        this.assignedTime = assignedTime;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public String getAuditLog() {
-        return auditLog;
-    }
-
-    public void setAuditLog(String auditLog) {
-        this.auditLog = auditLog;
-    }
-*/
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -286,6 +268,9 @@ public class LinkedInContact {
         return this;
     }
 
+    public List<Assignment> getAssignments() {
+        return assignments;
+    }
 }
 
 

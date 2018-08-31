@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ILinkedInContactRepositoryCustom {
 
-    public LinkedInContact getNextAvailableContact(int page, Assignment assignment);
+    public LinkedInContact getNextAvailableContact(Assignment assignment);
 
     public boolean updateContactStatus(Assignment assignment, LinkedInContact contactId, Account account, int status, String error, String audit, Long processingReportId);
 

@@ -55,6 +55,8 @@ public class Assignment {
 
     private Integer countsFound;
 
+    private Integer countMessages;
+
     private String industries;
 
     @Column(name = "message", length = 16000)
@@ -73,6 +75,10 @@ public class Assignment {
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "account_id")
     private Account account;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_id")
+    private LinkedInContact contact;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
     private List<ContactProcessing> contactProcessings = new ArrayList<>();
@@ -95,7 +101,7 @@ public class Assignment {
         this.dailyLimitUpdateDate = new Date();
     }
 
-    public Assignment(Task task, String location, String fullLocationString, String position, String industries, String message, Integer countsFound, Account account) {
+    public Assignment(Task task, String location, String fullLocationString, String position, String industries, String message, Integer countMessages, Account account) {
         this.page = 0;
         this.task = task;
         this.status = Status.STATUS_NEW;
@@ -105,7 +111,7 @@ public class Assignment {
         this.position = position;
         this.account = account;
         this.message = message;
-        this.countsFound = countsFound;
+        this.countMessages = countMessages;
         this.dailyLimitUpdateDate = new Date();
     }
 //    public enum Task {
@@ -269,6 +275,14 @@ public class Assignment {
         return countsFound;
     }
 
+    public Integer getCountMessages() {
+        return countMessages;
+    }
+
+    public void setCountMessages(Integer countMessages) {
+        this.countMessages = countMessages;
+    }
+
     public void setCountsFound(Integer countsFound) {
         this.countsFound = countsFound;
     }
@@ -296,6 +310,14 @@ public class Assignment {
     public void removeContact(ContactProcessing cp) {
         contactProcessings.remove(cp);
         cp.setAssignment(null);
+    }
+
+    public LinkedInContact getLinkedInContact() {
+        return contact;
+    }
+
+    public void setLinkedInContact(LinkedInContact linkedInContact) {
+        this.contact = linkedInContact;
     }
 
     public List<ContactProcessing> getContactProcessings() {

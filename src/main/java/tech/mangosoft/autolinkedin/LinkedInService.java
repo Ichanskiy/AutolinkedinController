@@ -6,14 +6,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
+import tech.mangosoft.autolinkedin.controller.messages.StatisticsByConnectionMessage;
 import tech.mangosoft.autolinkedin.controller.messages.StatisticsByTwoDaysMessage;
 import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
-import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
-import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
-import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
-import tech.mangosoft.autolinkedin.db.repository.IProcessingReportRepository;
+import tech.mangosoft.autolinkedin.db.repository.*;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -44,6 +42,9 @@ public class LinkedInService {
 
     @Autowired
     private IContactProcessingRepository contactProcessingRepository;
+
+    @Autowired
+    private LinkedInContactRepositoryCustomImpl linkedInContactRepositoryCustom;
 
     /**
      * @author  Ichanskiy
@@ -175,7 +176,7 @@ public class LinkedInService {
      */
     public List<StatisticResponse> getStatistics(Account account, Integer page, Integer size) {
         List<StatisticResponse> statisticResponses = new ArrayList<>();
-        List<Assignment> assignments = assignmentRepository.findAllByAccount(account, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id")).getContent();
+        List<Assignment> assignments = assignmentRepository.findAllByAccount(account, PageRequest.of(page - 1, size, Sort.Direction.DESC, "id")).getContent();
         for (Assignment a : assignments) {
             StatisticResponse statistic = new StatisticResponse();
             statistic.setCountsFound(a.getCountsFound());
@@ -195,7 +196,6 @@ public class LinkedInService {
         }
         return statisticResponses;
     }
-
 
     public StatisticsByTwoDaysMessage getStatisticsByTwoDays(Account account) {
         List<Assignment> assignments = assignmentRepository.getAllByAccountAndStatusAndUpdateTime(account, Status.STATUS_FINISHED, getBeforeYesterday());
@@ -303,7 +303,9 @@ public class LinkedInService {
         return cal.getTime();
     }
 
-    public void getContactsByConnection(Long id, Integer status) {
-
+    public void getContactsByConnection(Assignment assignment) {
+        StatisticsByConnectionMessage statistics = new StatisticsByConnectionMessage();
+        statistics.setConnectedContacts(linkedInContactRepositoryCustom.getAllContactsForAssignment(assignment));
+        statistics.setAssignment(assignment);
     }
 }

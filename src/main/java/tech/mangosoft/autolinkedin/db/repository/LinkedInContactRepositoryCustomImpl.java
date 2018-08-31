@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import tech.mangosoft.autolinkedin.db.entity.*;
 
 import javax.transaction.Transactional;
-import java.util.List;
+import java.util.*;
 
 import static tech.mangosoft.autolinkedin.db.entity.LinkedInContact.STATUS_ACQUIRED;
 
@@ -34,7 +34,7 @@ public class LinkedInContactRepositoryCustomImpl implements ILinkedInContactRepo
 
     @Transactional
     @Override
-    public LinkedInContact getNextAvailableContact(int page, Assignment assignment) {
+    public LinkedInContact getNextAvailableContact(Assignment assignment) {
 //        Page<LinkedInContact> linkedInContacts = contactRepository.findAllByStatus(LinkedInContact.STATUS_NEW, PageRequest.of(page, 1));
         LinkedInContact contact = null;
         if (assignment.getPosition() != null && assignment.getIndustries() != null && assignment.getFullLocationString() != null) {
@@ -78,6 +78,64 @@ public class LinkedInContactRepositoryCustomImpl implements ILinkedInContactRepo
         }
         return contactRepository.save(contact.setStatus(STATUS_ACQUIRED));
     }
+
+    @Transactional
+    public List<LinkedInContact> getAllContactsForAssignment(Assignment assignment) {
+        List<LinkedInContact> resultContacts = new ArrayList<>();
+
+        Location location = locationRepository.getLocationByLocationLike(assignment.getFullLocationString());
+        if (location != null) {
+            if (assignment.getPosition() != null && assignment.getIndustries() != null) {
+                //query for old users
+                List<LinkedInContact> contacts1 = contactRepository.findAllByStatusAndLocationAndRoleContainsAndIndustriesContainsAndContactProcessingsIsNull(LinkedInContact.STATUS_NEW, location, assignment.getPosition(), assignment.getIndustries());
+                List<LinkedInContact> contacts2 = contactRepository.findAllByStatusAndLocationAndRoleContainsAndIndustriesIsNullAndContactProcessingsIsNull(LinkedInContact.STATUS_NEW, location, assignment.getPosition());
+                List<LinkedInContact> contacts3 = contactRepository.findAllByStatusAndLocationAndRoleContainsAndIndustriesContains(LinkedInContact.STATUS_NEW, location, assignment.getPosition(), assignment.getIndustries());
+                List<LinkedInContact> contacts4 = contactRepository.findAllByStatusAndLocationAndRoleContainsAndIndustriesIsNull(LinkedInContact.STATUS_NEW, location, assignment.getPosition());
+                resultContacts.addAll(contacts1);
+                resultContacts.addAll(contacts2);
+                resultContacts.addAll(contacts3);
+                resultContacts.addAll(contacts4);
+            }
+            if (assignment.getPosition() == null && assignment.getIndustries() != null) {
+                List<LinkedInContact> contacts1 = contactRepository.findAllByStatusAndLocationAndIndustriesContainsAndContactProcessingsIsNull(LinkedInContact.STATUS_NEW, location, assignment.getIndustries());
+                List<LinkedInContact> contacts2 = contactRepository.findAllByStatusAndLocationAndIndustriesIsNullAndContactProcessingsIsNull(LinkedInContact.STATUS_NEW, location);
+                List<LinkedInContact> contacts3 = contactRepository.findAllByStatusAndLocationAndIndustriesContains(LinkedInContact.STATUS_NEW, location, assignment.getIndustries());
+                List<LinkedInContact> contacts4 = contactRepository.findAllByStatusAndLocationAndIndustriesIsNull(LinkedInContact.STATUS_NEW, location);
+                resultContacts.addAll(contacts1);
+                resultContacts.addAll(contacts2);
+                resultContacts.addAll(contacts3);
+                resultContacts.addAll(contacts4);
+            }
+            if (assignment.getPosition() != null && assignment.getIndustries() == null) {
+                List<LinkedInContact> contacts1 = contactRepository.findAllByStatusAndLocationAndRoleContainsAndContactProcessingsIsNull(LinkedInContact.STATUS_NEW, location, assignment.getPosition());
+                List<LinkedInContact> contacts2 = contactRepository.findAllByStatusAndLocationAndRoleContainsAndIndustriesIsNullAndContactProcessingsIsNull(LinkedInContact.STATUS_NEW, location, assignment.getPosition());
+                List<LinkedInContact> contacts3 = contactRepository.findAllByStatusAndLocationAndRoleContains(LinkedInContact.STATUS_NEW, location, assignment.getPosition());
+                List<LinkedInContact> contacts4 = contactRepository.findAllByStatusAndLocationAndRoleContainsAndIndustriesIsNull(LinkedInContact.STATUS_NEW, location, assignment.getPosition());
+                resultContacts.addAll(contacts1);
+                resultContacts.addAll(contacts2);
+                resultContacts.addAll(contacts3);
+                resultContacts.addAll(contacts4);
+            }
+            if (assignment.getPosition() == null && assignment.getIndustries() == null) {
+                List<LinkedInContact> contacts1 = contactRepository.findAllByStatusAndLocation(LinkedInContact.STATUS_NEW, location);
+                resultContacts.addAll(contacts1);
+            } else {
+                logger.error("LOCATION IS NULL");
+                return null;
+            }
+        }
+        return resultContacts;
+    }
+
+//    private Collection<? extends LinkedInContact> deleteContactWithCurrentAccount(Account account, List<LinkedInContact> linkedInContacts) {
+//        for (LinkedInContact linkedInContact : linkedInContacts) {
+//            for (int i = 0; i < linkedInContact.getContactProcessings().size(); i++) {
+//                if (linkedInContact.getContactProcessings().get(i).getContact().getId().equals(account.getId())) {
+//
+//                }
+//            }
+//        }
+//    }
 
 
     @Transactional
