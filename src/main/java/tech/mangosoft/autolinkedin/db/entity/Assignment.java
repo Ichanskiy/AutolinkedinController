@@ -1,5 +1,6 @@
 package tech.mangosoft.autolinkedin.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.LastModifiedDate;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
@@ -74,16 +75,20 @@ public class Assignment {
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "account_id")
+    @JsonIgnore
     private Account account;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_id")
+    @JsonIgnore
     private LinkedInContact contact;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ContactProcessing> contactProcessings = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ProcessingReport> processingReports = new ArrayList<>();
 
     public Assignment() {
