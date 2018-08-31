@@ -103,7 +103,7 @@ public class ContactService {
         String csvFile = path.concat(filename);
         File file = new File(csvFile);
         FileWriter writer = new FileWriter(file.getAbsoluteFile());
-        CSVUtils.writeLine(writer, Arrays.asList("id", "company name", "first name", "last name", "role", "person linkedin", "location", "industries", "email"));
+        CSVUtils.writeLine(writer, Arrays.asList("id", "company_name", "first_name", "last_name", "role", "person_linkedin", "location", "industries", "email"));
         for (LinkedInContact contact : contactsFromDb) {
             if (!isNotNullOrEmpty(contact.getFirstName(), contact.getLastName())) {
                 continue;
@@ -180,7 +180,7 @@ public class ContactService {
         }
     }
     private void updateContactEmail(String idString, String email) {
-        Long id = Long.valueOf(idString);
+        Long id = Long.valueOf(idString.trim());
         LinkedInContact linkedInContact = contactRepository.getById(id);
         if (linkedInContact != null) {
             linkedInContact.setEmail(email);

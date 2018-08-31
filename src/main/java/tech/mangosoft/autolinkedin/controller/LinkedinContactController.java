@@ -215,6 +215,7 @@ public class LinkedinContactController {
     /*
      * Upload Files
      */
+    @CrossOrigin
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestPart("file") MultipartFile file) {
         if (!fileStorage.store(file)) {
