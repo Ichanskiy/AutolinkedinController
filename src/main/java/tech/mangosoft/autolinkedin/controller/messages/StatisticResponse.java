@@ -1,11 +1,12 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import tech.mangosoft.autolinkedin.db.entity.Assignment;
 
 public class StatisticResponse {
 
     @JsonProperty
-    private Long assignmentId;
+    private Assignment assignment;
 
     @JsonProperty
     private String assignmentName;
@@ -101,19 +102,19 @@ public class StatisticResponse {
         this.page = page;
     }
 
-    public Long getAssignmentId() {
-        return assignmentId;
-    }
-
-    public void setAssignmentId(Long assignmentId) {
-        this.assignmentId = assignmentId;
-    }
-
     public Integer getCountsFound() {
         return countsFound;
     }
 
     public void setCountsFound(Integer countsFound) {
         this.countsFound = countsFound;
+    }
+
+    public Assignment getAssignment() {
+        return assignment;
+    }
+
+    public void setAssignment(Assignment assignment) {
+        this.assignment = assignment;
     }
 }
