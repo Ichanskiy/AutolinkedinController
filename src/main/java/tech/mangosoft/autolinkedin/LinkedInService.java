@@ -179,7 +179,7 @@ public class LinkedInService {
         List<Assignment> assignments = assignmentRepository.findAllByAccount(account, PageRequest.of(page - 1, size, Sort.Direction.DESC, "id")).getContent();
         for (Assignment a : assignments) {
             StatisticResponse statistic = new StatisticResponse();
-            statistic.setAssignment(a);
+            statistic.setAssignment(changeMessageAndGetAssignment(a));
             statistic.setCountsFound(a.getCountsFound());
             statistic.setAssignmentName(concatAllString(a.getTask().name(), a.getPosition(), a.getIndustries(), a.getFullLocationString()));
             statistic.setErrorMessage(a.getErrorMessage());
@@ -195,6 +195,12 @@ public class LinkedInService {
             statisticResponses.add(statistic);
         }
         return statisticResponses;
+    }
+
+    private Assignment changeMessageAndGetAssignment(Assignment assignment) {
+        String newMessage = assignment.getMessage().replace("%%", "name");
+        assignment.setMessage(newMessage);
+        return assignment;
     }
 
     public StatisticsByTwoDaysMessage getStatisticsByTwoDays(Account account) {
