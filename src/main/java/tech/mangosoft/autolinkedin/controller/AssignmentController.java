@@ -153,8 +153,8 @@ public class AssignmentController {
             logger.log(Level.WARNING, "Assignment must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        linkedInService.getContactsByConnection(assignment);
-        return new ResponseEntity<>(HttpStatus.OK);
+        StatisticsByConnectionMessage statistics = linkedInService.getContactsByConnection(assignment);
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
     }
 
 //    @CrossOrigin

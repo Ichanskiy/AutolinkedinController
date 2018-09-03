@@ -309,9 +309,10 @@ public class LinkedInService {
         return cal.getTime();
     }
 
-    public void getContactsByConnection(Assignment assignment) {
+    public StatisticsByConnectionMessage getContactsByConnection(Assignment assignment) {
         StatisticsByConnectionMessage statistics = new StatisticsByConnectionMessage();
         statistics.setConnectedContacts(linkedInContactRepositoryCustom.getAllContactsForAssignment(assignment));
         statistics.setAssignment(assignment);
+        return statistics;
     }
 }
