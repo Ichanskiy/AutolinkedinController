@@ -110,12 +110,12 @@ public class ContactService {
             }
             CSVUtils.writeLine(writer, Arrays
                     .asList(contact.getId() != null ? contact.getId().toString().concat(" ").replace(",", ";") : " ",
-                            isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
+                            isNotNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getLastName()) ? contact.getLastName().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getRole()) ? contact.getRole().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().concat(" ").replace(",", ";") : " ",
-                            contact.getLocation() == null ? contact.getLocation().getLocation().concat(" ").replace(",", ";") : " ",
+                            contact.getLocation() != null ? contact.getLocation().getLocation().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().concat(" ").replace(",", ";") : " ",
                             " "));
         }
