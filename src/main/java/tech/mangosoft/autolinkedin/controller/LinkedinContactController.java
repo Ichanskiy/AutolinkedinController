@@ -59,8 +59,8 @@ public class LinkedinContactController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/getContact")
-    public ResponseEntity<LinkedInContact> getContact(Long id) throws IOException {
+    @GetMapping(value = "/getContact/{id}")
+    public ResponseEntity<LinkedInContact> getContact(@PathVariable Long id) throws IOException {
         LinkedInContact linkedInContact = contactRepository.getById(id);
         if (linkedInContact == null) {
             logger.log(Level.WARNING, "Param must be not null or error parsing date");
