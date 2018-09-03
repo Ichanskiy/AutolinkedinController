@@ -119,10 +119,10 @@ public class LinkedInContactRepositoryCustomImpl implements ILinkedInContactRepo
             if (assignment.getPosition() == null && assignment.getIndustries() == null) {
                 List<LinkedInContact> contacts1 = contactRepository.findAllByStatusAndLocation(LinkedInContact.STATUS_NEW, location);
                 resultContacts.addAll(contacts1);
-            } else {
-                logger.error("LOCATION IS NULL");
-                return null;
             }
+        } else {
+            logger.error("LOCATION IS NULL");
+            return null;
         }
         return resultContacts;
     }
