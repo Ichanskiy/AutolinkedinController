@@ -219,7 +219,7 @@ public class ContactService {
     private void getPredicatesByParam(ContactsMessage contactsMessage, Root<LinkedInContact> root, CriteriaBuilder builder) {
         predicates.clear();
         if (contactsMessage.getPosition() != null && !contactsMessage.getPosition().isEmpty()) {
-            predicates.add(builder.like(root.get("role"), contactsMessage.getPosition()));
+            predicates.add(builder.like(root.get("role"), "%" + contactsMessage.getPosition() + "%" ));
         }
         if (contactsMessage.getLocation() != null && !contactsMessage.getLocation().isEmpty()) {
             Location location = locationRepository.getLocationByLocation(contactsMessage.getLocation());
@@ -228,7 +228,7 @@ public class ContactService {
             }
         }
         if (contactsMessage.getIndustries() != null && !contactsMessage.getIndustries().isEmpty()) {
-            predicates.add(builder.like(root.get("industries"), contactsMessage.getIndustries()));
+            predicates.add(builder.like(root.get("industries"),"%" + contactsMessage.getIndustries() + "%" ));
         }
     }
 
