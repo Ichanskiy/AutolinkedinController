@@ -143,7 +143,7 @@ public class ContactService {
             String lastName = line.get(LAST_NAME_POSITION);
             String email = line.get(EMAIL_NAME_POSITION);
             if (ID_POSITION != -1) {
-                 id = line.get(ID_POSITION);
+                id = line.get(ID_POSITION);
             }
             if (isNotNullOrEmpty(firstName, lastName, email)) {
                 if (isNotNullOrEmpty(id)) {

@@ -78,10 +78,9 @@ public class Assignment {
     @JsonIgnore
     private Account account;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contact_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
     @JsonIgnore
-    private LinkedInContact contact;
+    private List<LinkedInContact> contacts;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -307,22 +306,24 @@ public class Assignment {
         pr.setAssignment(null);
     }
 
-    public void addContact(ContactProcessing cp) {
+    public void addLinkedInContact(LinkedInContact lc) {
+        contacts.add(lc);
+        lc.setAssignment(this);
+    }
+
+    public void removeLinkedInContact(LinkedInContact lc) {
+        contacts.remove(lc);
+        lc.setAssignment(null);
+    }
+
+    public void addContactProcessing(ContactProcessing cp) {
         contactProcessings.add(cp);
         cp.setAssignment(this);
     }
 
-    public void removeContact(ContactProcessing cp) {
+    public void removeContactProcessing(ContactProcessing cp) {
         contactProcessings.remove(cp);
         cp.setAssignment(null);
-    }
-
-    public LinkedInContact getLinkedInContact() {
-        return contact;
-    }
-
-    public void setLinkedInContact(LinkedInContact linkedInContact) {
-        this.contact = linkedInContact;
     }
 
     public List<ContactProcessing> getContactProcessings() {
@@ -333,4 +334,7 @@ public class Assignment {
         return processingReports;
     }
 
+    public List<LinkedInContact> getContacts() {
+        return contacts;
+    }
 }

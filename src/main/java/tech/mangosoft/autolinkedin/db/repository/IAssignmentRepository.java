@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
+import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 
 import java.util.Date;
@@ -25,5 +26,4 @@ public interface IAssignmentRepository extends CrudRepository<Assignment, Long> 
     Page<Assignment> findAllByAccount(Account account, Pageable pageable);
 
     Integer countAllByAccount(Account account);
-
 }

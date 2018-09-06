@@ -38,6 +38,9 @@ public class LinkedInService {
     private IAssignmentRepository assignmentRepository;
 
     @Autowired
+    private ILinkedInContactRepository contactRepository;
+
+    @Autowired
     private IProcessingReportRepository processingReportRepository;
 
     @Autowired
@@ -308,5 +311,35 @@ public class LinkedInService {
         statistics.setConnectedContacts(linkedInContactRepositoryCustom.getAllContactsForAssignment(assignment));
         statistics.setAssignment(assignment);
         return statistics;
+    }
+
+    public Assignment createConnectionAssignment(Assignment assignment) {
+        Assignment assignmentDB = assignmentRepository.save(assignment);
+        List<LinkedInContact> linkedInContact = linkedInContactRepositoryCustom.getAllContactsForAssignment(assignmentDB);
+        setAssignmentToContacts(assignmentDB, linkedInContact);
+        return assignmentDB;
+    }
+
+    private void setAssignmentToContacts(Assignment assignment, List<LinkedInContact> linkedInContact) {
+        for (LinkedInContact contact : linkedInContact) {
+            contact.setAssignment(assignment);
+            contactRepository.save(contact);
+        }
+    }
+
+    public void deleteContactsFromAssignment(Assignment assignment, List<Long> contactsIds) {
+        List<LinkedInContact> contacts = contactRepository.findAllById(contactsIds);
+        for (LinkedInContact contact : contacts) {
+            if (assignmentHasThisContact(assignment, contact)) {
+                contact.setAssignment(null);
+                assignment.removeLinkedInContact(contact);
+                contactRepository.save(contact);
+            }
+        }
+        assignmentRepository.save(assignment);
+    }
+
+    private boolean assignmentHasThisContact(Assignment assignment, LinkedInContact contact){
+        return assignment.getContacts().contains(contact);
     }
 }

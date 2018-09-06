@@ -5,11 +5,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
 import tech.mangosoft.autolinkedin.db.entity.Location;
 
 import java.util.List;
-import java.util.stream.Stream;
+
 
 public interface ILinkedInContactRepository extends JpaRepository<LinkedInContact, Long> {
     
@@ -66,4 +67,6 @@ public interface ILinkedInContactRepository extends JpaRepository<LinkedInContac
     List<LinkedInContact> findAllByStatusAndLocationAndRoleContainsAndContactProcessingsIsNull(int statusNew, Location location, String position);
 
     List<LinkedInContact> findAllByStatusAndLocation(int statusNew, Location location);
+
+    List<LinkedInContact> getAllByAssignment(Assignment assignment);
 }

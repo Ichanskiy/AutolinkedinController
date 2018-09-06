@@ -73,12 +73,13 @@ public class LinkedInContact {
     private Location location;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact", cascade = CascadeType.ALL)
-    private List<ContactProcessing> contactProcessings;
+    @ManyToOne
+    @JoinColumn(name = "contact_id")
+    private Assignment assignment;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact", cascade = CascadeType.ALL)
-    private List<Assignment> assignments = new ArrayList<>();
+    private List<ContactProcessing> contactProcessings;
 
     /*
     @Column(name = "assigned_linkedin_contact")
@@ -198,15 +199,6 @@ public class LinkedInContact {
         return this;
     }
 
-    public void removeAssignment(Assignment a) {
-        assignments.remove(a);
-        a.setLinkedInContact(null);
-    }
-
-    public void addAssignment(Assignment a) {
-        assignments.add(a);
-        a.setLinkedInContact(this);
-    }
 
     public Timestamp getCreateTime() {
         return createTime;
@@ -268,8 +260,12 @@ public class LinkedInContact {
         return this;
     }
 
-    public List<Assignment> getAssignments() {
-        return assignments;
+    public Assignment getAssignment() {
+        return assignment;
+    }
+
+    public void setAssignment(Assignment assignment) {
+        this.assignment = assignment;
     }
 }
 

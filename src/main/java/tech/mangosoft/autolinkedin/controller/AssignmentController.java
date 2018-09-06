@@ -5,6 +5,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import tech.mangosoft.autolinkedin.LinkedInService;
 import tech.mangosoft.autolinkedin.controller.messages.*;
@@ -82,7 +83,7 @@ public class AssignmentController {
             logger.log(Level.WARNING, "Message or position must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Assignment assignmentDB = assignmentRepository.save(assignment);
+        Assignment assignmentDB = linkedInService.createConnectionAssignment(assignment);
         return new ResponseEntity<>(assignmentDB, HttpStatus.OK);
     }
 
@@ -155,6 +156,22 @@ public class AssignmentController {
         }
         StatisticsByConnectionMessage statistics = linkedInService.getContactsByConnection(assignment);
         return new ResponseEntity<>(statistics, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @DeleteMapping(value = "/deleteContactsFromAssignment")
+    public ResponseEntity<HttpStatus> deleteContactsFromAssignment(Long id, List<Long> contactsIds) {
+        Assignment assignment = assignmentRepository.getById(id);
+        if (assignment == null) {
+            logger.log(Level.WARNING, "Assignment must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (CollectionUtils.isEmpty(contactsIds)) {
+            logger.log(Level.WARNING, "List must be not null or empty");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        linkedInService.deleteContactsFromAssignment(assignment, contactsIds);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 //    @CrossOrigin
