@@ -1,11 +1,9 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import tech.mangosoft.autolinkedin.db.entity.Account;
+import org.springframework.data.domain.Page;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
-
-import java.util.List;
 
 public class StatisticsByConnectionMessage {
 
@@ -13,7 +11,7 @@ public class StatisticsByConnectionMessage {
     private Assignment assignment;
 
     @JsonProperty
-    private List<LinkedInContact> connectedContacts;
+    private Page<LinkedInContact> connectedContacts;
 
     public Assignment getAssignment() {
         return assignment;
@@ -23,11 +21,12 @@ public class StatisticsByConnectionMessage {
         this.assignment = assignment;
     }
 
-    public List<LinkedInContact> getConnectedContacts() {
+    public Page<LinkedInContact> getConnectedContacts() {
         return connectedContacts;
     }
 
-    public void setConnectedContacts(List<LinkedInContact> connectedContacts) {
+    public void setConnectedContacts(Page<LinkedInContact> connectedContacts) {
         this.connectedContacts = connectedContacts;
     }
 }
+

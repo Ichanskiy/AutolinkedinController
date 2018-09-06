@@ -32,6 +32,8 @@ import java.util.logging.Logger;
 @Service
 public class LinkedInService {
 
+    private static final Integer SIZE = 50;
+    private static final String ID = "id";
     private static Logger logger = Logger.getLogger(LinkedInService.class.getName());
 
     @Autowired
@@ -306,14 +308,15 @@ public class LinkedInService {
         return cal.getTime();
     }
 
-    public StatisticsByConnectionMessage getContactsByConnection(Assignment assignment) {
+    public StatisticsByConnectionMessage getContactsByConnection(Assignment assignment, Integer page) {
         StatisticsByConnectionMessage statistics = new StatisticsByConnectionMessage();
-        statistics.setConnectedContacts(contactRepository.getAllByAssignment(assignment));
+        statistics.setConnectedContacts(contactRepository.getAllByAssignment(assignment, PageRequest.of(page < 0 ? 0 : page - 1, SIZE,  Sort.Direction.DESC, ID)));
         statistics.setAssignment(assignment);
         return statistics;
     }
 
     public Assignment createConnectionAssignment(Assignment assignment) {
+        assignment.setStatus(Status.STATUS_SUSPENDED);
         Assignment assignmentDB = assignmentRepository.save(assignment);
         List<LinkedInContact> linkedInContact = linkedInContactRepositoryCustom.getAllContactsForAssignment(assignmentDB);
         setAssignmentToContacts(assignmentDB, linkedInContact);

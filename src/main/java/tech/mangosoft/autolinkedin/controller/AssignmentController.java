@@ -147,14 +147,14 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/getConnectionInfo/{id}")
-    public ResponseEntity<StatisticsByConnectionMessage> getConnectionInfoByAssignmentId(@PathVariable Long id) {
+    @GetMapping(value = "/getConnectionInfo/{id}/{page}")
+    public ResponseEntity<StatisticsByConnectionMessage> getConnectionInfoByAssignmentId(@PathVariable Long id, @PathVariable Integer page) {
         Assignment assignment = assignmentRepository.getById(id);
         if (assignment == null) {
             logger.log(Level.WARNING, "Assignment must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        StatisticsByConnectionMessage statistics = linkedInService.getContactsByConnection(assignment);
+        StatisticsByConnectionMessage statistics = linkedInService.getContactsByConnection(assignment, page);
         return new ResponseEntity<>(statistics, HttpStatus.OK);
     }
 
