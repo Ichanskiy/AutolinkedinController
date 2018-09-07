@@ -43,48 +43,34 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createGrabbing")
-    public ResponseEntity<Assignment> createGrabbingAssignment(GrabbingMessage gm) {
-        Account account = accountRepository.getAccountByUsername(gm.getLogin());
+    public ResponseEntity<Assignment> createGrabbingAssignment(GrabbingMessage message) {
+        Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Assignment assignment = new Assignment(TASK_GRABBING,
-                gm.getLocation(),
-                gm.getFullLocationString(),
-                gm.getPosition(),
-                gm.getIndustries(),
-                account);
-        if (linkedInService.checkAllField(assignment)) {
+        Assignment assignment = linkedInService.createGrabbingAssignment(message, account);
+        if (assignment == null) {
             logger.log(Level.WARNING, "Fields must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Assignment assignmentDB = assignmentRepository.save(assignment);
-        return new ResponseEntity<>(assignmentDB, HttpStatus.OK);
+        return new ResponseEntity<>(assignment, HttpStatus.OK);
     }
 
     @CrossOrigin
     @PostMapping(value = "/createConnection")
-    public ResponseEntity<Assignment> createConnectionAssignment(ConnectionMessage cm) {
-        Account account = accountRepository.getAccountByUsername(cm.getLogin());
+    public ResponseEntity<Assignment> createConnectionAssignment(ConnectionMessage message) {
+        Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Assignment assignment = new Assignment(TASK_CONNECTION,
-                cm.getLocation(),
-                cm.getFullLocationString(),
-                cm.getPosition(),
-                cm.getIndustries(),
-                cm.getMessage(),
-                cm.getExecutionLimit(),
-                account);
-        if (linkedInService.checkMessageAndPosition(assignment)) {
+        Assignment assignment = linkedInService.createConnectionAssignment(message, account);
+        if (assignment == null) {
             logger.log(Level.WARNING, "Message or position must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Assignment assignmentDB = linkedInService.createConnectionAssignment(assignment);
-        return new ResponseEntity<>(assignmentDB, HttpStatus.OK);
+        return new ResponseEntity<>(assignment, HttpStatus.OK);
     }
 
     @CrossOrigin
@@ -97,7 +83,8 @@ public class AssignmentController {
         }
         Integer count = linkedInService.getCountAssignment(account);
         List<StatisticResponse> statisticResponse = linkedInService.getStatistics(account, page, 20);
-        return new ResponseEntity<>(new PageImpl<>(statisticResponse, PageRequest.of(page - 1, COUNT_TO_PAGE), count), HttpStatus.OK);
+        return new ResponseEntity<>(new PageImpl<>(statisticResponse,
+                PageRequest.of(page - 1, COUNT_TO_PAGE), count), HttpStatus.OK);
     }
 
     @CrossOrigin
@@ -148,7 +135,8 @@ public class AssignmentController {
 
     @CrossOrigin
     @GetMapping(value = "/getConnectionInfo/{id}/{page}")
-    public ResponseEntity<StatisticsByConnectionMessage> getConnectionInfoByAssignmentId(@PathVariable Long id, @PathVariable Integer page) {
+    public ResponseEntity<StatisticsByConnectionMessage> getConnectionInfoByAssignmentId(@PathVariable Long id,
+                                                                                         @PathVariable Integer page) {
         Assignment assignment = assignmentRepository.getById(id);
         if (assignment == null) {
             logger.log(Level.WARNING, "Assignment must be not null");

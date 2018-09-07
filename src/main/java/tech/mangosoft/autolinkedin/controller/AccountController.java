@@ -23,14 +23,16 @@ public class AccountController {
     @GetMapping
     public ResponseEntity<Account> getAccount(String login, String password) {
         Account account = accountRepository.getAccountByUsernameAndPassword(login, password);
-        return account == null ? new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(account, HttpStatus.OK);
+        return account == null ?
+                new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(account, HttpStatus.OK);
     }
 
     @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
         Account account = accountRepository.getById(id);
-        return account == null ? new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(account, HttpStatus.OK);
+        return account == null
+                ? new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(account, HttpStatus.OK);
     }
 
     @CrossOrigin

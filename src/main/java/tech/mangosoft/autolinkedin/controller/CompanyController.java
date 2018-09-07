@@ -24,6 +24,7 @@ public class CompanyController {
     @GetMapping
     public ResponseEntity<List<Company>> getCompanies() {
         List<Company> companies = companyRepository.findAll();
-        return companies == null ? new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(companies, HttpStatus.OK);
+        return companies == null ?
+                new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(companies, HttpStatus.OK);
     }
 }

@@ -3,18 +3,21 @@ package tech.mangosoft.autolinkedin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
-import tech.mangosoft.autolinkedin.controller.messages.StatisticsByConnectionMessage;
-import tech.mangosoft.autolinkedin.controller.messages.StatisticsByTwoDaysMessage;
+import tech.mangosoft.autolinkedin.controller.messages.*;
 import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 import tech.mangosoft.autolinkedin.db.repository.*;
 
 import java.util.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_CONNECTION;
+import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_GRABBING;
 
 /**
  * <h1> LinkedIn Service!</h1>
@@ -50,6 +53,51 @@ public class LinkedInService {
 
     @Autowired
     private LinkedInContactRepositoryCustomImpl linkedInContactRepositoryCustom;
+
+
+    public Assignment createGrabbingAssignment(GrabbingMessage message, Account account){
+        Assignment assignment = new Assignment(TASK_GRABBING,
+                message.getLocation(),
+                message.getFullLocationString(),
+                message.getPosition(),
+                message.getIndustries(),
+                account);
+        if (checkAllField(assignment)) {
+            return null;
+        }
+        return assignmentRepository.save(assignment);
+    }
+
+    public Assignment createConnectionAssignment(ConnectionMessage message, Account account){
+        Assignment assignment = new Assignment(TASK_CONNECTION,
+                message.getLocation(),
+                message.getFullLocationString(),
+                message.getPosition(),
+                message.getIndustries(),
+                message.getMessage(),
+                message.getExecutionLimit(),
+                account);
+        if (checkMessageAndPosition(assignment)) {
+            return null;
+        }
+        return saveAssignmentAndAddContacts(assignment);
+    }
+
+
+    private Assignment saveAssignmentAndAddContacts(Assignment assignment) {
+        assignment.setStatus(Status.STATUS_SUSPENDED);
+        Assignment assignmentDB = assignmentRepository.save(assignment);
+        List<LinkedInContact> linkedInContact = linkedInContactRepositoryCustom.getAllContactsForAssignment(assignmentDB);
+        setAssignmentToContacts(assignmentDB, linkedInContact);
+        return assignmentDB;
+    }
+
+    private void setAssignmentToContacts(Assignment assignment, List<LinkedInContact> linkedInContact) {
+        for (LinkedInContact contact : linkedInContact) {
+            contact.setAssignment(assignment);
+            contactRepository.save(contact);
+        }
+    }
 
     /**
      * @author  Ichanskiy
@@ -218,7 +266,7 @@ public class LinkedInService {
     private List<LinkedInContact> getConnectedContactsByAssignments(List<Assignment> assignments) {
         List<LinkedInContact> contacts = new ArrayList<>();
         for (Assignment assignment : assignments) {
-            if (assignment.getTask().equals(Task.TASK_CONNECTION)){
+            if (assignment.getTask().equals(TASK_CONNECTION)){
                 contacts.addAll(getLinkedInContactFromAssignment(assignment));
             }
         }
@@ -313,21 +361,6 @@ public class LinkedInService {
         statistics.setConnectedContacts(contactRepository.getAllByAssignment(assignment, PageRequest.of(page < 0 ? 0 : page - 1, SIZE,  Sort.Direction.DESC, ID)));
         statistics.setAssignment(assignment);
         return statistics;
-    }
-
-    public Assignment createConnectionAssignment(Assignment assignment) {
-        assignment.setStatus(Status.STATUS_SUSPENDED);
-        Assignment assignmentDB = assignmentRepository.save(assignment);
-        List<LinkedInContact> linkedInContact = linkedInContactRepositoryCustom.getAllContactsForAssignment(assignmentDB);
-        setAssignmentToContacts(assignmentDB, linkedInContact);
-        return assignmentDB;
-    }
-
-    private void setAssignmentToContacts(Assignment assignment, List<LinkedInContact> linkedInContact) {
-        for (LinkedInContact contact : linkedInContact) {
-            contact.setAssignment(assignment);
-            contactRepository.save(contact);
-        }
     }
 
     public void deleteContactsFromAssignment(Assignment assignment, List<Long> contactsIds) {
