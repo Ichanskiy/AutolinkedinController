@@ -20,8 +20,6 @@ import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
 import tech.mangosoft.autolinkedin.filestorage.FileStorage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;

@@ -20,8 +20,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static tech.mangosoft.autolinkedin.controller.LinkedinContactController.COUNT_TO_PAGE;
-import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_CONNECTION;
-import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_GRABBING;
 
 @RestController
 @RequestMapping("/assignment")
