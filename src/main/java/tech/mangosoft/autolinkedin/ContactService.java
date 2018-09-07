@@ -49,7 +49,6 @@ import static tech.mangosoft.autolinkedin.utils.CSVUtils.parseLine;
 @Service
 public class ContactService {
 
-    private static Logger logger = Logger.getLogger(ContactService.class.getName());
     private static final Integer COUNT_FOR_PAGE = 40;
     private static final String FIRST_NAME = "first_name";
     private static final String LAST_NAME = "last_name";
@@ -72,7 +71,7 @@ public class ContactService {
     private IContactProcessingRepository contactProcessingRepository;
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Value("${storage.path}")
     private String path;
@@ -99,7 +98,7 @@ public class ContactService {
         return query.getResultList();
     }
 
-    private void writeToCSVFile(List<LinkedInContact> contactsFromDb) throws IOException {
+    private void writeToCSVFile(final List<LinkedInContact> contactsFromDb) throws IOException {
         String csvFile = path.concat(filename);
         File file = new File(csvFile);
         FileWriter writer = new FileWriter(file.getAbsoluteFile());
@@ -123,7 +122,7 @@ public class ContactService {
         writer.close();
     }
 
-    public boolean exportCSVFilesToDataBaseAndCheckIsCorrect(File file) throws FileNotFoundException {
+    public boolean exportCSVFilesToDataBaseAndCheckIsCorrect(final File file) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
         int i = 0;
         while (scanner.hasNext()) {
@@ -157,7 +156,7 @@ public class ContactService {
         return true;
     }
 
-    private boolean setIndexAndCheckIsCorrect(List<String> line){
+    private boolean setIndexAndCheckIsCorrect(final List<String> line){
         if (!line.containsAll(Arrays.asList(FIRST_NAME, LAST_NAME, EMAIL))) {
             return false;
         }
@@ -179,6 +178,7 @@ public class ContactService {
             contactRepository.save(linkedInContact);
         }
     }
+
     private void updateContactEmail(String idString, String email) {
         Long id = Long.valueOf(idString.trim());
         LinkedInContact linkedInContact = contactRepository.getById(id);
