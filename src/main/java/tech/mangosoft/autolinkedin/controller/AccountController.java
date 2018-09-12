@@ -1,6 +1,8 @@
 package tech.mangosoft.autolinkedin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +11,8 @@ import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 
 import java.util.List;
+
+import static tech.mangosoft.autolinkedin.controller.LinkedinContactController.COUNT_TO_PAGE;
 
 
 @RestController
@@ -30,11 +34,15 @@ public class AccountController {
     }
 
     @CrossOrigin
-    @GetMapping("/all")
-    public ResponseEntity<List<Account>> getAllAccount() {
-        List<Account> accounts = accountRepository.findAll();
-        return accounts == null ?
-                new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(accounts, HttpStatus.OK);
+    @GetMapping("/all/{page}")
+    public ResponseEntity<PageImpl<Account>> getAllAccount(@PathVariable Integer page) {
+        List<Account> accounts = accountService.getAllAccounts(page);
+        if (accounts == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        long count = accountRepository.count();
+        return new ResponseEntity<>(new PageImpl<>(accounts,
+                PageRequest.of(page, COUNT_TO_PAGE), count), HttpStatus.OK);
     }
 
     @CrossOrigin

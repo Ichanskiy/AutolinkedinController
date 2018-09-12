@@ -1,12 +1,16 @@
 package tech.mangosoft.autolinkedin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.entity.enums.Role;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.db.repository.ICompanyRepository;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -120,5 +124,19 @@ public class AccountService {
     public void delete(Account account) {
         account.setContactProcessings(null);
         accountRepository.delete(accountRepository.save(account));
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method delete account.
+     * @param account input account
+     */
+    public List<Account> getAllAccounts(Integer page) {
+        return accountRepository.findAll(PageRequest.of(page - 1, 40,  Sort.Direction.DESC, "id")).getContent();
+    }
+
+    public List<Account> findAll() {
+        return accountRepository.findAll();
     }
 }
