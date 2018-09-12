@@ -35,6 +35,7 @@ import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_GRABBING;
 @Service
 public class LinkedInService {
 
+    private static final Logger logger = Logger.getLogger(LinkedInService.class.getName());
     private static final Integer SIZE = 50;
     private static final String ID = "id";
     private static Logger logger = Logger.getLogger(LinkedInService.class.getName());
@@ -88,7 +89,9 @@ public class LinkedInService {
         assignment.setStatus(Status.STATUS_SUSPENDED);
         Assignment assignmentDB = assignmentRepository.save(assignment);
         List<LinkedInContact> linkedInContact = linkedInContactRepositoryCustom.getAllContactsForAssignment(assignmentDB);
-        setAssignmentToContacts(assignmentDB, linkedInContact);
+        if (linkedInContact != null) {
+            setAssignmentToContacts(assignmentDB, linkedInContact);
+        }
         return assignmentDB;
     }
 
