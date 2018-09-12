@@ -8,6 +8,8 @@ import tech.mangosoft.autolinkedin.AccountService;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/account")
@@ -25,6 +27,14 @@ public class AccountController {
         Account account = accountRepository.getAccountByUsernameAndPassword(login, password);
         return account == null ?
                 new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(account, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/all")
+    public ResponseEntity<List<Account>> getAllAccount() {
+        List<Account> accounts = accountRepository.findAll();
+        return accounts == null ?
+                new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(accounts, HttpStatus.OK);
     }
 
     @CrossOrigin
