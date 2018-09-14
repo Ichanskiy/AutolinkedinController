@@ -58,7 +58,7 @@ public class AccountService {
      * @return updated object
      */
     public Account update(Account account) {
-        Account accountDb = accountRepository.getAccountByUsername(account.getUsername());
+        Account accountDb = accountRepository.getById(account.getId());
         accountDb.setGrabbingLimit(account.getGrabbingLimit());
         if (account.getCompany() != null && account.getCompany().getName() != null){
             String companyName = account.getCompany().getName();
