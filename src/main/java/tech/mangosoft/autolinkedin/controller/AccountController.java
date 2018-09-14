@@ -77,7 +77,7 @@ public class AccountController {
     @CrossOrigin
     @PutMapping
     public ResponseEntity<Account> updateAccount(Account account) {
-        Account accountDB = accountRepository.getAccountByUsername(account.getUsername());
+        Account accountDB = accountRepository.getById(account.getId());
         if (accountDB == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
