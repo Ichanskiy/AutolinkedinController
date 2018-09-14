@@ -60,7 +60,7 @@ public class AccountService {
     public Account update(Account account) {
         Account accountDb = accountRepository.getAccountByUsername(account.getUsername());
         accountDb.setGrabbingLimit(account.getGrabbingLimit());
-        accountDb.setCompany(account.getCompany());
+        accountDb.setCompany(companyRepository.getByName(account.getCompany().getName()));
         accountDb.setUsername(account.getUsername());
         accountDb.setRole(account.getRole());
         accountDb.setFirst(account.getFirst());
