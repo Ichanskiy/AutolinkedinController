@@ -39,8 +39,9 @@ public class Company {
         return name;
     }
 
-    public void setName(String name) {
+    public Company setName(String name) {
         this.name = name;
+        return this;
     }
 
     public List<Account> getAccounts() {
