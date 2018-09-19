@@ -38,7 +38,6 @@ public class LinkedInService {
     private static final Logger logger = Logger.getLogger(LinkedInService.class.getName());
     private static final Integer SIZE = 50;
     private static final String ID = "id";
-    private static Logger logger = Logger.getLogger(LinkedInService.class.getName());
 
     @Autowired
     private IAssignmentRepository assignmentRepository;
