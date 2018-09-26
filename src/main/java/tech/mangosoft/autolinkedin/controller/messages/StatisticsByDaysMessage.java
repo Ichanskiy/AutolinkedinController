@@ -6,7 +6,7 @@ import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
 
 import java.util.List;
 
-public class StatisticsByTwoDaysMessage {
+public class StatisticsByDaysMessage {
 
     @JsonProperty
     private Account account;
@@ -17,10 +17,10 @@ public class StatisticsByTwoDaysMessage {
     @JsonProperty
     private List<LinkedInContact> connectedContacts;
 
-    public StatisticsByTwoDaysMessage() {
+    public StatisticsByDaysMessage() {
     }
 
-    public StatisticsByTwoDaysMessage(Account account, List<LinkedInContact> grabbingContacts, List<LinkedInContact> connectedContacts) {
+    public StatisticsByDaysMessage(Account account, List<LinkedInContact> grabbingContacts, List<LinkedInContact> connectedContacts) {
         this.account = account;
         this.grabbingContacts = grabbingContacts;
         this.connectedContacts = connectedContacts;
@@ -30,7 +30,7 @@ public class StatisticsByTwoDaysMessage {
         return account;
     }
 
-    public StatisticsByTwoDaysMessage setAccount(Account account) {
+    public StatisticsByDaysMessage setAccount(Account account) {
         this.account = account;
         return this;
     }

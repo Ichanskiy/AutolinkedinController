@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.*;
@@ -21,7 +20,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.*;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_CONNECTION;
@@ -299,14 +297,15 @@ public class LinkedInService {
         return statisticResponses;
     }
 
-    public StatisticsByTwoDaysMessage getStatisticsByTwoDays(Account account) {
-        List<Assignment> assignments = assignmentRepository.getAllByAccountAndStatusAndUpdateTime(account, Status.STATUS_FINISHED, getBeforeYesterday());
-        return getStatisticsByTwoDaysMessageByAssignment(assignments)
+    public StatisticsByDaysMessage getStatisticsByDays(Account account, Date from, Date to) {
+        List<Assignment> assignments = assignmentRepository
+                .getAllByAccountAndStatusAndUpdateTimeBetween(account, Status.STATUS_FINISHED, from, to);
+        return getStatisticsMessageByAssignment(assignments)
                 .setAccount(account);
     }
 
-    private StatisticsByTwoDaysMessage getStatisticsByTwoDaysMessageByAssignment(List<Assignment> assignments){
-        StatisticsByTwoDaysMessage statistics = new StatisticsByTwoDaysMessage();
+    private StatisticsByDaysMessage getStatisticsMessageByAssignment(List<Assignment> assignments){
+        StatisticsByDaysMessage statistics = new StatisticsByDaysMessage();
         statistics.setConnectedContacts(getConnectedContactsByAssignments(assignments));
         statistics.setGrabbingContacts(getGrabbingContactsByAssignments(assignments));
         return statistics;
@@ -333,15 +332,6 @@ public class LinkedInService {
     }
 
     private List<LinkedInContact> getLinkedInContactFromAssignment(Assignment assignment){
-        List<LinkedInContact> contacts = new ArrayList<>();
-        List<ContactProcessing> contactProcessings = contactProcessingRepository.getAllByAssignmentId(assignment.getId());
-        for (ContactProcessing contactProcessing : contactProcessings) {
-            contacts.add(contactProcessing.getContact());
-        }
-        return contacts;
-    }
-
-    private List<LinkedInContact> getAssignmentByAccountAndStatus(Assignment assignment){
         List<LinkedInContact> contacts = new ArrayList<>();
         List<ContactProcessing> contactProcessings = contactProcessingRepository.getAllByAssignmentId(assignment.getId());
         for (ContactProcessing contactProcessing : contactProcessings) {

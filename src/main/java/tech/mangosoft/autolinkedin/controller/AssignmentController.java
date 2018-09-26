@@ -15,6 +15,7 @@ import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -87,13 +88,13 @@ public class AssignmentController {
 
     @CrossOrigin
     @GetMapping(value = "/getStatisticsByDays")
-    public ResponseEntity<StatisticsByTwoDaysMessage> getStatisticsByTwoDays(String email) {
+    public ResponseEntity<StatisticsByDaysMessage> getStatisticsByTwoDays(String email, Date from, Date to) {
         Account account = accountRepository.getAccountByUsername(email);
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(linkedInService.getStatisticsByTwoDays(account), HttpStatus.OK);
+        return new ResponseEntity<>(linkedInService.getStatisticsByDays(account, from, to), HttpStatus.OK);
     }
 
     @CrossOrigin

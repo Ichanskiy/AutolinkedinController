@@ -18,7 +18,7 @@ public interface IAssignmentRepository extends CrudRepository<Assignment, Long> 
 
     List<Assignment> findByStatusOrderById(Status status);
 
-    List<Assignment> getAllByAccountAndStatusAndUpdateTime(Account account, Status status, Date date);
+    List<Assignment> getAllByAccountAndStatusAndUpdateTimeBetween(Account account, Status status, Date from, Date to);
 
     Page<Assignment> getAllByAccount(Account account, Pageable pageable);
 
