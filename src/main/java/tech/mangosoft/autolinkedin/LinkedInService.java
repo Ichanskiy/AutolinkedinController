@@ -1,6 +1,7 @@
 package tech.mangosoft.autolinkedin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,13 @@ import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 import tech.mangosoft.autolinkedin.db.repository.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +46,7 @@ public class LinkedInService {
     private static final Logger logger = Logger.getLogger(LinkedInService.class.getName());
     private static final Integer SIZE = 50;
     private static final String ID = "id";
+    private static List<Predicate> predicates = new ArrayList<>();
 
     @Autowired
     private IAssignmentRepository assignmentRepository;
@@ -53,6 +62,9 @@ public class LinkedInService {
 
     @Autowired
     private LinkedInContactRepositoryCustomImpl linkedInContactRepositoryCustom;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
 
     public Assignment createGrabbingAssignment(GrabbingMessage message, Account account){
@@ -99,6 +111,41 @@ public class LinkedInService {
             contact.setAssignment(assignment);
             contactRepository.save(contact);
         }
+    }
+
+    public PageImpl<Assignment> getAssignmentByUserAndStatus(Account account, Integer status, Integer count){
+        if (account == null || count == null || status == null) {
+            return null;
+        }
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Assignment> criteriaQuery = builder.createQuery(Assignment.class);
+        Root<Assignment> root = criteriaQuery.from(Assignment.class);
+        criteriaQuery.orderBy(builder.desc(root.get("id")));
+        getPredicatesByParam(account, status, root, builder);
+
+        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        TypedQuery<Assignment> query = entityManager.createQuery(criteriaQuery);
+        query.setFirstResult(0);
+        query.setMaxResults(count);
+
+        return new PageImpl<>(query.getResultList(), PageRequest.of(1, count), count);
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
+     * This is the method get predictes by input param.
+     * @param account input account.
+     * @param status assignments.
+     * @param root root object predicates.
+     * @param builder CriteriaBuilder object.
+     */
+    private void getPredicatesByParam(Account account, Integer status, Root<Assignment> root, CriteriaBuilder builder) {
+        predicates.clear();
+        if (account != null) {
+            predicates.add(builder.equal(root.get("account"), account));
+        }
+        predicates.add(builder.equal(root.get("status"), status));
     }
 
     /**
@@ -294,6 +341,15 @@ public class LinkedInService {
         return contacts;
     }
 
+    private List<LinkedInContact> getAssignmentByAccountAndStatus(Assignment assignment){
+        List<LinkedInContact> contacts = new ArrayList<>();
+        List<ContactProcessing> contactProcessings = contactProcessingRepository.getAllByAssignmentId(assignment.getId());
+        for (ContactProcessing contactProcessing : contactProcessings) {
+            contacts.add(contactProcessing.getContact());
+        }
+        return contacts;
+    }
+
     /**
      * @author  Ichanskiy
      *
@@ -380,4 +436,5 @@ public class LinkedInService {
     private boolean assignmentHasThisContact(Assignment assignment, LinkedInContact contact){
         return assignment.getContacts().contains(contact);
     }
+
 }

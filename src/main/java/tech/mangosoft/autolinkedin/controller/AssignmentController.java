@@ -160,14 +160,14 @@ public class AssignmentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-//    @CrossOrigin
-//    @GetMapping
-//    public ResponseEntity<HttpStatus> getTest() {
-//        Assignment assignment = assignmentRepository.getById(150L);
-//        if (assignment == null) {
-//            logger.log(Level.WARNING, "Assignment must be not null");
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+    @CrossOrigin
+    @GetMapping(value = "/getAssignmentByUserAndStatus")
+    public ResponseEntity<PageImpl<Assignment>> getAssignmentByUserAndStatus(String email, Integer status, Integer count) {
+        Account account = accountRepository.getAccountByUsername(email);
+        if (account == null) {
+            logger.log(Level.WARNING, "Account must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(linkedInService.getAssignmentByUserAndStatus(account, status, count), HttpStatus.OK);
+    }
 }
