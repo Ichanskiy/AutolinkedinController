@@ -34,6 +34,14 @@ public class AccountController {
     }
 
     @CrossOrigin
+    @GetMapping("/{id}")
+    public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
+        Account account = accountRepository.getById(id);
+        return account == null
+                ? new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(account, HttpStatus.OK);
+    }
+
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
         if (accountService.accountNotValid(account)) {
