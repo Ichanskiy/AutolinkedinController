@@ -88,7 +88,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @GetMapping(value = "/getStatisticsByDays")
-    public ResponseEntity<StatisticsByDaysMessage> getStatisticsByTwoDays(String email, Date from, Date to) {
+    public ResponseEntity<StatisticsByDaysMessage> getStatisticsByDays(String email, Date from, Date to) {
         Account account = accountRepository.getAccountByUsername(email);
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
