@@ -34,26 +34,6 @@ public class AccountController {
     }
 
     @CrossOrigin
-    @GetMapping("/all/{page}")
-    public ResponseEntity<PageImpl<Account>> getAllAccount(@PathVariable Integer page) {
-        List<Account> accounts = accountService.getAllAccounts(page);
-        if (accounts == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        long count = accountRepository.count();
-        return new ResponseEntity<>(new PageImpl<>(accounts,
-                PageRequest.of(page, COUNT_TO_PAGE), count), HttpStatus.OK);
-    }
-
-    @CrossOrigin
-    @GetMapping("/{id}")
-    public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
-        Account account = accountRepository.getById(id);
-        return account == null
-                ? new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(account, HttpStatus.OK);
-    }
-
-    @CrossOrigin
     @PostMapping
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
         if (accountService.accountNotValid(account)) {
