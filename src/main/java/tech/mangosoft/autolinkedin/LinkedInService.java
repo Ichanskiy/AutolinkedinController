@@ -43,6 +43,7 @@ public class LinkedInService {
 
     private static final Logger logger = Logger.getLogger(LinkedInService.class.getName());
     private static final Integer SIZE = 50;
+    private static final Integer COUNT_DAYS = 7;
     private static final String ID = "id";
     private static List<Predicate> predicates = new ArrayList<>();
 
@@ -65,7 +66,7 @@ public class LinkedInService {
     private EntityManager entityManager;
 
 
-    public Assignment createGrabbingAssignment(GrabbingMessage message, Account account){
+    public Assignment createGrabbingAssignment(GrabbingMessage message, Account account) {
         Assignment assignment = new Assignment(TASK_GRABBING,
                 message.getLocation(),
                 message.getFullLocationString(),
@@ -78,7 +79,7 @@ public class LinkedInService {
         return assignmentRepository.save(assignment);
     }
 
-    public Assignment createConnectionAssignment(ConnectionMessage message, Account account){
+    public Assignment createConnectionAssignment(ConnectionMessage message, Account account) {
         Assignment assignment = new Assignment(TASK_CONNECTION,
                 message.getLocation(),
                 message.getFullLocationString(),
@@ -111,7 +112,7 @@ public class LinkedInService {
         }
     }
 
-    public PageImpl<Assignment> getAssignmentByUserAndStatus(Account account, Integer status, Integer count){
+    public PageImpl<Assignment> getAssignmentByUserAndStatus(Account account, Integer status, Integer count) {
         if (account == null || count == null || status == null) {
             return null;
         }
@@ -130,13 +131,13 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This is the method get predictes by input param.
      * @param account input account.
-     * @param status assignments.
-     * @param root root object predicates.
+     * @param status  assignments.
+     * @param root    root object predicates.
      * @param builder CriteriaBuilder object.
+     * @author Ichanskiy
+     * <p>
+     * This is the method get predictes by input param.
      */
     private void getPredicatesByParam(Account account, Integer status, Root<Assignment> root, CriteriaBuilder builder) {
         predicates.clear();
@@ -147,14 +148,14 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This is the method get predictes by input param.
      * @param account input account.
-     * @param from date from.
-     * @param to date to.
-     * @param root root object predicates.
+     * @param from    date from.
+     * @param to      date to.
+     * @param root    root object predicates.
      * @param builder CriteriaBuilder object.
+     * @author Ichanskiy
+     * <p>
+     * This is the method get predictes by input param.
      */
     private void getPredicatesByParam(Account account, Integer status, Date from, Date to,
                                       Root<Assignment> root, CriteriaBuilder builder) {
@@ -167,13 +168,13 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This is the method change assignment status.
      * @param idAssignment id Assignment object.
-     * @param idStatus id Status
+     * @param idStatus     id Status
+     * @author Ichanskiy
+     * <p>
+     * This is the method change assignment status.
      */
-    public void changeStatus(Long idAssignment, Integer idStatus){
+    public void changeStatus(Long idAssignment, Integer idStatus) {
         Assignment assignment = assignmentRepository.getById(idAssignment);
         Status status = getStatusIfExist(idStatus);
         if (status != null) {
@@ -183,11 +184,11 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This is the method get status by id if status found or return null else.
      * @param idStatus id Status
      * @return boolean status by id if status found or return null else
+     * @author Ichanskiy
+     * <p>
+     * This is the method get status by id if status found or return null else.
      */
     private Status getStatusIfExist(Integer idStatus) {
         try {
@@ -198,10 +199,10 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This method delete assignment by id
      * @param id assignment`s id.
+     * @author Ichanskiy
+     * <p>
+     * This method delete assignment by id
      */
     public void deleteAssignmentById(Long id) {
         Assignment assignment = assignmentRepository.getById(id);
@@ -211,10 +212,10 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This method delete processing report by assignment id
      * @param assignment input assignment.
+     * @author Ichanskiy
+     * <p>
+     * This method delete processing report by assignment id
      */
     private void deleteProcessingReportByAssignmentId(Assignment assignment) {
         for (ProcessingReport report : assignment.getProcessingReports()) {
@@ -223,10 +224,10 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This is method delete assignment id from contacts
      * @param assignment input assignment.
+     * @author Ichanskiy
+     * <p>
+     * This is method delete assignment id from contacts
      */
     private void deleteAssignmentIdFromContacts(Assignment assignment) {
         List<ContactProcessing> contactProcessings = contactProcessingRepository.getAllByAssignmentId(assignment.getId());
@@ -237,13 +238,13 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This method chesk fields.
      * @param assignment input object.
      * @return boolean true if field not null, else false
+     * @author Ichanskiy
+     * <p>
+     * This method chesk fields.
      */
-    private boolean checkField(Assignment assignment){
+    private boolean checkField(Assignment assignment) {
         if (assignment == null) {
             logger.info("Assignment is null");
             return false;
@@ -254,14 +255,15 @@ public class LinkedInService {
         }
         return true;
     }
+
     /**
-     * @author  Ichanskiy
-     *
-     * This method chesk all fields.
      * @param assignment input object.
      * @return boolean true if all field not null, else false
+     * @author Ichanskiy
+     * <p>
+     * This method chesk all fields.
      */
-    public boolean checkAllField(Assignment assignment){
+    public boolean checkAllField(Assignment assignment) {
         return assignment == null
                 || assignment.getFullLocationString() == null
                 || assignment.getFullLocationString().isEmpty()
@@ -272,14 +274,15 @@ public class LinkedInService {
                 || assignment.getPosition() == null
                 || assignment.getPosition().isEmpty();
     }
+
     /**
-     * @author  Ichanskiy
-     *
-     * This method chesk messege and posiion.
      * @param assignment input object.
      * @return boolean true if all field not null, else false
+     * @author Ichanskiy
+     * <p>
+     * This method chesk messege and posiion.
      */
-    public boolean checkMessageAndPosition(Assignment assignment){
+    public boolean checkMessageAndPosition(Assignment assignment) {
         return assignment == null
                 || assignment.getMessage() == null
                 || assignment.getMessage().isEmpty()
@@ -288,11 +291,11 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This method create statistic.
      * @param account current account.
      * @return object that contains statistics
+     * @author Ichanskiy
+     * <p>
+     * This method create statistic.
      */
     public List<StatisticResponse> getStatistics(Account account, Integer page, Integer size) {
         List<StatisticResponse> statisticResponses = new ArrayList<>();
@@ -324,7 +327,7 @@ public class LinkedInService {
                 .setAccount(account);
     }
 
-    private StatisticsByDaysMessage getStatisticsMessageByAssignment(List<Assignment> assignments){
+    private StatisticsByDaysMessage getStatisticsMessageByAssignment(List<Assignment> assignments) {
         StatisticsByDaysMessage statistics = new StatisticsByDaysMessage();
         statistics.setConnectedContacts(getConnectedContactsByAssignments(assignments));
         statistics.setGrabbingContacts(getGrabbingContactsByAssignments(assignments));
@@ -334,7 +337,7 @@ public class LinkedInService {
     private List<LinkedInContact> getConnectedContactsByAssignments(List<Assignment> assignments) {
         List<LinkedInContact> contacts = new ArrayList<>();
         for (Assignment assignment : assignments) {
-            if (assignment.getTask().equals(TASK_CONNECTION)){
+            if (assignment.getTask().equals(TASK_CONNECTION)) {
                 contacts.addAll(getLinkedInContactFromAssignment(assignment));
             }
         }
@@ -344,14 +347,14 @@ public class LinkedInService {
     private List<LinkedInContact> getGrabbingContactsByAssignments(List<Assignment> assignments) {
         List<LinkedInContact> contacts = new ArrayList<>();
         for (Assignment assignment : assignments) {
-            if (assignment.getTask().equals(Task.TASK_GRABBING)){
+            if (assignment.getTask().equals(Task.TASK_GRABBING)) {
                 contacts.addAll(getLinkedInContactFromAssignment(assignment));
             }
         }
         return contacts;
     }
 
-    private List<LinkedInContact> getLinkedInContactFromAssignment(Assignment assignment){
+    private List<LinkedInContact> getLinkedInContactFromAssignment(Assignment assignment) {
         List<LinkedInContact> contacts = new ArrayList<>();
         List<ContactProcessing> contactProcessings = contactProcessingRepository.getAllByAssignmentId(assignment.getId());
         for (ContactProcessing contactProcessing : contactProcessings) {
@@ -361,22 +364,22 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This method get count assignment.
      * @param account current account.
      * @return object count assignment by account
+     * @author Ichanskiy
+     * <p>
+     * This method get count assignment.
      */
     public Integer getCountAssignment(Account account) {
         return assignmentRepository.countAllByAccount(account);
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This method concate all string.
      * @param s all strings.
      * @return final string after joining. Example: "SEO; Games; New York;"
+     * @author Ichanskiy
+     * <p>
+     * This method concate all string.
      */
     private String concatAllString(String... s) {
         StringBuilder result = new StringBuilder();
@@ -391,12 +394,12 @@ public class LinkedInService {
     }
 
     /**
-     * @author  Ichanskiy
-     *
-     * This method who compare date.
      * @param date1 first date.
      * @param date2 second date.
      * @return true if day of date equals, else false.
+     * @author Ichanskiy
+     * <p>
+     * This method who compare date.
      */
     private static boolean isSameDay(Date date1, Date date2) {
         if (date1 == null || date2 == null) {
@@ -418,15 +421,15 @@ public class LinkedInService {
                 cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
     }
 
-    private static Date getBeforeYesterday() {
+    private static Date getDateBeforeCountDays(Integer days) {
         final Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -2);
+        cal.add(Calendar.DATE, -days);
         return cal.getTime();
     }
 
     public StatisticsByConnectionMessage getContactsByConnection(Assignment assignment, Integer page) {
         StatisticsByConnectionMessage statistics = new StatisticsByConnectionMessage();
-        statistics.setConnectedContacts(contactRepository.getAllByAssignment(assignment, PageRequest.of(page < 0 ? 0 : page - 1, SIZE,  Sort.Direction.DESC, ID)));
+        statistics.setConnectedContacts(contactRepository.getAllByAssignment(assignment, PageRequest.of(page < 0 ? 0 : page - 1, SIZE, Sort.Direction.DESC, ID)));
         statistics.setAssignment(assignment);
         return statistics;
     }
@@ -443,7 +446,7 @@ public class LinkedInService {
         assignmentRepository.save(assignment);
     }
 
-    private boolean assignmentHasThisContact(Assignment assignment, LinkedInContact contact){
+    private boolean assignmentHasThisContact(Assignment assignment, LinkedInContact contact) {
         return assignment.getContacts().contains(contact);
     }
 
@@ -463,5 +466,87 @@ public class LinkedInService {
         query.setMaxResults(SIZE);
 
         return new PageImpl<>(query.getResultList(), PageRequest.of(1, SIZE), SIZE);
+    }
+
+    public GraphMessage getGraph(Account account) {
+        GraphMessage graphMessage = new GraphMessage();
+        graphMessage.setLabels(getDays());
+        graphMessage.setSeries(getValuesByAccount(account));
+        return graphMessage;
+    }
+
+    private List<String> getDays() {
+        List<String> sevenDays = new ArrayList<>();
+        for (int i = 0; i < COUNT_DAYS; i++) {
+            sevenDays.add(getDateBeforeCountDays(i).toString());
+        }
+        return sevenDays;
+    }
+
+    private List<Integer[]> getValuesByAccount(Account account) {
+        List<Integer[]> values = new ArrayList<>();
+        Integer[] countOfErrors = {0, 0, 0, 0, 0, 0, 0};
+        Integer[] countOfAddContacts = getCountOfAddContacts(account);
+        Integer[] countOfMessages = getCountOfMessages(account);
+        values.add(countOfErrors);
+        values.add(countOfAddContacts);
+        values.add(countOfMessages);
+        return values;
+    }
+
+    private Integer[] getCountOfAddContacts(Account account) {
+        Integer[] result = new Integer[6];
+        int count;
+        for (int i = 0; i < COUNT_DAYS; i++) {
+            count = getCountAddedContactsByDay(account, getDateBeforeCountDays(i));
+            result[i] = count;
+        }
+        return result;
+    }
+
+    private int getCountAddedContactsByDay(Account account, Date day) {
+        long count = 0;
+        List<Assignment> assignments = assignmentRepository
+                .getAllByAccountAndTaskAndStatusAndUpdateTimeBetween(account,
+                        Task.TASK_GRABBING,
+                        Status.STATUS_FINISHED,
+                        new Date(),
+                        day);
+        for (Assignment assignment : assignments) {
+            for (ProcessingReport report : assignment.getProcessingReports()) {
+                if (report.getSaved() != null) {
+                    count = count + report.getSaved();
+                }
+            }
+        }
+        return 0;
+    }
+
+    private Integer[] getCountOfMessages(Account account) {
+        Integer[] result = new Integer[6];
+        int count;
+        for (int i = 0; i < COUNT_DAYS; i++) {
+            count = getCountMessagesByDay(account, getDateBeforeCountDays(i));
+            result[i] = count;
+        }
+        return result;
+    }
+
+
+    private int getCountMessagesByDay(Account account, Date day) {
+        List<Assignment> assignments = assignmentRepository
+                .getAllByAccountAndTaskAndStatusAndUpdateTimeBetween(account,
+                        Task.TASK_CONNECTION,
+                        Status.STATUS_FINISHED,
+                        new Date(),
+                        day);
+        for (Assignment assignment : assignments) {
+            if (assignment.getCountMessages() == null) {
+                return 0;
+            } else {
+                return assignment.getCountMessages();
+            }
+        }
+        return 0;
     }
 }

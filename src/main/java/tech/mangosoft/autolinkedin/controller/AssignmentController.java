@@ -182,4 +182,15 @@ public class AssignmentController {
         }
         return new ResponseEntity<>(linkedInService.getAssignmentByParam(message, account), HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @GetMapping(value = "/getGraph")
+    public ResponseEntity<GraphMessage> getGraph(String email) {
+        Account account = accountRepository.getAccountByUsername(email);
+        if (account == null) {
+            logger.log(Level.WARNING, "Account must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(linkedInService.getGraph(account), HttpStatus.OK);
+    }
 }

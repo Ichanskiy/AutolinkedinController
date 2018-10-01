@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
+import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 
 import java.util.Date;
 import java.util.List;
@@ -18,7 +19,11 @@ public interface IAssignmentRepository extends CrudRepository<Assignment, Long> 
 
     List<Assignment> findByStatusOrderById(Status status);
 
-    List<Assignment> getAllByAccountAndStatusAndUpdateTimeBetween(Account account, Status status, Date from, Date to);
+    List<Assignment> getAllByAccountAndTaskAndStatusAndUpdateTimeBetween(Account account,
+                                                                         Task task,
+                                                                         Status status,
+                                                                         Date from,
+                                                                         Date to);
 
     Page<Assignment> getAllByAccount(Account account, Pageable pageable);
 
@@ -27,4 +32,6 @@ public interface IAssignmentRepository extends CrudRepository<Assignment, Long> 
     Page<Assignment> findAllByAccount(Account account, Pageable pageable);
 
     Integer countAllByAccount(Account account);
+
+    List<Assignment> getAllByAccountAndStatusAndUpdateTimeBetween(Account account, Status status, Date from, Date to);
 }
