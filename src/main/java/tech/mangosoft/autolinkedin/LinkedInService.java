@@ -495,7 +495,7 @@ public class LinkedInService {
     }
 
     private Integer[] getCountOfAddContacts(Account account) {
-        Integer[] result = new Integer[6];
+        Integer[] result = new Integer[COUNT_DAYS];
         int count;
         for (int i = 0; i < COUNT_DAYS; i++) {
             count = getCountAddedContactsByDay(account, getDateBeforeCountDays(i));
@@ -523,7 +523,7 @@ public class LinkedInService {
     }
 
     private Integer[] getCountOfMessages(Account account) {
-        Integer[] result = new Integer[6];
+        Integer[] result = new Integer[COUNT_DAYS];
         int count;
         for (int i = 0; i < COUNT_DAYS; i++) {
             count = getCountMessagesByDay(account, getDateBeforeCountDays(i));
