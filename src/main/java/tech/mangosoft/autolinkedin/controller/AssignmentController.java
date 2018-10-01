@@ -171,4 +171,15 @@ public class AssignmentController {
         }
         return new ResponseEntity<>(linkedInService.getAssignmentByUserAndStatus(account, status, count), HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @GetMapping(value = "/getAssignmentByParam")
+    public ResponseEntity<PageImpl<Assignment>> getAssignmentByParam(AssignmentsByParam message) {
+        Account account = accountRepository.getAccountByUsername(message.getEmail());
+        if (account == null) {
+            logger.log(Level.WARNING, "Account must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(linkedInService.getAssignmentByParam(message, account), HttpStatus.OK);
+    }
 }

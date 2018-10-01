@@ -149,6 +149,26 @@ public class LinkedInService {
     /**
      * @author  Ichanskiy
      *
+     * This is the method get predictes by input param.
+     * @param account input account.
+     * @param from date from.
+     * @param to date to.
+     * @param root root object predicates.
+     * @param builder CriteriaBuilder object.
+     */
+    private void getPredicatesByParam(Account account, Integer status, Date from, Date to,
+                                      Root<Assignment> root, CriteriaBuilder builder) {
+        predicates.clear();
+        if (account != null) {
+            predicates.add(builder.equal(root.get("account"), account));
+        }
+        predicates.add(builder.equal(root.get("status"), status));
+        predicates.add(builder.between(root.get("updateTime"), from, to));
+    }
+
+    /**
+     * @author  Ichanskiy
+     *
      * This is the method change assignment status.
      * @param idAssignment id Assignment object.
      * @param idStatus id Status
@@ -427,4 +447,21 @@ public class LinkedInService {
         return assignment.getContacts().contains(contact);
     }
 
+    public PageImpl<Assignment> getAssignmentByParam(AssignmentsByParam m, Account account) {
+        if (m.getFrom() == null || m.getTo() == null || m.getStatus() == null) {
+            return null;
+        }
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Assignment> criteriaQuery = builder.createQuery(Assignment.class);
+        Root<Assignment> root = criteriaQuery.from(Assignment.class);
+        criteriaQuery.orderBy(builder.desc(root.get("id")));
+        getPredicatesByParam(account, m.getStatus(), m.getFrom(), m.getTo(), root, builder);
+
+        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        TypedQuery<Assignment> query = entityManager.createQuery(criteriaQuery);
+        query.setFirstResult(0);
+        query.setMaxResults(SIZE);
+
+        return new PageImpl<>(query.getResultList(), PageRequest.of(1, SIZE), SIZE);
+    }
 }
