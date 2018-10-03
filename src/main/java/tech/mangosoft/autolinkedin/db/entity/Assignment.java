@@ -100,8 +100,7 @@ public class Assignment {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = format.format(new Date());
         try {
-            Date date = format.parse(dateString);
-            this.updateTime = date;
+            this.updateTime = format.parse(dateString);
         } catch (ParseException e) {
             e.printStackTrace();
         }
