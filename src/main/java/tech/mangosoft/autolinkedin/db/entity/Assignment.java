@@ -6,9 +6,12 @@ import org.springframework.data.annotation.LastModifiedDate;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -67,11 +70,10 @@ public class Assignment {
 
     private int dailyLimit = 0;
 
-    @Column(name = "update_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    @Type(type = "java.sql.Timestamp")
+    @Column(name = "update_time")
     @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp updateTime;
+    @Temporal(TemporalType.DATE)
+    private Date updateTime;
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "account_id")
@@ -91,6 +93,18 @@ public class Assignment {
     private List<ProcessingReport> processingReports = new ArrayList<>();
 
     public Assignment() {
+    }
+
+    @PostConstruct
+    private void formatDate(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = format.format(new Date());
+        try {
+            Date date = format.parse(dateString);
+            this.updateTime = date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public Assignment(Task task, String location, String fullLocationString, String position, String industries, Account account) {
@@ -118,29 +132,6 @@ public class Assignment {
         this.countMessages = countMessages;
         this.dailyLimitUpdateDate = new Date();
     }
-//    public enum Task {
-//
-//        TASK_DO_NOTHING(0),
-//        TASK_GRABBING(1),
-//        TASK_CONNECTION(2);
-//
-//        private int id;
-//
-//        Task(int id) {
-//            this.id = id;
-//        }
-//
-//        public int getId() {
-//            return id;
-//        }
-//
-//        public static Task getTaskById(int id) throws Exception {
-//            for (Task e : values()) {
-//                if (e.id == id) return e;
-//            }
-//            throw new Exception("No Task defined with id " + id);
-//        }
-//    }
 
     public Long getId() {
         return id;
@@ -184,7 +175,7 @@ public class Assignment {
         return status;
     }
 
-    public Timestamp getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
