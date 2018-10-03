@@ -423,6 +423,10 @@ public class LinkedInService {
 
     private static Date getDateBeforeCountDays(Integer days) {
         final Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.add(Calendar.DATE, -days);
         return cal.getTime();
     }
@@ -504,6 +508,16 @@ public class LinkedInService {
         return result;
     }
 
+    private Integer[] getCountOfMessages(Account account) {
+        Integer[] result = new Integer[COUNT_DAYS];
+        int count;
+        for (int i = 0; i < COUNT_DAYS; i++) {
+            count = getCountMessagesByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
+            result[i] = count;
+        }
+        return result;
+    }
+
     private int getCountAddedContactsByDay(Account account, Date from, Date to) {
         long count = 0;
         List<Assignment> assignments = assignmentRepository
@@ -522,24 +536,13 @@ public class LinkedInService {
         return 0;
     }
 
-    private Integer[] getCountOfMessages(Account account) {
-        Integer[] result = new Integer[COUNT_DAYS];
-        int count;
-        for (int i = 0; i < COUNT_DAYS; i++) {
-            count = getCountMessagesByDay(account, getDateBeforeCountDays(i));
-            result[i] = count;
-        }
-        return result;
-    }
-
-
-    private int getCountMessagesByDay(Account account, Date day) {
+    private int getCountMessagesByDay(Account account, Date from, Date to) {
         List<Assignment> assignments = assignmentRepository
                 .getAllByAccountAndTaskAndStatusAndUpdateTimeBetween(account,
                         Task.TASK_CONNECTION,
                         Status.STATUS_FINISHED,
-                        new Date(),
-                        day);
+                        from,
+                        to);
         for (Assignment assignment : assignments) {
             if (assignment.getCountMessages() == null) {
                 return 0;

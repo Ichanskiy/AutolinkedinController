@@ -6,8 +6,8 @@ public enum Status {
     STATUS_NEW(0),
     STATUS_IN_PROGRESS(1),
     STATUS_SUSPENDED(2),
-    STATUS_ASLEEP(9),
     STATUS_FINISHED(16),
+    STATUS_ASLEEP(9),
     STATUS_ERROR(32);
 
     private int id;
