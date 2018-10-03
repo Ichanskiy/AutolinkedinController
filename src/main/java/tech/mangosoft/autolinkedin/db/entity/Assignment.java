@@ -98,7 +98,7 @@ public class Assignment {
     @PostConstruct
     private void formatDate(){
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String dateString = format.format(new Date());
+        String dateString = format.format(this.updateTime);
         try {
             this.updateTime = format.parse(dateString);
         } catch (ParseException e) {

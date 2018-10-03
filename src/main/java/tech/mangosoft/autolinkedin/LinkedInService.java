@@ -498,20 +498,20 @@ public class LinkedInService {
         Integer[] result = new Integer[COUNT_DAYS];
         int count;
         for (int i = 0; i < COUNT_DAYS; i++) {
-            count = getCountAddedContactsByDay(account, getDateBeforeCountDays(i));
+            count = getCountAddedContactsByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
             result[i] = count;
         }
         return result;
     }
 
-    private int getCountAddedContactsByDay(Account account, Date day) {
+    private int getCountAddedContactsByDay(Account account, Date from, Date to) {
         long count = 0;
         List<Assignment> assignments = assignmentRepository
                 .getAllByAccountAndTaskAndStatusAndUpdateTimeBetween(account,
                         Task.TASK_GRABBING,
                         Status.STATUS_FINISHED,
-                        new Date(),
-                        day);
+                        from,
+                        to);
         for (Assignment assignment : assignments) {
             for (ProcessingReport report : assignment.getProcessingReports()) {
                 if (report.getSaved() != null) {
