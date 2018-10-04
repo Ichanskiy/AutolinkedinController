@@ -98,7 +98,8 @@ public class LinkedInService {
     private Assignment saveAssignmentAndAddContacts(Assignment assignment) {
         assignment.setStatus(Status.STATUS_SUSPENDED);
         Assignment assignmentDB = assignmentRepository.save(assignment);
-        List<LinkedInContact> linkedInContact = linkedInContactRepositoryCustom.getAllContactsForAssignment(assignmentDB);
+        List<LinkedInContact> linkedInContact = linkedInContactRepositoryCustom
+                .getAllContactsForAssignment(assignmentDB);
         if (linkedInContact != null) {
             setAssignmentToContacts(assignmentDB, linkedInContact);
         }
@@ -119,7 +120,7 @@ public class LinkedInService {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Assignment> criteriaQuery = builder.createQuery(Assignment.class);
         Root<Assignment> root = criteriaQuery.from(Assignment.class);
-        criteriaQuery.orderBy(builder.desc(root.get("id")));
+        criteriaQuery.orderBy(builder.desc(root.get(ID)));
         getPredicatesByParam(account, status, root, builder);
 
         criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
@@ -164,7 +165,9 @@ public class LinkedInService {
             predicates.add(builder.equal(root.get("account"), account));
         }
         predicates.add(builder.equal(root.get("status"), status));
-        predicates.add(builder.between(root.get("updateTime"), from, to));
+        if (from != null || to != null) {
+            predicates.add(builder.between(root.get("updateTime"), from, to));
+        }
     }
 
     /**
@@ -230,7 +233,8 @@ public class LinkedInService {
      * This is method delete assignment id from contacts
      */
     private void deleteAssignmentIdFromContacts(Assignment assignment) {
-        List<ContactProcessing> contactProcessings = contactProcessingRepository.getAllByAssignmentId(assignment.getId());
+        List<ContactProcessing> contactProcessings = contactProcessingRepository
+                .getAllByAssignmentId(assignment.getId());
         for (ContactProcessing contactProcessing : contactProcessings) {
             contactProcessing.setAssignment(null);
             contactProcessingRepository.save(contactProcessing);
@@ -299,12 +303,16 @@ public class LinkedInService {
      */
     public List<StatisticResponse> getStatistics(Account account, Integer page, Integer size) {
         List<StatisticResponse> statisticResponses = new ArrayList<>();
-        List<Assignment> assignments = assignmentRepository.findAllByAccount(account, PageRequest.of(page - 1, size, Sort.Direction.DESC, "id")).getContent();
+        List<Assignment> assignments = assignmentRepository.findAllByAccount(account,
+                PageRequest.of(page - 1, size, Sort.Direction.DESC, ID)).getContent();
         for (Assignment a : assignments) {
             StatisticResponse statistic = new StatisticResponse();
             statistic.setAssignment(a);
             statistic.setCountsFound(a.getCountsFound());
-            statistic.setAssignmentName(concatAllString(a.getTask().name(), a.getPosition(), a.getIndustries(), a.getFullLocationString()));
+            statistic.setAssignmentName(concatAllString(a.getTask().name(),
+                    a.getPosition(),
+                    a.getIndustries(),
+                    a.getFullLocationString()));
             statistic.setErrorMessage(a.getErrorMessage());
             statistic.setStatus(a.getStatus().name());
             statistic.setPage(a.getPage());
@@ -356,7 +364,8 @@ public class LinkedInService {
 
     private List<LinkedInContact> getLinkedInContactFromAssignment(Assignment assignment) {
         List<LinkedInContact> contacts = new ArrayList<>();
-        List<ContactProcessing> contactProcessings = contactProcessingRepository.getAllByAssignmentId(assignment.getId());
+        List<ContactProcessing> contactProcessings = contactProcessingRepository
+                .getAllByAssignmentId(assignment.getId());
         for (ContactProcessing contactProcessing : contactProcessings) {
             contacts.add(contactProcessing.getContact());
         }
@@ -433,7 +442,8 @@ public class LinkedInService {
 
     public StatisticsByConnectionMessage getContactsByConnection(Assignment assignment, Integer page) {
         StatisticsByConnectionMessage statistics = new StatisticsByConnectionMessage();
-        statistics.setConnectedContacts(contactRepository.getAllByAssignment(assignment, PageRequest.of(page < 0 ? 0 : page - 1, SIZE, Sort.Direction.DESC, ID)));
+        statistics.setConnectedContacts(contactRepository.getAllByAssignment(assignment,
+                PageRequest.of(page < 0 ? 0 : page - 1, SIZE, Sort.Direction.DESC, ID)));
         statistics.setAssignment(assignment);
         return statistics;
     }
@@ -461,7 +471,7 @@ public class LinkedInService {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Assignment> criteriaQuery = builder.createQuery(Assignment.class);
         Root<Assignment> root = criteriaQuery.from(Assignment.class);
-        criteriaQuery.orderBy(builder.desc(root.get("id")));
+        criteriaQuery.orderBy(builder.desc(root.get(ID)));
         getPredicatesByParam(account, m.getStatus(), m.getFrom(), m.getTo(), root, builder);
 
         criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
@@ -544,11 +554,7 @@ public class LinkedInService {
                         from,
                         to);
         for (Assignment assignment : assignments) {
-            if (assignment.getCountMessages() == null) {
-                return 0;
-            } else {
-                return assignment.getCountMessages();
-            }
+            return assignment.getCountMessages() != null ? assignment.getCountMessages() : 0;
         }
         return 0;
     }

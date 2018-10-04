@@ -174,7 +174,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @GetMapping(value = "/getAssignmentByParam")
-    public ResponseEntity<PageImpl<Assignment>> getAssignmentByParam(AssignmentsByParam message) {
+    public ResponseEntity<PageImpl<Assignment>> getAssignmentsByParam(AssignmentsByParam message) {
         Account account = accountRepository.getAccountByUsername(message.getEmail());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
