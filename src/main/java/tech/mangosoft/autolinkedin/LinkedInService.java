@@ -21,6 +21,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -48,6 +49,7 @@ public class LinkedInService {
     private static final Integer COUNT_DAYS = 7;
     private static final String ID = "id";
     private static List<Predicate> predicates = new ArrayList<>();
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired
     private IAssignmentRepository assignmentRepository;
@@ -491,7 +493,7 @@ public class LinkedInService {
         return new PageImpl<>(query.getResultList(), PageRequest.of(1, SIZE), SIZE);
     }
 
-    public GraphMessage getGraph(Account account) {
+    public GraphMessage getGraphByAccount(Account account) {
         GraphMessage graphMessage = new GraphMessage();
         graphMessage.setLabels(getDays());
         graphMessage.setSeries(getValuesByAccount(account));
@@ -501,7 +503,7 @@ public class LinkedInService {
     private List<String> getDays() {
         List<String> sevenDays = new ArrayList<>();
         for (int i = 0; i < COUNT_DAYS; i++) {
-            sevenDays.add(getDateBeforeCountDays(i).toString());
+            sevenDays.add(format.format(getDateBeforeCountDays(i)));
         }
         return sevenDays;
     }
