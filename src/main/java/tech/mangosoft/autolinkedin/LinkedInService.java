@@ -19,6 +19,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -158,15 +160,22 @@ public class LinkedInService {
      * <p>
      * This is the method get predictes by input param.
      */
-    private void getPredicatesByParam(Account account, Integer status, Date from, Date to,
+    private void getPredicatesByParam(Account account, Integer status, String from, String to,
                                       Root<Assignment> root, CriteriaBuilder builder) {
         predicates.clear();
         if (account != null) {
             predicates.add(builder.equal(root.get("account"), account));
         }
         predicates.add(builder.equal(root.get("status"), status));
-        if (from != null || to != null) {
-            predicates.add(builder.between(root.get("updateTime"), from, to));
+        if (from != null && to != null) {
+            try {
+                predicates.add(builder
+                        .between(root.get("updateTime"),
+                                DateFormat.getDateInstance().parse(from),
+                                DateFormat.getDateInstance().parse(to)));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 

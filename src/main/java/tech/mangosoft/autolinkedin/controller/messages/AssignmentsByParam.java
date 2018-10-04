@@ -1,13 +1,22 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class AssignmentsByParam {
 
+    @JsonProperty
     private String email;
+
+    @JsonProperty
     private Integer status;
-    private Date from;
-    private Date to;
+
+    @JsonProperty
+    private String from;
+
+    @JsonProperty
+    private String to;
 
     public String getEmail() {
         return email;
@@ -25,19 +34,19 @@ public class AssignmentsByParam {
         this.status = status;
     }
 
-    public Date getFrom() {
+    public String getFrom() {
         return from;
     }
 
-    public void setFrom(Date from) {
+    public void setFrom(String from) {
         this.from = from;
     }
 
-    public Date getTo() {
+    public String getTo() {
         return to;
     }
 
-    public void setTo(Date to) {
+    public void setTo(String to) {
         this.to = to;
     }
 }
