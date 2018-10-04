@@ -474,7 +474,7 @@ public class LinkedInService {
     }
 
     public PageImpl<Assignment> getAssignmentByParam(AssignmentsByParam m, Account account) {
-        if (m.getFrom() == null || m.getTo() == null || m.getStatus() == null) {
+        if (m.getStatus() == null) {
             return null;
         }
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
