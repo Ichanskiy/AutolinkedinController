@@ -102,7 +102,7 @@ public class Assignment {
         try {
             this.updateTime = format.parse(dateString);
         } catch (ParseException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
