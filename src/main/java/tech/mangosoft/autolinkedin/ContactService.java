@@ -83,11 +83,13 @@ public class ContactService {
 
     public void createCsvFileByParam(ContactsMessage message) throws IOException {
         List<LinkedInContact> contacts = getContactsByParamWithoutBound(message);
+        logger.info("Contacts list size = " + contacts);
         writeToCSVFile(contacts);
     }
 
     private List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
         if (message == null || message.getPage() == null) {
+            logger.info("message or page = null");
             return null;
         }
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
@@ -102,8 +104,17 @@ public class ContactService {
     private void writeToCSVFile(List<LinkedInContact> contactsFromDb) throws IOException {
         String csvFile = path.concat(filename);
         File file = new File(csvFile);
-        FileWriter writer = new FileWriter(file.getAbsoluteFile());
-        CSVUtils.writeLine(writer, Arrays.asList("id", "company_name", "first_name", "last_name", "role", "person_linkedin", "location", "industries", "email"));
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(file.getAbsoluteFile());
+        } catch (IOException e) {
+            logger.info("ERROR open FileWriter = " + e.getMessage());
+        }
+        try {
+            CSVUtils.writeLine(writer, Arrays.asList("id", "company_name", "first_name", "last_name", "role", "person_linkedin", "location", "industries", "email"));
+        } catch (IOException e) {
+            logger.info("ERROR open writeLine = " + e.getMessage());
+        }
         for (LinkedInContact contact : contactsFromDb) {
             if (!isNotNullOrEmpty(contact.getFirstName(), contact.getLastName())) {
                 continue;
@@ -219,16 +230,19 @@ public class ContactService {
     private void getPredicatesByParam(ContactsMessage contactsMessage, Root<LinkedInContact> root, CriteriaBuilder builder) {
         predicates.clear();
         if (contactsMessage.getPosition() != null && !contactsMessage.getPosition().isEmpty()) {
-            predicates.add(builder.like(root.get("role"), contactsMessage.getPosition()));
+            predicates.add(builder.like(root.get("role"), "%" + contactsMessage.getPosition() + "%" ));
+            logger.info("Position add to predicates");
         }
         if (contactsMessage.getLocation() != null && !contactsMessage.getLocation().isEmpty()) {
             Location location = locationRepository.getLocationByLocation(contactsMessage.getLocation());
             if (location != null) {
                 predicates.add(builder.equal(root.get("location"), location));
+                logger.info("Location add to predicates");
             }
         }
         if (contactsMessage.getIndustries() != null && !contactsMessage.getIndustries().isEmpty()) {
-            predicates.add(builder.like(root.get("industries"), contactsMessage.getIndustries()));
+            predicates.add(builder.like(root.get("industries"),"%" + contactsMessage.getIndustries() + "%" ));
+            logger.info("Industries add to predicates");
         }
     }
 
