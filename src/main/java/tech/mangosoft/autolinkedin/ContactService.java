@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -83,13 +84,17 @@ public class ContactService {
 
     public void createCsvFileByParam(ContactsMessage message) throws IOException {
         List<LinkedInContact> contacts = getContactsByParamWithoutBound(message);
-        logger.info("Contacts list size = " + contacts);
+        if (contacts == null) {
+            logger.log(Level.WARNING,"Contacts list is empty ");
+        } else {
+            logger.log(Level.INFO,"Contacts list size = " + contacts.size());
+        }
         writeToCSVFile(contacts);
     }
 
     private List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
         if (message == null || message.getPage() == null) {
-            logger.info("message or page = null");
+            logger.log(Level.WARNING,"message or page = null");
             return null;
         }
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
@@ -108,12 +113,12 @@ public class ContactService {
         try {
             writer = new FileWriter(file.getAbsoluteFile());
         } catch (IOException e) {
-            logger.info("ERROR open FileWriter = " + e.getMessage());
+            logger.log(Level.WARNING,"ERROR open FileWriter = " + e.getMessage());
         }
         try {
             CSVUtils.writeLine(writer, Arrays.asList("id", "company_name", "first_name", "last_name", "role", "person_linkedin", "location", "industries", "email"));
         } catch (IOException e) {
-            logger.info("ERROR open writeLine = " + e.getMessage());
+            logger.log(Level.WARNING,"ERROR open writeLine = " + e.getMessage());
         }
         for (LinkedInContact contact : contactsFromDb) {
             if (!isNotNullOrEmpty(contact.getFirstName(), contact.getLastName())) {

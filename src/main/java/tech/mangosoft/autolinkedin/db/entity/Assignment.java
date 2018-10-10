@@ -42,9 +42,6 @@ public class Assignment {
     @Column
     private Status status;
 
-    @Column(length = 4096)
-    private String params;
-
     @Column(name = "error_message", length = 4096)
     private String errorMessage;
 
@@ -165,21 +162,6 @@ public class Assignment {
         return this;
     }
 
-    public String getParams() {
-        return params;
-    }
-
-    public void setParams(String params) {
-        this.params = params;
-    }
-
-//    public String getSavedParams() {
-//        return savedParams;
-//    }
-
-//    public void setSavedParams(String savedParams) {
-//        this.savedParams = savedParams;
-//    }
 
     public Status getStatus() {
         return status;
