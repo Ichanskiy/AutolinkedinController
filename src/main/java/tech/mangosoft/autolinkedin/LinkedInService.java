@@ -80,7 +80,7 @@ public class LinkedInService {
         if (checkAllField(assignment)) {
             return null;
         }
-        return assignmentRepository.save(assignment);
+        return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
     }
 
     public Assignment createConnectionAssignment(ConnectionMessage message, Account account) {
@@ -95,7 +95,9 @@ public class LinkedInService {
         if (checkMessageAndPosition(assignment)) {
             return null;
         }
-        return saveAssignmentAndAddContacts(assignment);
+//        todo update where bot send message by assignment id
+        return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
+//        return saveAssignmentAndAddContacts(assignment);
     }
 
 
