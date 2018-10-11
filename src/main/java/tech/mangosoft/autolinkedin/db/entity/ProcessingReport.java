@@ -1,6 +1,7 @@
 package tech.mangosoft.autolinkedin.db.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -41,6 +42,7 @@ public class ProcessingReport {
 
     @ManyToOne
     @JoinColumn(name = "assignment_id")
+    @JsonIgnore
     private Assignment assignment;
 
     public ProcessingReport() {

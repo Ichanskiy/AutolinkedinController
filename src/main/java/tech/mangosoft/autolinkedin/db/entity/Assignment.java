@@ -1,7 +1,7 @@
 package tech.mangosoft.autolinkedin.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Type;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.LastModifiedDate;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
@@ -89,7 +89,7 @@ public class Assignment {
     private List<ContactProcessing> contactProcessings = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonProperty
     private List<ProcessingReport> processingReports = new ArrayList<>();
 
     public Assignment() {
@@ -192,9 +192,8 @@ public class Assignment {
     }
 
     public Integer getPage() {
-        return page;
+        return page != null ? page : 0;
     }
-
     public Assignment setPage(int page) {
         this.page = page;
         return this;
