@@ -40,6 +40,9 @@ public class ProcessingReport {
 
     private Long failed;
 
+    @Lob
+    private String logByContacts;
+
     @ManyToOne
     @JoinColumn(name = "assignment_id")
     @JsonIgnore
@@ -151,5 +154,18 @@ public class ProcessingReport {
     public ProcessingReport setAssignment(Assignment assignment) {
         this.assignment = assignment;
         return this;
+    }
+
+    public String getLogByContacts() {
+        return logByContacts;
+    }
+
+    public ProcessingReport setLogByContacts(String logContacts) {
+        this.logByContacts = logContacts;
+        return this;
+    }
+
+    public void addLogByContacts(String log){
+        this.setLogByContacts(this.getLogByContacts().concat("\n").concat(log));
     }
 }
