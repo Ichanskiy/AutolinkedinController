@@ -46,10 +46,12 @@ public class LinkedInService {
 
     private static final Logger logger = Logger.getLogger(LinkedInService.class.getName());
     private static final Integer SIZE = 50;
-    private static final Integer COUNT_DAYS = 7;
+    private static final Integer COUNT_DAYS = 10;
     private static final String ID = "id";
     private static List<Predicate> predicates = new ArrayList<>();
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+    private List<String> names =  null;
 
     @Autowired
     private IAssignmentRepository assignmentRepository;
@@ -494,11 +496,31 @@ public class LinkedInService {
 
         return new PageImpl<>(query.getResultList(), PageRequest.of(1, SIZE), SIZE);
     }
-
+/*
+    @Deprecated
     public GraphMessage getGraphByAccount(Account account) {
         GraphMessage graphMessage = new GraphMessage();
         graphMessage.setLabels(getDays());
         graphMessage.setSeries(getValuesByAccount(account));
+        return graphMessage;
+    }
+*/
+    public GraphMessage getGraphByType(Account account, String type) {
+        names =  new ArrayList<>();
+        GraphMessage graphMessage = new GraphMessage();
+        graphMessage.setLabels(getDays());
+        if (type.equals("links")) {
+            graphMessage.setSeries(getValuesByTypeLinks(account));
+        }
+        if (type.equals("messages")) {
+            graphMessage.setSeries(getValuesByTypeMessages(account));
+        }
+        if (type.equals("errors")) {
+            graphMessage.setSeries(getValuesByTypeErrors(account));
+        }
+
+        graphMessage.setAccounts(names);
+
         return graphMessage;
     }
 
@@ -510,6 +532,18 @@ public class LinkedInService {
         return sevenDays;
     }
 
+    private List<String> getAccounts(Account account) {
+        List<String> values = new ArrayList<>();
+        if (account.isAdmin()) {
+            for (Account acc: account.getCompany().getAccounts() ) {
+                values.add(acc.getFirst() + " " + acc.getLast());
+            }
+        } else {
+            values.add(account.getFirst() + " " + account.getLast());
+        }
+        return values;
+    }
+/*
     private List<Integer[]> getValuesByAccount(Account account) {
         List<Integer[]> values = new ArrayList<>();
         Integer[] countOfErrors = {0, 0, 0, 0, 0, 0, 0};
@@ -520,33 +554,102 @@ public class LinkedInService {
         values.add(countOfMessages);
         return values;
     }
+*/
+    private List<Integer[]> getValuesByTypeLinks(Account account) {
+        List<Integer[]> values = new ArrayList<>();
+        if (account.isAdmin()) {
+            for (Account acc: account.getCompany().getAccounts() ) {
+                Integer[] vals = getCountOfAddContacts(acc);
+                if (isArrayNotEmpty(vals)){
+                    names.add(acc.getFirst() + " " + acc.getLast());
+                    values.add(vals);
+                }
+
+            }
+        } else {
+            Integer[] vals = getCountOfAddContacts(account);
+            values.add(vals);
+            names.add(account.getFirst() + " " + account.getLast());
+        }
+        return values;
+    }
+
+    private boolean isArrayNotEmpty(Integer[] vals) {
+        for (int i=0; i< vals.length; i++){
+            if (vals[i]!=0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private List<Integer[]> getValuesByTypeMessages(Account account) {
+        List<Integer[]> values = new ArrayList<>();
+        if (account.isAdmin()) {
+            for (Account acc: account.getCompany().getAccounts() ) {
+                Integer[] vals = getCountOfMessages(acc);
+                if (isArrayNotEmpty(vals)){
+                    names.add(acc.getFirst() + " " + acc.getLast());
+                    values.add(vals);
+                }
+            }
+        } else {
+            Integer[] vals = getCountOfMessages(account);
+            values.add(vals);
+            names.add(account.getFirst() + " " + account.getLast());
+        }
+        return values;
+    }
+
+
+    private List<Integer[]> getValuesByTypeErrors(Account account) {
+        List<Integer[]> values = new ArrayList<>();
+        if (account.isAdmin()) {
+            for (Account acc: account.getCompany().getAccounts() ) {
+                Integer[] vals =getCountOfErrors(acc);
+                if (isArrayNotEmpty(vals)){
+                    names.add(acc.getFirst() + " " + acc.getLast());
+                    values.add(vals);
+                }
+            }
+        } else {
+            Integer[] vals = getCountOfErrors(account);
+            values.add(vals);
+            names.add(account.getFirst() + " " + account.getLast());
+        }
+        return values;
+    }
 
     private Integer[] getCountOfAddContacts(Account account) {
         Integer[] result = new Integer[COUNT_DAYS];
-        int count;
         for (int i = 0; i < COUNT_DAYS; i++) {
-            count = getCountAddedContactsByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
-            result[i] = count;
+            result[i] = getLinksCountByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
         }
         return result;
     }
 
     private Integer[] getCountOfMessages(Account account) {
         Integer[] result = new Integer[COUNT_DAYS];
-        int count;
         for (int i = 0; i < COUNT_DAYS; i++) {
-            count = getCountMessagesByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
-            result[i] = count;
+            result[i] = getMessagesCountByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
         }
         return result;
     }
 
+    private Integer[] getCountOfErrors(Account account) {
+        Integer[] result = new Integer[COUNT_DAYS];
+        for (int i = 0; i < COUNT_DAYS; i++) {
+            result[i] = getErrorsCountByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
+        }
+        return result;
+    }
+
+    /*
     private int getCountAddedContactsByDay(Account account, Date from, Date to) {
         long count = 0;
         List<Assignment> assignments = assignmentRepository
-                .getAllByAccountAndTaskAndStatusAndUpdateTimeBetween(account,
+                .getAllByAccountAndTaskAndUpdateTimeBetween(account,
                         Task.TASK_GRABBING,
-                        Status.STATUS_FINISHED,
                         from,
                         to);
         for (Assignment assignment : assignments) {
@@ -556,19 +659,57 @@ public class LinkedInService {
                 }
             }
         }
-        return 0;
+        return (int)count;
     }
 
     private int getCountMessagesByDay(Account account, Date from, Date to) {
+        long count = 0;
         List<Assignment> assignments = assignmentRepository
-                .getAllByAccountAndTaskAndStatusAndUpdateTimeBetween(account,
+                .getAllByAccountAndTaskAndUpdateTimeBetween(account,
                         Task.TASK_CONNECTION,
-                        Status.STATUS_FINISHED,
                         from,
                         to);
         for (Assignment assignment : assignments) {
-            return assignment.getCountMessages() != null ? assignment.getCountMessages() : 0;
+            count += (assignment.getCountMessages() != null) ? assignment.getCountMessages() : 0;
         }
-        return 0;
+        return (int)count;
+    }
+*/
+    private int getMessagesCountByDay(Account account, Date from, Date to) {
+        long count = 0;
+        List<ProcessingReport> reports = processingReportRepository
+                .getAllByAssignment_AccountAndAssignment_TaskAndUpdateTimeBetween(account,
+                        Task.TASK_CONNECTION,
+                        from,
+                        to);
+        for (ProcessingReport report : reports) {
+            count += (report.getSaved() != null) ? report.getSaved() : 0;
+        }
+        return (int)count;
+    }
+
+    private int getLinksCountByDay(Account account, Date from, Date to) {
+        long count = 0;
+        List<ProcessingReport> reports = processingReportRepository
+                .getAllByAssignment_AccountAndAssignment_TaskAndUpdateTimeBetween(account,
+                        Task.TASK_GRABBING,
+                        from,
+                        to);
+        for (ProcessingReport report : reports) {
+            count += (report.getSaved() != null) ? report.getSaved() : 0;
+        }
+        return (int)count;
+    }
+
+    private int getErrorsCountByDay(Account account, Date from, Date to) {
+        long count = 0;
+        List<ProcessingReport> reports = processingReportRepository
+                .getAllByAssignment_AccountAndUpdateTimeBetween(account,
+                        from,
+                        to);
+        for (ProcessingReport report : reports) {
+            count += (report.getFailed() != null) ? report.getFailed() : 0;
+        }
+        return (int)count;
     }
 }

@@ -7,6 +7,8 @@ public class GraphMessage {
     private List<String> labels;
     private List<Integer[]> series;
 
+    private List<String> accounts;
+
     public List<String> getLabels() {
         return labels;
     }
@@ -21,5 +23,13 @@ public class GraphMessage {
 
     public void setSeries(List<Integer[]> series) {
         this.series = series;
+    }
+
+    public List<String> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<String> accounts) {
+        this.accounts = accounts;
     }
 }

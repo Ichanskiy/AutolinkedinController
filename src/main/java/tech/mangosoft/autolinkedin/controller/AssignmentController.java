@@ -183,7 +183,7 @@ public class AssignmentController {
         return new ResponseEntity<>(linkedInService.getAssignmentByParam(message, account), HttpStatus.OK);
     }
 
-    @CrossOrigin
+ /*   @CrossOrigin
     @GetMapping(value = "/getGraph")
     public ResponseEntity<GraphMessage> getGraphByAccount(String email) {
         Account account = accountRepository.getAccountByUsername(email);
@@ -192,5 +192,24 @@ public class AssignmentController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(linkedInService.getGraphByAccount(account), HttpStatus.OK);
+    }
+*/
+    @CrossOrigin
+    @GetMapping(value = "/getGraphByType")
+    public ResponseEntity<GraphMessage> getGraphByType(String email, String type) {
+        Account account = accountRepository.getAccountByUsername(email);
+        if (account == null) {
+            logger.log(Level.WARNING, "Account must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        if (type.equals("links") || type.equals("messages") || type.equals("errors") ) {
+            return new ResponseEntity<>(linkedInService.getGraphByType(account, type), HttpStatus.OK);
+
+        }
+
+        logger.log(Level.WARNING, "graph type " + type + " is unsupported");
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
     }
 }

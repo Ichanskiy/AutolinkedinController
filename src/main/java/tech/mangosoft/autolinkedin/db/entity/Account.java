@@ -157,4 +157,8 @@ public class Account {
     public void setContactProcessings(List<ContactProcessing> contactProcessings) {
         this.contactProcessings = contactProcessings;
     }
+
+    public boolean isAdmin(){
+        return (this.getRole() != null) && this.getRole().equals(Role.ADMIN);
+    }
 }

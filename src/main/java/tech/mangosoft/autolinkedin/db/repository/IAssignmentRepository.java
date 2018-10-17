@@ -24,6 +24,10 @@ public interface IAssignmentRepository extends CrudRepository<Assignment, Long> 
                                                                          Status status,
                                                                          Date from,
                                                                          Date to);
+    List<Assignment> getAllByAccountAndTaskAndUpdateTimeBetween(Account account,
+                                                                         Task task,
+                                                                         Date from,
+                                                                         Date to);
 
     Page<Assignment> getAllByAccount(Account account, Pageable pageable);
 
