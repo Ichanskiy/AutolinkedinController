@@ -74,7 +74,6 @@ public class LinkedInService {
 
     public Assignment createGrabbingAssignment(GrabbingMessage message, Account account) {
         Assignment assignment = new Assignment(TASK_GRABBING,
-                message.getLocation(),
                 message.getFullLocationString(),
                 message.getPosition(),
                 message.getIndustries(),
@@ -87,7 +86,6 @@ public class LinkedInService {
 
     public Assignment createConnectionAssignment(ConnectionMessage message, Account account) {
         Assignment assignment = new Assignment(TASK_CONNECTION,
-                message.getLocation(),
                 message.getFullLocationString(),
                 message.getPosition(),
                 message.getIndustries(),
@@ -268,7 +266,7 @@ public class LinkedInService {
             logger.info("Assignment is null");
             return false;
         }
-        if (assignment.getLocation() == null || assignment.getFullLocationString() == null) {
+        if (assignment.getFullLocationString() == null) {
             logger.info("Location or full location is null");
             return false;
         }
@@ -286,8 +284,6 @@ public class LinkedInService {
         return assignment == null
                 || assignment.getFullLocationString() == null
                 || assignment.getFullLocationString().isEmpty()
-                || assignment.getLocation() == null
-                || assignment.getLocation().isEmpty()
                 || assignment.getIndustries() == null
                 || assignment.getIndustries().isEmpty()
                 || assignment.getPosition() == null

@@ -51,8 +51,6 @@ public class Assignment {
     @Column(name = "error_message", length = 4096)
     private String errorMessage;
 
-    private String location;
-
     private String fullLocationString;
 
     private String position;
@@ -106,24 +104,22 @@ public class Assignment {
         }
     }
 
-    public Assignment(Task task, String location, String fullLocationString, String position, String industries, Account account) {
+    public Assignment(Task task, String fullLocationString, String position, String industries, Account account) {
         this.page = 0;
         this.task = task;
         this.status = Status.STATUS_NEW;
         this.industries = industries;
-        this.location = location;
         this.fullLocationString = fullLocationString;
         this.position = position;
         this.account = account;
         this.dailyLimitUpdateDate = new Date();
     }
 
-    public Assignment(Task task, String location, String fullLocationString, String position, String industries, String message, Integer countMessages, Account account) {
+    public Assignment(Task task, String fullLocationString, String position, String industries, String message, Integer countMessages, Account account) {
         this.page = 0;
         this.task = task;
         this.status = Status.STATUS_NEW;
         this.industries = industries;
-        this.location = location;
         this.fullLocationString = fullLocationString;
         this.position = position;
         this.account = account;
@@ -201,15 +197,6 @@ public class Assignment {
 
     public String getErrorMessage() {
         return errorMessage;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public Assignment setLocation(String location) {
-        this.location = location;
-        return this;
     }
 
     public String getFullLocationString() {
