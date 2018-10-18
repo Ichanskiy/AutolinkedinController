@@ -8,9 +8,6 @@ public class GrabbingMessage {
     private String login;
 
     @JsonProperty
-    private String location;
-
-    @JsonProperty
     private String fullLocationString;
 
     @JsonProperty
@@ -22,9 +19,8 @@ public class GrabbingMessage {
     public GrabbingMessage() {
     }
 
-    public GrabbingMessage(String login, String location, String fullLocationString, String position, String industries) {
+    public GrabbingMessage(String login, String fullLocationString, String position, String industries) {
         this.login = login;
-        this.location = location;
         this.fullLocationString = fullLocationString;
         this.position = position;
         this.industries = industries;
@@ -36,14 +32,6 @@ public class GrabbingMessage {
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public String getFullLocationString() {

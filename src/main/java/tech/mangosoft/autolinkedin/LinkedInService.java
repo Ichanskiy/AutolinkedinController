@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 
 import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_CONNECTION;
 import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_GRABBING;
+import static tech.mangosoft.autolinkedin.db.entity.enums.Task.TASK_GRABBING_SALES;
 
 /**
  * <h1> LinkedIn Service!</h1>
@@ -74,6 +75,18 @@ public class LinkedInService {
 
     public Assignment createGrabbingAssignment(GrabbingMessage message, Account account) {
         Assignment assignment = new Assignment(TASK_GRABBING,
+                message.getFullLocationString(),
+                message.getPosition(),
+                message.getIndustries(),
+                account);
+        if (checkAllField(assignment)) {
+            return null;
+        }
+        return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
+    }
+
+    public Assignment createGrabbingSalesAssignment(GrabbingMessage message, Account account) {
+        Assignment assignment = new Assignment(TASK_GRABBING_SALES,
                 message.getFullLocationString(),
                 message.getPosition(),
                 message.getIndustries(),
