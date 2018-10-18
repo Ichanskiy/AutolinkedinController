@@ -2,10 +2,11 @@ package tech.mangosoft.autolinkedin.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
- import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -62,8 +63,8 @@ public class LinkedInContact {
     private Integer status;
 
     @Column(name = "update_time")
-    @Type(type="java.sql.Timestamp")
-    private Timestamp updateTime;
+    @UpdateTimestamp
+    private Date updateTime;
 
     @Column(name = "comments", length = 16000)
     private String comments;
@@ -99,7 +100,7 @@ public class LinkedInContact {
     @Type(type="java.sql.Timestamp")
     private Timestamp createTime;
 
-    public LinkedInContact(String companyName, String companyWebsite, String companyLinkedin, String firstName, String lastName, String role, String linkedin, String email, Timestamp updateTime) {
+    public LinkedInContact(String companyName, String companyWebsite, String companyLinkedin, String firstName, String lastName, String role, String linkedin, String email, Date updateTime) {
         this.companyName = companyName;
         this.companyWebsite = companyWebsite;
         this.companyLinkedin = companyLinkedin;
@@ -235,11 +236,11 @@ public class LinkedInContact {
         this.message = message;
     }
 
-    public Timestamp getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Timestamp updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 

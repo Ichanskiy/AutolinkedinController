@@ -3,6 +3,7 @@ package tech.mangosoft.autolinkedin.db.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.LastModifiedDate;
+import tech.mangosoft.autolinkedin.db.entity.enums.CompanyHeadcount;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 
@@ -41,6 +42,8 @@ public class Assignment {
 
     @Column
     private Task task;
+
+    private CompanyHeadcount companyHeadcount;
 
     @Column
     private Status status;
@@ -224,6 +227,14 @@ public class Assignment {
     public Assignment setIndustries(String industries) {
         this.industries = industries;
         return this;
+    }
+
+    public CompanyHeadcount getCompanyHeadcount() {
+        return companyHeadcount;
+    }
+
+    public void setCompanyHeadcount(CompanyHeadcount companyHeadcount) {
+        this.companyHeadcount = companyHeadcount;
     }
 
     public void setErrorMessage(String errorMessage) {
