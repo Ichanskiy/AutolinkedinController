@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.*;
 import tech.mangosoft.autolinkedin.db.entity.*;
+import tech.mangosoft.autolinkedin.db.entity.enums.CompanyHeadcount;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 import tech.mangosoft.autolinkedin.db.repository.*;
@@ -85,16 +86,17 @@ public class LinkedInService {
         return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
     }
 
-    public Assignment createGrabbingSalesAssignment(GrabbingMessage message, Account account) {
+    public void createGrabbingSalesAssignment(GrabbingMessage message, Account account) {
         Assignment assignment = new Assignment(TASK_GRABBING_SALES,
                 message.getFullLocationString(),
                 message.getPosition(),
                 message.getIndustries(),
-                account);
-        if (checkAllField(assignment)) {
-            return null;
+                account)
+                .setStatus(Status.STATUS_NEW);
+        for (CompanyHeadcount companyHeadcount : CompanyHeadcount.values()) {
+            assignmentRepository.save(assignment
+                    .setCompanyHeadcount(companyHeadcount));
         }
-        return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
     }
 
     public Assignment createConnectionAssignment(ConnectionMessage message, Account account) {

@@ -233,8 +233,9 @@ public class Assignment {
         return companyHeadcount;
     }
 
-    public void setCompanyHeadcount(CompanyHeadcount companyHeadcount) {
+    public Assignment setCompanyHeadcount(CompanyHeadcount companyHeadcount) {
         this.companyHeadcount = companyHeadcount;
+        return this;
     }
 
     public void setErrorMessage(String errorMessage) {
