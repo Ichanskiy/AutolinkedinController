@@ -456,13 +456,14 @@ public class LinkedInService {
                 cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
     }
 
-    private static Date getDateBeforeCountDays(Integer days) {
+    private static Date getDateBeforeCountDays(Integer days, int periodLength) {
         final Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR, 0);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.add(Calendar.DATE, -days);
+        cal.add(Calendar.DATE, -periodLength);
+        cal.add(Calendar.DATE, days);
         return cal.getTime();
     }
 
@@ -516,30 +517,29 @@ public class LinkedInService {
         return graphMessage;
     }
 */
-    public GraphMessage getGraphByType(Account account, String type) {
+    public GraphMessage getGraphByType(Account account, String type, int periodLength) {
         GraphMessage graphMessage = new GraphMessage();
-        graphMessage.setLabels(getDays());
+        graphMessage.setLabels(getDays(periodLength));
         synchronized (this) {
             names =  new ArrayList<>();
             if (type.equals("links")) {
-                graphMessage.setSeries(getValuesByTypeLinks(account));
+                graphMessage.setSeries(getValuesByTypeLinks(account, periodLength));
             }
             if (type.equals("messages")) {
-                graphMessage.setSeries(getValuesByTypeMessages(account));
+                graphMessage.setSeries(getValuesByTypeMessages(account, periodLength));
             }
             if (type.equals("errors")) {
-                graphMessage.setSeries(getValuesByTypeErrors(account));
+                graphMessage.setSeries(getValuesByTypeErrors(account, periodLength));
             }
-
             graphMessage.setAccounts(names);
         }
         return graphMessage;
     }
 
-    private List<String> getDays() {
+    private List<String> getDays(int periodLength) {
         List<String> sevenDays = new ArrayList<>();
-        for (int i = 0; i < COUNT_DAYS; i++) {
-            sevenDays.add(format.format(getDateBeforeCountDays(i)));
+        for (int i = 0; i < periodLength; i++) {
+            sevenDays.add(format.format(getDateBeforeCountDays(i, periodLength)));
         }
         return sevenDays;
     }
@@ -567,11 +567,11 @@ public class LinkedInService {
         return values;
     }
 */
-    private List<Integer[]> getValuesByTypeLinks(Account account) {
+    private List<Integer[]> getValuesByTypeLinks(Account account, int periodLength) {
         List<Integer[]> values = new ArrayList<>();
         if (account.isAdmin()) {
             for (Account acc: account.getCompany().getAccounts() ) {
-                Integer[] vals = getCountOfAddContacts(acc);
+                Integer[] vals = getCountOfAddContacts(acc, periodLength);
                 if (isArrayNotEmpty(vals)){
                     names.add(acc.getFirst() + " " + acc.getLast());
                     values.add(vals);
@@ -579,7 +579,7 @@ public class LinkedInService {
 
             }
         } else {
-            Integer[] vals = getCountOfAddContacts(account);
+            Integer[] vals = getCountOfAddContacts(account, periodLength);
             values.add(vals);
             names.add(account.getFirst() + " " + account.getLast());
         }
@@ -595,18 +595,18 @@ public class LinkedInService {
         return false;
     }
 
-    private List<Integer[]> getValuesByTypeMessages(Account account) {
+    private List<Integer[]> getValuesByTypeMessages(Account account, int periodLength) {
         List<Integer[]> values = new ArrayList<>();
         if (account.isAdmin()) {
             for (Account acc: account.getCompany().getAccounts() ) {
-                Integer[] vals = getCountOfMessages(acc);
+                Integer[] vals = getCountOfMessages(acc, periodLength);
                 if (isArrayNotEmpty(vals)){
                     names.add(acc.getFirst() + " " + acc.getLast());
                     values.add(vals);
                 }
             }
         } else {
-            Integer[] vals = getCountOfMessages(account);
+            Integer[] vals = getCountOfMessages(account, periodLength);
             values.add(vals);
             names.add(account.getFirst() + " " + account.getLast());
         }
@@ -614,44 +614,44 @@ public class LinkedInService {
     }
 
 
-    private List<Integer[]> getValuesByTypeErrors(Account account) {
+    private List<Integer[]> getValuesByTypeErrors(Account account, int periodLength) {
         List<Integer[]> values = new ArrayList<>();
         if (account.isAdmin()) {
             for (Account acc: account.getCompany().getAccounts() ) {
-                Integer[] vals =getCountOfErrors(acc);
+                Integer[] vals =getCountOfErrors(acc, periodLength);
                 if (isArrayNotEmpty(vals)){
                     names.add(acc.getFirst() + " " + acc.getLast());
                     values.add(vals);
                 }
             }
         } else {
-            Integer[] vals = getCountOfErrors(account);
+            Integer[] vals = getCountOfErrors(account, periodLength);
             values.add(vals);
             names.add(account.getFirst() + " " + account.getLast());
         }
         return values;
     }
 
-    private Integer[] getCountOfAddContacts(Account account) {
-        Integer[] result = new Integer[COUNT_DAYS];
-        for (int i = 0; i < COUNT_DAYS; i++) {
-            result[i] = getLinksCountByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
+    private Integer[] getCountOfAddContacts(Account account, int periodLength) {
+        Integer[] result = new Integer[periodLength];
+        for (int i = 0; i < periodLength; i++) {
+            result[i] = getLinksCountByDay(account, getDateBeforeCountDays(i, periodLength), getDateBeforeCountDays(i+1, periodLength));
         }
         return result;
     }
 
-    private Integer[] getCountOfMessages(Account account) {
-        Integer[] result = new Integer[COUNT_DAYS];
-        for (int i = 0; i < COUNT_DAYS; i++) {
-            result[i] = getMessagesCountByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
+    private Integer[] getCountOfMessages(Account account, int periodLength) {
+        Integer[] result = new Integer[periodLength];
+        for (int i = 0; i < periodLength; i++) {
+            result[i] = getMessagesCountByDay(account, getDateBeforeCountDays(i, periodLength), getDateBeforeCountDays(i+1, periodLength));
         }
         return result;
     }
 
-    private Integer[] getCountOfErrors(Account account) {
-        Integer[] result = new Integer[COUNT_DAYS];
-        for (int i = 0; i < COUNT_DAYS; i++) {
-            result[i] = getErrorsCountByDay(account, getDateBeforeCountDays(i), getDateBeforeCountDays(i-1));
+    private Integer[] getCountOfErrors(Account account, int periodLength) {
+        Integer[] result = new Integer[periodLength];
+        for (int i = 0; i < periodLength; i++) {
+            result[i] = getErrorsCountByDay(account, getDateBeforeCountDays(i, periodLength), getDateBeforeCountDays(i+1,periodLength));
         }
         return result;
     }

@@ -130,7 +130,6 @@ public class Account {
 
     public Account setLastPage(Integer lastPage) {
         this.lastPage = lastPage;
-
         return this;
     }
 

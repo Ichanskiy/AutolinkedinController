@@ -223,20 +223,24 @@ public class AssignmentController {
 */
     @CrossOrigin
     @GetMapping(value = "/getGraphByType")
-    public ResponseEntity<GraphMessage> getGraphByType(String email, String type) {
+    public ResponseEntity<GraphMessage> getGraphByType(String email, String type, String period) {
         Account account = accountRepository.getAccountByUsername(email);
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
+        int periodLength = 7;
+        if (period != null && period.equals("monthly")) {
+            periodLength = 30;
+        }
+
         if (type.equals("links") || type.equals("messages") || type.equals("errors") ) {
-            return new ResponseEntity<>(linkedInService.getGraphByType(account, type), HttpStatus.OK);
+            return new ResponseEntity<>(linkedInService.getGraphByType(account, type, periodLength), HttpStatus.OK);
 
         }
 
         logger.log(Level.WARNING, "graph type " + type + " is unsupported");
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
     }
 }
