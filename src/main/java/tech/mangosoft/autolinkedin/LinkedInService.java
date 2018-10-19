@@ -87,13 +87,13 @@ public class LinkedInService {
     }
 
     public void createGrabbingSalesAssignment(GrabbingMessage message, Account account) {
-        Assignment assignment = new Assignment(TASK_GRABBING_SALES,
-                message.getFullLocationString(),
-                message.getPosition(),
-                message.getIndustries(),
-                account)
-                .setStatus(Status.STATUS_NEW);
         for (CompanyHeadcount companyHeadcount : CompanyHeadcount.values()) {
+            Assignment assignment = new Assignment(TASK_GRABBING_SALES,
+                    message.getFullLocationString(),
+                    message.getPosition(),
+                    message.getIndustries(),
+                    account)
+                    .setStatus(Status.STATUS_NEW);
             assignmentRepository.save(assignment
                     .setCompanyHeadcount(companyHeadcount));
         }

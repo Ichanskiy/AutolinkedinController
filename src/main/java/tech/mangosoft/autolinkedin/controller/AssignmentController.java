@@ -42,7 +42,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createGrabbing")
-    public ResponseEntity<Assignment> createGrabbingAssignment(GrabbingMessage message) {
+    public ResponseEntity<Assignment> createGrabbingAssignment(@RequestBody GrabbingMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
@@ -58,7 +58,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createGrabbingSales")
-    public ResponseEntity<HttpStatus> createGrabbingSalesAssignment(GrabbingMessage message) {
+    public ResponseEntity<HttpStatus> createGrabbingSalesAssignment(@RequestBody GrabbingMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
@@ -70,7 +70,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createConnection")
-    public ResponseEntity<Assignment> createConnectionAssignment(ConnectionMessage message) {
+    public ResponseEntity<Assignment> createConnectionAssignment(@RequestBody ConnectionMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
