@@ -43,6 +43,7 @@ public class Assignment {
     @Column
     private Task task;
 
+    @Transient
     private CompanyHeadcount companyHeadcount;
 
     @Column

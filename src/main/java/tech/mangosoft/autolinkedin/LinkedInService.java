@@ -86,20 +86,16 @@ public class LinkedInService {
         return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
     }
 
-    public ArrayList<Assignment> createGrabbingSalesAssignment(GrabbingMessage message, Account account) {
-        ArrayList<Assignment> assignments = new ArrayList<>();
-        for (CompanyHeadcount companyHeadcount : CompanyHeadcount.values()) {
-            Assignment assignment = new Assignment(TASK_GRABBING_SALES,
-                    message.getFullLocationString(),
-                    message.getPosition(),
-                    message.getIndustries(),
-                    account)
-                    .setStatus(Status.STATUS_NEW);
-            assignmentRepository.save(assignment
-                    .setCompanyHeadcount(companyHeadcount));
-            assignments.add(assignment);
+    public Assignment createGrabbingSalesAssignment(GrabbingMessage message, Account account) {
+        Assignment assignment = new Assignment(TASK_GRABBING_SALES,
+                message.getFullLocationString(),
+                message.getPosition(),
+                message.getIndustries(),
+                account);
+        if (checkMessageAndPosition(assignment)) {
+            return null;
         }
-        return assignments;
+        return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
     }
 
     public Assignment createConnectionAssignment(ConnectionMessage message, Account account) {
