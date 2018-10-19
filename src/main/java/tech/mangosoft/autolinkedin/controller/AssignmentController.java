@@ -58,14 +58,14 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createGrabbingSales")
-    public ResponseEntity<HttpStatus> createGrabbingSalesAssignment(GrabbingMessage message) {
+    public ResponseEntity<List<Assignment>> createGrabbingSalesAssignment(GrabbingMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        linkedInService.createGrabbingSalesAssignment(message, account);
-        return new ResponseEntity<>(HttpStatus.OK);
+        ArrayList<Assignment> assignments = linkedInService.createGrabbingSalesAssignment(message, account);
+        return new ResponseEntity<>(assignments, HttpStatus.OK);
     }
 
     @CrossOrigin

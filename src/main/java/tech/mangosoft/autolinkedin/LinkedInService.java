@@ -86,7 +86,8 @@ public class LinkedInService {
         return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
     }
 
-    public void createGrabbingSalesAssignment(GrabbingMessage message, Account account) {
+    public ArrayList<Assignment> createGrabbingSalesAssignment(GrabbingMessage message, Account account) {
+        ArrayList<Assignment> assignments = new ArrayList<>();
         for (CompanyHeadcount companyHeadcount : CompanyHeadcount.values()) {
             Assignment assignment = new Assignment(TASK_GRABBING_SALES,
                     message.getFullLocationString(),
@@ -96,7 +97,9 @@ public class LinkedInService {
                     .setStatus(Status.STATUS_NEW);
             assignmentRepository.save(assignment
                     .setCompanyHeadcount(companyHeadcount));
+            assignments.add(assignment);
         }
+        return assignments;
     }
 
     public Assignment createConnectionAssignment(ConnectionMessage message, Account account) {
@@ -338,7 +341,8 @@ public class LinkedInService {
             statistic.setAssignmentName(concatAllString(a.getTask().name(),
                     a.getPosition(),
                     a.getIndustries(),
-                    a.getFullLocationString()));
+                    a.getFullLocationString(),
+                    a.getCompanyHeadcount() != null ? a.getCompanyHeadcount().name() : ""));
             statistic.setErrorMessage(a.getErrorMessage());
             statistic.setStatus(a.getStatus().name());
             statistic.setPage(a.getPage());
@@ -517,21 +521,22 @@ public class LinkedInService {
     }
 */
     public GraphMessage getGraphByType(Account account, String type) {
-        names =  new ArrayList<>();
         GraphMessage graphMessage = new GraphMessage();
         graphMessage.setLabels(getDays());
-        if (type.equals("links")) {
-            graphMessage.setSeries(getValuesByTypeLinks(account));
-        }
-        if (type.equals("messages")) {
-            graphMessage.setSeries(getValuesByTypeMessages(account));
-        }
-        if (type.equals("errors")) {
-            graphMessage.setSeries(getValuesByTypeErrors(account));
-        }
+        synchronized (this) {
+            names =  new ArrayList<>();
+            if (type.equals("links")) {
+                graphMessage.setSeries(getValuesByTypeLinks(account));
+            }
+            if (type.equals("messages")) {
+                graphMessage.setSeries(getValuesByTypeMessages(account));
+            }
+            if (type.equals("errors")) {
+                graphMessage.setSeries(getValuesByTypeErrors(account));
+            }
 
-        graphMessage.setAccounts(names);
-
+            graphMessage.setAccounts(names);
+        }
         return graphMessage;
     }
 
