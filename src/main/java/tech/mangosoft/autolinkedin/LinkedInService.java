@@ -92,7 +92,7 @@ public class LinkedInService {
                 message.getPosition(),
                 message.getIndustries(),
                 account);
-        if (checkMessageAndPosition(assignment)) {
+        if (checkAllField(assignment)) {
             return null;
         }
         return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
