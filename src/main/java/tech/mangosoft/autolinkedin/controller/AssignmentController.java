@@ -42,7 +42,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createGrabbing")
-    public ResponseEntity<Assignment> createGrabbingAssignment(@RequestBody GrabbingMessage message) {
+    public ResponseEntity<Assignment> createGrabbingAssignment(GrabbingMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
@@ -58,7 +58,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createGrabbingSales")
-    public ResponseEntity<HttpStatus> createGrabbingSalesAssignment(@RequestBody GrabbingMessage message) {
+    public ResponseEntity<HttpStatus> createGrabbingSalesAssignment(GrabbingMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
@@ -70,7 +70,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createConnection")
-    public ResponseEntity<Assignment> createConnectionAssignment(@RequestBody ConnectionMessage message) {
+    public ResponseEntity<Assignment> createConnectionAssignment(ConnectionMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
@@ -79,6 +79,17 @@ public class AssignmentController {
         Assignment assignment = linkedInService.createConnectionAssignment(message, account);
         if (assignment == null) {
             logger.log(Level.WARNING, "Message or position must be not null");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(assignment, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/{id}")
+    public ResponseEntity<Assignment> getAssignmentById(@PathVariable Long id) {
+        Assignment assignment = assignmentRepository.getById(id);
+        if (assignment == null) {
+            logger.log(Level.WARNING, "Assignment must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(assignment, HttpStatus.OK);
