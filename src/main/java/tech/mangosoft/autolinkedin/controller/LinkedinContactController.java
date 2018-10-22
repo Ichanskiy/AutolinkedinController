@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
-import tech.mangosoft.autolinkedin.ContactService;
+import tech.mangosoft.autolinkedin.service.ContactService;
 import tech.mangosoft.autolinkedin.controller.messages.ContactsMessage;
 import tech.mangosoft.autolinkedin.controller.messages.ProcessedContactMessage;
 import tech.mangosoft.autolinkedin.controller.messages.UpdateContactMessage;

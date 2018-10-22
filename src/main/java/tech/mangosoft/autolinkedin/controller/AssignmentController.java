@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
-import tech.mangosoft.autolinkedin.LinkedInService;
+import tech.mangosoft.autolinkedin.service.LinkedInService;
 import tech.mangosoft.autolinkedin.controller.messages.*;
 import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;

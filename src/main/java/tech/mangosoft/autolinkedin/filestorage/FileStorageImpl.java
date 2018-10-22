@@ -7,7 +7,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
-import tech.mangosoft.autolinkedin.ContactService;
+import tech.mangosoft.autolinkedin.service.ContactService;
 
 import java.io.File;
 import java.io.IOException;

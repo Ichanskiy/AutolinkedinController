@@ -1,4 +1,4 @@
-package tech.mangosoft.autolinkedin;
+package tech.mangosoft.autolinkedin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.*;
 import tech.mangosoft.autolinkedin.db.entity.*;
-import tech.mangosoft.autolinkedin.db.entity.enums.CompanyHeadcount;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 import tech.mangosoft.autolinkedin.db.repository.*;

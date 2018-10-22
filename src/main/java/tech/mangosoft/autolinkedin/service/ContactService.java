@@ -1,4 +1,4 @@
-package tech.mangosoft.autolinkedin;
+package tech.mangosoft.autolinkedin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

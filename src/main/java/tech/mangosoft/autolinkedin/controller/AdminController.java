@@ -6,7 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.mangosoft.autolinkedin.AccountService;
+import tech.mangosoft.autolinkedin.service.AccountService;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 
