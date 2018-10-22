@@ -1,6 +1,9 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import tech.mangosoft.autolinkedin.db.entity.enums.CompanyHeadcount;
+
+import java.util.List;
 
 public class GrabbingMessage {
 
@@ -15,6 +18,9 @@ public class GrabbingMessage {
 
     @JsonProperty
     private String industries;
+
+    @JsonProperty
+    private List<CompanyHeadcount> companyHeadcounts;
 
     public GrabbingMessage() {
     }
@@ -56,5 +62,13 @@ public class GrabbingMessage {
 
     public void setIndustries(String industries) {
         this.industries = industries;
+    }
+
+    public List<CompanyHeadcount> getCompanyHeadcounts() {
+        return companyHeadcounts;
+    }
+
+    public void setCompanyHeadcounts(List<CompanyHeadcount> companyHeadcounts) {
+        this.companyHeadcounts = companyHeadcounts;
     }
 }
