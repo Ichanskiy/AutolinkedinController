@@ -73,6 +73,10 @@ public class LinkedInContact {
     @JoinColumn(name = "location_id")
     private Location location;
 
+    @ManyToOne
+    @JoinColumn(name = "headcount_id")
+    private CompanyHeadcount headcount;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "contact_id")

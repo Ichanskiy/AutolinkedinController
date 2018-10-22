@@ -1,0 +1,14 @@
+package tech.mangosoft.autolinkedin.db.repository;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import tech.mangosoft.autolinkedin.db.entity.CompanyHeadcount;
+import tech.mangosoft.autolinkedin.db.entity.Location;
+
+import java.util.List;
+
+public interface ICompanyHeadcountRepository extends CrudRepository<CompanyHeadcount, Long> {
+
+    List<CompanyHeadcount> findAll();
+
+}
