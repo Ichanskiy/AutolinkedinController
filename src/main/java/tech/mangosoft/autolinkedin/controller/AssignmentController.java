@@ -58,7 +58,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createGrabbingSales")
-    public ResponseEntity<Assignment> createGrabbingSalesAssignment(GrabbingMessage message) {
+    public ResponseEntity<Assignment> createGrabbingSalesAssignment(@RequestBody GrabbingMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
