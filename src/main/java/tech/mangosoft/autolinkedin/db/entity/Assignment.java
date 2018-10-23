@@ -3,7 +3,6 @@ package tech.mangosoft.autolinkedin.db.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.LastModifiedDate;
-import tech.mangosoft.autolinkedin.db.entity.enums.CompanyHeadcount;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 
@@ -13,9 +12,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -93,6 +90,14 @@ public class Assignment {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
     @JsonProperty
     private List<ProcessingReport> processingReports = new ArrayList<>();
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "assignment_headcounts",
+            joinColumns = { @JoinColumn(name = "assignment_id") },
+            inverseJoinColumns = { @JoinColumn(name = "headcounts_id") }
+    )
+    Set<CompanyHeadcount> headcounts = new HashSet<>();
 
     public Assignment() {
     }
@@ -325,5 +330,13 @@ public class Assignment {
 
     public List<LinkedInContact> getContacts() {
         return contacts;
+    }
+
+    public Set<CompanyHeadcount> getHeadcounts() {
+        return headcounts;
+    }
+
+    public void setHeadcounts(Set<CompanyHeadcount> headcounts) {
+        this.headcounts = headcounts;
     }
 }

@@ -10,5 +10,6 @@ import java.util.List;
 public interface ICompanyHeadcountRepository extends CrudRepository<CompanyHeadcount, Long> {
 
     List<CompanyHeadcount> findAll();
+    CompanyHeadcount getById(Long id);
 
 }

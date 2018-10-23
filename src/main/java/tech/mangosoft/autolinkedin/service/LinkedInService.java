@@ -69,6 +69,9 @@ public class LinkedInService {
     @Autowired
     private LinkedInContactRepositoryCustomImpl linkedInContactRepositoryCustom;
 
+    @Autowired
+    private ICompanyHeadcountRepository companyHeadcountRepository;
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -94,6 +97,14 @@ public class LinkedInService {
         if (checkAllField(assignment)) {
             return null;
         }
+        Set<CompanyHeadcount> companyHeadcounts = new HashSet<>();
+        for (Long id : message.getCompanyHeadcountsIds()) {
+            CompanyHeadcount companyHeadcount = companyHeadcountRepository.getById(id);
+            if (companyHeadcount != null) {
+                companyHeadcounts.add(companyHeadcount);
+            }
+        }
+        assignment.setHeadcounts(companyHeadcounts);
         return assignmentRepository.save(assignment.setStatus(Status.STATUS_NEW));
     }
 
@@ -336,8 +347,8 @@ public class LinkedInService {
             statistic.setAssignmentName(concatAllString(a.getTask().name(),
                     a.getPosition(),
                     a.getIndustries(),
-                    a.getFullLocationString(),
-                    a.getCompanyHeadcount() != null ? a.getCompanyHeadcount().name() : ""));
+                    a.getFullLocationString()/*,
+                    a.getCompanyHeadcount() != null ? a.getCompanyHeadcount().name() : "")*/));
             statistic.setErrorMessage(a.getErrorMessage());
             statistic.setStatus(a.getStatus().name());
             statistic.setPage(a.getPage());
