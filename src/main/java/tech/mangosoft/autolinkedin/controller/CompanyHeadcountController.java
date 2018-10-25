@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import tech.mangosoft.autolinkedin.db.entity.CompanyHeadcount;
 import tech.mangosoft.autolinkedin.db.repository.ICompanyHeadcountRepository;
 
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -20,6 +21,9 @@ public class CompanyHeadcountController {
     @GetMapping("/all")
     public ResponseEntity<List<CompanyHeadcount>> getAllCompanyHeadcount() {
         List<CompanyHeadcount> companyHeadcounts = headcountRepository.findAll();
+        Comparator<CompanyHeadcount> comparator = (left, right) -> (int) (left.getId() - right.getId());
+        companyHeadcounts.sort(comparator);
         return new ResponseEntity<>(companyHeadcounts, HttpStatus.OK);
     }
+
 }
