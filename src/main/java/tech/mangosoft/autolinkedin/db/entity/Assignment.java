@@ -91,7 +91,7 @@ public class Assignment {
     @JsonProperty
     private List<ProcessingReport> processingReports = new ArrayList<>();
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             name = "assignment_headcounts",
             joinColumns = { @JoinColumn(name = "assignment_id") },
