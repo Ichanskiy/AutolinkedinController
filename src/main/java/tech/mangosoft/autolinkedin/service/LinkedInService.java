@@ -1,5 +1,6 @@
 package tech.mangosoft.autolinkedin.service;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -195,7 +196,7 @@ public class LinkedInService {
             predicates.add(builder.equal(root.get("account"), account));
         }
         predicates.add(builder.equal(root.get("status"), status));
-        if (from != null && to != null) {
+        if (!Strings.isEmpty(from) && !Strings.isEmpty(to)) {
             try {
                 predicates.add(builder
                         .between(root.get("updateTime"),
