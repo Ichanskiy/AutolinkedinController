@@ -1,7 +1,6 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import tech.mangosoft.autolinkedin.db.entity.CompanyHeadcount;
 
 import java.util.List;
 
@@ -21,6 +20,9 @@ public class GrabbingMessage {
 
     @JsonProperty
     private List<Long> idsHeadcount;
+
+    @JsonProperty
+    private Long groupId;
 
     public GrabbingMessage() {
     }
@@ -70,5 +72,13 @@ public class GrabbingMessage {
 
     public void setIdsHeadcount(List<Long> idsCHeadcount) {
         this.idsHeadcount = idsCHeadcount;
+    }
+
+    public Long getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 }

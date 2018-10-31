@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+import tech.mangosoft.autolinkedin.db.repository.IGroupRepository;
 import tech.mangosoft.autolinkedin.service.LinkedInService;
 import tech.mangosoft.autolinkedin.controller.messages.*;
 import tech.mangosoft.autolinkedin.db.entity.*;
@@ -32,6 +33,9 @@ public class AssignmentController {
     private IAssignmentRepository assignmentRepository;
 
     @Autowired
+    private IGroupRepository groupRepository;
+
+    @Autowired
     private IAccountRepository accountRepository;
 
     @Autowired
@@ -42,7 +46,7 @@ public class AssignmentController {
 
     @CrossOrigin
     @PostMapping(value = "/createGrabbing")
-    public ResponseEntity<Assignment> createGrabbingAssignment(GrabbingMessage message) {
+    public ResponseEntity<Assignment> createGrabbingAssignment(@RequestBody GrabbingMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
@@ -111,6 +115,12 @@ public class AssignmentController {
         List<StatisticResponse> statisticResponse = linkedInService.getStatistics(account, page, 20);
         return new ResponseEntity<>(new PageImpl<>(statisticResponse,
                 PageRequest.of(page - 1, COUNT_TO_PAGE), count), HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/getGroups")
+    public List<Group> getGroups() {
+        return groupRepository.findAll();
     }
 
     @CrossOrigin

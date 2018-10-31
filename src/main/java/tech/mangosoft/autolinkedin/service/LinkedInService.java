@@ -71,6 +71,9 @@ public class LinkedInService {
     private LinkedInContactRepositoryCustomImpl linkedInContactRepositoryCustom;
 
     @Autowired
+    private IGroupRepository groupRepository;
+
+    @Autowired
     private ICompanyHeadcountRepository companyHeadcountRepository;
 
     @PersistenceContext
@@ -98,6 +101,13 @@ public class LinkedInService {
         if (checkAllField(assignment)) {
             return null;
         }
+
+        if(message.getGroupId() != null){
+            Set<Group> groups = new HashSet<>();
+            groups.add(groupRepository.getById(message.getGroupId()));
+            assignment.setGroups(groups);
+        }
+
         Set<CompanyHeadcount> companyHeadcounts = new HashSet<>();
         for (Long id : message.getCompanyHeadcountsIds()) {
             CompanyHeadcount companyHeadcount = companyHeadcountRepository.getById(id);

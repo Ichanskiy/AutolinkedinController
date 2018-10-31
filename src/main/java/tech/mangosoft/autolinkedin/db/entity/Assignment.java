@@ -99,6 +99,14 @@ public class Assignment {
     )
     Set<CompanyHeadcount> headcounts = new HashSet<>();
 
+    @ManyToMany(cascade = {CascadeType.MERGE , CascadeType.PERSIST}, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "assignment_groups",
+            joinColumns = {@JoinColumn(name = "assignment_id")},
+            inverseJoinColumns = {@JoinColumn(name = "groups_id")}
+    )
+    private Set<Group> groups = new HashSet<>();
+
     public Assignment() {
     }
 
@@ -338,5 +346,13 @@ public class Assignment {
 
     public void setHeadcounts(Set<CompanyHeadcount> headcounts) {
         this.headcounts = headcounts;
+    }
+
+    public Set<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
     }
 }
