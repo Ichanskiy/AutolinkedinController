@@ -54,4 +54,9 @@ public class CompanyHeadcount {
     public void addLinkedInContacts(LinkedInContact linkedInContact) {
         this.linkedInContacts.add(linkedInContact);
     }
+
+    @Override
+    public String toString() {
+        return headcount;
+    }
 }

@@ -348,8 +348,8 @@ public class LinkedInService {
             statistic.setAssignmentName(concatAllString(a.getTask().name(),
                     a.getPosition(),
                     a.getIndustries(),
-                    a.getFullLocationString()/*,
-                    a.getCompanyHeadcount() != null ? a.getCompanyHeadcount().name() : "")*/));
+                    a.getFullLocationString(),
+                    a.getCompanyHeadcount() != null ? getHeadcounts(a.getHeadcounts()) : ""));
             statistic.setErrorMessage(a.getErrorMessage());
             statistic.setStatus(a.getStatus().name());
             statistic.setPage(a.getPage());
@@ -363,6 +363,14 @@ public class LinkedInService {
             statisticResponses.add(statistic);
         }
         return statisticResponses;
+    }
+
+    private String getHeadcounts(Set<CompanyHeadcount> companyHeadcounts){
+        String resultString = "";
+        for (CompanyHeadcount companyHeadcount : companyHeadcounts) {
+            resultString = resultString.concat(companyHeadcount.toString());
+        }
+        return resultString;
     }
 
     public StatisticsByDaysMessage getStatisticsByDays(Account account, Date from, Date to) {
