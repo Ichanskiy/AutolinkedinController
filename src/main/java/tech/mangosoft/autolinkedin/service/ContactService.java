@@ -56,7 +56,7 @@ public class ContactService {
     private static final String ID = "id";
     private Integer FIRST_NAME_POSITION = 1;
     private Integer LAST_NAME_POSITION = 2;
-    private Integer EMAIL_NAME_POSITION = 6;
+    private Integer EMAIL_NAME_POSITION = -1;
     private Integer ID_POSITION = -1;
 
     private List<Predicate> predicates = new ArrayList<>();
@@ -102,7 +102,7 @@ public class ContactService {
         String csvFile = path.concat(filename);
         File file = new File(csvFile);
         FileWriter writer = new FileWriter(file.getAbsoluteFile());
-        CSVUtils.writeLine(writer, Arrays.asList("id", "company_name", "first_name", "last_name", "role", "person_linkedin", "location", "industries", "email"));
+        CSVUtils.writeLine(writer, Arrays.asList("id", "company_name", "company_website", "first_name", "last_name", "role", "person_linkedin", "location", "industries", "email"));
         for (LinkedInContact contact : contactsFromDb) {
             if (!isNotNullOrEmpty(contact.getFirstName(), contact.getLastName())) {
                 continue;
@@ -110,13 +110,14 @@ public class ContactService {
             CSVUtils.writeLine(writer, Arrays
                     .asList(contact.getId() != null ? contact.getId().toString().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().concat(" ").replace(",", ";") : " ",
+                            isNotNullOrEmpty(contact.getCompanyWebsite()) ? contact.getCompanyWebsite().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getLastName()) ? contact.getLastName().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getRole()) ? contact.getRole().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().concat(" ").replace(",", ";") : " ",
                             contact.getLocation() != null ? contact.getLocation().getLocation().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().concat(" ").replace(",", ";") : " ",
-                            " "));
+                            isNotNullOrEmpty(contact.getEmail()) ? contact.getEmail().concat(" ").replace(",", ";") : " "));
         }
         writer.flush();
         writer.close();
