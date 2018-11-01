@@ -51,7 +51,7 @@ public class LinkedInService {
     private static final Integer COUNT_DAYS = 10;
     private static final String ID = "id";
     private static List<Predicate> predicates = new ArrayList<>();
-    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    private static SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
 
     private List<String> names =  null;
 
