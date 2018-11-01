@@ -33,7 +33,7 @@ public class AdminController {
         }
         long count = accountRepository.count();
         return new ResponseEntity<>(new PageImpl<>(accounts,
-                PageRequest.of(page, COUNT_TO_PAGE), count), HttpStatus.OK);
+                PageRequest.of(page - 1, COUNT_TO_PAGE), count), HttpStatus.OK);
     }
 
     @CrossOrigin

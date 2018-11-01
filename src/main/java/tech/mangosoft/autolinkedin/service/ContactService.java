@@ -341,6 +341,7 @@ public class ContactService {
         return contactRepository.save(linkedInContactDB.
                 setEmail(updateContactMessage.getEmail())
                 .setCompanyName(updateContactMessage.getCompanyName())
+                .setCompanyWebsite(updateContactMessage.getCompanySite())
                 .setLastName(updateContactMessage.getLastName())
                 .setFirstName(updateContactMessage.getFirstName())
                 .setRole(updateContactMessage.getRole())

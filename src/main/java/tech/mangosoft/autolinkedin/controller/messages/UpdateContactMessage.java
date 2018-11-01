@@ -31,10 +31,13 @@ public class UpdateContactMessage {
     @JsonProperty
     private String companyName;
 
+    @JsonProperty
+    private String companySite;
+
     public UpdateContactMessage() {
     }
 
-    public UpdateContactMessage(Long id, String email, String industries, String comment, String location, String firstName, String lastName, String role, String companyName) {
+    public UpdateContactMessage(Long id, String email, String industries, String comment, String location, String firstName, String lastName, String role, String companyName, String companySite) {
         this.id = id;
         this.email = email;
         this.industries = industries;
@@ -44,6 +47,7 @@ public class UpdateContactMessage {
         this.lastName = lastName;
         this.role = role;
         this.companyName = companyName;
+        this.companySite = companySite;
     }
 
     public Long getId() {
@@ -116,5 +120,13 @@ public class UpdateContactMessage {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getCompanySite() {
+        return companySite;
+    }
+
+    public void setCompanySite(String companySite) {
+        this.companySite = companySite;
     }
 }

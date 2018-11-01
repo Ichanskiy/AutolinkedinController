@@ -140,8 +140,9 @@ public class LinkedInContact {
         return companyWebsite;
     }
 
-    public void setCompanyWebsite(String companyWebsite) {
+    public LinkedInContact setCompanyWebsite(String companyWebsite) {
         this.companyWebsite = companyWebsite;
+        return this;
     }
 
     public String getCompanyLinkedin() {
