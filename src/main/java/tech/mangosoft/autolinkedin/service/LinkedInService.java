@@ -136,23 +136,23 @@ public class LinkedInService {
     }
 
 
-    private Assignment saveAssignmentAndAddContacts(Assignment assignment) {
-        assignment.setStatus(Status.STATUS_SUSPENDED);
-        Assignment assignmentDB = assignmentRepository.save(assignment);
-        List<LinkedInContact> linkedInContact = linkedInContactRepositoryCustom
-                .getAllContactsForAssignment(assignmentDB);
-        if (linkedInContact != null) {
-            setAssignmentToContacts(assignmentDB, linkedInContact);
-        }
-        return assignmentDB;
-    }
+//    private Assignment saveAssignmentAndAddContacts(Assignment assignment) {
+//        assignment.setStatus(Status.STATUS_SUSPENDED);
+//        Assignment assignmentDB = assignmentRepository.save(assignment);
+//        List<LinkedInContact> linkedInContact = linkedInContactRepositoryCustom
+//                .getAllContactsForAssignment(assignmentDB);
+//        if (linkedInContact != null) {
+//            setAssignmentToContacts(assignmentDB, linkedInContact);
+//        }
+//        return assignmentDB;
+//    }
 
-    private void setAssignmentToContacts(Assignment assignment, List<LinkedInContact> linkedInContact) {
-        for (LinkedInContact contact : linkedInContact) {
-            contact.setAssignment(assignment);
-            contactRepository.save(contact);
-        }
-    }
+//    private void setAssignmentToContacts(Assignment assignment, List<LinkedInContact> linkedInContact) {
+//        for (LinkedInContact contact : linkedInContact) {
+//            contact.setAssignment(assignment);
+//            contactRepository.save(contact);
+//        }
+//    }
 
     public PageImpl<Assignment> getAssignmentByUserAndStatus(Account account, Integer status, Integer count) {
         if (account == null || count == null || status == null) {
@@ -498,27 +498,27 @@ public class LinkedInService {
 
     public StatisticsByConnectionMessage getContactsByConnection(Assignment assignment, Integer page) {
         StatisticsByConnectionMessage statistics = new StatisticsByConnectionMessage();
-        statistics.setConnectedContacts(contactRepository.getAllByAssignment(assignment,
+        statistics.setConnectedContacts(contactRepository.getAllByAssignments(assignment,
                 PageRequest.of(page < 0 ? 0 : page - 1, SIZE, Sort.Direction.DESC, ID)));
         statistics.setAssignment(assignment);
         return statistics;
     }
 
-    public void deleteContactsFromAssignment(Assignment assignment, List<Long> contactsIds) {
-        List<LinkedInContact> contacts = contactRepository.findAllById(contactsIds);
-        for (LinkedInContact contact : contacts) {
-            if (assignmentHasThisContact(assignment, contact)) {
-                contact.setAssignment(null);
-                assignment.removeLinkedInContact(contact);
-                contactRepository.save(contact);
-            }
-        }
-        assignmentRepository.save(assignment);
-    }
+//    public void deleteContactsFromAssignment(Assignment assignment, List<Long> contactsIds) {
+//        List<LinkedInContact> contacts = contactRepository.findAllById(contactsIds);
+//        for (LinkedInContact contact : contacts) {
+//            if (assignmentHasThisContact(assignment, contact)) {
+//                contact.setAssignment(null);
+//                assignment.removeLinkedInContact(contact);
+//                contactRepository.save(contact);
+//            }
+//        }
+//        assignmentRepository.save(assignment);
+//    }
 
-    private boolean assignmentHasThisContact(Assignment assignment, LinkedInContact contact) {
-        return assignment.getContacts().contains(contact);
-    }
+//    private boolean assignmentHasThisContact(Assignment assignment, LinkedInContact contact) {
+//        return assignment.getContacts().contains(contact);
+//    }
 
     public PageImpl<Assignment> getAssignmentByParam(AssignmentsByParam m, Account account) {
         if (m.getStatus() == null) {

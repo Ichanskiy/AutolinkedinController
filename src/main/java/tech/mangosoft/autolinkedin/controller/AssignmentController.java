@@ -5,15 +5,17 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import tech.mangosoft.autolinkedin.db.repository.IGroupRepository;
-import tech.mangosoft.autolinkedin.service.LinkedInService;
 import tech.mangosoft.autolinkedin.controller.messages.*;
-import tech.mangosoft.autolinkedin.db.entity.*;
+import tech.mangosoft.autolinkedin.db.entity.Account;
+import tech.mangosoft.autolinkedin.db.entity.Assignment;
+import tech.mangosoft.autolinkedin.db.entity.Location;
+import tech.mangosoft.autolinkedin.db.entity.Group;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
+import tech.mangosoft.autolinkedin.service.LinkedInService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -182,21 +184,21 @@ public class AssignmentController {
         return new ResponseEntity<>(statistics, HttpStatus.OK);
     }
 
-    @CrossOrigin
-    @DeleteMapping(value = "/deleteContactsFromAssignment")
-    public ResponseEntity<HttpStatus> deleteContactsFromAssignment(Long id, List<Long> contactsIds) {
-        Assignment assignment = assignmentRepository.getById(id);
-        if (assignment == null) {
-            logger.log(Level.WARNING, "Assignment must be not null");
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        if (CollectionUtils.isEmpty(contactsIds)) {
-            logger.log(Level.WARNING, "List must be not null or empty");
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        linkedInService.deleteContactsFromAssignment(assignment, contactsIds);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @CrossOrigin
+//    @DeleteMapping(value = "/deleteContactsFromAssignment")
+//    public ResponseEntity<HttpStatus> deleteContactsFromAssignment(Long id, List<Long> contactsIds) {
+//        Assignment assignment = assignmentRepository.getById(id);
+//        if (assignment == null) {
+//            logger.log(Level.WARNING, "Assignment must be not null");
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//        if (CollectionUtils.isEmpty(contactsIds)) {
+//            logger.log(Level.WARNING, "List must be not null or empty");
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//        linkedInService.deleteContactsFromAssignment(assignment, contactsIds);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
     @CrossOrigin
     @GetMapping(value = "/getAssignmentByUserAndStatus")

@@ -68,5 +68,5 @@ public interface ILinkedInContactRepository extends JpaRepository<LinkedInContac
 
     List<LinkedInContact> findAllByStatusAndLocation(int statusNew, Location location);
 
-    Page<LinkedInContact> getAllByAssignment(Assignment assignment, Pageable pageable);
+    Page<LinkedInContact> getAllByAssignments(Assignment assignment, Pageable pageable);
 }

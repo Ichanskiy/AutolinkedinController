@@ -81,10 +81,6 @@ public class Assignment {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<LinkedInContact> contacts;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<ContactProcessing> contactProcessings = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignment", cascade = CascadeType.ALL)
@@ -93,11 +89,19 @@ public class Assignment {
 
     @ManyToMany(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
+            name = "assignment_contacts",
+            joinColumns = { @JoinColumn(name = "assignment_id") },
+            inverseJoinColumns = { @JoinColumn(name = "contacts_id") }
+    )
+    private Set<LinkedInContact> contacts = new HashSet<>();
+
+    @ManyToMany(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
             name = "assignment_headcounts",
             joinColumns = { @JoinColumn(name = "assignment_id") },
             inverseJoinColumns = { @JoinColumn(name = "headcounts_id") }
     )
-    Set<CompanyHeadcount> headcounts = new HashSet<>();
+    private Set<CompanyHeadcount> headcounts = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.MERGE , CascadeType.PERSIST}, fetch = FetchType.EAGER)
     @JoinTable(
@@ -303,19 +307,17 @@ public class Assignment {
         pr.setAssignment(this);
     }
 
-    public void removeWProcessinReport(ProcessingReport pr) {
+    public void removeProcessinReport(ProcessingReport pr) {
         processingReports.remove(pr);
         pr.setAssignment(null);
     }
 
     public void addLinkedInContact(LinkedInContact lc) {
         contacts.add(lc);
-        lc.setAssignment(this);
     }
 
     public void removeLinkedInContact(LinkedInContact lc) {
         contacts.remove(lc);
-        lc.setAssignment(null);
     }
 
     public void addContactProcessing(ContactProcessing cp) {
@@ -334,10 +336,6 @@ public class Assignment {
 
     public List<ProcessingReport> getProcessingReports() {
         return processingReports;
-    }
-
-    public List<LinkedInContact> getContacts() {
-        return contacts;
     }
 
     public Set<CompanyHeadcount> getHeadcounts() {
