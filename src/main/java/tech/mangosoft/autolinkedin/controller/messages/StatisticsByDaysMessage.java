@@ -1,11 +1,19 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
 
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class StatisticsByDaysMessage {
 
     @JsonProperty
@@ -17,37 +25,8 @@ public class StatisticsByDaysMessage {
     @JsonProperty
     private List<LinkedInContact> connectedContacts;
 
-    public StatisticsByDaysMessage() {
-    }
-
-    public StatisticsByDaysMessage(Account account, List<LinkedInContact> grabbingContacts, List<LinkedInContact> connectedContacts) {
-        this.account = account;
-        this.grabbingContacts = grabbingContacts;
-        this.connectedContacts = connectedContacts;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
     public StatisticsByDaysMessage setAccount(Account account) {
         this.account = account;
         return this;
-    }
-
-    public List<LinkedInContact> getGrabbingContacts() {
-        return grabbingContacts;
-    }
-
-    public void setGrabbingContacts(List<LinkedInContact> grabbingContacts) {
-        this.grabbingContacts = grabbingContacts;
-    }
-
-    public List<LinkedInContact> getConnectedContacts() {
-        return connectedContacts;
-    }
-
-    public void setConnectedContacts(List<LinkedInContact> connectedContacts) {
-        this.connectedContacts = connectedContacts;
     }
 }

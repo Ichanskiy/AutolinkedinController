@@ -2,6 +2,10 @@ package tech.mangosoft.autolinkedin.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.LastModifiedDate;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
@@ -18,6 +22,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "assignment")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Assignment {
 //
 //    public static final int TASK_DO_NOTHING = 0;
@@ -111,9 +119,6 @@ public class Assignment {
     )
     private Set<Group> groups = new HashSet<>();
 
-    public Assignment() {
-    }
-
     @PostConstruct
     private void formatDate(){
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -149,18 +154,6 @@ public class Assignment {
         this.dailyLimitUpdateDate = new Date();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
     public Assignment setTask(Task task) {
         this.task = task;
         return this;
@@ -171,14 +164,6 @@ public class Assignment {
         return this;
     }
 
-    public String getParams() {
-        return params;
-    }
-
-    public void setParams(String params) {
-        this.params = params;
-    }
-
 //    public String getSavedParams() {
 //        return savedParams;
 //    }
@@ -186,22 +171,6 @@ public class Assignment {
 //    public void setSavedParams(String savedParams) {
 //        this.savedParams = savedParams;
 //    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
 
     public Assignment setAccount(Account account) {
         this.account = account;
@@ -216,21 +185,9 @@ public class Assignment {
         return this;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public String getFullLocationString() {
-        return fullLocationString;
-    }
-
     public Assignment setFullLocationString(String fullLocationString) {
         this.fullLocationString = fullLocationString;
         return this;
-    }
-
-    public String getPosition() {
-        return position;
     }
 
     public Assignment setPosition(String position) {
@@ -238,17 +195,9 @@ public class Assignment {
         return this;
     }
 
-    public String getIndustries() {
-        return industries;
-    }
-
     public Assignment setIndustries(String industries) {
         this.industries = industries;
         return this;
-    }
-
-    public CompanyHeadcount getCompanyHeadcount() {
-        return companyHeadcount;
     }
 
     public Assignment setCompanyHeadcount(CompanyHeadcount companyHeadcount) {
@@ -256,45 +205,9 @@ public class Assignment {
         return this;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
-
-    public Date getDailyLimitUpdateDate() {
-        return dailyLimitUpdateDate;
-    }
-
     public Assignment setDailyLimitUpdateDate(Date dailyLimitUpdateDate) {
         this.dailyLimitUpdateDate = dailyLimitUpdateDate;
         return this;
-    }
-
-    public int getDailyLimit() {
-        return dailyLimit;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Integer getCountsFound() {
-        return countsFound;
-    }
-
-    public Integer getCountMessages() {
-        return countMessages;
-    }
-
-    public void setCountMessages(Integer countMessages) {
-        this.countMessages = countMessages;
-    }
-
-    public void setCountsFound(Integer countsFound) {
-        this.countsFound = countsFound;
     }
 
     public Assignment setDailyLimit(int dailyLimit) {
@@ -330,27 +243,4 @@ public class Assignment {
         cp.setAssignment(null);
     }
 
-    public List<ContactProcessing> getContactProcessings() {
-        return contactProcessings;
-    }
-
-    public List<ProcessingReport> getProcessingReports() {
-        return processingReports;
-    }
-
-    public Set<CompanyHeadcount> getHeadcounts() {
-        return headcounts;
-    }
-
-    public void setHeadcounts(Set<CompanyHeadcount> headcounts) {
-        this.headcounts = headcounts;
-    }
-
-    public Set<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(Set<Group> groups) {
-        this.groups = groups;
-    }
 }
