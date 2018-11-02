@@ -18,6 +18,11 @@ public interface IProcessingReportRepository extends CrudRepository<ProcessingRe
                                                                                             Date from,
                                                                                             Date to);
 
+    List<ProcessingReport> getAllByAssignment_AccountAndAssignment_TaskNotAndUpdateTimeBetween(Account account,
+                                                                                               Task task,
+                                                                                               Date from,
+                                                                                               Date to);
+
     List<ProcessingReport> getAllByAssignment_AccountAndUpdateTimeBetween(Account account,
                                                                           Date from,
                                                                           Date to);

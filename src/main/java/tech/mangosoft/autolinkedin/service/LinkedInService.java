@@ -732,9 +732,9 @@ public class LinkedInService {
     private int getLinksCountByDay(Account account, Date from, Date to) {
         long count = 0;
         List<ProcessingReport> reports = processingReportRepository
-                .getAllByAssignment_AccountAndAssignment_TaskAndUpdateTimeBetween(account,
-                        Task.TASK_GRABBING,
-                        from,
+                .getAllByAssignment_AccountAndAssignment_TaskNotAndUpdateTimeBetween(account,
+                        Task.TASK_CONNECTION,
+                       from,
                         to);
         for (ProcessingReport report : reports) {
             count += (report.getSaved() != null) ? report.getSaved() : 0;
