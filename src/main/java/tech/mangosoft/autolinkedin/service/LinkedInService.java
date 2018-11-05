@@ -377,8 +377,14 @@ public class LinkedInService {
 
     private String getHeadcounts(Set<CompanyHeadcount> companyHeadcounts){
         String resultString = "";
+        int i = 0;
         for (CompanyHeadcount companyHeadcount : companyHeadcounts) {
-            resultString = resultString.concat(companyHeadcount.toString());
+            if(i++ == companyHeadcounts.size() - 1){
+                resultString = resultString.concat(companyHeadcount.toString());
+            }else{
+                resultString = resultString.concat(companyHeadcount.toString() + ", ");
+            }
+
         }
         return resultString;
     }
