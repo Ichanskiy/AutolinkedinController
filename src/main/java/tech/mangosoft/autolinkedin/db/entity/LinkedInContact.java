@@ -188,6 +188,14 @@ public class LinkedInContact {
         this.linkedin = linkedin;
     }
 
+    public Set<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(Set<Assignment> assignments) {
+        this.assignments = assignments;
+    }
+
     public String getEmail() {
         return email;
     }

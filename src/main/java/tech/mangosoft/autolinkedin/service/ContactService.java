@@ -6,12 +6,12 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.ContactsMessage;
 import tech.mangosoft.autolinkedin.controller.messages.UpdateContactMessage;
 import tech.mangosoft.autolinkedin.db.entity.*;
-import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
-import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
-import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
+import tech.mangosoft.autolinkedin.db.entity.enums.Task;
+import tech.mangosoft.autolinkedin.db.repository.*;
 import tech.mangosoft.autolinkedin.utils.CSVUtils;
 
 import javax.persistence.EntityManager;
@@ -62,6 +62,9 @@ public class ContactService {
     private List<Predicate> predicates = new ArrayList<>();
 
     @Autowired
+    private IAssignmentRepository assignmentRepository;
+
+    @Autowired
     private ILinkedInContactRepository contactRepository;
 
     @Autowired
@@ -102,7 +105,7 @@ public class ContactService {
         String csvFile = path.concat(filename);
         File file = new File(csvFile);
         FileWriter writer = new FileWriter(file.getAbsoluteFile());
-        CSVUtils.writeLine(writer, Arrays.asList("id", "company_name", "company_website", "first_name", "last_name", "role", "person_linkedin", "location", "industries", "email"));
+        CSVUtils.writeLine(writer, Arrays.asList("id", "company_name", "company_website", "first_name", "last_name", "role", "person_linkedin", "location", "industries", "user", "email"));
         for (LinkedInContact contact : contactsFromDb) {
             if (!isNotNullOrEmpty(contact.getFirstName(), contact.getLastName())) {
                 continue;
@@ -117,10 +120,23 @@ public class ContactService {
                             isNotNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().concat(" ").replace(",", ";") : " ",
                             contact.getLocation() != null ? contact.getLocation().getLocation().concat(" ").replace(",", ";") : " ",
                             isNotNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().concat(" ").replace(",", ";") : " ",
+                            getUserFullnameWhichAddCurrentContact(contact),
                             isNotNullOrEmpty(contact.getEmail()) ? contact.getEmail().concat(" ").replace(",", ";") : " "));
         }
         writer.flush();
         writer.close();
+    }
+
+    private String getUserFullnameWhichAddCurrentContact(LinkedInContact contact) {
+        Set<Assignment> assignments = contact.getAssignments();
+        if (!CollectionUtils.isEmpty(assignments)) {
+            Assignment assignment = assignments
+                    .stream()
+                    .filter(a -> !a.getTask().equals(Task.TASK_CONNECTION))
+                    .min(Comparator.comparing(Assignment::getUpdateTime)).get();
+            return assignment.getAccount() != null ? assignment.getAccount().getCaption() : " ";
+        }
+        return " ";
     }
 
     public boolean exportCSVFilesToDataBaseAndCheckIsCorrect(final File file) throws FileNotFoundException {
