@@ -359,7 +359,7 @@ public class LinkedInService {
                     a.getPosition(),
                     a.getIndustries(),
                     a.getFullLocationString(),
-                    a.getCompanyHeadcount() != null ? getHeadcounts(a.getHeadcounts()) : ""));
+                    !a.getHeadcounts().isEmpty() ? getHeadcounts(a.getHeadcounts()) : null));
             statistic.setErrorMessage(a.getErrorMessage());
             statistic.setStatus(a.getStatus().name());
             statistic.setPage(a.getPage());

@@ -40,9 +40,6 @@ public class Assignment {
     @Column
     private Task task;
 
-    @Transient
-    private CompanyHeadcount companyHeadcount;
-
     @Column
     private Status status;
 
@@ -244,15 +241,6 @@ public class Assignment {
 
     public Assignment setIndustries(String industries) {
         this.industries = industries;
-        return this;
-    }
-
-    public CompanyHeadcount getCompanyHeadcount() {
-        return companyHeadcount;
-    }
-
-    public Assignment setCompanyHeadcount(CompanyHeadcount companyHeadcount) {
-        this.companyHeadcount = companyHeadcount;
         return this;
     }
 
