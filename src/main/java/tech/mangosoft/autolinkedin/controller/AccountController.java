@@ -8,9 +8,13 @@ import tech.mangosoft.autolinkedin.service.AccountService;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ACCOUNT_CONTROLLER;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_ID;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_PASSWORD;
+
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping(ACCOUNT_CONTROLLER)
 public class AccountController {
 
     @Autowired
@@ -28,7 +32,7 @@ public class AccountController {
     }
 
     @CrossOrigin
-    @GetMapping("/{id}")
+    @GetMapping(BY_ID)
     public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
         Account account = accountRepository.getById(id);
         return account == null
@@ -67,7 +71,7 @@ public class AccountController {
     }
 
     @CrossOrigin
-    @PutMapping("/password")
+    @PutMapping(BY_PASSWORD)
     public ResponseEntity<Account> updatePassword(String username, String oldPassword, String newPassword) {
         if (!accountService.updatePasswordSuccesses(username, oldPassword, newPassword)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
