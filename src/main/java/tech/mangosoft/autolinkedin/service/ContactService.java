@@ -111,17 +111,17 @@ public class ContactService {
                 continue;
             }
             CSVUtils.writeLine(writer, Arrays
-                    .asList(contact.getId() != null ? contact.getId().toString().concat(" ").replace(",", ";") : " ",
-                            isNotNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().concat(" ").replace(",", ";") : " ",
-                            isNotNullOrEmpty(contact.getCompanyWebsite()) ? contact.getCompanyWebsite().concat(" ").replace(",", ";") : " ",
-                            isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().concat(" ").replace(",", ";") : " ",
-                            isNotNullOrEmpty(contact.getLastName()) ? contact.getLastName().concat(" ").replace(",", ";") : " ",
-                            isNotNullOrEmpty(contact.getRole()) ? contact.getRole().concat(" ").replace(",", ";") : " ",
-                            isNotNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().concat(" ").replace(",", ";") : " ",
-                            contact.getLocation() != null ? contact.getLocation().getLocation().concat(" ").replace(",", ";") : " ",
-                            isNotNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().concat(" ").replace(",", ";") : " ",
+                    .asList(contact.getId() != null ? contact.getId().toString().replace("|", "/").concat(" ") : " ",
+                            isNotNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().replace("|", "/").concat(" ") : " ",
+                            isNotNullOrEmpty(contact.getCompanyWebsite()) ? contact.getCompanyWebsite().replace("|", "/").concat(" ") : " ",
+                            isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().replace("|", "/").concat(" ") : " ",
+                            isNotNullOrEmpty(contact.getLastName()) ? contact.getLastName().replace("|", "/").concat(" ") : " ",
+                            isNotNullOrEmpty(contact.getRole()) ? contact.getRole().replace("|", "/").concat(" ") : " ",
+                            isNotNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().replace("|", "/").concat(" ") : " ",
+                            contact.getLocation() != null ? contact.getLocation().getLocation().replace("|", "/").concat(" ") : " ",
+                            isNotNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().replace("|", "/").concat(" ") : " ",
                             getUserFullnameWhichAddCurrentContact(contact),
-                            isNotNullOrEmpty(contact.getEmail()) ? contact.getEmail().concat(" ").replace(",", ";") : " "));
+                            isNotNullOrEmpty(contact.getEmail()) ? contact.getEmail().replace("|", "/").concat(" ") : " "));
         }
         writer.flush();
         writer.close();
