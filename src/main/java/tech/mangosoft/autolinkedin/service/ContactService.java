@@ -130,11 +130,13 @@ public class ContactService {
     private String getUserFullnameWhichAddCurrentContact(LinkedInContact contact) {
         Set<Assignment> assignments = contact.getAssignments();
         if (!CollectionUtils.isEmpty(assignments)) {
-            Assignment assignment = assignments
-                    .stream()
+            Optional<Assignment> assignment = assignments.stream()
                     .filter(a -> !a.getTask().equals(Task.TASK_CONNECTION))
-                    .min(Comparator.comparing(Assignment::getUpdateTime)).get();
-            return assignment.getAccount() != null ? assignment.getAccount().getCaption() : " ";
+                    .min(Comparator.comparing(Assignment::getUpdateTime));
+            if(assignment.isPresent()){
+                return assignment.get().getAccount() != null ? assignment.get().getAccount().getCaption() : " ";
+            }
+
         }
         return " ";
     }
