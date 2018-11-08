@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Logger;
 
 //@Slf4j
@@ -25,8 +26,14 @@ public class JacksonUtils {
 	public static String getJson(Object object) {
 		try {
 			return mapper.writeValueAsString(object);
-		} catch (JsonProcessingException e) {
-		}
+		} catch (JsonProcessingException e) { }
+		return null;
+	}
+
+	public static String getJson(Map<String, String> values){
+		try {
+			return mapper.writeValueAsString(values);
+		} catch (JsonProcessingException e){ }
 		return null;
 	}
 
