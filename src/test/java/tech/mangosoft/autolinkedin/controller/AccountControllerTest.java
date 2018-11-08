@@ -22,9 +22,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ACCOUNT_CONTROLLER;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_ID;
 import static tech.mangosoft.autolinkedin.utils.JacksonUtils.getJson;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -53,7 +56,7 @@ public class AccountControllerTest {
 
     @Test
     public void getAccountValid() throws Exception {
-        String request = ControllerAPI.ACCOUNT_CONTROLLER;
+        String request = ACCOUNT_CONTROLLER;
         when(accountRepository.getAccountByUsernameAndPassword(EMAIL, PASSWORD))
                 .thenReturn(new Account());
         MockHttpServletResponse response = mockMvc
@@ -69,7 +72,7 @@ public class AccountControllerTest {
 
     @Test
     public void getAccountInvalid() throws Exception {
-        String request = ControllerAPI.ACCOUNT_CONTROLLER;
+        String request = ACCOUNT_CONTROLLER;
         when(accountRepository.getAccountByUsernameAndPassword(EMAIL, PASSWORD)).thenReturn(null);
         MockHttpServletResponse response = mockMvc
                 .perform(get(request).param("login", EMAIL).param("password", PASSWORD))
@@ -84,7 +87,7 @@ public class AccountControllerTest {
 
     @Test
     public void getAccountByIdValid() throws Exception {
-        String request = ControllerAPI.ACCOUNT_CONTROLLER + ControllerAPI.BY_ID;
+        String request = ACCOUNT_CONTROLLER + BY_ID;
         when(accountRepository.getById(1L)).thenReturn(new Account());
         MockHttpServletResponse response = mockMvc
                 .perform(get(request, 1L))
@@ -98,7 +101,7 @@ public class AccountControllerTest {
 
     @Test
     public void getAccountByIdInvalid() throws Exception {
-        String request = ControllerAPI.ACCOUNT_CONTROLLER + ControllerAPI.BY_ID;
+        String request = ACCOUNT_CONTROLLER + BY_ID;
         when(accountRepository.getById(1L)).thenReturn(null);
         MockHttpServletResponse response = mockMvc
                 .perform(get(request, 1L))
@@ -112,7 +115,7 @@ public class AccountControllerTest {
 
     @Test
     public void createAccountValid() throws Exception {
-        String request = ControllerAPI.ACCOUNT_CONTROLLER;
+        String request = ACCOUNT_CONTROLLER;
         Account account = new Account();
         account.setUsername(EMAIL);
         account.setPassword(PASSWORD);
@@ -133,6 +136,31 @@ public class AccountControllerTest {
         verify(accountService, times(1)).accountNotValid(account);
         verify(accountService, times(1)).createAccount(account);
         verifyNoMoreInteractions(accountService);
+    }
+
+    @Test
+    public void deleteAccountValid() throws Exception{
+        String request = ACCOUNT_CONTROLLER;
+        Account account = new Account();
+        account.setUsername(EMAIL);
+        when(accountRepository.getAccountByUsername(account.getUsername())).thenReturn(account);
+        doNothing().when(accountService).delete(account);
+        mockMvc.perform(delete(request).content(EMAIL)).andExpect(status().isOk()).andReturn();
+        verify(accountRepository, times(1)).getAccountByUsername(account.getUsername());
+        verify(accountService, times(1)).delete(account);
+        verifyNoMoreInteractions(accountRepository);
+        verifyNoMoreInteractions(accountService);
+    }
+
+    @Test
+    public void deleteAccountInvalid() throws Exception{
+        String request = ACCOUNT_CONTROLLER;
+        Account account = new Account();
+        account.setUsername(EMAIL);
+        when(accountRepository.getAccountByUsername(account.getUsername())).thenReturn(null);
+        mockMvc.perform(delete(request).content(EMAIL)).andExpect(status().isBadRequest()).andReturn();
+        verify(accountRepository, times(1)).getAccountByUsername(account.getUsername());
+        verifyNoMoreInteractions(accountRepository);
     }
 
 
