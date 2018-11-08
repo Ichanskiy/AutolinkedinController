@@ -11,6 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.service.AccountService;
 
@@ -20,6 +21,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ADMIN_CONTROLLER;
@@ -77,12 +79,37 @@ public class AdminControllerTest {
     }
 
     @Test
-    public void getAccountById() {
-//        verifyZeroInteractions();
-
+    public void getAccountByIdValid() throws Exception{
+        String request = ControllerAPI.ADMIN_CONTROLLER + ControllerAPI.BY_ID;
+        when(accountRepository.getById(1L)).thenReturn(new Account());
+        MockHttpServletResponse response = mockMvc
+                .perform(get(request, 1L))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1)).getById(1L);
+        verifyNoMoreInteractions(accountRepository);
     }
 
     @Test
-    public void deleteAccount() {
+    public void getAccountByIdInvalid() throws Exception {
+        String request = ControllerAPI.ADMIN_CONTROLLER + ControllerAPI.BY_ID;
+        when(accountRepository.getById(1L)).thenReturn(null);
+        MockHttpServletResponse response = mockMvc
+                .perform(get(request, 1L))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        assertEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1)).getById(1L);
+        verifyNoMoreInteractions(accountRepository);
+    }
+
+    @Test
+    public void deleteAccountValid() throws Exception{
+        String request = ADMIN_CONTROLLER;
+        when(accountRepository.getAccountByUsername("test@email.com")).thenReturn(new Account());
+        mockMvc.perform(delete(request, "test@email.com")).andExpect(status().isOk()).andReturn();
     }
 }
