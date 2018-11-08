@@ -22,12 +22,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ACCOUNT_CONTROLLER;
 import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_ID;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_PASSWORD;
 import static tech.mangosoft.autolinkedin.utils.JacksonUtils.getJson;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -139,6 +138,29 @@ public class AccountControllerTest {
     }
 
     @Test
+    public void createAccountInvalid() throws Exception {
+        String request = ACCOUNT_CONTROLLER;
+        Account account = new Account();
+        account.setUsername(EMAIL);
+        account.setPassword(PASSWORD);
+        account.setFirst(FIRST);
+        account.setLast(LAST);
+        account.setGrabbingLimit(100);
+        Company company = new Company().setName(COMPANY);
+        account.setCompany(company);
+        when(accountService.accountNotValid(account)).thenReturn(true);
+        MockHttpServletResponse response = mockMvc
+                .perform(post(request).content(getJson(account))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        assertEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountService, times(1)).accountNotValid(account);
+        verifyNoMoreInteractions(accountService);
+    }
+
+    @Test
     public void deleteAccountValid() throws Exception{
         String request = ACCOUNT_CONTROLLER;
         Account account = new Account();
@@ -161,6 +183,40 @@ public class AccountControllerTest {
         mockMvc.perform(delete(request).content(EMAIL)).andExpect(status().isBadRequest()).andReturn();
         verify(accountRepository, times(1)).getAccountByUsername(account.getUsername());
         verifyNoMoreInteractions(accountRepository);
+    }
+
+    @Test
+    public void updatePasswordValid() throws Exception {
+        String request = ACCOUNT_CONTROLLER + BY_PASSWORD;
+        when(accountService.updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD)).thenReturn(true);
+        MockHttpServletResponse response = mockMvc
+                .perform(put(request)
+                        .param("username", EMAIL)
+                        .param("oldPassword", PASSWORD)
+                        .param("newPassword", PASSWORD))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountService, times(1)).updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD);
+        verifyNoMoreInteractions(accountService);
+    }
+
+    @Test
+    public void updatePasswordInvalid() throws Exception {
+        String request = ACCOUNT_CONTROLLER + BY_PASSWORD;
+        when(accountService.updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD)).thenReturn(false);
+        MockHttpServletResponse response = mockMvc
+                .perform(put(request)
+                        .param("username", EMAIL)
+                        .param("oldPassword", PASSWORD)
+                        .param("newPassword", PASSWORD))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        assertEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountService, times(1)).updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD);
+        verifyNoMoreInteractions(accountService);
     }
 
 
