@@ -21,6 +21,7 @@ import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static tech.mangosoft.autolinkedin.utils.JacksonUtils.getJson;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AccountControllerTest {
@@ -44,6 +45,43 @@ public class AccountControllerTest {
 
     @Test
     public void getAccountValid() throws Exception {
+        String request = ControllerAPI.ACCOUNT_CONTROLLER;
+        Account account = new Account();
+        account.setUsername("test@email.com");
+        account.setPassword("qwe123");
+        when(accountRepository.getAccountByUsernameAndPassword(account.getUsername(), account.getPassword()))
+                .thenReturn(new Account());
+        MockHttpServletResponse response = mockMvc
+                .perform(get(request))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1))
+                .getAccountByUsernameAndPassword(account.getUsername(), account.getPassword());
+        verifyNoMoreInteractions(accountRepository);
+    }
+
+    @Test
+    public void getAccountInvalid() throws Exception {
+        String request = ControllerAPI.ACCOUNT_CONTROLLER;
+        Account account = new Account();
+        account.setUsername("test@email.com");
+        account.setPassword("qwe123");
+        when(accountRepository.getAccountByUsernameAndPassword(account.getUsername(), account.getPassword())).thenReturn(null);
+        MockHttpServletResponse response = mockMvc
+                .perform(get(request, account.getUsername(), account.getPassword()))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        assertEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1))
+                .getAccountByUsernameAndPassword(account.getUsername(), account.getPassword());
+        verifyNoMoreInteractions(accountRepository);
+    }
+
+    @Test
+    public void getAccountByIdValid() throws Exception {
         String request = ControllerAPI.ACCOUNT_CONTROLLER + ControllerAPI.BY_ID;
         when(accountRepository.getById(1L)).thenReturn(new Account());
         MockHttpServletResponse response = mockMvc
@@ -57,7 +95,7 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void getAccountInvalid() throws Exception {
+    public void getAccountByIdInvalid() throws Exception {
         String request = ControllerAPI.ACCOUNT_CONTROLLER + ControllerAPI.BY_ID;
         when(accountRepository.getById(1L)).thenReturn(null);
         MockHttpServletResponse response = mockMvc
