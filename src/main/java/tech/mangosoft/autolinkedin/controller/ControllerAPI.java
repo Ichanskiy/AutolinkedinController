@@ -8,6 +8,11 @@ public class ControllerAPI{
     static final String ADMIN_CONTROLLER = "/admin";
     static final String ALL_BY_PAGE = "/all/{page}";
 
+    static final String COMPANY_CONTROLLER = "/company";
+
+    static final String HEADCOUNT_CONTROLLER = "/headcount";
+    static final String ALL = "/all";
+
     static final String BY_ID = "/{id}";
 
 }
