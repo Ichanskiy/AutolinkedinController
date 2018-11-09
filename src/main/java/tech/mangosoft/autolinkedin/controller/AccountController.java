@@ -51,7 +51,7 @@ public class AccountController {
 
     @CrossOrigin
     @DeleteMapping
-    public ResponseEntity<Account> deleteAccount(@RequestBody String login) {
+    public ResponseEntity<HttpStatus> deleteAccount(@RequestBody String login) {
         Account accountDB = accountRepository.getAccountByUsername(login);
         if (accountDB == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -72,7 +72,7 @@ public class AccountController {
 
     @CrossOrigin
     @PutMapping(BY_PASSWORD)
-    public ResponseEntity<Account> updatePassword(String username, String oldPassword, String newPassword) {
+    public ResponseEntity<HttpStatus> updatePassword(String username, String oldPassword, String newPassword) {
         if (!accountService.updatePasswordSuccesses(username, oldPassword, newPassword)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

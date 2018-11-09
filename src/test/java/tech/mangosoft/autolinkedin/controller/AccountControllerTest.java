@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Company;
-import tech.mangosoft.autolinkedin.db.entity.enums.Role;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.service.AccountService;
 
@@ -148,7 +147,7 @@ public class AccountControllerTest {
         account.setGrabbingLimit(100);
         Company company = new Company().setName(COMPANY);
         account.setCompany(company);
-        when(accountService.accountNotValid(account)).thenReturn(true);
+        when(accountService.accountNotValid(any(Account.class))).thenReturn(true);
         MockHttpServletResponse response = mockMvc
                 .perform(post(request).content(getJson(account))
                         .contentType(MediaType.APPLICATION_JSON))
@@ -156,7 +155,7 @@ public class AccountControllerTest {
                 .andReturn()
                 .getResponse();
         assertEquals(response.getContentAsString(), Strings.EMPTY);
-        verify(accountService, times(1)).accountNotValid(account);
+        verify(accountService, times(1)).accountNotValid(any(Account.class));
         verifyNoMoreInteractions(accountService);
     }
 
@@ -188,16 +187,13 @@ public class AccountControllerTest {
     @Test
     public void updatePasswordValid() throws Exception {
         String request = ACCOUNT_CONTROLLER + BY_PASSWORD;
-        when(accountService.updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD)).thenReturn(true);
-        MockHttpServletResponse response = mockMvc
-                .perform(put(request)
-                        .param("username", EMAIL)
-                        .param("oldPassword", PASSWORD)
-                        .param("newPassword", PASSWORD))
+        when(accountService.updatePasswordSuccesses(anyString(), anyString(), anyString())).thenReturn(true);
+        mockMvc.perform(put(request)
+                .param("username", EMAIL)
+                .param("oldPassword", PASSWORD)
+                .param("newPassword", PASSWORD))
                 .andExpect(status().isOk())
-                .andReturn()
-                .getResponse();
-        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+                .andReturn();
         verify(accountService, times(1)).updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD);
         verifyNoMoreInteractions(accountService);
     }
@@ -206,17 +202,73 @@ public class AccountControllerTest {
     public void updatePasswordInvalid() throws Exception {
         String request = ACCOUNT_CONTROLLER + BY_PASSWORD;
         when(accountService.updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD)).thenReturn(false);
+        mockMvc.perform(put(request)
+                .param("username", EMAIL)
+                .param("oldPassword", PASSWORD)
+                .param("newPassword", PASSWORD))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+        verify(accountService, times(1)).updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD);
+        verifyNoMoreInteractions(accountService);
+    }
+
+    @Test
+    public void updateAccountValid() throws Exception {
+        String request = ACCOUNT_CONTROLLER;
+        Account account = new Account();
+        account.setId(1L);
+        account.setUsername(EMAIL);
+        account.setFirst(FIRST);
+        account.setLast(LAST);
+        account.setGrabbingLimit(100);
+        Company company = new Company().setName(COMPANY);
+        account.setCompany(company);
+        when(accountRepository.getById(account.getId())).thenReturn(account);
+        when(accountService.update(any(Account.class))).thenReturn(account);
         MockHttpServletResponse response = mockMvc
                 .perform(put(request)
-                        .param("username", EMAIL)
-                        .param("oldPassword", PASSWORD)
-                        .param("newPassword", PASSWORD))
+                        .param("id", String.valueOf(account.getId()))
+                        .param("username", account.getUsername())
+                        .param("first", account.getFirst())
+                        .param("last", account.getLast())
+                        .param("grabbingLimit", String.valueOf(account.getGrabbingLimit()))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1)).getById(account.getId());
+        verify(accountService, times(1)).update(any(Account.class));
+        verifyNoMoreInteractions(accountRepository);
+        verifyNoMoreInteractions(accountService);
+    }
+
+    @Test
+    public void updateAccountInvalid() throws Exception {
+        String request = ACCOUNT_CONTROLLER;
+        Account account = new Account();
+        account.setId(1L);
+        account.setUsername(EMAIL);
+        account.setFirst(FIRST);
+        account.setLast(LAST);
+        account.setGrabbingLimit(100);
+        Company company = new Company().setName(COMPANY);
+        account.setCompany(company);
+        when(accountRepository.getById(account.getId())).thenReturn(null);
+        MockHttpServletResponse response = mockMvc
+                .perform(put(request)
+                        .param("id", String.valueOf(account.getId()))
+                        .param("username", account.getUsername())
+                        .param("first", account.getFirst())
+                        .param("last", account.getLast())
+                        .param("grabbingLimit", String.valueOf(account.getGrabbingLimit()))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andReturn()
                 .getResponse();
         assertEquals(response.getContentAsString(), Strings.EMPTY);
-        verify(accountService, times(1)).updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD);
-        verifyNoMoreInteractions(accountService);
+        verify(accountRepository, times(1)).getById(account.getId());
+        verifyNoMoreInteractions(accountRepository);
     }
 
 
