@@ -124,7 +124,7 @@ public class AccountControllerTest {
         Company company = new Company().setName(COMPANY);
         account.setCompany(company);
         when(accountService.accountNotValid(account)).thenReturn(false);
-        when(accountService.createAccount(account)).thenReturn(account);
+        when(accountService.createAccount(any(Account.class))).thenReturn(account);
         MockHttpServletResponse response = mockMvc
                 .perform(post(request).content(getJson(account))
                 .contentType(MediaType.APPLICATION_JSON))
@@ -132,8 +132,8 @@ public class AccountControllerTest {
                 .andReturn()
                 .getResponse();
         assertNotEquals(response.getContentAsString(), Strings.EMPTY);
-        verify(accountService, times(1)).accountNotValid(account);
-        verify(accountService, times(1)).createAccount(account);
+        verify(accountService, times(1)).accountNotValid(any(Account.class));
+        verify(accountService, times(1)).createAccount(any(Account.class));
         verifyNoMoreInteractions(accountService);
     }
 
