@@ -1,13 +1,15 @@
 package tech.mangosoft.autolinkedin.controller;
 
 import org.apache.logging.log4j.util.Strings;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -17,19 +19,18 @@ import tech.mangosoft.autolinkedin.service.AccountService;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ADMIN_CONTROLLER;
-import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ALL_BY_PAGE;
-import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_ID;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.*;
 
-@RunWith(MockitoJUnitRunner.class)
-public class AdminControllerTest {
+@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+class AdminControllerTest {
     private static final String EMAIL = "test@email.com";
 
     private MockMvc mockMvc;
@@ -43,14 +44,15 @@ public class AdminControllerTest {
     @InjectMocks
     private AdminController adminController;
 
-    @Before
-    public void before() {
+    @BeforeEach
+    void before() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(adminController).dispatchOptions(true).build();
     }
 
     @Test
-    public void getAllAccountTestValid() throws Exception {
+    @DisplayName("Get all accounts")
+    void getAllAccountTestValid() throws Exception {
         String request = ADMIN_CONTROLLER + ALL_BY_PAGE;
         when(accountService.getAllAccounts(1)).thenReturn(new ArrayList<>());
         MockHttpServletResponse response = mockMvc
@@ -66,7 +68,8 @@ public class AdminControllerTest {
     }
 
     @Test
-    public void getAllAccountTestInValid() throws Exception {
+    @DisplayName("Get all accounts invalid")
+    void getAllAccountTestInValid() throws Exception {
         String request = ADMIN_CONTROLLER + ALL_BY_PAGE;
         when(accountService.getAllAccounts(1)).thenReturn(null);
         MockHttpServletResponse response = mockMvc
@@ -81,7 +84,8 @@ public class AdminControllerTest {
     }
 
     @Test
-    public void getAccountByIdValid() throws Exception{
+    @DisplayName("Get account by id")
+    void getAccountByIdValid() throws Exception {
         String request = ADMIN_CONTROLLER + BY_ID;
         when(accountRepository.getById(1L)).thenReturn(new Account());
         MockHttpServletResponse response = mockMvc
@@ -95,7 +99,8 @@ public class AdminControllerTest {
     }
 
     @Test
-    public void getAccountByIdInvalid() throws Exception {
+    @DisplayName("Get account by invalid id")
+    void getAccountByIdInvalid() throws Exception {
         String request = ADMIN_CONTROLLER + BY_ID;
         when(accountRepository.getById(1L)).thenReturn(null);
         MockHttpServletResponse response = mockMvc
@@ -109,7 +114,8 @@ public class AdminControllerTest {
     }
 
     @Test
-    public void deleteAccountValid() throws Exception{
+    @DisplayName("Delete account")
+    void deleteAccountValid() throws Exception {
         String request = ADMIN_CONTROLLER;
         Account account = new Account();
         account.setUsername(EMAIL);
@@ -123,7 +129,8 @@ public class AdminControllerTest {
     }
 
     @Test
-    public void deleteAccountInvalid() throws Exception{
+    @DisplayName("Delete account invalid")
+    void deleteAccountInvalid() throws Exception {
         String request = ADMIN_CONTROLLER;
         Account account = new Account();
         account.setUsername(EMAIL);

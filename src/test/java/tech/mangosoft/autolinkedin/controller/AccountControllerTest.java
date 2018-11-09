@@ -1,13 +1,15 @@
 package tech.mangosoft.autolinkedin.controller;
 
 import org.apache.logging.log4j.util.Strings;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
@@ -17,26 +19,26 @@ import tech.mangosoft.autolinkedin.db.entity.Company;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.service.AccountService;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ACCOUNT_CONTROLLER;
-import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_ID;
-import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_PASSWORD;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.*;
 import static tech.mangosoft.autolinkedin.utils.JacksonUtils.getJson;
 
-@RunWith(MockitoJUnitRunner.class)
-public class AccountControllerTest {
+
+@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+class AccountControllerTest {
     private static final String EMAIL = "test@email.com";
     private static final String PASSWORD = "qwe123";
     private static final String FIRST = "first";
     private static final String LAST = "last";
     private static final String COMPANY = "TestSoft";
 
-    private MockMvc mockMvc;
+    private  MockMvc mockMvc;
 
     @Mock
     private AccountService accountService;
@@ -46,14 +48,16 @@ public class AccountControllerTest {
 
     @InjectMocks
     private AccountController accountController;
-    @Before
-    public void before() {
+
+    @BeforeEach
+    void before() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(accountController).dispatchOptions(true).build();
     }
 
     @Test
-    public void getAccountValid() throws Exception {
+    @DisplayName("Get account by userName and password")
+    void getAccountValid() throws Exception {
         String request = ACCOUNT_CONTROLLER;
         when(accountRepository.getAccountByUsernameAndPassword(EMAIL, PASSWORD))
                 .thenReturn(new Account());
@@ -69,7 +73,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void getAccountInvalid() throws Exception {
+    @DisplayName("Get account by invalid userName and password")
+    void getAccountInvalid() throws Exception {
         String request = ACCOUNT_CONTROLLER;
         when(accountRepository.getAccountByUsernameAndPassword(EMAIL, PASSWORD)).thenReturn(null);
         MockHttpServletResponse response = mockMvc
@@ -84,7 +89,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void getAccountByIdValid() throws Exception {
+    @DisplayName("Get account by id")
+    void getAccountByIdValid() throws Exception {
         String request = ACCOUNT_CONTROLLER + BY_ID;
         when(accountRepository.getById(1L)).thenReturn(new Account());
         MockHttpServletResponse response = mockMvc
@@ -98,7 +104,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void getAccountByIdInvalid() throws Exception {
+    @DisplayName("Get account by invalid id")
+    void getAccountByIdInvalid() throws Exception {
         String request = ACCOUNT_CONTROLLER + BY_ID;
         when(accountRepository.getById(1L)).thenReturn(null);
         MockHttpServletResponse response = mockMvc
@@ -112,7 +119,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void createAccountValid() throws Exception {
+    @DisplayName("Create account")
+    void createAccountValid() throws Exception {
         String request = ACCOUNT_CONTROLLER;
         Account account = new Account();
         account.setUsername(EMAIL);
@@ -122,7 +130,7 @@ public class AccountControllerTest {
         account.setGrabbingLimit(100);
         Company company = new Company().setName(COMPANY);
         account.setCompany(company);
-        when(accountService.accountNotValid(account)).thenReturn(false);
+        when(accountService.accountNotValid(any(Account.class))).thenReturn(false);
         when(accountService.createAccount(any(Account.class))).thenReturn(account);
         MockHttpServletResponse response = mockMvc
                 .perform(post(request).content(getJson(account))
@@ -137,7 +145,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void createAccountInvalid() throws Exception {
+    @DisplayName("Create account by invalid id")
+    void createAccountInvalid() throws Exception {
         String request = ACCOUNT_CONTROLLER;
         Account account = new Account();
         account.setUsername(EMAIL);
@@ -160,7 +169,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void deleteAccountValid() throws Exception{
+    @DisplayName("Delete account")
+    void deleteAccountValid() throws Exception{
         String request = ACCOUNT_CONTROLLER;
         Account account = new Account();
         account.setUsername(EMAIL);
@@ -174,6 +184,7 @@ public class AccountControllerTest {
     }
 
     @Test
+    @DisplayName("Create account by invalid id")
     public void deleteAccountInvalid() throws Exception{
         String request = ACCOUNT_CONTROLLER;
         Account account = new Account();
@@ -185,7 +196,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void updatePasswordValid() throws Exception {
+    @DisplayName("Update password")
+    void updatePasswordValid() throws Exception {
         String request = ACCOUNT_CONTROLLER + BY_PASSWORD;
         when(accountService.updatePasswordSuccesses(anyString(), anyString(), anyString())).thenReturn(true);
         mockMvc.perform(put(request)
@@ -199,7 +211,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void updatePasswordInvalid() throws Exception {
+    @DisplayName("Update password invalid")
+    void updatePasswordInvalid() throws Exception {
         String request = ACCOUNT_CONTROLLER + BY_PASSWORD;
         when(accountService.updatePasswordSuccesses(EMAIL, PASSWORD, PASSWORD)).thenReturn(false);
         mockMvc.perform(put(request)
@@ -213,7 +226,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void updateAccountValid() throws Exception {
+    @DisplayName("Update account")
+    void updateAccountValid() throws Exception {
         String request = ACCOUNT_CONTROLLER;
         Account account = new Account();
         account.setId(1L);
@@ -244,7 +258,8 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void updateAccountInvalid() throws Exception {
+    @DisplayName("Update account invalid")
+    void updateAccountInvalid() throws Exception {
         String request = ACCOUNT_CONTROLLER;
         Account account = new Account();
         account.setId(1L);
@@ -270,6 +285,4 @@ public class AccountControllerTest {
         verify(accountRepository, times(1)).getById(account.getId());
         verifyNoMoreInteractions(accountRepository);
     }
-
-
 }
