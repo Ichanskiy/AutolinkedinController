@@ -397,8 +397,46 @@ class AssignmentControllerTest {
         verifyNoMoreInteractions(accountRepository, linkedInService);
     }
 
+    @Test
+    @DisplayName("Get statistics with valid params")
+    void getStatisticsValidTest() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_STATISTICS;
+        Account account = new Account();
+        account.setId(ID);
+        account.setUsername(EMAIL);
+        account.setPassword(PASSWORD);
+        account.setGrabbingLimit(100);
+        when(accountRepository.getAccountByUsername(EMAIL)).thenReturn(account);
+        when(linkedInService.getCountAssignment(account)).thenReturn(1);
+        when(linkedInService.getStatistics(account, 1, 20)).thenReturn(new ArrayList<>());
+        MockHttpServletResponse response = mockMvc
+                .perform(get(request)
+                        .param("email", EMAIL)
+                        .param("page", "1"))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1)).getAccountByUsername(EMAIL);
+        verify(linkedInService, times(1)).getCountAssignment(account);
+        verify(linkedInService, times(1)).getStatistics(account, 1, 20);
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
 
-
+    @Test
+    @DisplayName("Get statistics with invalid account param")
+    void getStatisticsInvalidAccountTest() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_STATISTICS;
+        when(accountRepository.getAccountByUsername(EMAIL)).thenReturn(null);
+        mockMvc
+                .perform(get(request)
+                        .param("email", EMAIL)
+                        .param("page", "1"))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+        verify(accountRepository, times(1)).getAccountByUsername(EMAIL);
+        verifyNoMoreInteractions(accountRepository);
+    }
 
     private GrabbingMessage getGrabbingMessage() {
         GrabbingMessage message = new GrabbingMessage();
