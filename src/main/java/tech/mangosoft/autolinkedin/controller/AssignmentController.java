@@ -138,7 +138,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/getLocations")
+    @GetMapping(value = GET_LOCATIONS)
     public ResponseEntity<List<String>> getLocations() {
         Iterable<Location> statisticResponse = locationRepository.findAll();
         List<String> stringLocations = new ArrayList<>();
@@ -161,7 +161,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @PutMapping("/changeStatus")
+    @PutMapping(CHANGE_STATUS)
     public ResponseEntity<HttpStatus> changeAssignmentStatus(Long id, Integer status) {
         Assignment assignment = assignmentRepository.getById(id);
         if (assignment == null) {

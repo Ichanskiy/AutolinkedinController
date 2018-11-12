@@ -17,9 +17,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import tech.mangosoft.autolinkedin.controller.messages.GrabbingMessage;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
+import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
 import tech.mangosoft.autolinkedin.db.repository.IGroupRepository;
+import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 import tech.mangosoft.autolinkedin.service.LinkedInService;
 
 import java.util.ArrayList;
@@ -29,8 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static tech.mangosoft.autolinkedin.controller.ControllerAPI.*;
 import static tech.mangosoft.autolinkedin.utils.JacksonUtils.getJson;
@@ -55,6 +56,9 @@ class AssignmentControllerTest {
 
     @Mock
     private IAccountRepository accountRepository;
+
+    @Mock
+    private ILocationRepository locationRepository;
 
     @Mock
     private LinkedInService linkedInService;
@@ -169,12 +173,93 @@ class AssignmentControllerTest {
         String request = ASSIGNMENT_CONTROLLER + GET_GROUPS;
         when(groupRepository.findAll()).thenReturn(new ArrayList<>());
         MockHttpServletResponse response = mockMvc
-                .perform(get(request, 1L))
+                .perform(get(request))
                 .andReturn()
                 .getResponse();
         assertNotEquals(response.getContentAsString(), Strings.EMPTY);
         verify(groupRepository, times(1)).findAll();
         verifyNoMoreInteractions(groupRepository);
+    }
+
+    @Test
+    @DisplayName("Get locations")
+    void getLocationsTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + GET_LOCATIONS;
+        when(locationRepository.findAll()).thenReturn(new ArrayList<>());
+        MockHttpServletResponse response = mockMvc
+                .perform(get(request))
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(locationRepository, times(1)).findAll();
+        verifyNoMoreInteractions(locationRepository);
+
+    }
+
+    @Test
+    @DisplayName("Delete assignment valid")
+    void deleteAssignmentValid() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + BY_ID;
+        Assignment assignment = new Assignment();
+        assignment.setId(1L);
+        when(assignmentRepository.getById(assignment.getId())).thenReturn(assignment);
+        doNothing().when(linkedInService).deleteAssignmentById(assignment.getId());
+        MockHttpServletResponse response = mockMvc
+                .perform(delete(request, 1L))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        verify(assignmentRepository, times(1)).getById(assignment.getId());
+        verify(linkedInService, times(1)).deleteAssignmentById(assignment.getId());
+        verifyNoMoreInteractions(assignmentRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Delete assignment invalid")
+    void deleteAssignmentInvalid() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + BY_ID;
+        Assignment assignment = new Assignment();
+        assignment.setId(1L);
+        when(assignmentRepository.getById(assignment.getId())).thenReturn(null);
+        MockHttpServletResponse response = mockMvc
+                .perform(delete(request, 1L))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        verify(assignmentRepository, times(1)).getById(assignment.getId());
+        verifyNoMoreInteractions(assignmentRepository);
+    }
+
+    @Test
+    @DisplayName("Change assignment status valid")
+    void changeAssignmentStatusValid() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CHANGE_STATUS;
+        Assignment assignment = new Assignment();
+        assignment.setId(1L);
+        assignment.setStatus(Status.STATUS_NEW);
+        when(assignmentRepository.getById(assignment.getId())).thenReturn(assignment);
+        doNothing().when(linkedInService).changeStatus(assignment.getId(), assignment.getStatus().getId());
+        mockMvc.perform(put(request).param("id", "1").param("status", "0"))
+                .andExpect(status().isOk())
+                .andReturn();
+        verify(assignmentRepository, times(1)).getById(assignment.getId());
+        verify(linkedInService, times(1)).changeStatus(assignment.getId(), assignment.getStatus().getId());
+        verifyNoMoreInteractions(assignmentRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Change assignment status invalid")
+    void changeAssignmentStatusInvalid() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CHANGE_STATUS;
+        Assignment assignment = new Assignment();
+        assignment.setId(1L);
+        assignment.setStatus(Status.STATUS_NEW);
+        when(assignmentRepository.getById(assignment.getId())).thenReturn(null);
+        mockMvc.perform(put(request).param("id", "1").param("status", "0"))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+        verify(assignmentRepository, times(1)).getById(assignment.getId());
+        verifyNoMoreInteractions(assignmentRepository);
     }
 
     private GrabbingMessage getGrabbingMessage() {
