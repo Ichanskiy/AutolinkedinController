@@ -2,6 +2,7 @@ package tech.mangosoft.autolinkedin.controller;
 
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,11 +20,10 @@ import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
 import tech.mangosoft.autolinkedin.db.repository.IGroupRepository;
-import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 import tech.mangosoft.autolinkedin.service.LinkedInService;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -37,11 +37,13 @@ import static tech.mangosoft.autolinkedin.utils.JacksonUtils.getJson;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class AssignmentControllerTest {
+class AssignmentControllerTest {
     private static final String EMAIL = "test@email.com";
+    private static final String PASSWORD = "pass";
     private static final String LOCATION = "Greater Test Area";
     private static final String INDUSTRIES = "Test Games";
     private static final String POSITION = "CEO";
+    private static final Long ID = 1L;
 
     private MockMvc mockMvc;
 
@@ -57,83 +59,82 @@ public class AssignmentControllerTest {
     @Mock
     private LinkedInService linkedInService;
 
-    @Mock
-    private ILocationRepository locationRepository;
-
     @InjectMocks
     private AssignmentController assignmentController;
 
     @BeforeEach
-    public void before() {
+    void before() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(assignmentController).dispatchOptions(true).build();
     }
 
-//    @Test
-//    public void createGrabbingAssignmentValid() throws Exception{
-//        String request = ASSIGNMENT_CONTROLLER + CREATE_GRABBING;
-//
-//        GrabbingMessage message = new GrabbingMessage();
-//        message.setLogin(EMAIL);
-//        message.setFullLocationString(LOCATION);
-//        message.setGroupId(1L);
-//        message.setIndustries(INDUSTRIES);
-//        message.setPosition(POSITION);
-//        Account account = new Account();
-//        account.setId(1L);
-//        account.setUsername(message.getLogin());
-//        account.setPassword("TEST");
-//        account.setFirst("fdsf");
-//        account.setLast("fsdfs");
-//        account.setGrabbingLimit(100);
-//        List<Long> ids = new ArrayList<>();
-//        ids.add(1L);
-//        message.setIdsHeadcount(ids);
-//        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(account);
-//        when(linkedInService.createGrabbingAssignment(message, account)).thenReturn(any(Assignment.class));
-//        MockHttpServletResponse response = mockMvc
-//                .perform(post(request).content(getJson(message))
-//                        .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andReturn()
-//                .getResponse();
-//        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
-//        verify(accountRepository, times(1)).getAccountByUsername(message.getLogin());
-//        verify(linkedInService, times(1)).createGrabbingAssignment(message, account);
-//        verifyNoMoreInteractions(accountRepository);
-//        verifyNoMoreInteractions(linkedInService);
-//    }
-//
-//    @Test
-//    public void createGrabbingAssignmentInvalid() throws Exception{
-//        String request = ASSIGNMENT_CONTROLLER + CREATE_GRABBING;
-//        GrabbingMessage message = new GrabbingMessage();
-//        message.setLogin(EMAIL);
-//        message.setFullLocationString(LOCATION);
-//        message.setGroupId(1L);
-//        message.setIndustries(INDUSTRIES);
-//        message.setPosition(POSITION);
-//        List<Long> ids = new ArrayList<>();
-//        ids.add(1L);
-//        message.setIdsHeadcount(ids);
-//        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(any(Account.class));
-//        when(linkedInService.createGrabbingAssignment(message, any(Account.class))).thenReturn(any(Assignment.class));
-//        MockHttpServletResponse response = mockMvc
-//                .perform(post(request).content(getJson(message))
-//                        .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andReturn()
-//                .getResponse();
-//        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
-//        verify(accountRepository, times(1)).getAccountByUsername(message.getLogin());
-//        verify(linkedInService, times(1)).createGrabbingAssignment(message, any(Account.class));
-//        verifyNoMoreInteractions(accountRepository);
-//        verifyNoMoreInteractions(linkedInService);
-//    }
+    @Test
+    @DisplayName("Create grabbing assignment with valid param")
+    void createGrabbingAssignmentValidTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CREATE_GRABBING;
+        GrabbingMessage message = getGrabbingMessage();
+        Account account = getAccount(message);
+        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(account);
+        when(linkedInService.createGrabbingAssignment(any(GrabbingMessage.class), any(Account.class)))
+                .thenReturn(new Assignment());
+        MockHttpServletResponse response = mockMvc
+                .perform(post(request)
+                        .content(Objects.requireNonNull(getJson(message)))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1))
+                .getAccountByUsername(message.getLogin());
+        verify(linkedInService, times(1))
+                .createGrabbingAssignment(any(GrabbingMessage.class), any(Account.class));
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Create grabbing assignment with invalid account")
+    void createGrabbingAssignmentAccountInvalidTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CREATE_GRABBING;
+        GrabbingMessage message = getGrabbingMessage();
+        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(null);
+        mockMvc.perform(post(request)
+                .content(Objects.requireNonNull(getJson(message)))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        verify(accountRepository, times(1))
+                .getAccountByUsername(message.getLogin());
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Create grabbing assignment with invalid assignment")
+    void createGrabbingAssignmentAssignmentInvalidTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CREATE_GRABBING;
+        GrabbingMessage message = getGrabbingMessage();
+        Account account = getAccount(message);
+        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(account);
+        when(linkedInService.createGrabbingAssignment(any(GrabbingMessage.class), any(Account.class)))
+                .thenReturn(null);
+        mockMvc.perform(post(request)
+                .content(Objects.requireNonNull(getJson(message)))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        verify(accountRepository, times(1))
+                .getAccountByUsername(message.getLogin());
+        verify(linkedInService, times(1))
+                .createGrabbingAssignment(any(GrabbingMessage.class), any(Account.class));
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
 
 
     @Test
-    public void getAssignmentByIdValid() throws Exception{
+    @DisplayName("Get assignment by id")
+    void getAssignmentByIdValidTest() throws Exception {
         String request = ASSIGNMENT_CONTROLLER + BY_ID;
         when(assignmentRepository.getById(1L)).thenReturn(new Assignment());
         MockHttpServletResponse response = mockMvc
@@ -148,7 +149,8 @@ public class AssignmentControllerTest {
     }
 
     @Test
-    public void getAssignmentByIdInvalid() throws Exception{
+    @DisplayName("Get assignment by invalid id")
+    void getAssignmentByIdInvalidTest() throws Exception {
         String request = ASSIGNMENT_CONTROLLER + BY_ID;
         when(assignmentRepository.getById(1L)).thenReturn(null);
         MockHttpServletResponse response = mockMvc
@@ -162,7 +164,8 @@ public class AssignmentControllerTest {
     }
 
     @Test
-    public void getGroupsTest() throws Exception {
+    @DisplayName("Get groups")
+    void getGroupsTest() throws Exception {
         String request = ASSIGNMENT_CONTROLLER + GET_GROUPS;
         when(groupRepository.findAll()).thenReturn(new ArrayList<>());
         MockHttpServletResponse response = mockMvc
@@ -172,6 +175,24 @@ public class AssignmentControllerTest {
         assertNotEquals(response.getContentAsString(), Strings.EMPTY);
         verify(groupRepository, times(1)).findAll();
         verifyNoMoreInteractions(groupRepository);
-
     }
+
+    private GrabbingMessage getGrabbingMessage() {
+        GrabbingMessage message = new GrabbingMessage();
+        message.setLogin(EMAIL);
+        message.setFullLocationString(LOCATION);
+        message.setIndustries(INDUSTRIES);
+        message.setPosition(POSITION);
+        return message;
+    }
+
+    private Account getAccount(GrabbingMessage message) {
+        Account account = new Account();
+        account.setId(ID);
+        account.setUsername(message.getLogin());
+        account.setPassword(PASSWORD);
+        account.setGrabbingLimit(100);
+        return account;
+    }
+
 }
