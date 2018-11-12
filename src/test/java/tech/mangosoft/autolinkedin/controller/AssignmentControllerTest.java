@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import tech.mangosoft.autolinkedin.controller.messages.ConnectionMessage;
 import tech.mangosoft.autolinkedin.controller.messages.GrabbingMessage;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
@@ -262,6 +263,143 @@ class AssignmentControllerTest {
         verifyNoMoreInteractions(assignmentRepository);
     }
 
+    @Test
+    @DisplayName("Create grabbing assignment sales with valid param")
+    void createGrabbingSalesAssignmentValidTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CREATE_GRABBING_SALES;
+        GrabbingMessage message = getGrabbingMessage();
+        Account account = getAccount(message);
+        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(account);
+        when(linkedInService.createGrabbingSalesAssignment(any(GrabbingMessage.class), any(Account.class)))
+                .thenReturn(new Assignment());
+        MockHttpServletResponse response = mockMvc
+                .perform(post(request)
+                        .content(Objects.requireNonNull(getJson(message)))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1))
+                .getAccountByUsername(message.getLogin());
+        verify(linkedInService, times(1))
+                .createGrabbingSalesAssignment(any(GrabbingMessage.class), any(Account.class));
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Create grabbing assignment sales with invalid account")
+    void createGrabbingSalesAssignmentAccountInvalidTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CREATE_GRABBING_SALES;
+        GrabbingMessage message = getGrabbingMessage();
+        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(null);
+        mockMvc.perform(post(request)
+                .content(Objects.requireNonNull(getJson(message)))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        verify(accountRepository, times(1))
+                .getAccountByUsername(message.getLogin());
+        verifyNoMoreInteractions(accountRepository);
+    }
+
+    @Test
+    @DisplayName("Create grabbing sales assignment with invalid assignment")
+    void createGrabbingSalesAssignmentAssignmentInvalidTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CREATE_GRABBING_SALES;
+        GrabbingMessage message = getGrabbingMessage();
+        Account account = getAccount(message);
+        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(account);
+        when(linkedInService.createGrabbingSalesAssignment(any(GrabbingMessage.class), any(Account.class)))
+                .thenReturn(null);
+        mockMvc.perform(post(request)
+                .content(Objects.requireNonNull(getJson(message)))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        verify(accountRepository, times(1))
+                .getAccountByUsername(message.getLogin());
+        verify(linkedInService, times(1))
+                .createGrabbingSalesAssignment(any(GrabbingMessage.class), any(Account.class));
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Create connection assignment with valid param")
+    void createConnectionAssignmentValidTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CREATE_CONNECTION;
+        ConnectionMessage message = getConnectionMessage();
+        Account account = getAccount(message);
+        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(account);
+        when(linkedInService.createConnectionAssignment(any(ConnectionMessage.class), any(Account.class)))
+                .thenReturn(new Assignment());
+        MockHttpServletResponse response = mockMvc
+                .perform(post(request).param("login", EMAIL)
+                        .param("fullLocationString", LOCATION)
+                        .param("position", POSITION)
+                        .param("executionLimit", "100")
+                        .param("industries", INDUSTRIES))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1))
+                .getAccountByUsername(message.getLogin());
+        verify(linkedInService, times(1))
+                .createConnectionAssignment(any(ConnectionMessage.class), any(Account.class));
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Create connection assignment with invalid account")
+    void createConnectionAssignmentAccountInvalidTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CREATE_CONNECTION;
+        ConnectionMessage message = getConnectionMessage();
+        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(null);
+        mockMvc.perform(post(request)
+                .param("login", EMAIL)
+                .param("fullLocationString", LOCATION)
+                .param("position", POSITION)
+                .param("executionLimit", "100")
+                .param("industries", INDUSTRIES))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        verify(accountRepository, times(1))
+                .getAccountByUsername(message.getLogin());
+        verifyNoMoreInteractions(accountRepository);
+    }
+
+    @Test
+    @DisplayName("Create connection assignment with invalid assignment")
+    void createConnectionAssignmentAssignmentInvalidTest() throws Exception {
+        String request = ASSIGNMENT_CONTROLLER + CREATE_CONNECTION;
+        ConnectionMessage message = getConnectionMessage();
+        Account account = getAccount(message);
+        when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(account);
+        when(linkedInService.createConnectionAssignment(any(ConnectionMessage.class), any(Account.class)))
+                .thenReturn(null);
+        mockMvc.perform(post(request)
+                .param("login", EMAIL)
+                .param("fullLocationString", LOCATION)
+                .param("position", POSITION)
+                .param("executionLimit", "100")
+                .param("industries", INDUSTRIES))
+                .andExpect(status().isBadRequest())
+                .andReturn()
+                .getResponse();
+        verify(accountRepository, times(1))
+                .getAccountByUsername(message.getLogin());
+        verify(linkedInService, times(1))
+                .createConnectionAssignment(any(ConnectionMessage.class), any(Account.class));
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
+
+
+
+
     private GrabbingMessage getGrabbingMessage() {
         GrabbingMessage message = new GrabbingMessage();
         message.setLogin(EMAIL);
@@ -271,7 +409,26 @@ class AssignmentControllerTest {
         return message;
     }
 
+    private ConnectionMessage getConnectionMessage() {
+        ConnectionMessage message = new ConnectionMessage();
+        message.setLogin(EMAIL);
+        message.setFullLocationString(LOCATION);
+        message.setIndustries(INDUSTRIES);
+        message.setPosition(POSITION);
+        message.setExecutionLimit(100);
+        return message;
+    }
+
     private Account getAccount(GrabbingMessage message) {
+        Account account = new Account();
+        account.setId(ID);
+        account.setUsername(message.getLogin());
+        account.setPassword(PASSWORD);
+        account.setGrabbingLimit(100);
+        return account;
+    }
+
+    private Account getAccount(ConnectionMessage message) {
         Account account = new Account();
         account.setId(ID);
         account.setUsername(message.getLogin());
