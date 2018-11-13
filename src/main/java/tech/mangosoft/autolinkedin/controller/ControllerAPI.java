@@ -36,6 +36,8 @@ public class ControllerAPI{
     static final String GET_CONTACT_BY_ID = "/getContact/{id}";
     static final String UPDATE_CONTACT = "/update";
     static final String GET_CONTACTS_BY_STATUS = "/getContactsByStatus";
+    static final String DOWNLOAD_FILE_BY_FILENAME = "/file/{filename}";
+    static final String UPLOAD_FILE = "/upload";
 
     static final String ALL = "/all";
     static final String BY_ID = "/{id}";

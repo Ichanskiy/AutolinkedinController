@@ -88,7 +88,7 @@ public class LinkedinContactController {
 
     @CrossOrigin
     @GetMapping(value = GET_CONTACTS_BY_STATUS)
-    public ResponseEntity<PageImpl<LinkedInContact>> getProcessedContact(@RequestBody ProcessedContactMessage message) {
+    public ResponseEntity<PageImpl<LinkedInContact>> getContactsByStatus(@RequestBody ProcessedContactMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
             logger.log(Level.WARNING, "Account must be not null");
@@ -114,7 +114,7 @@ public class LinkedinContactController {
      * Download Files
      */
     @CrossOrigin
-    @PostMapping("/all")
+    @PostMapping(ALL)
     public List<String> getListFiles(@RequestBody ContactsMessage message) {
         try {
             contactService.createCsvFileByParam(message);
@@ -129,7 +129,7 @@ public class LinkedinContactController {
     }
 
     @CrossOrigin
-    @GetMapping("/file/{filename}")
+    @GetMapping(DOWNLOAD_FILE_BY_FILENAME)
     public ResponseEntity<Resource> downloadFile(@PathVariable String filename) {
         Resource file = fileStorage.loadFile();
         return ResponseEntity.ok()
@@ -141,7 +141,7 @@ public class LinkedinContactController {
      * Upload Files
      */
     @CrossOrigin
-    @PostMapping("/upload")
+    @PostMapping(UPLOAD_FILE)
     public ResponseEntity<String> uploadFile(@RequestPart("file") MultipartFile file) {
         if (!fileStorage.store(file)) {
             return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
