@@ -138,7 +138,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/getLocations")
+    @GetMapping(value = GET_LOCATIONS)
     public ResponseEntity<List<String>> getLocations() {
         Iterable<Location> statisticResponse = locationRepository.findAll();
         List<String> stringLocations = new ArrayList<>();
@@ -161,7 +161,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @PutMapping("/changeStatus")
+    @PutMapping(CHANGE_STATUS)
     public ResponseEntity<HttpStatus> changeAssignmentStatus(Long id, Integer status) {
         Assignment assignment = assignmentRepository.getById(id);
         if (assignment == null) {
@@ -173,7 +173,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/getConnectionInfo/{id}/{page}")
+    @GetMapping(value = GET_CONNECTION_INFO_BY_ID_AND_PAGE)
     public ResponseEntity<StatisticsByConnectionMessage> getConnectionInfoByAssignmentId(@PathVariable Long id,
                                                                                          @PathVariable Integer page) {
         Assignment assignment = assignmentRepository.getById(id);
@@ -202,7 +202,7 @@ public class AssignmentController {
 //    }
 
     @CrossOrigin
-    @GetMapping(value = "/getAssignmentByUserAndStatus")
+    @GetMapping(value = GET_ASSIGNMENT_BY_USER_AND_STATUS)
     public ResponseEntity<PageImpl<Assignment>> getAssignmentByUserAndStatus(String email, Integer status, Integer count) {
         Account account = accountRepository.getAccountByUsername(email);
         if (account == null) {
@@ -213,7 +213,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @PostMapping(value = "/getAssignmentByParam")
+    @PostMapping(value = GET_ASSIGNMENT_BY_PARAM)
     public ResponseEntity<PageImpl<Assignment>> getAssignmentsByParam(@RequestBody AssignmentsByParam message) {
         Account account = accountRepository.getAccountByUsername(message.getEmail());
         if (account == null) {
@@ -235,7 +235,7 @@ public class AssignmentController {
     }
 */
     @CrossOrigin
-    @GetMapping(value = "/getGraphByType")
+    @GetMapping(value = GET_GRAPH_BY_TYPE)
     public ResponseEntity<GraphMessage> getGraphByType(String email, String type, String period) {
         Account account = accountRepository.getAccountByUsername(email);
         if (account == null) {

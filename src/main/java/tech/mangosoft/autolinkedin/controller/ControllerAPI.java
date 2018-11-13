@@ -20,10 +20,22 @@ public class ControllerAPI{
     static final String CREATE_CONNECTION = "/createConnection";
     static final String GET_STATISTICS = "/getStatistics";
     static final String GET_GROUPS = "/getGroups";
+    static final String GET_LOCATIONS = "/getLocations";
+    static final String CHANGE_STATUS = "/changeStatus";
+    static final String GET_CONNECTION_INFO_BY_ID_AND_PAGE = "/getConnectionInfo/{id}/{page}";
+    static final String GET_ASSIGNMENT_BY_USER_AND_STATUS = "/getAssignmentByUserAndStatus";
+    static final String GET_ASSIGNMENT_BY_PARAM = "/getAssignmentByParam";
+    static final String GET_GRAPH_BY_TYPE = "/getGraphByType";
 
     //HEADCOUNT
     static final String HEADCOUNT_CONTROLLER = "/headcount";
 
+    //CONTACT
+    static final String CONTACT_CONTROLLER = "/contact";
+    static final String GET_CONTACTS = "/getContacts";
+    static final String GET_CONTACT_BY_ID = "/getContact/{id}";
+    static final String UPDATE_CONTACT = "/update";
+    static final String GET_CONTACTS_BY_STATUS = "/getContactsByStatus";
 
     static final String ALL = "/all";
     static final String BY_ID = "/{id}";

@@ -1,23 +1,22 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class ProcessedContactMessage {
 
-    @JsonProperty
+
     private Long assignmentId;
 
-    @JsonProperty
+    private Integer status;
+
     private String login;
 
-    @JsonProperty
     private Integer page;
 
     public ProcessedContactMessage() {
     }
 
-    public ProcessedContactMessage(Long assignmentId, String login, Integer page) {
+    public ProcessedContactMessage(Long assignmentId, Integer status, String login, Integer page) {
         this.assignmentId = assignmentId;
+        this.status = status;
         this.login = login;
         this.page = page;
     }
@@ -28,6 +27,14 @@ public class ProcessedContactMessage {
 
     public void setAssignmentId(Long assignmentId) {
         this.assignmentId = assignmentId;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getLogin() {
