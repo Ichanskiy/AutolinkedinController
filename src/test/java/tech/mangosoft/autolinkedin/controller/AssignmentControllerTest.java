@@ -10,12 +10,12 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import tech.mangosoft.autolinkedin.controller.messages.ConnectionMessage;
-import tech.mangosoft.autolinkedin.controller.messages.GrabbingMessage;
+import tech.mangosoft.autolinkedin.controller.messages.*;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
@@ -438,6 +438,159 @@ class AssignmentControllerTest {
         verifyNoMoreInteractions(accountRepository);
     }
 
+    @Test
+    @DisplayName("Get connection info by assignment id with valid params")
+    void getConnectionInfoByAssignmentIdValid() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_CONNECTION_INFO_BY_ID_AND_PAGE;
+        Assignment assignment = new Assignment();
+        assignment.setId(ID);
+        when(assignmentRepository.getById(ID)).thenReturn(assignment);
+        when(linkedInService.getContactsByConnection(assignment, 1)).thenReturn(new StatisticsByConnectionMessage());
+        MockHttpServletResponse response = mockMvc
+                .perform(get(request ,ID, 1))
+                .andExpect(status().isOk())
+                .andReturn().getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(assignmentRepository, times(1)).getById(ID);
+        verify(linkedInService, times(1)).getContactsByConnection(assignment, 1);
+        verifyNoMoreInteractions(assignmentRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Get connection info without assignment")
+    void getConnectionInfoWithoutAssignmentInvalid() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_CONNECTION_INFO_BY_ID_AND_PAGE;
+        when(assignmentRepository.getById(ID)).thenReturn(null);
+        mockMvc.perform(get(request ,ID, 1))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+        verify(assignmentRepository, times(1)).getById(ID);
+        verifyNoMoreInteractions(assignmentRepository);
+    }
+
+    @Test
+    @DisplayName("Get assignment by user and status with valid params")
+    void getAssignmentByUserAndStatusValid() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_ASSIGNMENT_BY_USER_AND_STATUS;
+        Account account = new Account();
+        account.setId(ID);
+        account.setUsername(EMAIL);
+        account.setPassword(PASSWORD);
+        account.setGrabbingLimit(100);
+        when(accountRepository.getAccountByUsername(EMAIL)).thenReturn(account);
+        when(linkedInService.getAssignmentByUserAndStatus(account, 1, 10)).thenReturn(new PageImpl<>(new ArrayList<Assignment>()));
+        MockHttpServletResponse response = mockMvc
+                .perform(get(request)
+                .param("email", EMAIL)
+                .param("status", "1")
+                .param("count", "10"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1)).getAccountByUsername(EMAIL);
+        verify(linkedInService, times(1)).getAssignmentByUserAndStatus(account, 1, 10);
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Get assignment with invalid account param")
+    void getAssignmentByUserAndStatusInvalidAccount() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_ASSIGNMENT_BY_USER_AND_STATUS;
+        when(accountRepository.getAccountByUsername(EMAIL)).thenReturn(null);
+        mockMvc.perform(get(request)
+                        .param("email", EMAIL)
+                        .param("status", "1")
+                        .param("count", "10"))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+        verify(accountRepository, times(1)).getAccountByUsername(EMAIL);
+        verifyNoMoreInteractions(accountRepository);
+    }
+
+    @Test
+    @DisplayName("Get assignment by param with valid params")
+    void getAssignmentsByParamValid() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_ASSIGNMENT_BY_PARAM;
+        AssignmentsByParam message = getAssignmentsByParam();
+        when(accountRepository.getAccountByUsername(message.getEmail())).thenReturn(new Account());
+        when(linkedInService.getAssignmentByParam(any(AssignmentsByParam.class), any(Account.class))).thenReturn(new PageImpl<>(new ArrayList<Assignment>()));
+        MockHttpServletResponse response = mockMvc
+                .perform(post(request).content(Objects.requireNonNull(getJson(message)))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn().getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1)).getAccountByUsername(message.getEmail());
+        verify(linkedInService, times(1)).getAssignmentByParam(any(AssignmentsByParam.class), any(Account.class));
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Get assignment by param with invalid account")
+    void getAssignmentsByParamInvalidAccount() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_ASSIGNMENT_BY_PARAM;
+        AssignmentsByParam message = getAssignmentsByParam();
+        when(accountRepository.getAccountByUsername(message.getEmail())).thenReturn(null);
+        mockMvc.perform(post(request).content(Objects.requireNonNull(getJson(message)))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+        verify(accountRepository, times(1)).getAccountByUsername(message.getEmail());
+        verifyNoMoreInteractions(accountRepository);
+    }
+
+    @Test
+    @DisplayName("Get graph by type with valid params")
+    void getGraphByTypeValid() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_GRAPH_BY_TYPE;
+        Account account = new Account();
+        when(accountRepository.getAccountByUsername(EMAIL)).thenReturn(account);
+        when(linkedInService.getGraphByType(account, "links", 7)).thenReturn(new GraphMessage());
+        MockHttpServletResponse response = mockMvc
+                .perform(get(request)
+                        .param("email", EMAIL)
+                        .param("type", "links")
+                        .param("period", "7"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(accountRepository, times(1)).getAccountByUsername(EMAIL);
+        verify(linkedInService, times(1)).getGraphByType(account, "links", 7);
+        verifyNoMoreInteractions(accountRepository, linkedInService);
+    }
+
+    @Test
+    @DisplayName("Get graph by type with invalid type")
+    void getGraphByTypeInvalidType() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_GRAPH_BY_TYPE;
+        Account account = new Account();
+        when(accountRepository.getAccountByUsername(EMAIL)).thenReturn(account);
+        mockMvc.perform(get(request)
+                        .param("email", EMAIL)
+                        .param("type", "lol")
+                        .param("period", "7"))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+        verify(accountRepository, times(1)).getAccountByUsername(EMAIL);
+        verifyNoMoreInteractions(accountRepository);
+    }
+
+    @Test
+    @DisplayName("Get graph by type with invalid account")
+    void getGraphByTypeInvalidAccount() throws Exception{
+        String request = ASSIGNMENT_CONTROLLER + GET_GRAPH_BY_TYPE;
+        when(accountRepository.getAccountByUsername(EMAIL)).thenReturn(null);
+        mockMvc.perform(get(request)
+                .param("email", EMAIL)
+                .param("type", "links")
+                .param("period", "7"))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+        verify(accountRepository, times(1)).getAccountByUsername(EMAIL);
+        verifyNoMoreInteractions(accountRepository);
+    }
+
+
     private GrabbingMessage getGrabbingMessage() {
         GrabbingMessage message = new GrabbingMessage();
         message.setLogin(EMAIL);
@@ -456,6 +609,16 @@ class AssignmentControllerTest {
         message.setExecutionLimit(100);
         return message;
     }
+
+    private AssignmentsByParam getAssignmentsByParam() {
+        AssignmentsByParam message = new AssignmentsByParam();
+        message.setEmail(EMAIL);
+        message.setStatus(0);
+        message.setFrom("");
+        message.setTo("");
+        return message;
+    }
+
 
     private Account getAccount(GrabbingMessage message) {
         Account account = new Account();
