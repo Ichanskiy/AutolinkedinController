@@ -30,6 +30,12 @@ public class ControllerAPI{
     //HEADCOUNT
     static final String HEADCOUNT_CONTROLLER = "/headcount";
 
+    //CONTACT
+    static final String CONTACT_CONTROLLER = "/contact";
+    static final String GET_CONTACTS = "/getContacts";
+    static final String GET_CONTACT_BY_ID = "/getContact/{id}";
+    static final String UPDATE_CONTACT = "/update";
+    static final String GET_CONTACTS_BY_STATUS = "/getContactsByStatus";
 
     static final String ALL = "/all";
     static final String BY_ID = "/{id}";
