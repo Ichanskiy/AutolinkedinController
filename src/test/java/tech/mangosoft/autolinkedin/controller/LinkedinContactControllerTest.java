@@ -11,14 +11,10 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.FileUrlResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.mock.web.MockPart;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import tech.mangosoft.autolinkedin.controller.messages.ContactsMessage;
@@ -33,13 +29,9 @@ import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
 import tech.mangosoft.autolinkedin.filestorage.FileStorage;
 import tech.mangosoft.autolinkedin.service.ContactService;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -55,7 +47,6 @@ import static tech.mangosoft.autolinkedin.utils.JacksonUtils.getJson;
 @SpringBootTest
 public class LinkedinContactControllerTest {
     private static final String EMAIL = "test@email.com";
-    private static final String PASSWORD = "pass";
     private static final String LOCATION = "Greater Test Area";
     private static final String INDUSTRIES = "Test Games";
     private static final String POSITION = "CEO";
@@ -89,7 +80,7 @@ public class LinkedinContactControllerTest {
 
     @Test
     @DisplayName("Get contacts with valid params")
-    void getContactsValidTest() throws Exception{
+    void getContactsValidTest() throws Exception {
         String request = CONTACT_CONTROLLER + GET_CONTACTS;
         ContactsMessage message = new ContactsMessage();
         message.setIndustries(INDUSTRIES);
@@ -111,7 +102,7 @@ public class LinkedinContactControllerTest {
 
     @Test
     @DisplayName("Get contact by id with valid params")
-    void getContactByIdValid() throws Exception{
+    void getContactByIdValid() throws Exception {
         String request = CONTACT_CONTROLLER + GET_CONTACT_BY_ID;
         when(contactRepository.getById(ID)).thenReturn(new LinkedInContact());
         MockHttpServletResponse response = mockMvc
@@ -126,7 +117,7 @@ public class LinkedinContactControllerTest {
 
     @Test
     @DisplayName("Get contact by id with invalid params")
-    void getContactByIdInvalid() throws Exception{
+    void getContactByIdInvalid() throws Exception {
         String request = CONTACT_CONTROLLER + GET_CONTACT_BY_ID;
         when(contactRepository.getById(ID)).thenReturn(null);
         mockMvc.perform(get(request, ID))
@@ -138,14 +129,14 @@ public class LinkedinContactControllerTest {
 
     @Test
     @DisplayName("Update contact with valid params")
-    void updateContactValid() throws Exception{
+    void updateContactValid() throws Exception {
         String request = CONTACT_CONTROLLER + UPDATE_CONTACT;
         when(contactRepository.getById(ID)).thenReturn(new LinkedInContact());
         when(contactService.update(any(LinkedInContact.class), any(UpdateContactMessage.class))).thenReturn(new LinkedInContact());
         MockHttpServletResponse response = mockMvc
                 .perform(put(request)
-                .param("id", "1")
-                .param("email", EMAIL))
+                        .param("id", "1")
+                        .param("email", EMAIL))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse();
@@ -157,12 +148,12 @@ public class LinkedinContactControllerTest {
 
     @Test
     @DisplayName("Update contact with invalid contact")
-    void updateContactInvalidContact() throws Exception{
+    void updateContactInvalidContact() throws Exception {
         String request = CONTACT_CONTROLLER + UPDATE_CONTACT;
         when(contactRepository.getById(ID)).thenReturn(null);
         mockMvc.perform(put(request)
-                        .param("id", "1")
-                        .param("email", EMAIL))
+                .param("id", "1")
+                .param("email", EMAIL))
                 .andExpect(status().isBadRequest())
                 .andReturn();
         verify(contactRepository, times(1)).getById(ID);
@@ -189,7 +180,7 @@ public class LinkedinContactControllerTest {
         when(contactService.getCountContactsByStatus(account, assignment, message.getStatus())).thenReturn(10);
         MockHttpServletResponse response = mockMvc
                 .perform(get(request).content(Objects.requireNonNull(getJson(message)))
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse();
@@ -263,28 +254,28 @@ public class LinkedinContactControllerTest {
     }
 
 
-//    @Test
-//    @DisplayName("Get list files with valid params")
-//    void getListFilesValid() throws Exception {
-//        String request = CONTACT_CONTROLLER + ALL;
-//        ContactsMessage message = new ContactsMessage();
-//        message.setPosition(POSITION);
-//        message.setLocation(LOCATION);
-//        message.setIndustries(INDUSTRIES);
-//        message.setPage(1);
-//        doNothing().when(contactService).createCsvFileByParam(message);
-//        when(fileStorage.loadFiles()).thenReturn(new ArrayList<>());
-//        MockHttpServletResponse response = mockMvc
-//                .perform(post(request).content(Objects.requireNonNull(getJson(message)))
-//                        .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andReturn()
-//                .getResponse();
-//        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
-//        verify(contactService, times(1)).createCsvFileByParam(message);
-//        verify(fileStorage, times(1)).loadFiles();
-//        verifyNoMoreInteractions(contactService, fileStorage);
-//    }
+    @Test
+    @DisplayName("Get list files with valid params")
+    void getListFilesValid() throws Exception {
+        String request = CONTACT_CONTROLLER + ALL;
+        ContactsMessage message = new ContactsMessage();
+        message.setPosition(POSITION);
+        message.setLocation(LOCATION);
+        message.setIndustries(INDUSTRIES);
+        message.setPage(1);
+        doNothing().when(contactService).createCsvFileByParam(any(ContactsMessage.class));
+        when(fileStorage.loadFiles()).thenReturn(Stream.empty());
+        MockHttpServletResponse response = mockMvc
+                .perform(post(request).content(Objects.requireNonNull(getJson(message)))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+        assertNotEquals(response.getContentAsString(), Strings.EMPTY);
+        verify(contactService, times(1)).createCsvFileByParam(any(ContactsMessage.class));
+        verify(fileStorage, times(1)).loadFiles();
+        verifyNoMoreInteractions(contactService, fileStorage);
+    }
 
     @Test
     @DisplayName("Download file by filename with valid params")
