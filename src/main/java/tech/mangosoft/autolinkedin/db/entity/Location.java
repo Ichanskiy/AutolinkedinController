@@ -43,8 +43,9 @@ public class Location {
         return location;
     }
 
-    public void setLocation(String location) {
+    public Location setLocation(String location) {
         this.location = location;
+        return this;
     }
 
 }

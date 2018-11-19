@@ -9,9 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.ContactsMessage;
 import tech.mangosoft.autolinkedin.controller.messages.UpdateContactMessage;
-import tech.mangosoft.autolinkedin.db.entity.*;
+import tech.mangosoft.autolinkedin.db.entity.Account;
+import tech.mangosoft.autolinkedin.db.entity.Assignment;
+import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
+import tech.mangosoft.autolinkedin.db.entity.Location;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
-import tech.mangosoft.autolinkedin.db.repository.*;
+import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
+import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
+import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
+import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 import tech.mangosoft.autolinkedin.utils.CSVUtils;
 
 import javax.persistence.EntityManager;
@@ -28,7 +34,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import static tech.mangosoft.autolinkedin.utils.CSVUtils.parseLine;
@@ -88,7 +93,7 @@ public class ContactService {
         writeToCSVFile(contacts);
     }
 
-    private List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
+    List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
         if (message == null || message.getPage() == null) {
             return null;
         }
@@ -227,6 +232,21 @@ public class ContactService {
     }
 
     public List<LinkedInContact> getContactsByParams(ContactsMessage message){
+
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
+        Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
+
+        getPredicatesByParam(message, root, builder);
+
+        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        TypedQuery<LinkedInContact> query = entityManager.createQuery(criteriaQuery);
+
+
+        return query.getResultList();
+    }
+
+    public List<LinkedInContact> getContactsByParams(ContactsMessage message){
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
         Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
@@ -276,88 +296,17 @@ public class ContactService {
         return entityManager.createQuery(cq).getSingleResult();
     }
 
-    /**
-     * @author  Ichanskiy
-     *
-     * This is the method get contacts.
-     * @param account current account.
-     * @return object that contains statistics
-     */
-    public List<LinkedInContact> getProcessedContact(Account account, Assignment assignment, int page, int size) {
+    public List<LinkedInContact> getContactsByStatus(Account account, Assignment assignment, Integer status, int page, int size) {
         return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
+                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, status, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
                 .stream()
                 .map(contactProcessing -> contactProcessing.getContact().setComments(contactProcessing.getAuditLog()))
                 .collect(Collectors.toList());
     }
 
-    /**
-     * @author  Ichanskiy
-     *
-     * This is the method get succeed contacts.
-     * @param account current account.
-     * @return object that contains statistics
-     */
-    public List<LinkedInContact> getContactsSucceed(Account account, Assignment assignment, int page, int size) {
+    public Integer getCountContactsByStatus(Account account, Assignment assignment, Integer status) {
         return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
-                .stream()
-                .map(contactProcessing -> contactProcessing.getContact().setComments(contactProcessing.getAuditLog()))
-                .collect(Collectors.toList());
-    }
-
-    /**
-     * @author  Ichanskiy
-     *
-     * This is the method get saved contacts.
-     * @param account current account.
-     * @return object that contains statistics
-     */
-    public List<LinkedInContact> getContactsSaved(Account account, Assignment assignment, int page, int size) {
-        return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
-                .stream()
-                .map(contactProcessing -> contactProcessing.getContact().setComments(contactProcessing.getAuditLog()))
-                .collect(Collectors.toList());
-    }
-
-    /**
-     * @author  Ichanskiy
-     *
-     * This is the method get count saved contacts.
-     * @param account current account.
-     * @return object that contains statistics
-     */
-    public Integer getCountSavedContact(Account account, Assignment assignment) {
-        return contactProcessingRepository
-                .countDistinctByAccountAndAssignmentAndStatusNot(account, assignment, ContactProcessing.STATUS_ERROR);
-    }
-
-    /**
-     * @author  Ichanskiy
-     *
-     * This is the method get count failed contacts.
-     * @param account current account.
-     * @return object that contains statistics
-     */
-    public Integer getCountFailedContact(Account account, Assignment assignment) {
-        return contactProcessingRepository
-                .countDistinctByAccountAndAssignmentAndStatus(account, assignment, ContactProcessing.STATUS_ERROR);
-    }
-
-    /**
-     * @author  Ichanskiy
-     *
-     * This is the method get failed contacts.
-     * @param account current account.
-     * @return object that contains statistics
-     */
-    public List<LinkedInContact> getContactsFailed(Account account, Assignment assignment, int page, int size) {
-        return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatus(account, assignment, ContactProcessing.STATUS_ERROR, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
-                .stream()
-                .map(ContactProcessing::getContact)
-                .collect(Collectors.toList());
+                .countDistinctByAccountAndAssignmentAndStatus(account, assignment, status);
     }
 
 

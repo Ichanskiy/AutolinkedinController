@@ -71,6 +71,9 @@ public class LinkedInContact {
     @Column(name = "comments", length = 16000)
     private String comments;
 
+    @Column
+    private Boolean grabbedEmail;
+
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
@@ -143,6 +146,15 @@ public class LinkedInContact {
 
     public LinkedInContact setCompanyWebsite(String companyWebsite) {
         this.companyWebsite = companyWebsite;
+        return this;
+    }
+
+    public Boolean getGrabbedEmail() {
+        return grabbedEmail;
+    }
+
+    public LinkedInContact setGrabbedEmail(Boolean grabbedEmail) {
+        this.grabbedEmail = grabbedEmail;
         return this;
     }
 

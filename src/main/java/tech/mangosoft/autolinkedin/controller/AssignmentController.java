@@ -23,10 +23,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.*;
 import static tech.mangosoft.autolinkedin.controller.LinkedinContactController.COUNT_TO_PAGE;
 
 @RestController
-@RequestMapping("/assignment")
+@RequestMapping(ASSIGNMENT_CONTROLLER)
 public class AssignmentController {
 
     private Logger logger = Logger.getLogger(AssignmentController.class.getName());
@@ -47,7 +48,7 @@ public class AssignmentController {
     private ILocationRepository locationRepository;
 
     @CrossOrigin
-    @PostMapping(value = "/createGrabbing")
+    @PostMapping(value = CREATE_GRABBING)
     public ResponseEntity<Assignment> createGrabbingAssignment(@RequestBody GrabbingMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
@@ -63,7 +64,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @PostMapping(value = "/createGrabbingSales")
+    @PostMapping(value = CREATE_GRABBING_SALES)
     public ResponseEntity<Assignment> createGrabbingSalesAssignment(@RequestBody GrabbingMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
@@ -79,7 +80,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @PostMapping(value = "/createConnection")
+    @PostMapping(value = CREATE_CONNECTION)
     public ResponseEntity<Assignment> createConnectionAssignment(ConnectionMessage message) {
         Account account = accountRepository.getAccountByUsername(message.getLogin());
         if (account == null) {
@@ -95,7 +96,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @GetMapping("/{id}")
+    @GetMapping(BY_ID)
     public ResponseEntity<Assignment> getAssignmentById(@PathVariable Long id) {
         Assignment assignment = assignmentRepository.getById(id);
         if (assignment == null) {
@@ -106,7 +107,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/getStatistics")
+    @GetMapping(value = GET_STATISTICS)
     public ResponseEntity<PageImpl<StatisticResponse>> getStatistics(String email, Integer page) {
         Account account = accountRepository.getAccountByUsername(email);
         if (account == null) {
@@ -120,7 +121,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/getGroups")
+    @GetMapping(value = GET_GROUPS)
     public List<Group> getGroups() {
         return groupRepository.findAll();
     }
@@ -137,7 +138,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/getLocations")
+    @GetMapping(value = GET_LOCATIONS)
     public ResponseEntity<List<String>> getLocations() {
         Iterable<Location> statisticResponse = locationRepository.findAll();
         List<String> stringLocations = new ArrayList<>();
@@ -148,7 +149,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @DeleteMapping("/{id}")
+    @DeleteMapping(BY_ID)
     public ResponseEntity<HttpStatus> deleteAssignment(@PathVariable Long id) {
         Assignment assignment = assignmentRepository.getById(id);
         if (assignment == null) {
@@ -160,7 +161,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @PutMapping("/changeStatus")
+    @PutMapping(CHANGE_STATUS)
     public ResponseEntity<HttpStatus> changeAssignmentStatus(Long id, Integer status) {
         Assignment assignment = assignmentRepository.getById(id);
         if (assignment == null) {
@@ -172,7 +173,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/getConnectionInfo/{id}/{page}")
+    @GetMapping(value = GET_CONNECTION_INFO_BY_ID_AND_PAGE)
     public ResponseEntity<StatisticsByConnectionMessage> getConnectionInfoByAssignmentId(@PathVariable Long id,
                                                                                          @PathVariable Integer page) {
         Assignment assignment = assignmentRepository.getById(id);
@@ -201,7 +202,7 @@ public class AssignmentController {
 //    }
 
     @CrossOrigin
-    @GetMapping(value = "/getAssignmentByUserAndStatus")
+    @GetMapping(value = GET_ASSIGNMENT_BY_USER_AND_STATUS)
     public ResponseEntity<PageImpl<Assignment>> getAssignmentByUserAndStatus(String email, Integer status, Integer count) {
         Account account = accountRepository.getAccountByUsername(email);
         if (account == null) {
@@ -212,7 +213,7 @@ public class AssignmentController {
     }
 
     @CrossOrigin
-    @PostMapping(value = "/getAssignmentByParam")
+    @PostMapping(value = GET_ASSIGNMENT_BY_PARAM)
     public ResponseEntity<PageImpl<Assignment>> getAssignmentsByParam(@RequestBody AssignmentsByParam message) {
         Account account = accountRepository.getAccountByUsername(message.getEmail());
         if (account == null) {
@@ -234,7 +235,7 @@ public class AssignmentController {
     }
 */
     @CrossOrigin
-    @GetMapping(value = "/getGraphByType")
+    @GetMapping(value = GET_GRAPH_BY_TYPE)
     public ResponseEntity<GraphMessage> getGraphByType(String email, String type, String period) {
         Account account = accountRepository.getAccountByUsername(email);
         if (account == null) {

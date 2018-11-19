@@ -9,9 +9,11 @@ import tech.mangosoft.autolinkedin.db.repository.ICompanyRepository;
 
 import java.util.List;
 
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.COMPANY_CONTROLLER;
+
 
 @RestController
-@RequestMapping("/company")
+@RequestMapping(COMPANY_CONTROLLER)
 public class CompanyController {
 
     @Autowired
