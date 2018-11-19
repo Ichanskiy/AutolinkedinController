@@ -1,408 +1,405 @@
-id,company_name,first_name,last_name,role,person_linkedin,location,industries,email
-18385 ,Calio.io ,Radoslaw ,CFA ,CEO ,https://www.linkedin.com/in/radoslaw-filarski-cfa-7688172/ ,Greater New York City Area ,Information Technology and Service , 
-18386 ,LogicomUSA ,Bobby ,Camisa ,CEO ,https://www.linkedin.com/in/bobby-camisa-811a9982/ ,Greater New York City Area ,Information Technology and Service , 
-18388 ,UNOMI ,Obi ,Onyejekwe ,CEO ,https://www.linkedin.com/in/obiny/ ,Greater New York City Area ,Information Technology and Service , 
-18392 ,vRad (Virtual Radiologic) ,Charlie ,Gottdiener ,Chairman and CEO ,https://www.linkedin.com/in/cgottdiener/ ,Greater New York City Area ,Information Technology and Service , 
-18393 ,AlphaRidge ,Alex ,Margovsky ,CEO ,https://www.linkedin.com/in/alexmargovsky/ ,Greater New York City Area ,Information Technology and Service , 
-18394 ,Black Industries; LLC ,Jason ,Black ,CEO ,https://www.linkedin.com/in/jason-black-1053034a/ ,Greater New York City Area ,Information Technology and Service , 
-18397 ,USS LLC ,M ,Khan ,CEO ,https://www.linkedin.com/in/mehrankhanit/ ,Greater New York City Area ,Information Technology and Service , 
-18398 ,Verizon ,Lowell ,McAdam ,CEO ,https://www.linkedin.com/in/lowellmcadam/ ,Greater New York City Area ,Information Technology and Service , 
-18399 ,Sands Point Associates; LLC ,Bob ,Officer ,Founder/Chief Executive Officer--CEO ,https://www.linkedin.com/in/bobmcmullan1/ ,Greater New York City Area ,Information Technology and Service , 
-18402 ,QualiTest Group ,Ayal ,Zylberman ,CEO ,https://www.linkedin.com/in/ayalzylbermanqualitest/ ,Greater New York City Area ,Information Technology and Service , 
-18403 ,AKAI ,Dragan ,Kovalenko ,CEO ,https://www.linkedin.com/in/dragannyc/ ,Greater New York City Area ,Information Technology and Service , 
-18404 ,Rapidsoft Technologies - IT Services & Consulting ,Susanta ,Dash ,CEO ,https://www.linkedin.com/in/skdash/ ,Greater New York City Area ,Information Technology and Service , 
-18409 ,AIAR Labs Inc ,Timur ,Khabirov ,Co-founder; CEO ,https://www.linkedin.com/in/timur-khabirov-209ba354/ ,Greater New York City Area ,Information Technology and Service , 
-18411 ,Magine TV ,Ambuj ,Goyal ,CEO ,https://www.linkedin.com/in/ambuj-goyal-a3778462/ ,Greater New York City Area ,Information Technology and Service , 
-18412 ,TetherView ,Michael ,Abboud ,CEO ,https://www.linkedin.com/in/michael-abboud-49525aa/ ,Greater New York City Area ,Information Technology and Service , 
-18417 ,Logicworks ,Kenneth ,Ziegler ,President & CEO ,https://www.linkedin.com/in/kennethziegler/ ,Greater New York City Area ,Information Technology and Service , 
-18424 ,DateMoi ,Sarat ,Sankula ,CEO ,https://www.linkedin.com/in/sarat-c-sankula-556a5b17/ ,Greater New York City Area ,Information Technology and Service , 
-18425 ,OGroup ,Maja ,Vujinovic ,CEO ,https://www.linkedin.com/in/majavujinovic/ ,Greater New York City Area ,Information Technology and Service , 
-18426 ,Birlasoft ,Anjan ,Lahiri ,CEO ,https://www.linkedin.com/in/anjan-lahiri-76b236/ ,Greater New York City Area ,Information Technology and Service , 
-18427 ,Banca ,Linda ,Chen ,CEO ,https://www.linkedin.com/in/linda-chen-6085496/ ,Greater New York City Area ,Information Technology and Service , 
-18428 ,West Corporation ,John ,Shlonsky ,CEO ,https://www.linkedin.com/in/john-shlonsky-2306718/ ,Greater New York City Area ,Information Technology and Service , 
-18429 ,Practical Cyber ,Elliot ,Turrini ,CEO Practical Cyber ,https://www.linkedin.com/in/elliot-turrini-8b022a1/ ,Greater New York City Area ,Information Technology and Service , 
-18430 ,Shoppi ,Salvatore ,Vacante ,CEO ,https://www.linkedin.com/in/svacant/ ,Greater New York City Area ,Information Technology and Service , 
-18433 ,Enterprise Solution Providers ,Joseph ,Alfieri ,CEO ,https://www.linkedin.com/in/josephalfieri/ ,Greater New York City Area ,Information Technology and Service , 
-18441 ,Veriday Inc. ,Marc ,Lamoureux ,CEO ,https://www.linkedin.com/in/marclamoureux/ ,Greater New York City Area ,Information Technology and Service , 
-18442 ,DataGryd ,Peter ,Feldman ,CEO & Principal ,https://www.linkedin.com/in/peter-feldman/ ,Greater New York City Area ,Information Technology and Service , 
-18443 ,Confidential. ,Samantha ,M ,CEO ,https://www.linkedin.com/in/samantha-m-20b631b2/ ,Greater New York City Area ,Information Technology and Service , 
-18444 ,ThitsaWorks ,Nyi ,Aye ,CEO ,https://www.linkedin.com/in/nyinyeinaye/ ,Greater New York City Area ,Information Technology and Service , 
-18448 ,Global Blockchain Business Council ,Sandra ,Ro ,CEO ,https://www.linkedin.com/in/sandraro/ ,Greater New York City Area ,Information Technology and Service , 
-18449 ,Ezetech LLC ,Stanislav ,Synko ,CEO ,https://www.linkedin.com/in/safitudo/ ,Greater New York City Area ,Information Technology and Service , 
-18458 ,GuideWell Connect ,Scott ,Paddock ,President & CEO ,https://www.linkedin.com/in/scott-paddock-6360a01/ ,Greater New York City Area ,Information Technology and Service , 
-18460 ,Energy Metrics LLC ,Rajendran ,Avadaiappan ,CEO ,https://www.linkedin.com/in/arajendran/ ,Greater New York City Area ,Information Technology and Service , 
-18461 ,Blackbird.AI ,Wasim ,Khaled ,CEO ,https://www.linkedin.com/in/wasimkhaled/ ,Greater New York City Area ,Information Technology and Service , 
-18462 ,Lemonade Inc. ,Daniel ,Schreiber ,CEO & Co-Founder ,https://www.linkedin.com/in/danielaschreiber/ ,Greater New York City Area ,Information Technology and Service , 
-18463 ,DrumG Financial Technologies ,Tim ,Grant ,Founder and CEO ,https://www.linkedin.com/in/tim-grant-a241673/ ,Greater New York City Area ,Information Technology and Service , 
-18467 ,Disrupt | Forbes Technology Counsel ,Anthony ,Delgado ,CEO & Founder ,https://www.linkedin.com/in/anthony-delgado/ ,Greater New York City Area ,Information Technology and Service , 
-18468 ,Vichara Technologies Inc. ,Atul ,Jain ,CEO ,https://www.linkedin.com/in/atul-jain-1066/ ,Greater New York City Area ,Information Technology and Service , 
-18469 ,Clearwater Compliance LLC ,Steve ,Cagle ,CEO ,https://www.linkedin.com/in/steve-cagle/ ,Greater New York City Area ,Information Technology and Service , 
-18470 ,Shelf.io ,Sedarius ,Perrotta ,CEO; Founder ,https://www.linkedin.com/in/sedarius-tekara-perrotta-14658235/ ,Greater New York City Area ,Information Technology and Service , 
-18471 ,REAL Solutions Technologies ,Julian ,Meloni ,CEO ,https://www.linkedin.com/in/julianmeloni/ ,Greater New York City Area ,Information Technology and Service , 
-18473 ,GenerationTAG; LLC. ,Michael ,Saporito ,Chief Executive Officer; ""CEO"" ,https://www.linkedin.com/in/saporitomichael/ ,Greater New York City Area ,Information Technology and Service , 
-18475 ,Mphasis Wyde & Eldorado ,Rajesh ,Makhija ,Ex - CEO ,https://www.linkedin.com/in/rajeshmakhija/ ,Greater New York City Area ,Information Technology and Service , 
-18477 ,Marlabs and Owner; Marlabs ,Siby ,Vadakekkara ,CEO ,https://www.linkedin.com/in/siby-vadakekkara-01018a/ ,Greater New York City Area ,Information Technology and Service , 
-18478 ,KNW Concepts ,Larry ,Davis ,CEO ,https://www.linkedin.com/in/larry-davis-a8158b100/ ,Greater New York City Area ,Information Technology and Service , 
-18479 ,ForgeRock ,Lauren ,Pauley ,Executive Assistant to the CEO ,https://www.linkedin.com/in/lepauley/ ,Greater New York City Area ,Information Technology and Service , 
-18482 ,INKHUNTER ,Oleksandra ,Rohachova ,CEO ,https://www.linkedin.com/in/rohachova/ ,Greater New York City Area ,Information Technology and Service , 
-18485 ,Quintessence Computer Corp ,Mayur ,Choksey ,CEO ,https://www.linkedin.com/in/mayurchoksey/ ,Greater New York City Area ,Information Technology and Service , 
-18486 ,IntraLogic Solutions Inc. ,Lee ,Mandel ,CEO ,https://www.linkedin.com/in/lee-mandel-5111b414/ ,Greater New York City Area ,Information Technology and Service , 
-18487 ,Connexient ,Mark ,Green ,Co-Founder and CEO ,https://www.linkedin.com/in/mark-green-55a4b218/ ,Greater New York City Area ,Information Technology and Service , 
-18489 ,3D WIZ TECHNOLOGY LLC ,John ,Cho ,CEO ,https://www.linkedin.com/in/john-cho-34639369/ ,Greater New York City Area ,Information Technology and Service , 
-18490 ,Sitehands ,JP ,Rosato ,CEO/Founder ,https://www.linkedin.com/in/jprosato/ ,Greater New York City Area ,Information Technology and Service , 
-18491 ,Brie Host ,Adrien ,Hubert ,CEO ,https://www.linkedin.com/in/adrien-hubert-86ab161/ ,Greater New York City Area ,Information Technology and Service , 
-18492 ,datSecure LLC ,Belnando ,Weekes ,CEO ,https://www.linkedin.com/in/belnando-weekes-38332114/ ,Greater New York City Area ,Information Technology and Service , 
-18493 ,Explain Everything Inc. I'll always put learning first! ,Reshan ,Richards ,Chief Learning Officer (and also CEO & Co-Founder) ,https://www.linkedin.com/in/reshan-richards-50782b12/ ,Greater New York City Area ,Information Technology and Service , 
-18497 ,Bluetree Network ,Jeremy ,Schwach ,Entrepreneur; Pizza Lover; CEO ,https://www.linkedin.com/in/jeremyschwach/ ,Greater New York City Area ,Information Technology and Service , 
-18498 ,BillingPlatform ,Dennis ,Wall ,CEO ,https://www.linkedin.com/in/dennis-wall-1bb153/ ,Greater New York City Area ,Information Technology and Service , 
-18499 ,Pienso ,Birago ,Jones ,CEO ,https://www.linkedin.com/in/birago/ ,Greater New York City Area ,Information Technology and Service , 
-18500 ,TowerData ,Tom ,Burke ,CEO ,https://www.linkedin.com/in/tom-burke-525600/ ,Greater New York City Area ,Information Technology and Service , 
-18501 ,Corsearch ,Tobias ,Hartmann ,CEO ,https://www.linkedin.com/in/tobiashartmann/ ,Greater New York City Area ,Information Technology and Service , 
-18502 ,HireArt ,Chris ,Forbes ,CEO ,https://www.linkedin.com/in/chrisforbeshireart/ ,Greater New York City Area ,Information Technology and Service , 
-18503 ,Aqfer ,Marc ,Sabatini ,CEO ,https://www.linkedin.com/in/marcsabatini/ ,Greater New York City Area ,Information Technology and Service , 
-18504 ,innoscale AG ,Matthias ,Czerwonka ,CEO ,https://www.linkedin.com/in/mczerwonka/ ,Greater New York City Area ,Information Technology and Service , 
-18508 ,WorkFusion ,Alex ,Lyashok ,CEO ,https://www.linkedin.com/in/lyashok/ ,Greater New York City Area ,Information Technology and Service , 
-18509 ,Internet of Things Consortium ,Greg ,Kahn ,President & CEO ,https://www.linkedin.com/in/greg-kahn-580848/ ,Greater New York City Area ,Information Technology and Service , 
-18511 ,Active Indoor Media ,Ken ,MBA ,CEO ,https://www.linkedin.com/in/klock1a/ ,Greater New York City Area ,Information Technology and Service , 
-18512 ,nfrastructure ,Daniel ,III ,CEO ,https://www.linkedin.com/in/daniel-t-pickett-iii-9b6a2616/ ,Greater New York City Area ,Information Technology and Service , 
-18513 ,Richard Darell McCoy and Randell E Gibson Constructions ,Richard ,Darrel ,CEO ,https://www.linkedin.com/in/richard-darrel-420737166/ ,Greater New York City Area ,Information Technology and Service , 
-18514 ,INFINITY BPO SOLUTIONS ,king ,david ,CEO ,https://www.linkedin.com/in/king-david-88801887/ ,Greater New York City Area ,Information Technology and Service , 
-18515 ,Potoo® Marketing LLC ,Fred ,Dimyan ,CEO ,https://www.linkedin.com/in/freddimyan/ ,Greater New York City Area ,Information Technology and Service , 
-18516 ,SeniorHelpDesk.com ,Jay ,Esq ,CEO ,https://www.linkedin.com/in/jay-jaser-esq-2b989926/ ,Greater New York City Area ,Information Technology and Service , 
-18517 ,Docurated ,Alex ,Gorbansky ,CEO & Founder ,https://www.linkedin.com/in/alex-a-gorbansky-6b976/ ,Greater New York City Area ,Information Technology and Service , 
-18518 ,Artory ,Nanne ,Dekking ,CEO Founder ,https://www.linkedin.com/in/nanne-dekking-17a671161/ ,Greater New York City Area ,Information Technology and Service , 
-18519 ,Mindbowser Infosolutions Pvt. Ltd. ,Ayush ,Jain ,CEO ,https://www.linkedin.com/in/ayushj/ ,Greater New York City Area ,Information Technology and Service , 
-18520 ,L&T Technology Services ,Keshab ,Panda ,CEO ,https://www.linkedin.com/in/keshab-panda-65459625/ ,Greater New York City Area ,Information Technology and Service , 
-18521 ,Genesis Services Group ,Tom ,Bevacqua ,CEO ,https://www.linkedin.com/in/tom-bevacqua-0a06794/ ,Greater New York City Area ,Information Technology and Service , 
-18522 ,Tigerbells ,Vivek ,Kalyan ,CEO ,https://www.linkedin.com/in/vivekkalyan/ ,Greater New York City Area ,Information Technology and Service , 
-18523 ,GSS Infotech ,Bhargav ,Marepally ,CEO ,https://www.linkedin.com/in/bhargav-marepally-05b3aa/ ,Greater New York City Area ,Information Technology and Service , 
-18524 ,CGS; Inc ,Phil ,Friedman ,CEO ,https://www.linkedin.com/in/phil-friedman-b6a6575/ ,Greater New York City Area ,Information Technology and Service , 
-18525 ,CloudBooks ,Suraj ,Singh ,CEO ,https://www.linkedin.com/in/suraj-kumar-singh-5072a89/ ,Greater New York City Area ,Information Technology and Service , 
-18526 ,Outseeker ,Jonathan ,Feldschuh ,Founder; CEO ,https://www.linkedin.com/in/jonathan-feldschuh/ ,Greater New York City Area ,Information Technology and Service , 
-18527 ,JERA Services LLC ,Edward ,CGCIO ,President/CEO ,https://www.linkedin.com/in/edward-card-ed-s-cpm-cgcio-88443632/ ,Greater New York City Area ,Information Technology and Service , 
-18529 ,Z & A ,Sandesh ,Shetty ,CEO ,https://www.linkedin.com/in/sandesh-shetty-a1001211/ ,Greater New York City Area ,Information Technology and Service , 
-18530 ,SysMind LLC ,Kavita ,Gorty ,CEO ,https://www.linkedin.com/in/kavita-gorty-0368253/ ,Greater New York City Area ,Information Technology and Service , 
-18531 ,BitWealth ,Jefrey ,Bulla ,Founder & CEO ,https://www.linkedin.com/in/jefreybulla/ ,Greater New York City Area ,Information Technology and Service , 
-18533 ,AnyforSoft; a specialty Drupal Web and Mobile Solutions Provider ,Anatolii ,Pazhyn ,CEO ,https://www.linkedin.com/in/pazhyn/ ,Greater New York City Area ,Information Technology and Service , 
-18535 ,Heady ,rahul ,khosla ,Founder and CEO ,https://www.linkedin.com/in/rahuldevkhosla/ ,Greater New York City Area ,Information Technology and Service , 
-18538 ,CloudChillies ,Shishir ,Danani ,CEO ,https://www.linkedin.com/in/shishirdanani/ ,Greater New York City Area ,Information Technology and Service , 
-18539 ,The Katun Group; Inc. ,Gary ,Guttman ,CEO ,https://www.linkedin.com/in/garyguttman/ ,Greater New York City Area ,Information Technology and Service , 
-18540 ,North American Video ,Jason ,Oakley ,CEO ,https://www.linkedin.com/in/jason-oakley-9480718/ ,Greater New York City Area ,Information Technology and Service , 
-18541 ,J K Associa ,V ,D. ,CEO ,https://www.linkedin.com/in/v-d-146531148/ ,Greater New York City Area ,Information Technology and Service , 
-18544 ,Astir It Solutions Inc. ,Kishore ,Ganji ,CEO ,https://www.linkedin.com/in/kishoreganji/ ,Greater New York City Area ,Information Technology and Service , 
-18545 ,Celonis ,Alexander ,Rinke ,Co CEO ,https://www.linkedin.com/in/alexander-rinke-10733061/ ,Greater New York City Area ,Information Technology and Service , 
-18546 ,Teralytic ,Steven ,Ridder ,Founder and CEO ,https://www.linkedin.com/in/steveridder/ ,Greater New York City Area ,Information Technology and Service , 
-18547 ,Zaelab ,Evan ,Klein ,President; CEO ,https://www.linkedin.com/in/evansklein/ ,Greater New York City Area ,Information Technology and Service , 
-18548 ,Mirow ,Alek ,Safar ,CEO and Founder ,https://www.linkedin.com/in/alek-safar/ ,Greater New York City Area ,Information Technology and Service , 
-18549 ,Futuryng INC ,Franco ,Petrucci ,Founder & CEO ,https://www.linkedin.com/in/francopetrucci/ ,Greater New York City Area ,Information Technology and Service , 
-18551 ,ETG ,Anthony ,F. ,CEO; Chief Security Executive ,https://www.linkedin.com/in/anthony-f-397597a3/ ,Greater New York City Area ,Information Technology and Service , 
-18552 ,Shiva Info Tech India Pvt Ltd ,Rakesh ,Pardeshi ,CEO and Founder ,https://www.linkedin.com/in/rakesh-pardeshi-96024312/ ,Greater New York City Area ,Information Technology and Service , 
-18553 ,ACI Worldwide ,Philip ,Heasley ,President and CEO ,https://www.linkedin.com/in/philip-heasley-145b87b/ ,Greater New York City Area ,Information Technology and Service , 
-18554 ,Claim Genius & Software Genius ,Raj ,Pofale ,CEO ,https://www.linkedin.com/in/rajpofale/ ,Greater New York City Area ,Information Technology and Service , 
-18555 ,SAF Platform ,Rafay ,Farooqui ,Founder & CEO ,https://www.linkedin.com/in/rafayhfarooqui/ ,Greater New York City Area ,Information Technology and Service , 
-18556 ,Enstoa; Inc. - modernizing capital projects delivery in a US$9 trillion industry ,Jordan ,Cram ,CEO ,https://www.linkedin.com/in/jordancram/ ,Greater New York City Area ,Information Technology and Service , 
-18559 ,CryptoWatt ,Igor ,Izraylevych ,CEO / co-founder ,https://www.linkedin.com/in/igorizr1/ ,Greater New York City Area ,Information Technology and Service , 
-18560 ,Sipylus ,Steve ,Pringle ,CEO ,https://www.linkedin.com/in/nyhtml/ ,Greater New York City Area ,Information Technology and Service , 
-18561 ,Konstant Infosolutions Pvt. Ltd. ,Vipin ,Jain ,CEO ,https://www.linkedin.com/in/jvipin/ ,Greater New York City Area ,Information Technology and Service , 
-18564 ,Mobile App Fund ,Daniel ,Salomon ,CEO ,https://www.linkedin.com/in/dannysalomon/ ,Greater New York City Area ,Information Technology and Service , 
-18565 ,Cloud Strategy Advisors ,Todd ,Shaffer ,CEO ,https://www.linkedin.com/in/toddwshaffer/ ,Greater New York City Area ,Information Technology and Service , 
-18566 ,HexaCorp/CricketSocial ,Raj ,Sundaram ,Founder and CEO ,https://www.linkedin.com/in/rsundaram/ ,Greater New York City Area ,Information Technology and Service , 
-18567 ,Stellar Health; Inc. ,Ben ,Kraus ,CEO ,https://www.linkedin.com/in/benjaminarnoldkraus/ ,Greater New York City Area ,Information Technology and Service , 
-18568 ,Gotham Technology Group ,Ira ,Silverman ,CEO ,https://www.linkedin.com/in/isilverman/ ,Greater New York City Area ,Information Technology and Service , 
-18569 ,Daley Supplies LLC ,Anthony ,Daley ,CEO ,https://www.linkedin.com/in/anthonydaley/ ,Greater New York City Area ,Information Technology and Service , 
-18570 ,Gilbert Data ,Naresh ,BL ,CEO ,https://www.linkedin.com/in/nareshbl/ ,Greater New York City Area ,Information Technology and Service , 
-18571 ,Unified Home Systems ,Edgar ,Guardia ,CEO ,https://www.linkedin.com/in/edgar-guardia-5b0a1320/ ,Greater New York City Area ,Information Technology and Service , 
-18572 ,Libra ,Jake ,Benson ,CEO and Founder ,https://www.linkedin.com/in/jakebenson/ ,Greater New York City Area ,Information Technology and Service , 
-18573 ,DocDecode ,Andreea ,B. ,Founder; CEO ,https://www.linkedin.com/in/andreeabodnari/ ,Greater New York City Area ,Information Technology and Service , 
-18574 ,MacroHype and Social Activist ,Rehman ,Siddiq ,CEO ,https://www.linkedin.com/in/rehmansiddiq/ ,Greater New York City Area ,Information Technology and Service , 
-18575 ,Opengear ,Gary ,Marks ,CEO ,https://www.linkedin.com/in/gamarks/ ,Greater New York City Area ,Information Technology and Service , 
-18576 ,Fr8Hub ,Ohad ,Axelrod ,CEO ,https://www.linkedin.com/in/ohad-axelrod-4300364/ ,Greater New York City Area ,Information Technology and Service , 
-18577 ,Ingenta ,G. ,Winner ,Acting CEO ,https://www.linkedin.com/in/g-scott-winner-4338434/ ,Greater New York City Area ,Information Technology and Service , 
-18579 ,Varsity Maps corporation ,Hector ,Ezzidio ,CEO ,https://www.linkedin.com/in/hector-ezzidio-825037148/ ,Greater New York City Area ,Information Technology and Service , 
-18580 ,Varonis ,Alana ,Brenner ,Executive Assistant to CEO ,https://www.linkedin.com/in/alana-brenner-06033a66/ ,Greater New York City Area ,Information Technology and Service , 
-18586 ,Microsys IT Solutions ,S.M. ,HASAN ,CEO ,https://www.linkedin.com/in/microsysitsolutions/ ,Greater New York City Area ,Information Technology and Service , 
-18587 ,MetaOption LLC ,Naushad ,Ahmed ,CEO ,https://www.linkedin.com/in/metaoption/ ,Greater New York City Area ,Information Technology and Service , 
-18589 ,Team Alchemist ,Anirban ,Majumder ,Partner and CEO ,https://www.linkedin.com/in/majumdera/ ,Greater New York City Area ,Information Technology and Service , 
-18592 ,Fusion ,Matthew ,Rosen ,Chairman and CEO ,https://www.linkedin.com/in/matthew-rosen-a01300/ ,Greater New York City Area ,Information Technology and Service , 
-18594 ,VirtualTECH Design LLC ,Anthony ,Passeri ,CEO ,https://www.linkedin.com/in/anthonypasseri/ ,Greater New York City Area ,Information Technology and Service , 
-18595 ,Mindojo ,Guy ,Zaslavsky ,Founder and CEO ,https://www.linkedin.com/in/guyzaslavsky/ ,Greater New York City Area ,Information Technology and Service , 
-18596 ,IT BY DESIGN ,Sunny ,Kaila ,Founder & CEO ,https://www.linkedin.com/in/sunnykaila/ ,Greater New York City Area ,Information Technology and Service , 
-18597 ,Optima Global Solutions; Inc. ,Mahesh ,Yadav ,Founder & CEO ,https://www.linkedin.com/in/mahesh-yadav-6aab05a9/ ,Greater New York City Area ,Information Technology and Service , 
-18598 ,GroundControl Solutions Inc. ,Aaron ,Freimark ,Founder & CEO ,https://www.linkedin.com/in/freimark/ ,Greater New York City Area ,Information Technology and Service , 
-18599 ,Global Tech Solutions ,Abraham ,Brown ,CEO ,https://www.linkedin.com/in/abraham-brown-36b36517/ ,Greater New York City Area ,Information Technology and Service , 
-18600 ,Crestron Electronics ,Randy ,Klein ,President & CEO ,https://www.linkedin.com/in/randy-klein/ ,Greater New York City Area ,Information Technology and Service , 
-18601 ,Canary (canary.is) ,Adam ,Sager ,Founder & CEO ,https://www.linkedin.com/in/sager/ ,Greater New York City Area ,Information Technology and Service , 
-18602 ,Smart IMS ,Amar ,Reddy ,CEO ,https://www.linkedin.com/in/amarreddy1/ ,Greater New York City Area ,Information Technology and Service , 
-18603 ,Network to Code ,John ,Marchese ,CEO ,https://www.linkedin.com/in/john-marchese-128a733/ ,Greater New York City Area ,Information Technology and Service , 
-18604 ,Athcorp ,Robert ,Williams ,Founder/CEO ,https://www.linkedin.com/in/robert-williams-99680676/ ,Greater New York City Area ,Information Technology and Service , 
-18605 ,Usablenet ,Nick ,Taylor ,CEO ,https://www.linkedin.com/in/nick-taylor-91019ba4/ ,Greater New York City Area ,Information Technology and Service , 
-18606 ,Setka ,Kate ,Bazilevskaya ,CEO and co-founder ,https://www.linkedin.com/in/katya-bazilevskaya/ ,Greater New York City Area ,Information Technology and Service , 
-18607 ,ZeusMission Technologies ,? ,? ,Founder | CEO ,https://www.linkedin.com/in/%E2%99%9B-dr-vipin-v-%E2%9C%85-734b3015a/ ,Greater New York City Area ,Information Technology and Service , 
-18608 ,Simpel and Associates; LLC ,Nathan ,Gampel ,CEO and Founder ,https://www.linkedin.com/in/nathan-gampel-1945914/ ,Greater New York City Area ,Information Technology and Service , 
-18610 ,Stride Consulting ,Debbie ,Madden ,CEO & Founder ,https://www.linkedin.com/in/debbiemadden1/ ,Greater New York City Area ,Information Technology and Service , 
-18611 ,Bay Microsystems ,Harry ,Carr ,President & CEO ,https://www.linkedin.com/in/harry-carr-a832647/ ,Greater New York City Area ,Information Technology and Service , 
-18612 ,Self-employed ,Daniel ,Royer ,CEO ,https://www.linkedin.com/in/daniel-royer/ ,Greater New York City Area ,Information Technology and Service , 
-18613 ,Simeio Solutions ,Hemen ,Vimadalal ,CEO - Simeio Solutions ,https://www.linkedin.com/in/hemen-vimadalal-2561b02/ ,Greater New York City Area ,Information Technology and Service , 
-18614 ,Vibby ,Ari ,Cohen ,Co-founder and CEO ,https://www.linkedin.com/in/ari-cohen-80066123/ ,Greater New York City Area ,Information Technology and Service , 
-18615 ,Comtech ,James ,Carpenter ,CEO - Founder ,https://www.linkedin.com/in/jamespcarpenter/ ,Greater New York City Area ,Information Technology and Service , 
-18617 ,MediaAgility ,Rajesh ,Abhyankar ,CEO ,https://www.linkedin.com/in/rajeshabhyankar/ ,Greater New York City Area ,Information Technology and Service , 
-18618 ,Teqfyt ,Bill ,Woodrow ,CEO ,https://www.linkedin.com/in/billwoodrow/ ,Greater New York City Area ,Information Technology and Service , 
-18619 ,Quantxt ,Matin ,Kamali ,CEO ,https://www.linkedin.com/in/matin-kamali-06266ab/ ,Greater New York City Area ,Information Technology and Service , 
-18620 ,Spreo ,Avi ,Sacajiu ,CEO ,https://www.linkedin.com/in/avi-sacajiu-350908/ ,Greater New York City Area ,Information Technology and Service , 
-18621 ,ConfigAir ,Daniel ,Naus ,CEO ,https://www.linkedin.com/in/danielnaus/ ,Greater New York City Area ,Information Technology and Service , 
-18622 ,STATLINX ,Steven ,Showalter ,CEO ,https://www.linkedin.com/in/steven-showalter-6b2117/ ,Greater New York City Area ,Information Technology and Service , 
-18623 ,Kass Enterprises; LLC ,David ,Kass ,CEO ,https://www.linkedin.com/in/davidkassnyc/ ,Greater New York City Area ,Information Technology and Service , 
-18624 ,Source Data Corporation ,Tony ,Minutella ,CEO ,https://www.linkedin.com/in/tony-minutella-a14933a5/ ,Greater New York City Area ,Information Technology and Service , 
-18625 ,Upflex ,Christophe ,Garnier ,Co-Founder & CEO ,https://www.linkedin.com/in/cgarnier/ ,Greater New York City Area ,Information Technology and Service , 
-18626 ,MakTRAX Inc ,Joe ,Makoid ,CEO & President ,https://www.linkedin.com/in/joemakoid/ ,Greater New York City Area ,Information Technology and Service , 
-18627 ,VSS ,Robert ,Jr. ,CEO & President ,https://www.linkedin.com/in/robert-l-jernoske-jr-84597b91/ ,Greater New York City Area ,Information Technology and Service , 
-18628 ,Service Options Exchange LLC ,Suresh ,Pothiraj ,CEO / Founder ,https://www.linkedin.com/in/suresh-pothiraj-0588552/ ,Greater New York City Area ,Information Technology and Service , 
-18629 ,TRIOHM Solutions Inc ,Kishor ,Solanki ,President & CEO ,https://www.linkedin.com/in/kishor-solanki-60a0921/ ,Greater New York City Area ,Information Technology and Service , 
-18630 ,Centrinel; llc. ,David ,Guercia ,Founder & CEO ,https://www.linkedin.com/in/david-guercia-ab02b81/ ,Greater New York City Area ,Information Technology and Service , 
-18631 ,Andela ,Mary ,Decker ,Executive Coordinator to CEO ,https://www.linkedin.com/in/marydecker/ ,Greater New York City Area ,Information Technology and Service , 
-18632 ,Edge Technology Group ,Caitlin ,Shapiro ,Executive Assistant to CEO ,https://www.linkedin.com/in/caitlin-shapiro-14199b37/ ,Greater New York City Area ,Information Technology and Service , 
-18637 ,QA Mentor ,Ruslan ,Desyatnikov ,Founder & CEO ,https://www.linkedin.com/in/ruslandesyatnikov/ ,Greater New York City Area ,Information Technology and Service , 
-18638 ,Voitrax ,Levi ,Orbach ,Founder; CEO ,https://www.linkedin.com/in/leviorbach/ ,Greater New York City Area ,Information Technology and Service , 
-18639 ,Tedybujo ,Marjorie ,Spitalnik ,Founder & CEO ,https://www.linkedin.com/in/marjoriespitalnik/ ,Greater New York City Area ,Information Technology and Service , 
-18640 ,iQ4 ,Frank ,Cicio ,CEO Founder ,https://www.linkedin.com/in/frankcicio/ ,Greater New York City Area ,Information Technology and Service , 
-18641 ,Pricecheck ,Jordan ,Powell ,Founder & CEO ,https://www.linkedin.com/in/jordanttpowell/ ,Greater New York City Area ,Information Technology and Service , 
-18642 ,Radiius ,Rajeshwar ,Mitra ,Founder & CEO ,https://www.linkedin.com/in/rajeshwar-mitra-3266413/ ,Greater New York City Area ,Information Technology and Service , 
-18643 ,Dark Hive; LLC ,Dennis ,Schultz ,CEO ,https://www.linkedin.com/in/dennisdschultz/ ,Greater New York City Area ,Information Technology and Service , 
-18644 ,quasardb - limitless timeseries ,Edouard ,Alligand ,Founder and CEO ,https://www.linkedin.com/in/edouardalligand/ ,Greater New York City Area ,Information Technology and Service , 
-18645 ,Talivity; Inc. ,Kevin ,Clark ,Chairman & CEO ,https://www.linkedin.com/in/clarkkevin/ ,Greater New York City Area ,Information Technology and Service , 
-18646 ,Stryng ,Olivier ,Coste ,Founder and CEO ,https://www.linkedin.com/in/olivier-coste-06609918/ ,Greater New York City Area ,Information Technology and Service , 
-18647 ,Fareportal ,Werner ,Kunz-Cho ,Co CEO ,https://www.linkedin.com/in/werner-georg-kunz-cho-1b72558/ ,Greater New York City Area ,Information Technology and Service , 
-18648 ,OptiJob ,Chris ,Amato ,CEO & Founder ,https://www.linkedin.com/in/jchristopheramato/ ,Greater New York City Area ,Information Technology and Service , 
-18649 ,MYPIE Inc. ,Darrell ,McQueen ,President/CEO ,https://www.linkedin.com/in/darrell-mcqueen-833bb023/ ,Greater New York City Area ,Information Technology and Service , 
-18650 ,Imperium ,Marshall ,Harrison ,Founder; CEO ,https://www.linkedin.com/in/marshall-harrison-15b225/ ,Greater New York City Area ,Information Technology and Service , 
-18651 ,ITI Data ,Brian ,Vaske ,Founder and CEO ,https://www.linkedin.com/in/brian-vaske-2064623/ ,Greater New York City Area ,Information Technology and Service , 
-18652 ,Integrated Cyber Solutions ,Jim ,Noble ,CEO ,https://www.linkedin.com/in/jim-noble-a1baa95/ ,Greater New York City Area ,Information Technology and Service , 
-18653 ,Reputation Economy Advisors ,Anthony ,Johndrow ,Co-Founder & CEO ,https://www.linkedin.com/in/anthonyjohndrow/ ,Greater New York City Area ,Information Technology and Service , 
-18654 ,Intone Networks ,Prabhakar ,Yeruva ,CEO ,https://www.linkedin.com/in/prabhakar-reddy-yeruva-23551a24/ ,Greater New York City Area ,Information Technology and Service , 
-18656 ,Athlon ,Robert ,Kennedy ,CEO ,https://www.linkedin.com/in/robertkennedy74/ ,Greater New York City Area ,Information Technology and Service , 
-18657 ,JXSEnterprisesinc ,Joseph ,Sorrentino ,CEO ,https://www.linkedin.com/in/joseph-sorrentino-0b302031/ ,Greater New York City Area ,Information Technology and Service , 
-18658 ,ThinkFire ,Chris ,Sommers ,CEO ,https://www.linkedin.com/in/chris-sommers-721a49a/ ,Greater New York City Area ,Information Technology and Service , 
-18659 ,DevItOut ,Maxim ,Bednyy ,CEO ,https://www.linkedin.com/in/maxim-bednyy-462955124/ ,Greater New York City Area ,Information Technology and Service , 
-18660 ,AxxiemWebSolutions ,Susan ,Lewenz ,CEO ,https://www.linkedin.com/in/axxiem1/ ,Greater New York City Area ,Information Technology and Service , 
-18661 ,Devellyn ,Olivier ,GUERMEUR ,CEO ,https://www.linkedin.com/in/olivier-guermeur-9860615a/ ,Greater New York City Area ,Information Technology and Service , 
-18662 ,NewCityMedia ,Kiryl ,Hakhovich ,CEO ,https://www.linkedin.com/in/kiryl-hakhovich-4578b34/ ,Greater New York City Area ,Information Technology and Service , 
-18663 ,Fivebase ,Michael ,Petrie ,CEO ,https://www.linkedin.com/in/michael-petrie-73a32a35/ ,Greater New York City Area ,Information Technology and Service , 
-18664 ,QScend ,Keith ,LeBeau ,CEO ,https://www.linkedin.com/in/keithlebeau/ ,Greater New York City Area ,Information Technology and Service , 
-18665 ,ZetaOpt ,Avi ,Saha ,CEO ,https://www.linkedin.com/in/avisaha/ ,Greater New York City Area ,Information Technology and Service , 
-18666 ,Alacriti Inc. ,Manish ,Gurukula ,CEO ,https://www.linkedin.com/in/manish-gurukula-9343a91/ ,Greater New York City Area ,Information Technology and Service , 
-18668 ,LTI ,Sanjay ,Jalona ,CEO & Managing Director ,https://www.linkedin.com/in/sjalona/ ,Greater New York City Area ,Information Technology and Service , 
-18669 ,Packet ,Zachary ,Smith ,Co-Founder and CEO ,https://www.linkedin.com/in/zsmith/ ,Greater New York City Area ,Information Technology and Service , 
-18670 ,Coveware ,Bill ,Siegel ,CEO & Co-Founder ,https://www.linkedin.com/in/bill-siegel/ ,Greater New York City Area ,Information Technology and Service , 
-18671 ,SimpleBet ,Joey ,Levy ,Co-Founder & Co-CEO ,https://www.linkedin.com/in/joey-levy-5b4b00a0/ ,Greater New York City Area ,Information Technology and Service , 
-18672 ,OpenLegacy ,Romi ,Stein ,CEO and Co-Founder ,https://www.linkedin.com/in/romistein/ ,Greater New York City Area ,Information Technology and Service , 
-18673 ,DigiFi ,Joshua ,Jersey ,Co-Founder & CEO ,https://www.linkedin.com/in/joshua-jersey-962618a/ ,Greater New York City Area ,Information Technology and Service , 
-18674 ,Technomax LLC ,Sai ,Varanasi ,Founder - CEO - TECHNOMAX LLC ,https://www.linkedin.com/in/sai-varanasi-08924321/ ,Greater New York City Area ,Information Technology and Service , 
-18675 ,USEReady where BI meets AI ,Uday ,Hegde ,Co-Founder & CEO ,https://www.linkedin.com/in/udayhegde0/ ,Greater New York City Area ,Information Technology and Service , 
-18676 ,QuestBack - Helping enterprises becoming transformative and thrive ,Frank ,Møllerop ,CEO ,https://www.linkedin.com/in/frankmollerop/ ,Greater New York City Area ,Information Technology and Service , 
-18677 ,DATA Inc. ,Arun ,Verma ,CEO ,https://www.linkedin.com/in/arun-verma-a5077710/ ,Greater New York City Area ,Information Technology and Service , 
-18678 ,TEKConn; Inc. ,Stephen ,Dike ,CEO ,https://www.linkedin.com/in/stephen-dike-3730aa1/ ,Greater New York City Area ,Information Technology and Service , 
-18679 ,ICS Software ,Jonathan ,Katz ,CEO ,https://www.linkedin.com/in/jonathan-katz-12a833/ ,Greater New York City Area ,Information Technology and Service , 
-18680 ,I Wave Solutions ,Raj ,P ,CEO ,https://www.linkedin.com/in/rajiwave/ ,Greater New York City Area ,Information Technology and Service , 
-18681 ,NETPARTNERS ,Hernán ,Ruiz ,CEO ,https://www.linkedin.com/in/hernancarranza/ ,Greater New York City Area ,Information Technology and Service , 
-18682 ,Claritly Consulting ,Kristen ,Gandhi ,CEO ,https://www.linkedin.com/in/kristengandhi/ ,Greater New York City Area ,Information Technology and Service , 
-18683 ,Koowi Technology; Inc. ,Maximus ,Brown ,CEO ,https://www.linkedin.com/in/maximus-brown-476a47100/ ,Greater New York City Area ,Information Technology and Service , 
-18684 ,RELIC SOLUTIONS LLC ,Vamsi ,RV ,CEO ,https://www.linkedin.com/in/vamsi-krishna-rv-8537b060/ ,Greater New York City Area ,Information Technology and Service , 
-18686 ,Bandwagon.io ,Marc ,Brynczka ,CEO ,https://www.linkedin.com/in/marcbrynczka/ ,Greater New York City Area ,Information Technology and Service , 
-18687 ,etherFAX; LLC ,Paul ,Banco ,CEO ,https://www.linkedin.com/in/paul-banco-733137/ ,Greater New York City Area ,Information Technology and Service , 
-18688 ,Qwasi Technology ,Leon ,Samuel ,CEO ,https://www.linkedin.com/in/leon-samuel-38192a5/ ,Greater New York City Area ,Information Technology and Service , 
-18689 ,SlipFire Corp. ,Steve ,Bruner ,CEO ,https://www.linkedin.com/in/stevebruner/ ,Greater New York City Area ,Information Technology and Service , 
-18690 ,AFCO Systems ,Michael ,Mallia ,CEO ,https://www.linkedin.com/in/michael-mallia-3b717920/ ,Greater New York City Area ,Information Technology and Service , 
-18691 ,Bluee.co ,Samvel ,Sahakyan ,CEO ,https://www.linkedin.com/in/ssahakyan/ ,Greater New York City Area ,Information Technology and Service , 
-18692 ,InfoTrack US ,Ed ,Watts ,CEO ,https://www.linkedin.com/in/ed-watts-28701914/ ,Greater New York City Area ,Information Technology and Service , 
-18693 ,Synergy Sky ,Ståle ,Reitan ,CEO ,https://www.linkedin.com/in/streitan/ ,Greater New York City Area ,Information Technology and Service , 
-18694 ,Mudrantar and Data Agora LLC ,Hemant ,Joshi ,CEO ,https://www.linkedin.com/in/hemantmjoshi/ ,Greater New York City Area ,Information Technology and Service , 
-18695 ,BondWave ,Michael ,Ruvo ,President & CEO ,https://www.linkedin.com/in/michael-ruvo-3238671/ ,Greater New York City Area ,Information Technology and Service , 
-18697 ,Omnivore.io ,Mike ,Wior ,CEO/Co-Founder ,https://www.linkedin.com/in/mike-wior-4809ab1/ ,Greater New York City Area ,Information Technology and Service , 
-18698 ,ContractorTexter ,Uri ,Turk ,Founder / CEO ,https://www.linkedin.com/in/medicalreputation/ ,Greater New York City Area ,Information Technology and Service , 
-18700 ,Language Networks LLC ,David ,Lewinson ,President & CEO ,https://www.linkedin.com/in/organicrevolutionary/ ,Greater New York City Area ,Information Technology and Service , 
-18701 ,scaleitonline.com ,Michael ,Marco ,CEO ,https://www.linkedin.com/in/michael-de-marco-1a7a25a7/ ,Greater New York City Area ,Information Technology and Service , 
-18702 ,ListedB ,Roydon ,Jeffrey ,Cofounder & CEO ,https://www.linkedin.com/in/roydonojeffrey/ ,Greater New York City Area ,Information Technology and Service , 
-18703 ,Moofwd; Inc. ,Sunil ,Mehta ,Founder; CEO ,https://www.linkedin.com/in/sunil-mehta-350a3a7/ ,Greater New York City Area ,Information Technology and Service , 
-18704 ,Investment Metrics ,Sanjoy ,Chatterjee ,CEO ,https://www.linkedin.com/in/sanjoy-chatterjee-04883878/ ,Greater New York City Area ,Information Technology and Service , 
-18705 ,Derive Technologies ,Kirit ,Desai ,CEO ,https://www.linkedin.com/in/kirit-desai-5255a415/ ,Greater New York City Area ,Information Technology and Service , 
-18706 ,IT Convergence ,Arvind ,Sharma ,CEO ,https://www.linkedin.com/in/arvind-sharma-898420a/ ,Greater New York City Area ,Information Technology and Service , 
-18707 ,Motiva Networks ,Walter ,C. ,CEO ,https://www.linkedin.com/in/walter-c-a4580724/ ,Greater New York City Area ,Information Technology and Service , 
-18708 ,The TNS Group (Fomerly Tigernet Systems) ,Ami ,Soifer ,CEO ,https://www.linkedin.com/in/ami-soifer-7aa6976/ ,Greater New York City Area ,Information Technology and Service , 
-18709 ,Tiger Party ,Rafale ,Chang ,CEO ,https://www.linkedin.com/in/rafalechang/ ,Greater New York City Area ,Information Technology and Service , 
-18711 ,Intech Cyber Art ,Intech ,Art ,CEO & Director ,https://www.linkedin.com/in/intechcyberart/ ,Greater New York City Area ,Information Technology and Service , 
-18712 ,Cersoft Co. ,George ,Callaway ,Founder and CEO ,https://www.linkedin.com/in/george-callaway-62146595/ ,Greater New York City Area ,Information Technology and Service , 
-18713 ,MOZI mozidev.com ,Eugene ,Zhuk ,CEO ,https://www.linkedin.com/in/euzhuk/ ,Greater New York City Area ,Information Technology and Service , 
-18714 ,Hermitage Infotech ,Srinivas ,Gattu ,President & CEO ,https://www.linkedin.com/in/srinivas-gattu-99bb584/ ,Greater New York City Area ,Information Technology and Service , 
-18715 ,Benchmarked.games ,David ,Szilagyi ,Founder & CEO ,https://www.linkedin.com/in/davidszil/ ,Greater New York City Area ,Information Technology and Service , 
-18716 ,Public Space ,Eric ,Wu ,Designer/CEO ,https://www.linkedin.com/in/eric-wu-8885609/ ,Greater New York City Area ,Information Technology and Service , 
-18717 ,Coral LLC ,Gregory ,Smith ,CEO and Founder ,https://www.linkedin.com/in/gregory-smith-18592122/ ,Greater New York City Area ,Information Technology and Service , 
-18718 ,Prospect 33 ,Tom ,Spouse ,Chairman & CEO ,https://www.linkedin.com/in/tomspouse/ ,Greater New York City Area ,Information Technology and Service , 
-18719 ,MMIS; Inc. | MediSpend ,Michaeline ,Daboul ,CEO & President ,https://www.linkedin.com/in/michaelinedaboul/ ,Greater New York City Area ,Information Technology and Service , 
-18720 ,nova IQ ,John ,Killeen ,President & CEO ,https://www.linkedin.com/in/jokilleen/ ,Greater New York City Area ,Information Technology and Service , 
-18721 ,Fingent; Corp. ,Varghese ,(Sam) ,Chairman and CEO ,https://www.linkedin.com/in/v-samuel/ ,Greater New York City Area ,Information Technology and Service , 
-18722 ,AIM Inc. ,Jenna ,Lee ,Founder & CEO ,https://www.linkedin.com/in/jhjennalee/ ,Greater New York City Area ,Information Technology and Service , 
-18723 ,Proclivity Systems ,Sheldon ,Gilbert ,Founder & CEO ,https://www.linkedin.com/in/sheldon-gilbert-38926b/ ,Greater New York City Area ,Information Technology and Service , 
-18725 ,Future Tech Enterprise; Inc. ,Barbara ,Jasinski ,Executive Assistant to the President & CEO ,https://www.linkedin.com/in/barbara-jasinski-7ba99844/ ,Greater New York City Area ,Information Technology and Service , 
-18726 ,Omega-R; Inc. ,Alexey ,Rybakov ,Founder & Ceo ,https://www.linkedin.com/in/alexey-rybakov-b98b4146/ ,Greater New York City Area ,Information Technology and Service , 
-18727 ,CJM Strategic Advisory ,Chris ,Momsen ,CEO ,https://www.linkedin.com/in/chris-momsen-98781a/ ,Greater New York City Area ,Information Technology and Service , 
-18728 ,Valiant Consulting ,Easwaran ,Subbaraman ,CEO ,https://www.linkedin.com/in/easwaran-subbaraman-6707b430/ ,Greater New York City Area ,Information Technology and Service , 
-18729 ,Whale (whale.im) ,Shengxuan ,Ye ,CEO ,https://www.linkedin.com/in/shengxuanye/ ,Greater New York City Area ,Information Technology and Service , 
-18730 ,Staker Infotech ,Crypto ,Staker ,CEO ,https://www.linkedin.com/in/cryptostaker/ ,Greater New York City Area ,Information Technology and Service , 
-18731 ,Mirametrix; inc. ,Denis ,Lavallee ,CEO ,https://www.linkedin.com/in/denis-lavallee-6a65661/ ,Greater New York City Area ,Information Technology and Service , 
-18732 ,Sysgen Data Ltd. ,Raphael ,Feldman ,CEO ,https://www.linkedin.com/in/raphaelfeldman/ ,Greater New York City Area ,Information Technology and Service , 
-18733 ,Bavelle Technologies ,Oren ,David ,CEO ,https://www.linkedin.com/in/orensdavid/ ,Greater New York City Area ,Information Technology and Service , 
-18734 ,Kader International ,Ralph ,Kader ,CEO ,https://www.linkedin.com/in/ralph-kader-a4aa8930/ ,Greater New York City Area ,Information Technology and Service , 
-18735 ,ABS Tech Inc ,Abdul ,Basit ,CEO ,https://www.linkedin.com/in/basitlhr/ ,Greater New York City Area ,Information Technology and Service , 
-18736 ,Arrowsight Inc. ,Adam ,Aronson ,CEO ,https://www.linkedin.com/in/adam-aronson-7ab85a6/ ,Greater New York City Area ,Information Technology and Service , 
-18737 ,Tap For Info ,Kadeer ,Beg ,CEO ,https://www.linkedin.com/in/kadeer-beg-71887a/ ,Greater New York City Area ,Information Technology and Service , 
-18738 ,Clinic IT ,Karl ,Nelson ,CEO ,https://www.linkedin.com/in/karl-nelson-b6480811/ ,Greater New York City Area ,Information Technology and Service , 
-18739 ,MAL Strategies ,Andrew ,O'Shaughnessy ,CEO ,https://www.linkedin.com/in/aoshaughnessy/ ,Greater New York City Area ,Information Technology and Service , 
-18740 ,Vertical Resources ,John ,Stypulkoski ,CEO ,https://www.linkedin.com/in/john-stypulkoski-3349172/ ,Greater New York City Area ,Information Technology and Service , 
-18741 ,CareerMD.com ,valerie ,gersten ,CEO ,https://www.linkedin.com/in/valerie-gersten-128020126/ ,Greater New York City Area ,Information Technology and Service , 
-18742 ,JetSole; Inc. ,Nelson ,Gedeon ,CEO ,https://www.linkedin.com/in/nelsonjlgedeon/ ,Greater New York City Area ,Information Technology and Service , 
-18743 ,Cynertek Solutions ,Faris ,Asmar ,CEO ,https://www.linkedin.com/in/farisasmar/ ,Greater New York City Area ,Information Technology and Service , 
-18744 ,HotelGoGo Inc ,Paolo ,Bartolozzi ,CEO ,https://www.linkedin.com/in/paolobartolozzi/ ,Greater New York City Area ,Information Technology and Service , 
-18745 ,Digable; Inc. ,Matt ,Espinoza ,CEO ,https://www.linkedin.com/in/matt-espinoza-4724a43/ ,Greater New York City Area ,Information Technology and Service , 
-18746 ,PKA Technologies; Inc. ,Felise ,Katz ,CEO ,https://www.linkedin.com/in/felise-katz-9888b/ ,Greater New York City Area ,Information Technology and Service , 
-18747 ,Planet Data Solutions; Inc ,Howard ,Reissner ,CEO ,https://www.linkedin.com/in/howard-reissner-0074811/ ,Greater New York City Area ,Information Technology and Service , 
-18748 ,IBM ,Kristin ,Silva ,Client Advocacy Executive - Office of the Chairman; President and CEO ,https://www.linkedin.com/in/kristinksilva/ ,Greater New York City Area ,Information Technology and Service , 
-18749 ,NYSTEC ,Mike ,Walsh ,President and CEO ,https://www.linkedin.com/in/mikewalsh4/ ,Greater New York City Area ,Information Technology and Service , 
-18750 ,InfyQ Solutions ,Harsh ,Raj ,Founder & CEO ,https://www.linkedin.com/in/harsh-raj/ ,Greater New York City Area ,Information Technology and Service , 
-18751 ,Thapar Consultancy Services ,? ,Thapar ,Founder | CEO ,https://www.linkedin.com/in/%E2%99%9B-sachin-thapar-0b251693/ ,Greater New York City Area ,Information Technology and Service , 
-18752 ,Spinovation Corporation ,Patricia ,Troughton ,Strategy & Product Development Leader | TriagePMO | CEO ,https://www.linkedin.com/in/patricia-troughton-83b102167/ ,Greater New York City Area ,Information Technology and Service , 
-18753 ,NGenious Solutions; Inc ,Nilesh ,Mehta ,CEO ,https://www.linkedin.com/in/nileshmehta/ ,Greater New York City Area ,Information Technology and Service , 
-18755 ,ExcelShir ,Shir ,Aviv ,Founder & CEO ,https://www.linkedin.com/in/shiraviv/ ,Greater New York City Area ,Information Technology and Service , 
-18756 ,Pilgrim Advisory Services LLC ,Rob ,Pilgrim ,Founder & CEO ,https://www.linkedin.com/in/robertpilgrim/ ,Greater New York City Area ,Information Technology and Service , 
-18757 ,Real Outsourcing ,Nick ,K ,CMD & CEO ,https://www.linkedin.com/in/nick-k-67168322/ ,Greater New York City Area ,Information Technology and Service , 
-18758 ,SpeechPro ,Florian ,Philipp ,President & CEO ,https://www.linkedin.com/in/florian-philipp-84114657/ ,Greater New York City Area ,Information Technology and Service , 
-18759 ,THING TECHNOLOGIES ,Dr. ,Gille ,Founder and CEO ,https://www.linkedin.com/in/dr-marc-gille-2165946/ ,Greater New York City Area ,Information Technology and Service , 
-18760 ,CloudRay and Genie Healthcare ,Venkat ,Nadipelly ,CEO ,https://www.linkedin.com/in/nadipelly/ ,Greater New York City Area ,Information Technology and Service , 
-18761 ,Atlantic Metro Communications ,Matthew ,Lombardi ,CEO ,https://www.linkedin.com/in/matthew-lombardi-ba72954/ ,Greater New York City Area ,Information Technology and Service , 
-18762 ,Umbrella Micro Enterprises ,Itamar ,Shafir ,CEO ,https://www.linkedin.com/in/itamarshafir/ ,Greater New York City Area ,Information Technology and Service , 
-18763 ,Test Force ,Ellen ,Chernyak ,CEO ,https://www.linkedin.com/in/ellen-chernyak-b3612a7/ ,Greater New York City Area ,Information Technology and Service , 
-18764 ,Promethean IT ,Chris ,Jones ,CEO ,https://www.linkedin.com/in/chrisjones1337/ ,Greater New York City Area ,Information Technology and Service , 
-18765 ,Logo Sportswear; Inc. ,Patrick ,Cerreta ,CEO ,https://www.linkedin.com/in/patrickcerreta/ ,Greater New York City Area ,Information Technology and Service , 
-18766 ,Technolutions ,Laura ,Gardner ,Chief of Staff to the CEO ,https://www.linkedin.com/in/laura-gardner-63a6946/ ,Greater New York City Area ,Information Technology and Service , 
-18767 ,Datadog ,Olivier ,Pomel ,CEO ,https://www.linkedin.com/in/olivierpomel/ ,Greater New York City Area ,Information Technology and Service , 
-18768 ,HelloAva ,Siqi ,Mou ,CEO ,https://www.linkedin.com/in/siqimou/ ,Greater New York City Area ,Information Technology and Service , 
-18769 ,Nueva Solutions Inc. ,Veena ,Singh ,CEO ,https://www.linkedin.com/in/veena-singh-724b456/ ,Greater New York City Area ,Information Technology and Service , 
-18771 ,Centiment | Sprint '17 ,Micah ,Brown ,CEO & Founder ,https://www.linkedin.com/in/micahbrown1/ ,Greater New York City Area ,Information Technology and Service , 
-18772 ,Digital Convergence Technologies; Inc. ,Vineet ,Dhawan ,CEO ,https://www.linkedin.com/in/vineet-dhawan-5b715054/ ,Greater New York City Area ,Information Technology and Service , 
-18773 ,Corporate Innovation Technologies;IT Manager;Technology Enthusiast; Information Technology Specialist ,Norberto ,Pino ,CEO ,https://www.linkedin.com/in/norbertopino/ ,Greater New York City Area ,Information Technology and Service , 
-18774 ,wynd it INC ,William ,Horal ,CEO ,https://www.linkedin.com/in/williamhoral/ ,Greater New York City Area ,Information Technology and Service , 
-18775 ,Shore Cybersecurity; LLC ,Shelly ,Kennedy ,CEO ,https://www.linkedin.com/in/shellykennedy/ ,Greater New York City Area ,Information Technology and Service , 
-18776 ,VeriDoc Global - India ,Rea ,Achalkar ,CEO ,https://www.linkedin.com/in/reaachalkar/ ,Greater New York City Area ,Information Technology and Service , 
-18777 ,Computer Tekk INC ,Sany ,Dash ,CEO ,https://www.linkedin.com/in/sany-dash-0b2979/ ,Greater New York City Area ,Information Technology and Service , 
-18778 ,Mobiquity Techologies; Inc. ,Dean ,Julia ,CEO ,https://www.linkedin.com/in/deanjuliaexecutiveofficer/ ,Greater New York City Area ,Information Technology and Service , 
-18779 ,Breakthrough Technology Group ,Jeff ,Kaplan ,CEO ,https://www.linkedin.com/in/jeffkaplanbtg/ ,Greater New York City Area ,Information Technology and Service , 
-18780 ,Yantra Global ,Kailas ,Simha ,President and CEO ,https://www.linkedin.com/in/kailas/ ,Greater New York City Area ,Information Technology and Service , 
-18781 ,STRIXAR ,Tobias ,Fröberg ,Founder & CEO ,https://www.linkedin.com/in/tobias-fr%C3%B6berg-43589198/ ,Greater New York City Area ,Information Technology and Service , 
-18782 ,Equeum ,Adnan ,Waheed ,Co-Founder & CEO ,https://www.linkedin.com/in/adnanwaheedali/ ,Greater New York City Area ,Information Technology and Service , 
-18783 ,WorkEatPlay ,Nicolai ,Strøm ,Co-Founder & CEO ,https://www.linkedin.com/in/nicolaistroem/ ,Greater New York City Area ,Information Technology and Service , 
-18784 ,Wise Marketing & Consulting Inc ,Ameen ,Jebaly ,CEO ,https://www.linkedin.com/in/ameen-jebaly-27493a10/ ,Greater New York City Area ,Information Technology and Service , 
-18785 ,keywordspy.com ,Peter ,Zmijewski ,CEO ,https://www.linkedin.com/in/peterzmijewski/ ,Greater New York City Area ,Information Technology and Service , 
-18786 ,Aithent Inc. ,N. ,Gopal ,CEO ,https://www.linkedin.com/in/nvgopal/ ,Greater New York City Area ,Information Technology and Service , 
-18787 ,The Marlin Company ,Frank ,Kenna ,CEO ,https://www.linkedin.com/in/frankkenna/ ,Greater New York City Area ,Information Technology and Service , 
-18789 ,Clarity Benefit Solutions ,Bill ,Catuzzi ,CEO and Founder ,https://www.linkedin.com/in/bill-catuzzi-aa854312/ ,Greater New York City Area ,Information Technology and Service , 
-18790 ,Chiefofstaff.com / CEO Cloud Platform for Strategy Execution ,Robert ,Epner ,CEO & Founder ,https://www.linkedin.com/in/bobepner/ ,Greater New York City Area ,Information Technology and Service , 
-18791 ,FactSet ,Vivian ,Arroyo ,Executive Assistant to the CEO and CHRO ,https://www.linkedin.com/in/vivian-arroyo-aab963106/ ,Greater New York City Area ,Information Technology and Service , 
-18792 ,Atto ,Etnik ,Blakaj ,CEO & Founder ,https://www.linkedin.com/in/etnikblakaj/ ,Greater New York City Area ,Information Technology and Service , 
-18793 ,Huneycomb ,Constantine ,Siounis ,CEO Founder ,https://www.linkedin.com/in/constantine-siounis-027a834a/ ,Greater New York City Area ,Information Technology and Service , 
-18794 ,LandSpeed Technologies ,Howard ,Zonder ,Founder and CEO ,https://www.linkedin.com/in/howardzondermediaexecutive/ ,Greater New York City Area ,Information Technology and Service , 
-18795 ,Avignah Systems Inc. ,Neeraj ,Popat ,Founder; CEO ,https://www.linkedin.com/in/neeraj-popat-4155418/ ,Greater New York City Area ,Information Technology and Service , 
-18796 ,Contango IT ,Danny ,Mizrahi ,Founder & CEO ,https://www.linkedin.com/in/dannycontangoit/ ,Greater New York City Area ,Information Technology and Service , 
-18797 ,MODI CLEAR & ASSOCIATES ,John ,Modi ,Founder and CEO ,https://www.linkedin.com/in/john-jay-modi-2330a6b6/ ,Greater New York City Area ,Information Technology and Service , 
-18798 ,Fortimize. Automation and Analytics for Financial Services; Real Estate and Capital Markets on Salesforce.com ,John ,Hamon ,CEO ,https://www.linkedin.com/in/hamonjohn/ ,Greater New York City Area ,Information Technology and Service , 
-18799 ,Raptor Trading Systems ,Teddy ,Lardos ,CEO ,https://www.linkedin.com/in/teddylardos/ ,Greater New York City Area ,Information Technology and Service , 
-18800 ,Max2 Inc. ,Michael ,Salmasi ,Founder & CEO ,https://www.linkedin.com/in/michael-salmasi-1794b622/ ,Greater New York City Area ,Information Technology and Service , 
-18801 ,TTI Scanning Solutions ,Steven ,Blidner ,CEO ,https://www.linkedin.com/in/steven-blidner-a671615/ ,Greater New York City Area ,Information Technology and Service , 
-18803 ,Zelis Healthcare ,Maria ,Kihlberg ,Executive Assistant To CEO; CFO & EVP Operations ,https://www.linkedin.com/in/maria-pedrosa-kihlberg-47b5277/ ,Greater New York City Area ,Information Technology and Service , 
-18804 ,Pypestream ,Richard ,Smullen ,Founder/CEO ,https://www.linkedin.com/in/richardsmullen/ ,Greater New York City Area ,Information Technology and Service , 
-18805 ,IntellectEU ,Hanna ,Zubko ,Co-Founder and CEO ,https://www.linkedin.com/in/hzubko/ ,Greater New York City Area ,Information Technology and Service , 
-18806 ,Mandem Inc. ,Trony ,CPA;CISA;CISM;CRISC;PCI-QSA ,CEO ,https://www.linkedin.com/in/trony/ ,Greater New York City Area ,Information Technology and Service , 
-18807 ,McKinsey ,Greg ,Chisholm ,CEO/CFO with expertise in high growth; strategy; turnarounds; operations and exit transactions. 10+ years ,https://www.linkedin.com/in/greg-chisholm/ ,Greater New York City Area ,Information Technology and Service , 
-18808 ,DoctorMac ,William ,Belchou ,CEO & Founder ,https://www.linkedin.com/in/william-belchou-90404756/ ,Greater New York City Area ,Information Technology and Service , 
-18810 ,Whitman Healthcare Systems ,Steve ,W. ,CEO ,https://www.linkedin.com/in/stevenwhitman/ ,Greater New York City Area ,Information Technology and Service , 
-18811 ,Euphoria Tech Corporation ,Mohak ,Shah ,CEO ,https://www.linkedin.com/in/mohakashah/ ,Greater New York City Area ,Information Technology and Service , 
-18812 ,Subarray ,Alex ,Potapov ,CEO ,https://www.linkedin.com/in/alex-potapov-91898020/ ,Greater New York City Area ,Information Technology and Service , 
-18813 ,IT First Source Inc ,Arvind ,Prakash ,CEO ,https://www.linkedin.com/in/arvind-vin-prakash-5099431/ ,Greater New York City Area ,Information Technology and Service , 
-18814 ,Automatic Website Services ,AutomaticWebsite ,Services ,CEO ,https://www.linkedin.com/in/automaticwebsite-services-8723a3142/ ,Greater New York City Area ,Information Technology and Service , 
-18815 ,Tech Advisors LLC ,Paul ,Haddad ,CEO ,https://www.linkedin.com/in/pahaddad/ ,Greater New York City Area ,Information Technology and Service , 
-18816 ,Applied Intelligent Systems ,Gustavo ,Iriarte ,CEO ,https://www.linkedin.com/in/gustavo-oscar-iriarte-b242139/ ,Greater New York City Area ,Information Technology and Service , 
-18817 ,D2D Consulting ,Dawn ,Dardzinski ,CEO ,https://www.linkedin.com/in/dawn-dardzinski-b65b74/ ,Greater New York City Area ,Information Technology and Service , 
-18818 ,Bale Technologies LLC ,Albert ,Bale ,CEO ,https://www.linkedin.com/in/albert-bale-444a8210b/ ,Greater New York City Area ,Information Technology and Service , 
-18820 ,Mobizent ,Ramesh ,Swamy ,CEO & Co-Founder ,https://www.linkedin.com/in/rameshnswamy/ ,Greater New York City Area ,Information Technology and Service , 
-18821 ,Labrodex; Inc. ,Jim ,Ivon ,President & CEO ,https://www.linkedin.com/in/jim-ivon-40862651/ ,Greater New York City Area ,Information Technology and Service , 
-18822 ,Verify Smart Corp. ,Lou ,Pingitore ,CEO ,https://www.linkedin.com/in/loupingitore/ ,Greater New York City Area ,Information Technology and Service , 
-18823 ,Self Empowerment Technology ,Peter ,Schenk ,CEO ,https://www.linkedin.com/in/peter-schenk-9a0b666/ ,Greater New York City Area ,Information Technology and Service , 
-18824 ,TWIG International LLC ,Greg ,Workman ,CEO ,https://www.linkedin.com/in/gregoryworkman/ ,Greater New York City Area ,Information Technology and Service , 
-18825 ,TGI ,Frank ,Grasso ,CEO ,https://www.linkedin.com/in/frank-grasso-18ba491b/ ,Greater New York City Area ,Information Technology and Service , 
-18826 ,Information Transport Solutions ,Laura ,Donelan ,CEO ,https://www.linkedin.com/in/lauradonelan/ ,Greater New York City Area ,Information Technology and Service , 
-18827 ,Partners Soft; Inc. ,Sreeni ,Vasireddy ,CEO ,https://www.linkedin.com/in/sreeni-vasireddy-36891514/ ,Greater New York City Area ,Information Technology and Service , 
-18828 ,Kanzen Concept LLC ,Szymon ,Majdak ,CEO ,https://www.linkedin.com/in/szymon-majdak-99148b85/ ,Greater New York City Area ,Information Technology and Service , 
-18829 ,Innospire Systems Corporation ,Rajasekar ,Duraipandiyan ,CEO ,https://www.linkedin.com/in/rajasekar-duraipandiyan-a51b154b/ ,Greater New York City Area ,Information Technology and Service , 
-18830 ,Live Networks Inc ,Nikos ,Karas ,CEO ,https://www.linkedin.com/in/n1999k/ ,Greater New York City Area ,Information Technology and Service , 
-18831 ,Premier Wired Solutions ,Anderson ,Jose ,CEO ,https://www.linkedin.com/in/anderson-jose-2a194611a/ ,Greater New York City Area ,Information Technology and Service , 
-18832 ,Evermedia Biometrics Corporation ,Jonathan ,Sym ,CEO ,https://www.linkedin.com/in/jonathan-sym-a75b044/ ,Greater New York City Area ,Information Technology and Service , 
-18833 ,ATP Solutions Inc. ,Chakrapani ,Dabbara ,CEO ,https://www.linkedin.com/in/chakrapani-dabbara-6972ba3/ ,Greater New York City Area ,Information Technology and Service , 
-18834 ,BlueLine Grid; Inc. ,David ,Riker ,Founder; CEO ,https://www.linkedin.com/in/davidriker1/ ,Greater New York City Area ,Information Technology and Service , 
-18835 ,iconectiv ,richard ,jacowleff ,President & CEO ,https://www.linkedin.com/in/richard-jacowleff-0a588510/ ,Greater New York City Area ,Information Technology and Service , 
-18836 ,Mutable ,Antonio ,Pellegrino ,Founder | CEO ,https://www.linkedin.com/in/antoniopellegrino3/ ,Greater New York City Area ,Information Technology and Service , 
-18837 ,the LISS Group ,Eyal ,Isaac ,CEO ,https://www.linkedin.com/in/eyalisaac/ ,Greater New York City Area ,Information Technology and Service , 
-18838 ,TrustSphere - Relationship Analytics (We are hiring) ,Manish ,Goel ,CEO and Co-Founder ,https://www.linkedin.com/in/manishgoelts/ ,Greater New York City Area ,Information Technology and Service , 
-18839 ,AVITEK Inc ,Konstantin ,Terokhin ,Founder and CEO ,https://www.linkedin.com/in/konstantin-terokhin-091078123/ ,Greater New York City Area ,Information Technology and Service , 
-18840 ,MOSE DATA SECURITY; INC. ,Wooyoung ,Lim ,Founder & CEO ,https://www.linkedin.com/in/wooyoung-lim-23130ba8/ ,Greater New York City Area ,Information Technology and Service , 
-18841 ,EmconIT ,Michael ,Gnapp ,CEO ,https://www.linkedin.com/in/michael-gnapp-350b454a/ ,Greater New York City Area ,Information Technology and Service , 
-18842 ,New Jersey Performing Arts Center ,Fania ,Berry ,Executive Assistant to the President and CEO ,https://www.linkedin.com/in/fania-berry-83490712/ ,Greater New York City Area ,Information Technology and Service , 
-18843 ,Factr.com ,Chris ,Walt ,Founder and CEO ,https://www.linkedin.com/in/cvanderwalt/ ,Greater New York City Area ,Information Technology and Service , 
-18844 ,Prometheus Ax ,Stephane ,Caraguel ,Founder & CEO ,https://www.linkedin.com/in/scaraguel/ ,Greater New York City Area ,Information Technology and Service , 
-18845 ,NCR ,Bill ,Nuti ,Chairman & CEO ,https://www.linkedin.com/in/bill-nuti-69a0b67/ ,Greater New York City Area ,Information Technology and Service , 
-18846 ,immunizeLABS LLC ,Pascal ,PMP ,Founder and CEO ,https://www.linkedin.com/in/helou/ ,Greater New York City Area ,Information Technology and Service , 
-18847 ,Atlas ,Jacquie ,Cleary ,President and CEO ,https://www.linkedin.com/in/jacquie-cleary-a25185/ ,Greater New York City Area ,Information Technology and Service , 
-18848 ,Essextec ,Jim ,Torney ,CEO ,https://www.linkedin.com/in/jimtorney/ ,Greater New York City Area ,Information Technology and Service , 
-18849 ,BenefitHub ,Seif ,Saghri ,CEO ,https://www.linkedin.com/in/seif-saghri-1ba32a4/ ,Greater New York City Area ,Information Technology and Service , 
-18850 ,Microwize Technology Inc. ,Robert ,Gabriel ,President/CEO ,https://www.linkedin.com/in/microwize/ ,Greater New York City Area ,Information Technology and Service , 
-18851 ,INOMIND ,Vijay ,Gajwani ,Founder CEO ,https://www.linkedin.com/in/vijaygajwani/ ,Greater New York City Area ,Information Technology and Service , 
-18852 ,Nirvana Solutions ,Shams ,Karim ,Founder & CEO ,https://www.linkedin.com/in/shams-karim-8168a93/ ,Greater New York City Area ,Information Technology and Service , 
-18853 ,Helix Systems ,Daniel ,Kalai ,Founder and CEO ,https://www.linkedin.com/in/dkalai/ ,Greater New York City Area ,Information Technology and Service , 
-18854 ,Bridgeplex ,Naif ,Ahmed ,CEO ,https://www.linkedin.com/in/naif-ahmed-397a1689/ ,Greater New York City Area ,Information Technology and Service , 
-18855 ,AskNed ,Chintan ,Soni ,CEO ,https://www.linkedin.com/in/chintan-sheel-soni-73042057/ ,Greater New York City Area ,Information Technology and Service , 
-18857 ,Novele ,AJ ,Glassberg ,CEO ,https://www.linkedin.com/in/ajglassberg/ ,Greater New York City Area ,Information Technology and Service , 
-18858 ,GLG (Gerson Lehrman Group) ,Alexander ,Saint-Amand ,CEO ,https://www.linkedin.com/in/alexander-saint-amand-9ab1a/ ,Greater New York City Area ,Information Technology and Service , 
-18859 ,Freckle IoT & Killi ,Neil ,Sweeney ,Founder/CEO ,https://www.linkedin.com/in/sweeneyneil/ ,Greater New York City Area ,Information Technology and Service , 
-18860 ,MeaningCloud ,Jose ,Gonzalez ,CEO ,https://www.linkedin.com/in/josecarlosgonzalez/ ,Greater New York City Area ,Information Technology and Service , 
-18861 ,Perimeterwatch Technologies ,Yaniv ,Reeis ,CEO ,https://www.linkedin.com/in/yaniv-reeis-03016021/ ,Greater New York City Area ,Information Technology and Service , 
-18862 ,Recruit; Inc. ,Jeff ,Nussbaum ,Co-Founder & CEO ,https://www.linkedin.com/in/jeffnussbaum/ ,Greater New York City Area ,Information Technology and Service , 
-18863 ,Evision International Inc. USA ,Amit ,Aksad ,CEO ,https://www.linkedin.com/in/amit-y-aksad-72727319/ ,Greater New York City Area ,Information Technology and Service , 
-18866 ,Canvs ,Jared ,Feldman ,Forbes 30 Under 30 - CEO & Founder ,https://www.linkedin.com/in/jaredfeldman/ ,Greater New York City Area ,Information Technology and Service , 
-18868 ,OpenCrowd ,Sushil ,Prabhu ,CEO ,https://www.linkedin.com/in/sushilprabhu/ ,Greater New York City Area ,Information Technology and Service , 
-18870 ,Princeton Diversity Partners; LLC ,Steve ,Dawson ,President and CEO ,https://www.linkedin.com/in/steve-dawson-5a21105/ ,Greater New York City Area ,Information Technology and Service , 
-18871 ,TechNick Consulting inc ,Henken; ,Nick ,President & Ceo ,https://www.linkedin.com/in/henken-nick-6b0ba34/ ,Greater New York City Area ,Information Technology and Service , 
-18873 ,WDCA/Polyverse Media AI ,Matt ,Williams ,CEO; Data Scientist ,https://www.linkedin.com/in/matthewwilliamsdataservices/ ,Greater New York City Area ,Information Technology and Service , 
-18874 ,TMC Software Pvt Ltd. ,Vikas ,Kumar ,CEO ,https://www.linkedin.com/in/vikas-kumar-73aa0815/ ,Greater New York City Area ,Information Technology and Service , 
-18876 ,GroupM ,Kristin ,Pernice ,Executive Assistant to Global CEO mPlatform ,https://www.linkedin.com/in/kristin-pernice-94b79a5/ ,Greater New York City Area ,Information Technology and Service , 
-18877 ,Network Solutions and Technology ,William ,Collins ,President and CEO ,https://www.linkedin.com/in/william-collins-a811434/ ,Greater New York City Area ,Information Technology and Service , 
-18879 ,Siwel Consulting ,Marjory ,Horowitz ,Ceo And Founder ,https://www.linkedin.com/in/marjory-horowitz-35a4841b/ ,Greater New York City Area ,Information Technology and Service , 
-18880 ,Bedly (we're hiring!) ,Martin ,Greenberg ,CEO & Co-founder ,https://www.linkedin.com/in/martingreenberg/ ,Greater New York City Area ,Information Technology and Service , 
-18881 ,Sovereign Technologies Corporation ,Bill ,Robinson ,CEO (20-years) ,https://www.linkedin.com/in/bill-robinson-6bbb34/ ,Greater New York City Area ,Information Technology and Service , 
-18882 ,SMB IT SOLUTIONS ,Peter ,Usov ,Founder; Chairman & CEO ,https://www.linkedin.com/in/peterusov/ ,Greater New York City Area ,Information Technology and Service , 
-18883 ,Virtual IQ ,Chuck ,Dooley ,Founder & CEO ,https://www.linkedin.com/in/chuck-dooley-944a151/ ,Greater New York City Area ,Information Technology and Service , 
-18884 ,F2B Services ,Thomas ,Pappalardo ,Founder & CEO ,https://www.linkedin.com/in/thomas-pappalardo-3761544/ ,Greater New York City Area ,Information Technology and Service , 
-18885 ,Sensiple and EPRO ,Sadeesh ,Venugopal ,President and CEO ,https://www.linkedin.com/in/sadeesh-venugopal-2247548/ ,Greater New York City Area ,Information Technology and Service , 
-18886 ,SEQ Technology ,Shash ,Ph.D. ,Founder and CEO ,https://www.linkedin.com/in/shash-upadhyay-ph-d-79b57349/ ,Greater New York City Area ,Information Technology and Service , 
-18887 ,SpinnerTech ,Adam ,Spinner ,CEO & Founder ,https://www.linkedin.com/in/adam-spinner/ ,Greater New York City Area ,Information Technology and Service , 
-18888 ,Stallpost Software;Inc ,JC ,Huang ,Co Founder & CEO ,https://www.linkedin.com/in/jc-huang-0a951a83/ ,Greater New York City Area ,Information Technology and Service , 
-18889 ,Cove ,thomas ,neckel ,CEO ,https://www.linkedin.com/in/thomasneckel/ ,Greater New York City Area ,Information Technology and Service , 
-18890 ,Timewatch Inc ,Graeme ,Wright ,CEO ,https://www.linkedin.com/in/graeme-wright-a47a74a/ ,Greater New York City Area ,Information Technology and Service , 
-18891 ,Proximo ,Martin ,Fellner ,CEO ,https://www.linkedin.com/in/martin-fellner-5879015/ ,Greater New York City Area ,Information Technology and Service , 
-18892 ,zhenuine.com; evatag.com ,Denny ,Choi ,CEO ,https://www.linkedin.com/in/denny-y-choi-61a8988/ ,Greater New York City Area ,Information Technology and Service , 
-18893 ,GroundWidgets ,Apurva ,Patel ,Chairman & CEO ,https://www.linkedin.com/in/apurva-patel-bbb6954/ ,Greater New York City Area ,Information Technology and Service , 
-18894 ,Sociavi ,Paula ,Muller ,Founder & CEO ,https://www.linkedin.com/in/paula-muller-9169221/ ,Greater New York City Area ,Information Technology and Service , 
-18895 ,Influx Info Solutions Pvt Ltd ,Suresh ,Chigurupati ,Founder & CEO ,https://www.linkedin.com/in/suresh-chigurupati-664b99a0/ ,Greater New York City Area ,Information Technology and Service , 
-18896 ,Infoways ,Ravisankar ,Ambatipudi ,CEO ,https://www.linkedin.com/in/ravisankar-ambatipudi-440a453/ ,Greater New York City Area ,Information Technology and Service , 
-18979 ,ACME GLOBAL ,Asha ,Azhar ,CEO / CTO ,https://www.linkedin.com/in/ashaazhar/ ,Greater New York City Area ,Information Technology and Service , 
-19044 ,NextBits Group ,Jignesh ,Thummar ,CEO / CTO ,https://www.linkedin.com/in/jigneshthummar/ ,Greater New York City Area ,Information Technology and Service , 
-19058 ,Metro Tax & Technology Services Corp ,Jenrry ,Leon ,CEO | CTO ,https://www.linkedin.com/in/interpathsoft/ ,Greater New York City Area ,Information Technology and Service , 
-19089 ,myVenueLive LLC ,Andrzej ,Pienczykowski ,Founder CEO & CTO ,https://www.linkedin.com/in/andrzejpienczykowski/ ,Greater New York City Area ,Information Technology and Service , 
-19099 ,Super Art Software; Tao Soft; Bamtboo Inc. ,Leo ,Liu ,CEO / CTO / Co-founder ,https://www.linkedin.com/in/superarts/ ,Greater New York City Area ,Information Technology and Service , 
-19100 ,Techgnarlogy ,Shane ,Tierney ,CEO & CTO ,https://www.linkedin.com/in/eamonshanetierney/ ,Greater New York City Area ,Information Technology and Service , 
+id|company_name|company_website|first_name|last_name|role|person_linkedin|location|industries|user|email
+6686 |Integral Ad Science | |Scott |Knoll |CEO |https://www.linkedin.com/in/scknoll/ |Greater New York City Area |Internet | |scott@integralads.com 
+6709 |ALM | |Bill |Carter |CEO |https://www.linkedin.com/in/billmcarter/ |Greater New York City Area |Internet | |bill@alm.com 
+6722 |Fulcrum Worldwide | |Rajesh |Sinha |CEO |https://www.linkedin.com/in/rajesh-sinha-162975/ |Greater New York City Area |Internet | |rsinha@fulcrumww.com 
+6752 |GAVS Technologies | |Sumit |Ganguli |CEO |https://www.linkedin.com/in/sumitganguli/ |Greater New York City Area |Internet | |sumit.ganguli@gavstech.com 
+6754 |Arcesium LLC | |Gaurav |Suri |CEO |https://www.linkedin.com/in/gaurav-suri-8221103/ |Greater New York City Area |Internet | |suri@arcesium.com 
+6813 |Shore Group Associates | |Ian |Sax |CEO |https://www.linkedin.com/in/ian-sax-934a69146/ |Greater New York City Area |Internet | |ian.sax@h1insights.com 
+7045 |Incision Network LLC | |Louis |Jr |CEO |https://www.linkedin.com/in/incisionnetwork/ |Greater New York City Area |Internet | | 
+8203 |Systech International | |Ara |Ohanian |CEO |https://www.linkedin.com/in/araalecohanian/ |Greater New York City Area |Internet | | 
+8221 |SCOPEWORKER | |Justin |Duval |CEO |https://www.linkedin.com/in/justin-duval-55b682/ |Greater New York City Area |Internet | | 
+8453 |Vitech Systems Group | |Frank |Vitiello |CEO |https://www.linkedin.com/in/frank-vitiello-a23004a8/ |Greater New York City Area |Internet | | 
+8625 |Invoira Inc. | |Emmanuel |Salom |CEO |https://www.linkedin.com/in/emmanuel-manny-salom-8002a9b9/ |Greater New York City Area |Internet |Oleg Goncharenko | 
+8716 |MediaMath | |Joe |Zawadzki |CEO |https://www.linkedin.com/in/jzawadzki/ |Greater New York City Area |Internet | | 
+8717 |Zooppa |http://www.zooppa.com/ |Alessandro |Biggi |CEO |https://www.linkedin.com/in/alessandrobiggi/ |Greater New York City Area |Internet | | 
+8726 |Thomas |http://www.thomasnet.com/ |Tony |Uphoff |CEO |https://www.linkedin.com/in/tonyuphoff/ |Greater New York City Area |Internet | | 
+8764 |Exeq. |http://exeq.com/ |Derek |Brown |CEO |https://www.linkedin.com/in/derekbrownjr/ |Greater New York City Area |Internet | | 
+8783 |Gooroo |http://www.gooroo.com/ |Scott |Lee |CEO |https://www.linkedin.com/in/scottyongboklee/ |Greater New York City Area |Internet |Oleg Goncharenko | 
+8804 |Aitarget |http://www.aitarget.com/ |Ilya |Lagutin |CEO |https://www.linkedin.com/in/ilyalagutin/ |Greater New York City Area |Internet |Oleg Goncharenko | 
+8809 |Nomad Financial |http://www.nomadfinancial.com/ |Jonathan |Gass |CEO |https://www.linkedin.com/in/jonathangass/ |Greater New York City Area |Internet | | 
+8834 |Travefy |https://travefy.com/pro |David |Chait |CEO |https://www.linkedin.com/in/dchait/ |Greater New York City Area |Internet | | 
+8848 |Perform Media | |Juan |Delgado |CEO |https://www.linkedin.com/in/juancdelgado/ |Greater New York City Area |Internet | | 
+8856 |Donde Search |http://www.dondesearch.com/ |Liat |Zakay |CEO |https://www.linkedin.com/in/liat-zakay-05525715/ |Greater New York City Area |Internet | | 
+8891 |Jumprope |http://www.jumprope.com/ |Jake |Poses |CEO |https://www.linkedin.com/in/jakeposes/ |Greater New York City Area |Internet | | 
+8893 |UncommonGoods |http://www.uncommongoods.com/ |Dave |Bolotsky |CEO |https://www.linkedin.com/in/dave-bolotsky-3b6256/ |Greater New York City Area |Internet | | 
+8913 |build.develop.scale |http://www.builddevelopscale.com/ |Joel |Petino |CEO |https://www.linkedin.com/in/jpetino/ |Greater New York City Area |Internet | | 
+8914 |Synthesio |https://www.synthesio.com/ |Loic |Moisand |CEO |https://www.linkedin.com/in/loicmoisand/ |Greater New York City Area |Internet | | 
+8969 |Tendr |http://www.tendr.com/ |Jeff |Beil |CEO |https://www.linkedin.com/in/jeff-beil-8449b93/ |Greater New York City Area |Internet | | 
+8975 |Handy HQ |http://www.handy.com/ |Oisin |Hanrahan |CEO |https://www.linkedin.com/in/oisinhanrahan/ |Greater New York City Area |Internet | | 
+9016 |Health Plan One | |Bill |Stapleton |CEO |https://www.linkedin.com/in/bill-stapleton-3668766/ |Greater New York City Area |Internet | | 
+9037 |Shelfmint | |Ari |Kassman |CEO |https://www.linkedin.com/in/arikassman/ |Greater New York City Area |Internet | | 
+9045 |Neura Labs Corp. |http://www.neuralabs.com/ |Robert |Haddock |CEO |https://www.linkedin.com/in/roberthaddock/ |Greater New York City Area |Internet | | 
+9088 |Replogic |http://www.replogic.com/ |Bill |Shope |CEO |https://www.linkedin.com/in/billshope/ |Greater New York City Area |Internet | | 
+9109 |Rentigo |http://www.rentigo.com/ |Sivan |Blasenheim |CEO |https://www.linkedin.com/in/sivan-blasenheim-b258a/ |Greater New York City Area |Internet | | 
+9137 |DealFlow Financial Products, Inc. |http://dealflow.com/ |Steven |Dresner |CEO |https://www.linkedin.com/in/stevendresner/ |Greater New York City Area |Internet | | 
+9157 |Bulletin |http://bulletin.co/ |Alana |Branston |CEO |https://www.linkedin.com/in/alanabranston/ |Greater New York City Area |Internet | | 
+9220 |Vistar Media |http://www.vistarmedia.com/ |Michael |Provenzano |CEO |https://www.linkedin.com/in/michaelprovenzano/ |Greater New York City Area |Internet | | 
+10260 |Stealth Startup |http://stealthstartup.com/ |Jonathan |Kelfer |CEO |https://www.linkedin.com/in/jonathan-kelfer-a5aa8a1b/ |Greater New York City Area |Internet | | 
+11868 |USI Insurance Services | |Tracy |Brown |CEO |https://www.linkedin.com/sales/people/ACwAAAorUtcBh2DTpkaCZgprRC1P1NfMoVll0hU,NAME_SEARCH,fcaQ?_ntb=U5blNdkdQSytuq42gmPS%2Fw%3D%3D |Greater New York City Area |Internet | | 
+11869 |KSI Trading Corp. | |Chris |Patti |CEO |https://www.linkedin.com/sales/people/ACwAAAAZUGsBBAF8ru9I1w63Kjd5WoFL3uCAz6M,NAME_SEARCH,A1EM?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11870 |DarcMatter | |Sang |Hiring |CEO |https://www.linkedin.com/sales/people/ACwAAAquObABcFpbvujhlyvnP58CNBGVNlk5ZyE,NAME_SEARCH,oGqh?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11871 |OrcaWise | |Kevin |OrcaWise |CEO |https://www.linkedin.com/sales/people/ACwAAAAGWjcBpTRmFIF3NSbv4a--g8zm68u7fVs,NAME_SEARCH,RjEE?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11872 |Taub Consulting | |Bill |Taub |CEO |https://www.linkedin.com/sales/people/ACwAAAEDyqAB3zEzPyUguHXNVuh1RtR9JeS4ptw,NAME_SEARCH,K8c-?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11873 |InVisionApp Inc | |Clark |Valberg |CEO |https://www.linkedin.com/sales/people/ACwAAAAYnagBkf_HqAcI1yWNB91b_NW0Ss5Nkvo,NAME_SEARCH,jdc8?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11874 |Halen Brands Inc | |Jason |Cohen |CEO |https://www.linkedin.com/sales/people/ACwAAAGmBrIBxaHy4YCP_5XaNKVJIvfsdI-bqd0,NAME_SEARCH,GtoA?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11875 |ORBCOMM INC | |Marc |Eisenberg |CEO |https://www.linkedin.com/sales/people/ACwAAAA0c6sBddFuT4nnwEVXrOtKuNKhjFzYRdI,NAME_SEARCH,39dM?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11876 |Bareburger Group LLC | |Euripides |Pelekanos |CEO |https://www.linkedin.com/sales/people/ACwAAA21tgMB_XG-k-NY8nqgbF0e-bV7Gvx2y4o,NAME_SEARCH,IQBT?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11877 |Oscar Health | |Andriy |Bihun |CEO |https://www.linkedin.com/sales/people/ACwAAAMxUswBUaLOFi-k5QftMX22yPy3qq_3j6I,NAME_SEARCH,esGk?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11878 |Bethpage Federal Credit Union | |Wayne |Grosse |CEO |https://www.linkedin.com/sales/people/ACwAAAKocDkBRjnHIT1WrPksEA4vTQoCimLfhCw,NAME_SEARCH,AOWk?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11879 |Freshly Inc. | |Michael |Wystrach |CEO |https://www.linkedin.com/sales/people/ACwAAATWuZMBFEkBUABuFrBqx4dLFXycUBaBhxM,NAME_SEARCH,eAVm?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11880 |Paraco Gas | |Joe |Armentano |CEO |https://www.linkedin.com/sales/people/ACwAAAHa5jEB-pprHzpEqXi_8dbd9bulvw_DkhM,NAME_SEARCH,OaL8?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11881 |Tekmark Global Solutions | |Guy |DelGrande |CEO |https://www.linkedin.com/sales/people/ACwAAABeZDMBfUBQ5lDl4osWFxK5TzJpnNdL4T4,NAME_SEARCH,QbvR?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11882 |Citizens Parking Inc | |James |Hyman |CEO |https://www.linkedin.com/sales/people/ACwAAADhVAYBvryidklDy8ZvGCr-qLk7rIBVmhs,NAME_SEARCH,n3hp?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11883 |Oscar Insurance | |Mario |Schlosser |CEO |https://www.linkedin.com/sales/people/ACwAAAAodjQBup4LDrn_J_a9DykC13Xa8M9c59k,NAME_SEARCH,wKOU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet |Oleg Goncharenko | 
+11884 |iVitalité | |Rowena |Track |CEO |https://www.linkedin.com/sales/people/ACwAAAEn2EYB45kUHL3U5K98vii63MCaiPD9Cx8,NAME_SEARCH,ah67?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11885 |Zeno Group | |Barby |Siegel |CEO |https://www.linkedin.com/sales/people/ACwAAAA1lB0BdFpR58qhUtjcIHSI_3SHOFkzl6M,NAME_SEARCH,jfep?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11886 |Vroom.com | |Paul |Hennessy |CEO |https://www.linkedin.com/sales/people/ACwAAACDRHsBboUbbe0D9rsn2LWfNrDLBYZzeSE,NAME_SEARCH,00bW?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11887 |Payoneer | |Scott |Galit |CEO |https://www.linkedin.com/sales/people/ACwAAAAvH5oBTwomKtaXDdGvAuVl7CLvUJRg5lM,NAME_SEARCH,xdP2?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11888 |Alexander McQueen | |Babie |Kittie |CEO |https://www.linkedin.com/sales/people/ACwAABH4HjUBMD7lKFepnZQAg_JQzJ5H5bUFcPc,OUT_OF_NETWORK,CLQS?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11889 |Parisi Speed School | |Bill |Parisi |CEO |https://www.linkedin.com/sales/people/ACwAAAGgiDsBXM9MX5l8WMSDgapLyXPD004YMZg,NAME_SEARCH,W7c3?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11890 |Critical Mass | |Dianne |Wilkins |CEO |https://www.linkedin.com/sales/people/ACwAAAB2yYEBbtZtjnZRYlPhEKmQ7GNLgJhZkfI,NAME_SEARCH,fUh5?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11891 |COFENSE | |Rohyt |Belani |CEO |https://www.linkedin.com/sales/people/ACwAAAAoNwEB0CiXvYuO6QjjGwQBe2zLKNLFRcU,NAME_SEARCH,h6dm?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11892 |Group Nine Media | |Ben |Lerer |CEO |https://www.linkedin.com/sales/people/ACwAAACB8k4BqYcIT6T_zp8v75q__QmiLQ5i4Ac,NAME_SEARCH,ZGM1?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11893 |Drive Shack Inc. | |Sarah |Watterson |CEO |https://www.linkedin.com/sales/people/ACwAAAEmVboBXO54M-hQN5JD4sa2B4cw9WEN57A,NAME_SEARCH,-x8b?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11894 |Bridgeton Holdings | |Atit |Jariwala |CEO |https://www.linkedin.com/sales/people/ACwAAAS8r0MBnWCY-zMwt3eTjKAi3v5l1YDnEBM,NAME_SEARCH,8cBa?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11895 |Page Society | |Aedhmar |Hynes |CEO |https://www.linkedin.com/sales/people/ACwAAAAhZAgBpmlBSWmkhqWxd5hBt8XY_nSAtG4,NAME_SEARCH,jfXG?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11896 |NCC Media | |Nicolle |Pangis |CEO |https://www.linkedin.com/sales/people/ACwAAAA5axUBTjJ75NrLq5p3HvB2nFn0bYZVMZQ,NAME_SEARCH,COEH?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11897 |Priceline.com | |Brett |Keller |CEO |https://www.linkedin.com/sales/people/ACwAAAA0GI4B1zkFRJZOoYqlYwU6Ac-9IMViBEg,NAME_SEARCH,mIpU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11898 |Kaseya | |Fred |Voccola |CEO |https://www.linkedin.com/sales/people/ACwAAAG-5P0BsPVdZimCnjdS2Llf5YmCsdlvYbI,NAME_SEARCH,2wb9?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11899 |Protegrity | |Suni |Munshani |CEO |https://www.linkedin.com/sales/people/ACwAAAAzxL8BcuKIcVkH-WVv7aXFqbYtDMqdONI,NAME_SEARCH,sh0n?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11900 |Arrow Security | |A.J. |Caro |CEO |https://www.linkedin.com/sales/people/ACwAAAAgOw0BfYrs6P103LJQ1WPcxyYxY841iZ8,NAME_SEARCH,BF5i?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11901 |Intersection Co. | |Ari |Buchalter |CEO |https://www.linkedin.com/sales/people/ACwAAAAUPxsB7JDnTg0Ces9CYk4FFWsc7gFAErg,NAME_SEARCH,cmac?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11902 |AT Cross | |Robert |Baird |CEO |https://www.linkedin.com/sales/people/ACwAABPkXskBiB5vQt7SiH1Q-gHi1NBNhbILT7E,NAME_SEARCH,wTMR?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11903 |Marvin Traub Associates LLC | |Mortimer |Singer |CEO |https://www.linkedin.com/sales/people/ACwAAAQdEegBPBHIcuncydtUq7YGAToxZzhAB9E,NAME_SEARCH,rWRb?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11904 |Soterius | |Suneet |Walia |CEO |https://www.linkedin.com/sales/people/ACwAAAAXNnEB66UmGJX4nRUoyBrrs5IeNMiRFLs,NAME_SEARCH,XYO1?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11905 |Learnmet | |Kanad |Chatterjee |CEO |https://www.linkedin.com/sales/people/ACwAAAN2knYBp4PNWMHR7QeJ3RF8p-UjbT7S11I,NAME_SEARCH,1CfK?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11906 |Intellectual Ventures | |John |Reed |CEO |https://www.linkedin.com/sales/people/ACwAAA1K6k0Beyn0m3c61S_EgV_DT7ScJ-Z3TSo,NAME_SEARCH,80OD?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11907 |MeaningCloud | |Jose |Gonzalez |CEO |https://www.linkedin.com/sales/people/ACwAAAEeuVEBfdx3LKhjuhcXW5oWJgJsvuyN3SY,NAME_SEARCH,7H1e?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11908 |GENEWIZ | |Amy |Liao |CEO |https://www.linkedin.com/sales/people/ACwAAAIXLkoBtJLwTF7geIAuR8TKsc3YMUMta08,NAME_SEARCH,XZgH?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11909 |Stephen Gould Corporation | |michael |golden |CEO |https://www.linkedin.com/sales/people/ACwAAAVgQRYBR_dWBfIunUmKqwBi2jA8IC3A0Tw,NAME_SEARCH,nqZR?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11910 |Scan-Optics | |Jeff |Mitchell |CEO |https://www.linkedin.com/sales/people/ACwAABzmlIIBYSpUwDfsPCwp9RJCdinewQwUM2M,NAME_SEARCH,EP-w?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11911 |Women's Care Florida | |Andrew |Mintz |CEO |https://www.linkedin.com/sales/people/ACwAAAHDIb4B-rTMkaS2ZvOwXGLH8G5Boq_Sk0k,NAME_SEARCH,oklR?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11912 |Integrated Resources, Inc | |Gary |Gambhir |CEO |https://www.linkedin.com/sales/people/ACwAAABOaxYBiQ66lcoROzwBItNTe4J2vwjIfg4,NAME_SEARCH,dln8?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11913 |Bond New York | |Noah |Freedman |CEO |https://www.linkedin.com/sales/people/ACwAAANDcwYBHcX6J5yW0a4vBbC0EOOl7GUdn_Q,NAME_SEARCH,PM19?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11914 |Lawn Doctor, Inc. | |Scott |Frith |CEO |https://www.linkedin.com/sales/people/ACwAAAEBVUsBPbHIvU2OTh0VQ7BX0NGPeEk5f7Y,NAME_SEARCH,t7uC?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11915 |Greater New York Nursing Services | |Shlomie |Weiss |CEO |https://www.linkedin.com/sales/people/ACwAAAdjvS0BsTi_-3vSFmIQZUlRo-VG-sGtbsc,NAME_SEARCH,egpz?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11916 |Air Tiger Express (USA) Inc. | |Richard |Chu |CEO |https://www.linkedin.com/sales/people/ACwAAAWL1tIBz9ANYEreWGc6KoKcfj_sHr684_0,OUT_OF_NETWORK,3KFG?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11917 |Remedy Health Media | |Mike |Cunnion |CEO |https://www.linkedin.com/sales/people/ACwAAAADgXsBKsh25WCqzv1VuWGzrDU6YEHJnvA,NAME_SEARCH,L-Yi?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11918 |News America Marketing | |Marty |Garofalo |CEO |https://www.linkedin.com/sales/people/ACwAAAAq87kBX7z99nIZkWKgthXRu4Mp6scfWeg,NAME_SEARCH,9lIG?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11919 |Proud Moments | |Eli |Rubin |CEO |https://www.linkedin.com/sales/people/ACwAAB4a7PMBRXEri6DgcdrmODLCK08-LcHjCUo,NAME_SEARCH,x0yO?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11920 |Galls | |Michael |Wessner |CEO |https://www.linkedin.com/sales/people/ACwAAABpGg8BRm-ZIkIIbeNtmsIXAzT9skPSGLY,NAME_SEARCH,zk97?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11921 |Citymart | |Sascha |Haselmayer |CEO |https://www.linkedin.com/sales/people/ACwAAAABLiMBUgtfR0heKmXKJUWJCf3UQh4VzMg,NAME_SEARCH,lR_Y?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11922 |Association of International Certified Professional Accountants | |Barry |CGMA |CEO |https://www.linkedin.com/sales/people/ACwAAAB148UBdk9j4buPNJT3iL9NU3rn_NYF60U,NAME_SEARCH,iYNi?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11923 |Gain Capital | |Glenn |Stevens |CEO |https://www.linkedin.com/sales/people/ACwAAAGMYDEBPzeE5rv6wSbLNoEc6qLfuv0BNac,NAME_SEARCH,FVau?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11924 |Davines North America | |Anthony |Molet |CEO |https://www.linkedin.com/sales/people/ACwAAAGeZ6cBeKr8h3IizJkCLdJ0RZV6KqV5mtI,NAME_SEARCH,HKZK?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11925 |Strategic Financial Solutions NY | |Ryan |Sasson |CEO |https://www.linkedin.com/sales/people/ACwAAAWoHEEBex5ahoI7ndLaZJBkT0eVayXkYiQ,NAME_SEARCH,hJFz?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11926 |New Senior Investment Group | |Susan |Givens |CEO |https://www.linkedin.com/sales/people/ACwAAADqOUgBwwtoPkVn8nEG2BXORoJCPYQyKW8,NAME_SEARCH,x6Ha?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11927 |Wounded Warrior SL | |Christopher |Soldano |CEO |https://www.linkedin.com/sales/people/ACwAAAVNdgoBy5TCxPbqD4NviFyiPPxbPaodT3Q,NAME_SEARCH,RJiF?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11928 |Chop't Creative Salad Company | |Nick |Marsh |CEO |https://www.linkedin.com/sales/people/ACwAAACMq7wBVQLw5XdBkfQdV5dLvjT4Dlmbg9o,NAME_SEARCH,WA9n?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11929 |J.McLaughlin | |Mary |Coyne |CEO |https://www.linkedin.com/sales/people/ACwAAB2d7PYBZLiRSfk9JzjSf3MfvyruNwg-xI4,NAME_SEARCH,Px72?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11930 |Opera Solutions | |Arnab |Gupta |CEO |https://www.linkedin.com/sales/people/ACwAAAf4K1cB0AyZO6lJutXRJLtIn5DE8pu1PhY,NAME_SEARCH,PlWW?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11931 |Find Your Plug, LLC | |Salim |MBA |CEO |https://www.linkedin.com/sales/people/ACwAAAC6_9UBCrZnBVGYMm0fIE4j4hgobSc68x8,NAME_SEARCH,5NjS?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11932 |Momentum Solar | |Arthur |Souritzidis |CEO |https://www.linkedin.com/sales/people/ACwAAASlGXwB_bxwYr1HMsSKFg7OKFSufsF8cjw,NAME_SEARCH,KTJV?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11933 |DATA Inc. | |Arun |Verma |CEO |https://www.linkedin.com/sales/people/ACwAAAI_wBwB2oQpB66in2pTgGGJ9rh78EHdAmM,NAME_SEARCH,Tyqd?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11934 |AHM (Advanced Health Media) | |Christine |Croft |CEO |https://www.linkedin.com/sales/people/ACwAAADwTsQBY7Vir8RUa9ubFO19z4uIedpfeIk,NAME_SEARCH,cvox?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11935 |Action Environmental Services | |Ron |Bergamini |CEO |https://www.linkedin.com/sales/people/ACwAAAFGC6UB410RYMdWp-7s0SF1rSJxlMChIQM,NAME_SEARCH,4iNF?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11936 |NRC National Response Corporation | |Paul |Taveira |CEO |https://www.linkedin.com/sales/people/ACwAAAClpgABcw5luWgSUFxYYFA5LPUCdPVgnt4,NAME_SEARCH,CO6u?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11937 |Prime Productions Group | |Stephen |CEO |CEO |https://www.linkedin.com/sales/people/ACwAAABZKikB0fEl1X6W0SPJ2UYkjsIONz42q3M,NAME_SEARCH,uZI5?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11938 |Latour Trading LLC | |David |Faucon |CEO |https://www.linkedin.com/sales/people/ACwAABwbNGIBoqs1i-1KyALpoP1aeaWCvIks_4w,NAME_SEARCH,2iU-?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11939 |MSA Security | |Michael |O'Neil |CEO |https://www.linkedin.com/sales/people/ACwAAAFFy5QBQ0vfFn8YBJjvuQHjuwxSb-6A0p8,NAME_SEARCH,qQ0e?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11940 |SecReliant LLC | |MONICA |MBA |CEO |https://www.linkedin.com/sales/people/ACwAAA2Qjy8BAsN-u7fjaDk4ZmmKrAyb7RQtx80,NAME_SEARCH,yrzh?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11941 |WestBridge Technologies Inc. | |Omri |Lavie |CEO |https://www.linkedin.com/sales/people/ACwAAAC_X_0BUYV7_5sYor9emz5glIRUOJJsl6I,NAME_SEARCH,Z7AP?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11942 |International Bonded Couriers, Inc. | |Joe |Costigan |CEO |https://www.linkedin.com/sales/people/ACwAABvknJUBw-dOJ4s4umYWEmpaIsXBSIgj0bs,NAME_SEARCH,mUmk?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11943 |20-10 LLC | |Craig |Dubitsky |CEO |https://www.linkedin.com/sales/people/ACwAAAAAYMYB8MOvQZfS7LupR2S5aT-xMoSX0UI,NAME_SEARCH,8R2S?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11944 |CERBERUS CAPITAL MANAGEMENT, L.P. | |bob |willians |CEO |https://www.linkedin.com/sales/people/ACwAACQD3YoBAzvxpfNJOjjiI8j_E5qj4baX90E,NAME_SEARCH,KbNJ?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11945 |The Cly-Del Manufacturing Company | |Bob |Jr |CEO |https://www.linkedin.com/sales/people/ACwAAAFnnyEBuvfpA9WgD4rYx4gp3X3afzExedo,NAME_SEARCH,FLwX?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11946 |futurethink | |Lisa |Bodell |CEO |https://www.linkedin.com/sales/people/ACwAAABg-B4BWIDxWeoQzlGSr7WO9TZEau6R3d8,NAME_SEARCH,CK84?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11947 |ZISN Technologies LLC | |Imad |Samiulla |CEO |https://www.linkedin.com/sales/people/ACwAAAAUCK0BH8Ye4giQvGSd2CEm0PBrfjoEblU,NAME_SEARCH,rBMU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11948 |CureMD Healthcare | |Bilal |Hashmat |CEO |https://www.linkedin.com/sales/people/ACwAAAEWBZoBbYllRb8_XYMvP1r06pF81GYGolQ,NAME_SEARCH,5xcN?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11949 |Prime Line (Prime Resources Corp.) and Jet Line | |Jeff |Lederer |CEO |https://www.linkedin.com/sales/people/ACwAAAF4tN8BCdx58auJAYr-XCYfBZi6aDYtMGc,NAME_SEARCH,hcNn?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11950 |Intone Networks Inc | |Prabhakar |Y |CEO |https://www.linkedin.com/sales/people/ACwAAAt24LAB5RI6kVXBDcEgz2NMgLwshOVZF-I,NAME_SEARCH,Q_xq?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11951 |Wellfield Pyrodynamics | |Remi |Jibowu |CEO |https://www.linkedin.com/sales/people/ACwAAAVfi_cBKtnw8daRgSQdKr65_FrkBilo7Mw,NAME_SEARCH,OvW1?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11952 |Sixxor Enterprises Inc. | |Renée |Smith |CEO |https://www.linkedin.com/sales/people/ACwAAAWMs88B5sXP2zaENcHKbro8HckEqBo3Gts,NAME_SEARCH,h86n?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11953 |Dragon Group LLC | |Jason |Cahilly |CEO |https://www.linkedin.com/sales/people/ACwAAALPigIB3YKejznqtJXqt5dQF6yrgON1R4I,NAME_SEARCH,4J01?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11954 |Aurify Brands | |Andrew |Stern |CEO |https://www.linkedin.com/sales/people/ACwAAABJwrgBI7Kbad4hocHTfrNe0k-j2RcEsvE,NAME_SEARCH,rGl8?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11955 |INSYS Group, Inc. | |Linda |Magnusson-Rosario |CEO |https://www.linkedin.com/sales/people/ACwAAABRRKABXQvKbBIdAvb_EMpgJv7YI6K1D-A,NAME_SEARCH,yAMo?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11956 |Software Guidance & Assistance | |Peter |Taylor |CEO |https://www.linkedin.com/sales/people/ACwAAADFCiwBOxmGcBseZ4Ku12FaGkQndzIzn_Q,NAME_SEARCH,Z-2R?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11957 |Sun Knowledge | |Jaydip |Dattaray |CEO |https://www.linkedin.com/sales/people/ACwAAATWL70BUXEp8vKAE31W6WK9NWDIqEcLGzU,NAME_SEARCH,thEI?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11958 |U.S. Nonwovens Corp. | |Shervin |C.E.O. |CEO |https://www.linkedin.com/sales/people/ACwAABtLqzYBGOYHCyeipAm3-mu8Tr_nN4mu3Qg,NAME_SEARCH,Suf6?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11959 |Posterscope, USA | |Michael |Palatnek |CEO |https://www.linkedin.com/sales/people/ACwAAAE9pYQB9jdYcMUqVQXrCPeYUXpOUIig-zc,NAME_SEARCH,Pmlp?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11960 |EF-USA, Inc GSA for Eurofly USA | |Rosario |Mariani |CEO |https://www.linkedin.com/sales/people/ACwAAAEbuukB8HpFo-1txF-VR5Jp7bEVge3qEbM,NAME_SEARCH,4hrb?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11961 |The Vitamin Shoppe | |Sharon |Leite |CEO |https://www.linkedin.com/sales/people/ACwAAABETCwBwvB4jnAyGLl78YuLr-j0IEA6m1c,NAME_SEARCH,F8K_?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11962 |The Collected Group | |James |Miller |CEO |https://www.linkedin.com/sales/people/ACwAAAPkFRYBIA3M5dhCOFLtFPD9MIE-q1_hhlY,NAME_SEARCH,kw3v?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11963 |HomeServe USA | |Tom |Rusin |CEO |https://www.linkedin.com/sales/people/ACwAAAAHwVoBzhXx9C3-siG2VHm3FY9Yze42dDw,NAME_SEARCH,v_Qd?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11964 |Boston Properties | |Owen |Thomas |CEO |https://www.linkedin.com/sales/people/ACwAAAiV7MEBnRfbFiAfgr27U69D8H_ViRQCJlI,NAME_SEARCH,YlgS?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11965 |Dream Hotel Group | |Jay |Stein |CEO |https://www.linkedin.com/sales/people/ACwAAAJzbdQBloSBnxvPa9-7XZrtNOn1tUPT2fQ,NAME_SEARCH,FiSw?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11966 |TBWA\CHIAT\DAY, New York | |Rob |Schwartz |CEO |https://www.linkedin.com/sales/people/ACwAAAAXvB8BpZJda3GNdGey4crK6MjTHLxiL5Q,NAME_SEARCH,U5YN?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11967 |ONE Jeanswear Group | |Jack |Gross |CEO |https://www.linkedin.com/sales/people/ACwAAAVmEJcBih2B2toxY3znziTozdGnezZ8o-M,NAME_SEARCH,lOPr?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11968 |EHE International | |David |Levy |CEO |https://www.linkedin.com/sales/people/ACwAABfLTNoBDtmgbvjTlgGURDzQY02p7wsYp1Y,NAME_SEARCH,kQgA?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11969 |msg global solutions | |Ed |Wilczynski |CEO |https://www.linkedin.com/sales/people/ACwAAACtqCEBbJLiK2p6kqPp1tx6GTsAzZoL96E,NAME_SEARCH,-Yju?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11970 |Design Within Reach | |John |Edelman |CEO |https://www.linkedin.com/sales/people/ACwAAAKE2GoB7xTTMWMLKGFhmgidgifem-S6B8o,NAME_SEARCH,6652?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11971 |FastBuy | |Egor |Afanasenko |CEO |https://www.linkedin.com/sales/people/ACwAABPb4RgBWeMAZa_QGwpwZvQU-5BngAfiXBo,NAME_SEARCH,MC2j?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11972 |ThruPoint Inc., | |Rami |Musallam |CEO |https://www.linkedin.com/sales/people/ACwAAABXQ3MB6eCe0p9T-LgEAoL9w7FCelrnXmA,NAME_SEARCH,1LO_?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11973 |Oak Street Ventures Inc. | |Kevin |O'Leary |CEO |https://www.linkedin.com/sales/people/ACwAAALoSXkB49xBCJpUNVqPNk8cUWINeKgeshU,NAME_SEARCH,Um6q?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11974 |Toehold Learning | |Mark |Ulett |CEO |https://www.linkedin.com/sales/people/ACwAABk9RaUBd6uux0rmVkWV97Y9lPfPPVDJbf8,NAME_SEARCH,t5SL?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11975 |Diligent Corporation | |Brian |Stafford |CEO |https://www.linkedin.com/sales/people/ACwAAABXRrgBiMkkt_0ZaFMoJtNLTcFCfPwVjuk,NAME_SEARCH,tqNL?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11976 |Lyfebulb | |Karin |Hehenberger |CEO |https://www.linkedin.com/sales/people/ACwAAAIsi_kBn9pIxoOBvvzz0K7Xy8J1Uyqimxw,NAME_SEARCH,YFkO?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11977 |Harvard University | |Nicolas |Deffrennes |CEO |https://www.linkedin.com/sales/people/ACwAAAA-T2IB_SjrgMSDKuNxO7inkYCnb0gmzfE,NAME_SEARCH,RW03?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11978 |FinTech Acquisition Corp. II | |Daniel |Cohen |CEO |https://www.linkedin.com/sales/people/ACwAAAFvxncBkTF-KyRkyf0pXjlWQXWs8Kabe5o,NAME_SEARCH,-NIP?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11979 |Imperial Commercial Cleaning | |Jeffrey |Krinick |CEO |https://www.linkedin.com/sales/people/ACwAAAChq-YBqcoDari4TMKXYoS1bELUkNbrz_0,NAME_SEARCH,Eaw3?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11980 |RAB Lighting, Inc. | |Ross |Barna |CEO |https://www.linkedin.com/sales/people/ACwAAAGsmpABypGSBs7pcDjfzGRTEvXOcJ31FnY,NAME_SEARCH,Ym_s?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11981 |GuideWell Connect | |Scott |Paddock |CEO |https://www.linkedin.com/sales/people/ACwAAAAwvYoBK92LjjAUKXbpHM8RRH9a23s4HMI,NAME_SEARCH,TONu?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11982 |Makom Management Services | |Jacob |Ort |CEO |https://www.linkedin.com/sales/people/ACwAACdILe8B5aG37U1n3IxIM1PHLEI9jzRZFOU,NAME_SEARCH,or76?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11983 |Visant Corporation | |marc |reisch |CEO |https://www.linkedin.com/sales/people/ACwAAAWJIkwBiWmBYlVYcR2iY3ITJmnxWXveRy0,NAME_SEARCH,er5S?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11984 |Yirendai | |Yihan |Fang |CEO |https://www.linkedin.com/sales/people/ACwAAACaOqQBat727NxK_RX6fKKwhzktj8ZXR8s,NAME_SEARCH,SzE0?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11985 |Instinet Incorporated | |Jonathan |Kellner |CEO |https://www.linkedin.com/sales/people/ACwAABdUXnMBALlX9OSmRuyee5X-CmTlkViZwrM,NAME_SEARCH,mw2x?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11986 |Po.et | |Jarrod |Dicker |CEO |https://www.linkedin.com/sales/people/ACwAAASrcNwBoxKynfQhOT1x-CK4Znr6uFzn-ds,NAME_SEARCH,KTcv?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11987 |Diverse Lynx | |Sujata |Varma |CEO |https://www.linkedin.com/sales/people/ACwAAAGX738BRNTR-AM1O03QiN58mRHw-Uu6f1Y,NAME_SEARCH,CQVc?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11988 |Redstage | |Adam |Morris |CEO |https://www.linkedin.com/sales/people/ACwAAAC5_yEBX-H0DNV1AFL68NEuP0BL-OHISpM,NAME_SEARCH,jJBB?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11989 |Intone Networks | |Prabhakar |Yeruva |CEO |https://www.linkedin.com/sales/people/ACwAAAUPUckBWTJpZCuNpZITcYqm9d3mdlF_I0I,NAME_SEARCH,ZFx3?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11990 |Wiztopic | |Raphael |Labbé |CEO |https://www.linkedin.com/sales/people/ACwAAAAYIRYBwP_dMazQJZhxX14dtMpep5_GO_A,NAME_SEARCH,k4JB?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11991 |KIPP | |Richard |Barth |CEO |https://www.linkedin.com/sales/people/ACwAAADxEPgBWBlfi8NEg2OZqLq0bhODukuuVMA,NAME_SEARCH,DcA7?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11992 |VNA Community Healthcare & Hospice | |Janine |Fay |CEO |https://www.linkedin.com/sales/people/ACwAAAaoAlgBWIuKK2rPjBSHpqgYKZTLN3o90rI,NAME_SEARCH,UFoq?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11993 |component assembly systems inc. | |Lew |Rapaport |CEO |https://www.linkedin.com/sales/people/ACwAAAQCJRoBQzI_kcjm3LIsI_QXD7YsC5uVPNk,NAME_SEARCH,xrS_?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11994 |SourceMedia | |Gemma |Postlethwaite |CEO |https://www.linkedin.com/sales/people/ACwAAAD0iCUBjdJg6KkyPMRPWjTgcnNVp8Mntbw,NAME_SEARCH,xMDH?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11995 |Health Data & Management Solutions, Inc. (HDMS) | |Mohamed |Diab |CEO |https://www.linkedin.com/sales/people/ACwAAAEX0zQBKorgIgefxybxF_eif9TvpLLriMk,NAME_SEARCH,5Z6l?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11996 |Snackpass | |Kevin |Tan |CEO |https://www.linkedin.com/sales/people/ACwAAAPDebUBdxsQZ5w12kq1tiKHY0Dt7ZGR2kE,NAME_SEARCH,fsq6?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11997 |Elizabeth Seton Pediatric Center | |Patricia |Tursi |CEO |https://www.linkedin.com/sales/people/ACwAAAQkDsMB2PsVaDYVPIZBUqk6b8os7GuVMzs,NAME_SEARCH,nyim?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11998 |J. Fletcher Creamer & Son | |Fletcher |Creamer |CEO |https://www.linkedin.com/sales/people/ACwAAAd8fpsBbe97Rf2CYBG5uyl2nUoXQnhhpso,OUT_OF_NETWORK,IyWH?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+11999 |TSR Consulting Services, Inc | |Chris |Hughes |CEO |https://www.linkedin.com/sales/people/ACwAAACNl2wBc8vCHIQFSEIC215TGWBDmBq1rWY,NAME_SEARCH,82wT?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12000 |Darby Group Companies | |Carl |Ashkin |CEO |https://www.linkedin.com/sales/people/ACwAAAAF414Bam6pVtKde94-DL5gnhqJJfbPBro,NAME_SEARCH,aV-8?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12001 |Gotham Technology Group | |Ira |Silverman |CEO |https://www.linkedin.com/sales/people/ACwAAAZKgb8BwEg4Lq2O5iR1151NQZ-Kv6WTkLA,NAME_SEARCH,QR4a?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12002 |Verified Clinical Trials | |Mitchell |Efros |CEO |https://www.linkedin.com/sales/people/ACwAAAVS_zYBL451JJAwWH_80e-3XBr-xSdMip4,NAME_SEARCH,UiRt?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12003 |Investis | |Don |Scales |CEO |https://www.linkedin.com/sales/people/ACwAABBUi1oBe6ICg5LAUJ9gPgODjuNLerHTRqQ,NAME_SEARCH,DPHE?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12004 |Taro Pharmaceutical Industries | |Uday |Baldota |CEO |https://www.linkedin.com/sales/people/ACwAAABhKFYBVNExcyUKYav8F5Lk-fL98edy7QU,NAME_SEARCH,Dj6T?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12005 |Expert Mortgage Assistance | |David |Antony |CEO |https://www.linkedin.com/sales/people/ACwAAABSuMkBdR9ND7Dd28wWVMm8A2TjAGpCQPc,NAME_SEARCH,QLDV?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12006 |Honey Insurance Group, INC | |Jamel |Wright |CEO |https://www.linkedin.com/sales/people/ACwAAATE_UEBr4XZ-D-2gSdGBPwTC6EmhJkzCHw,NAME_SEARCH,rqLm?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12007 |Byram Healthcare | |Perry |Bernocchi |CEO |https://www.linkedin.com/sales/people/ACwAAAApoyoBZ_SdJkA-W_FGuBsqEjBIWZ2Zshc,NAME_SEARCH,YO9-?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12008 |ISS / Institutional Shareholder Services | |Bennett |Stewart |CEO |https://www.linkedin.com/sales/people/ACwAAAEvfRYBLiPEmV73stjY7sIwGRLLohP-YdI,NAME_SEARCH,v78q?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12009 |Ali & Kris | |Jason |Hoffman |CEO |https://www.linkedin.com/sales/people/ACwAAAhWTDEB1XtXe0IU-etnXqMW-xOz0KVCirA,NAME_SEARCH,jql0?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12010 |PGE LLC - Coaching, Consulting & Public Speaking | |Paula |Edgar |CEO |https://www.linkedin.com/sales/people/ACwAAABT_gMBmeL9Spl60EvPimwE2YHeCOOquvQ,NAME_SEARCH,pIb4?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12011 |Craft | |Ed |Powers |CEO |https://www.linkedin.com/sales/people/ACwAAAY5IdoBiIAHAUIPiUQ25egzaWKrm_RV_Mc,NAME_SEARCH,qqaj?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12012 |HiTouch Business Services | |Michael |Brown |CEO |https://www.linkedin.com/sales/people/ACwAAAX8kKwBs5Sn8MGhsiJiU_pJutETZCHmsUA,NAME_SEARCH,i95j?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12013 |Imperial Plastics, Inc | |Randy |Ahlm |CEO |https://www.linkedin.com/sales/people/ACwAAAAQNHgBaf5EtL5p14d_ALYFqycTLfQDfzA,NAME_SEARCH,ozKr?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12014 |Sembra | |Abraham |Esfandiary |CEO |https://www.linkedin.com/sales/people/ACwAAAI017wBa2ZMKsPE4x8vBVcyxzUAFuDCmvY,NAME_SEARCH,xGjs?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12015 |Pacira Pharmaceuticals | |Dave |Stack |CEO |https://www.linkedin.com/sales/people/ACwAAAGfT2YBOQmyk73Mxt65hgWFbGgze1w-n_A,NAME_SEARCH,qFiG?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12016 |Medley Captial Management | |Richard |Medley |CEO |https://www.linkedin.com/sales/people/ACwAAACkfHQBKUq2tgHkySpaz8oFiyUA2z1RRSw,NAME_SEARCH,SXdr?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12017 |Mass Ideation | |Miguel |Sanchez |CEO |https://www.linkedin.com/sales/people/ACwAAADKJwMBvyXqfVl4sjfdHoYdIQWG3ly7OcA,NAME_SEARCH,fhIF?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12018 |Analytics Quotient | |Vinay |Ramesh |CEO |https://www.linkedin.com/sales/people/ACwAAACXu4oBrzOUneQ9L2YcM3tgeSknNVYELZg,NAME_SEARCH,T0Dg?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12019 |Atlantic Metro Communications | |Matthew |Lombardi |CEO |https://www.linkedin.com/sales/people/ACwAAADA2W8BFgWLzjGZOWwGpYNc9F5ki4eCkP0,NAME_SEARCH,2AwN?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12020 |AxiomSL | |Alex |Tsigutkin |CEO |https://www.linkedin.com/sales/people/ACwAAAApEDIBf1xG1hbCqJ3v8l9Hga1z1jMCMD4,NAME_SEARCH,IxO5?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12021 |76 West Holdings | |Eric |Schwartz |CEO |https://www.linkedin.com/sales/people/ACwAAAQAl6UBThkHBubtyTHvqHUmNrA0TpeEcIQ,NAME_SEARCH,l6I9?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12022 |Paramount Hotel Group | |David |Simon |CEO |https://www.linkedin.com/sales/people/ACwAAA-KZ9ABegrx3WoFW66RVla3Zs_PR86kCVs,NAME_SEARCH,UkKu?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12023 |Alpha 1 Marketing, Inc. | |Ken |Krasne |CEO |https://www.linkedin.com/sales/people/ACwAAAlyUGIBvyeFtvDmFdKg8EG_J74GbERqYok,NAME_SEARCH,LCF6?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12024 |Novation Settlement Solutions | |Robin |Shapiro |CEO |https://www.linkedin.com/sales/people/ACwAAAB5XoIB6c0RBwpbu2H3Vbk1jpUbDhGDmZU,NAME_SEARCH,7Kjm?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12025 |Electronic Payments, Inc. | |Michael |Nardy |CEO |https://www.linkedin.com/sales/people/ACwAABqOze8Bv1SS6xayebIjVVTbQrOnseuZj9c,NAME_SEARCH,qxmP?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12026 |Odessa LLC | |Ian |Jarvis |CEO |https://www.linkedin.com/sales/people/ACwAAAER2p8B2R_SNVmCF6XdosHBAW-NV5IEGJw,NAME_SEARCH,Ssct?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12027 |NLS Life Science and Therapeutics Discovery, LLC | |Joseph |Audie |CEO |https://www.linkedin.com/sales/people/ACwAAAL3oSYBrJ14gmoNRqMqZajvl9aNXvNeYls,NAME_SEARCH,8hLj?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12028 |Mountaincreek Resort | |Jeffrey |Koffman |CEO |https://www.linkedin.com/sales/people/ACwAAAKNWjwBXG3gr_8E9Wa3gQE4pAVfYuPK6A0,NAME_SEARCH,CgyE?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12029 |Intel Investigations & Security, LLC | |Christopher |Strom |CEO |https://www.linkedin.com/sales/people/ACwAAA21Y1gBNkX8SWFkP_I2P82YqfQHaTjL-QI,NAME_SEARCH,GXFi?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12030 |Accurate Diagnostic Labs, Inc. | |Rupen |Patel |CEO |https://www.linkedin.com/sales/people/ACwAAANHNj4B8y72t3PhnXVGNBC-gMJZ94WScEY,NAME_SEARCH,V6YF?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12031 |American Telecommunications, Inc. | |Nathan |Yanovitch |CEO |https://www.linkedin.com/sales/people/ACwAAAxkIVsBQI7z20h6Ok3O-O7qmRu8ss3sLsk,NAME_SEARCH,FKux?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12032 |TheStreet | |Daryl |Otte |CEO |https://www.linkedin.com/sales/people/ACwAAATnw9sB36P9mbenL_U0_rYnbLw_igG5jXE,NAME_SEARCH,EQId?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12033 |Capital Labs | |Brendan |Hart |CEO |https://www.linkedin.com/sales/people/ACwAAADy79UBL3tNQnvyFO6-mMJIgtxVNEwpVB4,NAME_SEARCH,LeVU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12034 |Absolute Information Technologies Inc | |JangPartap |(Raja) |CEO |https://www.linkedin.com/sales/people/ACwAAAAITy8B6Vq1NVp4L7QN93Re8MlpIpiHV_k,NAME_SEARCH,god8?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12035 |JRNYC Luxury Marketing Group | |Juan |Aracena |CEO |https://www.linkedin.com/sales/people/ACwAAAGm9-QBQMmE0t-0x7ikgaGJViS733eehpw,NAME_SEARCH,IVla?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12036 |Barrows | |Brent |Taylor |CEO |https://www.linkedin.com/sales/people/ACwAAATevO4BbNpJ4aKbG5rtBk9n2ZbTaSbFYFU,NAME_SEARCH,nV1w?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12037 |World Media Group, LLC | |Gerald |Gorman |CEO |https://www.linkedin.com/sales/people/ACwAAADmJTgBZpKAFIwcF-7Q6aBoV2jRm1zDaUU,NAME_SEARCH,NDF9?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12038 |Leaf Level Labs Inc. | |Alex |Gadea |CEO |https://www.linkedin.com/sales/people/ACwAAABue24BBQEPOFRkmwJGnq8PpScGATbsOGw,NAME_SEARCH,7srM?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12039 |NetInfra Consulting | |Rex |Lew |CEO |https://www.linkedin.com/sales/people/ACwAAABMXNoBWokJpwMMbE5KAkXUOMxG-F4duq0,NAME_SEARCH,TZg6?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12040 |Unison-Design, LLC | |Mark |Kuss |CEO |https://www.linkedin.com/sales/people/ACwAAB0viJ4BywoIfc3xvhN4fpCQ7x28IGQx-SQ,NAME_SEARCH,4QZ9?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12041 |@DollarPizzaSliceNYC | |Francisco |Balagtas |CEO |https://www.linkedin.com/sales/people/ACwAAAIMZqAB-vj0xdRXRu6RTUDXvEvh3fjU2yw,NAME_SEARCH,aDpD?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12042 |Unger Enterprises | |Jan |Unger |CEO |https://www.linkedin.com/sales/people/ACwAAALILmgBYeduPBkHHr_hIsrX8CZcSNCvOtY,NAME_SEARCH,ctk9?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12043 |Metric Hvac and Solar Energy Corp | |Ben |P. |CEO |https://www.linkedin.com/sales/people/ACwAAAS3aqMBgtfl8t0R0GIvjTrCAkW9_tMYUys,NAME_SEARCH,Gp5Z?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12044 |Quantum Properties ltd. | |Michael |Gindi |CEO |https://www.linkedin.com/sales/people/ACwAAA3iOz8BnVuaE3lluqQcPXq5SiXTFgQZCzY,NAME_SEARCH,r6OR?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12045 |Cobblestone Multimedia | |Jeffrey |Billingsley |CEO |https://www.linkedin.com/sales/people/ACwAAAWFTfABYATFTxPuAe1OwfstZRRScP0vnjo,NAME_SEARCH,pzEI?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12046 |Xpresspa | |Moreton |Binn |CEO |https://www.linkedin.com/sales/people/ACwAAB43g6QBoSbNiX93Bi8Hrtls1XksvofOUGc,NAME_SEARCH,DXu9?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12047 |Expansion Universal LLC. | |Jamal |Tarik |CEO |https://www.linkedin.com/sales/people/ACwAAABD8EwBJJA-HKWCt7TNZ05IDdCIXcnrQR8,NAME_SEARCH,f3gU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12048 |JSD Protective Services | |Douglas |Finney-Carter |CEO |https://www.linkedin.com/sales/people/ACwAABniEN0BH4A8UT3ah9voUWLwANUdGarnueo,NAME_SEARCH,hpIN?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12049 |New Horizons India Pvt.Ltd | |New |Horizon |CEO |https://www.linkedin.com/sales/people/ACwAACh9gpcBUZq9d3xHjEJgCkmw_5zIx5a8Zbs,NAME_SEARCH,PkD2?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12050 |Self-employed | |Jeffrey |Tejada |CEO |https://www.linkedin.com/sales/people/ACwAAA_SpRUBceQXCxQAOo48Wt3F4dNLJkwh4nY,NAME_SEARCH,nMRQ?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12051 |Worldventures | |Ivy |Lee |CEO |https://www.linkedin.com/sales/people/ACwAAA1zEc4BWRTaa2wR17GURxKXKQnyOhiiVHg,OUT_OF_NETWORK,XhSU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12052 |BB&T Capital Markets | |Quintin |Keys |CEO |https://www.linkedin.com/sales/people/ACwAABZeYecBRE5frxB-yX9UZBAI0Yyl192b5Nc,OUT_OF_NETWORK,ozCU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12053 |Polskie Radio USA | |Andy |Krygowski |CEO |https://www.linkedin.com/sales/people/ACwAAApJ78oBZbiZWSqw8B2rQQUXk7A8OfK0ZAc,OUT_OF_NETWORK,G43D?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12054 |SMA | |kahlif |azziz |CEO |https://www.linkedin.com/sales/people/ACwAABi0_SQBxPepgTjwSZr9f4F3Xuc2_SxqBH8,OUT_OF_NETWORK,7_Zv?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12055 |Blue Diamond Realty & Development | |Leivy |Gross |CEO |https://www.linkedin.com/sales/people/ACwAAAoIk_wBnpf1lhV8H-5B_6Zf0SUYAABbnQg,NAME_SEARCH,D9Rd?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12056 |Drake Realty Corp | |Mario |Cantatore |CEO |https://www.linkedin.com/sales/people/ACwAAAWRV0UBx6TJDhp7vC2T1crWADZGBMEciJM,NAME_SEARCH,1anv?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12057 |Periscope By McKinsey | |Brian |Elliott |CEO |https://www.linkedin.com/sales/people/ACwAAAAR6dwBU8hjvfgecXjPc43oIcDf4zEwU7Q,NAME_SEARCH,3PWl?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12058 |Sanford C. Bernstein | |James |Gingrich |CEO |https://www.linkedin.com/sales/people/ACwAAALw25cBwA1RcoVIcR1BpqLkxBogGYa1qPw,NAME_SEARCH,ayXw?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12059 |PineBridge Investments | |Gregory |Ehret |CEO |https://www.linkedin.com/sales/people/ACwAAAtdbecB-aL_izLZPlegsSGw-14TdgtIekk,NAME_SEARCH,TZF2?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12060 |Citrin Cooperman | |Joel |Cooperman |CEO |https://www.linkedin.com/sales/people/ACwAAAzjiX4Bszc4Tdut9nDut1Af9iGo4WovCQI,NAME_SEARCH,ddta?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12061 |Moonshot N.A. | |Terence |Mills |CEO |https://www.linkedin.com/sales/people/ACwAAAoNjxwBeZdYh_CEw-uWhtJUrJBzYt7vSiI,NAME_SEARCH,tNib?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12062 |Teleiman, LLC | |Robb |Auber |CEO |https://www.linkedin.com/sales/people/ACwAAAU9iQ0B_jsCi2DiXQOgyBbaitWXlijhfOs,NAME_SEARCH,gMSJ?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12063 |Kabbalah Centre | |Paul |Geller |CEO |https://www.linkedin.com/sales/people/ACwAAAET8wgBanWkm0abcfX2hVwNt3pjgj3mKD0,NAME_SEARCH,2Hx5?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12064 |Connect America Medical Alert Company | |David |Cautin |CEO |https://www.linkedin.com/sales/people/ACwAAAAyy7UBntqdPTpc2TQulLxPPT_WzXRJllw,NAME_SEARCH,YDdY?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12065 |Centerlight Health System | |Shaun |Martinez |CEO |https://www.linkedin.com/sales/people/ACwAABR1TDoBLd8Ljgy8Trr8ObsmvURXKgKomgg,NAME_SEARCH,dBgC?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12066 |TradeKey.com | |Junaid |Mansoor |CEO |https://www.linkedin.com/sales/people/ACwAAAFBt-0BV70kIur_H8nzt65FgIYcUFNlblY,NAME_SEARCH,EYGn?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12067 |Partners + Napier | |Sharon |Napier |CEO |https://www.linkedin.com/sales/people/ACwAAADvoPgB6VTE7XGvp7T5B3unVUMxU-9Pdwc,NAME_SEARCH,nEBg?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12068 |SDG Corporation | |Ajay |Gupta |CEO |https://www.linkedin.com/sales/people/ACwAAAAfzJIB0Y8Ao5qvvOZ8doz3gAcvFMGR-jM,NAME_SEARCH,ZAH-?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12069 |Royal Sovereign International | |T.K |Lim |CEO |https://www.linkedin.com/sales/people/ACwAAAPdB2MBpgDJgqIs-5g9YRnBDH9sj4sakfU,NAME_SEARCH,8Zpn?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12070 |National Security and Risk Consultants | |Mert |Price |CEO |https://www.linkedin.com/sales/people/ACwAAAH1DnwBCzCDuA6eJfvT5R1wzHSNux8PkXE,NAME_SEARCH,-w-d?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12071 |JDX Consulting, Inc. | |Ian |Campbell |CEO |https://www.linkedin.com/sales/people/ACwAAAElhIgBnEXjqkohcmrGCG6Cz-hdU3xltXA,NAME_SEARCH,hEID?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12072 |Flint Hills Surgical Associates | |Joseph |FACS |CEO |https://www.linkedin.com/sales/people/ACwAAAO-wNoB4LFSanEuQHHFp1XPp9-I2nXIaFQ,NAME_SEARCH,_qoi?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12073 |Evoke | |Reid |Connolly |CEO |https://www.linkedin.com/sales/people/ACwAAAB_AfABRTmyzNianNvhs9dTtF6HX4cttVw,NAME_SEARCH,arSw?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12074 |Bioventus | |Tony |Bihl |CEO |https://www.linkedin.com/sales/people/ACwAAAEYa_cBg0e0GheMpupGhzkbpE3IyEtdmWQ,NAME_SEARCH,fsAx?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12075 |The Christian Post | |Will |Anderson |CEO |https://www.linkedin.com/sales/people/ACwAABRGKRABvgEnoHBpbMUbsBYzmcjgCPr-v2g,NAME_SEARCH,pBT1?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12076 |Children's Academy CT | |Rachel |Ed.D. |CEO |https://www.linkedin.com/sales/people/ACwAAADTm8sBIpziFSZPTzE3pyh_lM6d5_k4MC0,NAME_SEARCH,JoOL?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12077 |Platinum Real Estate | |Ethan |Duran |CEO |https://www.linkedin.com/sales/people/ACwAACKIRh8BFgEp1IeMrtZb2Bre_gSQJRrtO2c,NAME_SEARCH,XMlq?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12078 |The Digital Group | |Aditya |Sharma |CEO |https://www.linkedin.com/sales/people/ACwAAAFVoIcBWwvxdzgi1LPyGQuLXmjLQlcfR9E,NAME_SEARCH,EdSe?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12079 |Tele-Med International | |Wael |MD |CEO |https://www.linkedin.com/sales/people/ACwAAAHJcYsB19_UxBoG7DqzS3wGuMLf_3NHeW4,NAME_SEARCH,uhNb?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12080 |Wayne Memorial Hospital, Honesdale, PA | |David |Hoff |CEO |https://www.linkedin.com/sales/people/ACwAAANaMy4BW4TJzlIy9Q9uwrNXLaAFuDsEnAc,NAME_SEARCH,_iE2?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12081 |Truffle | |Tom |Limongello |CEO |https://www.linkedin.com/sales/people/ACwAAAAcsxEB--Xji0b5jaGiYExriMV8eWpQx5U,NAME_SEARCH,oAAH?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12082 |FloorBoy LLC | |Nicholas |Reda |CEO |https://www.linkedin.com/sales/people/ACwAAAe6X_wBD7m72rwus2T8yRbChqP1BXS1cM8,NAME_SEARCH,B3Yn?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12083 |Software Guidance & Assistance, Inc. (SGA, Inc.) | |John |Doughty |CEO |https://www.linkedin.com/sales/people/ACwAACbPaSUBzVYTK5vyGyHyQjCH4jDjphQsUlo,OUT_OF_NETWORK,ZPEA?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12084 |Better Homes and Gardens Real Estate - Rand Realty | |Marsha |Rand |CEO |https://www.linkedin.com/sales/people/ACwAAAGQ5nQB9XALcO-ZiuRvi0f-3S5aUKTxx9E,NAME_SEARCH,KqDr?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12085 |Realeza Music Group | |Stalin |Columna |CEO |https://www.linkedin.com/sales/people/ACwAAAesQDYBqYmQXvY8LDN6k7f1j4GsNGVBqbc,NAME_SEARCH,qMZF?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12086 |Lydia Security Monitoring Inc. dba C.O.P.S. Monitoring | |Ira |Riklis |CEO |https://www.linkedin.com/sales/people/ACwAAAI_1hUBgaz4lpBTZFKyHZqenT7LQ2240aE,NAME_SEARCH,HZ6f?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12087 |GoodJustGotBetter LLC DBA GJGB LLC | |Tereska |Flood |CEO |https://www.linkedin.com/sales/people/ACwAAAPLtTABujbKYA4oec6FudzcAFD51cS2MtM,NAME_SEARCH,NY4F?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12088 |Atletico Futebol Club | |Massimo |D'Andrea |CEO |https://www.linkedin.com/sales/people/ACwAAAecXAYByOvhz6GquMG1kwpohDeq0K3adRM,NAME_SEARCH,g6RB?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12089 |The End Records | |Andreas |Katsambas |CEO |https://www.linkedin.com/sales/people/ACwAAACIpukB1_rr3tYj0bSPevYsI4N8YTU2w5o,NAME_SEARCH,QI-s?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12090 |FEMWORKS | |Kimberlee |Williams |CEO |https://www.linkedin.com/sales/people/ACwAAAInbNIBAIxnlXZWmyo8AyaJlZ_0N-FML_0,NAME_SEARCH,JI_x?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12091 |Go Global Tourism | |Douglas |Gomez |CEO |https://www.linkedin.com/sales/people/ACwAAAjy41MB_QqncScfrqGVFD-7XjLYAt9-cf8,NAME_SEARCH,BxCw?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12092 |FunFilm Productions | |Clem |Caserta |CEO |https://www.linkedin.com/sales/people/ACwAAAdo_FgB1TNu4tHSMcoi6M6NxTh4YVg8qcw,NAME_SEARCH,mqxw?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12093 |The Verdant Gryphon | |Jamie |Campbell |CEO |https://www.linkedin.com/sales/people/ACwAABAbWCcBch0Uvl95Cixx5a2bL_bZPhLfFlQ,NAME_SEARCH,EFTO?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12094 |SoundingBox | |Pamela |Pavliscak |CEO |https://www.linkedin.com/sales/people/ACwAAACBjcMBQeQgCdykZ5SQVXg8jD3FEreFqzw,NAME_SEARCH,6dfS?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12095 |Vedran Solaja Marketing Consulting | |Vedran |Šolaja |CEO |https://www.linkedin.com/sales/people/ACwAAAS5nckBzYoFuTcQK5XG9lUJRux219OOZq0,NAME_SEARCH,Cvgq?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12096 |DreamdealersNYC Clothing | |Rafael |Lebron |CEO |https://www.linkedin.com/sales/people/ACwAABE5wcUB4ldj183YONYySxC0GHXRcwtHETI,NAME_SEARCH,-1o8?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12097 |MLV | |Patrice |McNicoll |CEO |https://www.linkedin.com/sales/people/ACwAAAJ9PEcBqbBy_WXqdW_00UIHCH4pw4KVq_8,NAME_SEARCH,D0qd?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12098 |Derrick Cobb Entertainment | |Derrick |Cobb |CEO |https://www.linkedin.com/sales/people/ACwAAAd6irwBo19K_cpS_jXkTYkPfKFYH2YLB2Y,NAME_SEARCH,sImo?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12099 |Keffas Ruffner and Co. | |George |Keffas |CEO |https://www.linkedin.com/sales/people/ACwAAAXvaL0BlrTzAabLL-eetBUnqeDTCRptp4c,NAME_SEARCH,wRnK?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12100 |Total BackOffice, Inc. | |Darrell |James |CEO |https://www.linkedin.com/sales/people/ACwAAAFJIxMBC86ohEnX0UqfM4nkqySWcsdxZXU,NAME_SEARCH,UBiK?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12101 |Mesa 1 Management | |Judy |Mesa |CEO |https://www.linkedin.com/sales/people/ACwAAA43UkgBXzte3YG8P3K4L0TSwe7bZvDswb8,NAME_SEARCH,_Ois?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12102 |Business Connections, Inc. | |Aris |Pavlides |CEO |https://www.linkedin.com/sales/people/ACwAAAJISYsB38e31QeMrlG615aPhxdgugMUvfU,NAME_SEARCH,ZD8S?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12103 |Reel Housing Corporation | |Gino |Marino |CEO |https://www.linkedin.com/sales/people/ACwAABIAKk0BsFQfdv-jy6TXTY_4-6F_Zp4iozk,NAME_SEARCH,TbFm?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12104 |Health Diagnostics | |Bradford |Peters |CEO |https://www.linkedin.com/sales/people/ACwAAAK6ONQBfExQV5DYMUPN2Jjhgqecj8nyhz4,NAME_SEARCH,RcDf?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12105 |Esposito Plumbing and Heating, Inc | |Al |Esposito |CEO |https://www.linkedin.com/sales/people/ACwAABhKsL0BH5jy9zx1e01Ri0Qqgs4MmHBGt6U,NAME_SEARCH,j_Ut?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12106 |GSR SERVICES LLC | |Gary |Roberts |CEO |https://www.linkedin.com/sales/people/ACwAAAu1QjwBxBiPgegRVPT6R3nx-PumAyEQ1BI,NAME_SEARCH,XV8w?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12107 |New York Energy Audits | |Erlend |Kimmich |CEO |https://www.linkedin.com/sales/people/ACwAABuLAb8BdRjYCUcGx3QQOPKj2XJMNFEtPLI,NAME_SEARCH,-0Fu?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12108 |BJL Financial Services, LLC | |B. |Levy |CEO |https://www.linkedin.com/sales/people/ACwAAAFRp4IBIIvrn-wuLTjP6U9oldj9nMpTT4g,NAME_SEARCH,T5LS?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12109 |Renaissance Resources, Inc. | |Jerry |Rice |CEO |https://www.linkedin.com/sales/people/ACwAAAFwUC8BbqycFcjshdnz6oVXCHtMFCL19s0,NAME_SEARCH,kFDk?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12110 |RICH Entertainment | |Allan |AB |CEO |https://www.linkedin.com/sales/people/ACwAAAcTWE4B7i6uylbt6zdT58owUjurjgzNdGE,NAME_SEARCH,84uZ?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12111 |Livethelifeapparel | |Michael |Haraz |CEO |https://www.linkedin.com/sales/people/ACwAAA6sAGsBeaL_7Wb-nzL8KHKGq_zk2jIERGU,NAME_SEARCH,yxDp?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12112 |2NYC llc | |Matteo |Rignanese |CEO |https://www.linkedin.com/sales/people/ACwAAAC8pwUBxqfkYu6BcZM-c_UIwiu-PfunMas,NAME_SEARCH,zI2x?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12113 |Sage Adonix | |Alex |Attal |CEO |https://www.linkedin.com/sales/people/ACwAAAF5kowBG0Fj5yPV0DNBytH_27SNNBi7YOo,NAME_SEARCH,ZXVy?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12114 |TOA Electronics, Inc. | |OMURA |HIRO |CEO |https://www.linkedin.com/sales/people/ACwAABt1a1sB7JyRWfyE-zN9uOBMD8vKrtgKFxs,NAME_SEARCH,BVBq?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12115 |EZ - Tech Solutions | |Steve |Kwizera |CEO |https://www.linkedin.com/sales/people/ACwAAAJfT-AB_veb0PdVDXh2xQnPHiO5XskzdCY,NAME_SEARCH,Vv6X?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12116 |China Macro Finance | |Ronald |Schramm |CEO |https://www.linkedin.com/sales/people/ACwAAADzz9sBxtO2hIN3y2Lql0svk1cobnV7NDA,NAME_SEARCH,ymd6?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12117 |BoomerCastle Consulting | |Chris |Raddatz |CEO |https://www.linkedin.com/sales/people/ACwAAABmV5EBY2E4hlFDqBUJt1Ij2UtBY6sfzzQ,NAME_SEARCH,Rn-c?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12118 |ColSpace Corporation | |Matthew |Greenhouse |CEO |https://www.linkedin.com/sales/people/ACwAAAAA2rUBuDRIcArqqkEOHFpRgqse53xU7KQ,NAME_SEARCH,YuWy?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12119 |Screaming Monkey Racing | |Rick |Paul |CEO |https://www.linkedin.com/sales/people/ACwAAAn2uYQBKSE9_-Chx2OkyQZ4Jo7LQURU6SA,NAME_SEARCH,xKIB?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12120 |NYX Hospitality Group | |Andrew |Weitsman |CEO |https://www.linkedin.com/sales/people/ACwAACI1_WkBEzClfWYgB2iiKFWsOQsviYCklFI,NAME_SEARCH,7wXl?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12121 |OptiMark, Inc. | |Robert |Warshaw |CEO |https://www.linkedin.com/sales/people/ACwAAAGGtUcBeIsm2-19L1wNRyuN6Wxj8753DtI,NAME_SEARCH,-lBS?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12122 |Obsidian Media | |Andrew |Kelly |CEO |https://www.linkedin.com/sales/people/ACwAABwB65IBAAkWfBQ4l-euJloNzS9Gm5220e0,NAME_SEARCH,n4CD?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12123 |KBNY Culinary Enterprises | |Kendell |Brenner |CEO |https://www.linkedin.com/sales/people/ACwAAAFmSnUB68kgjGGCt4AXfA0f7X-ciAd5oa0,NAME_SEARCH,UbYV?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12124 |Stoll Enterprises LLC | |Melissa |Stoll |CEO |https://www.linkedin.com/sales/people/ACwAAASi5NABf92dkVcM2--WpYFIVaU2ZKMWzog,NAME_SEARCH,8P0n?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12125 |Alpine Holistic Wellness | |Christel |Thorson |CEO |https://www.linkedin.com/sales/people/ACwAAAG1XT0B6yhZlapTUTJhDXcAeRFmQQILzbQ,NAME_SEARCH,38ta?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12126 |Mikol & Company | |Yael |Benoit |CEO |https://www.linkedin.com/sales/people/ACwAAABCXjcBxcLM7D7jRxsFfKtHd_lGVEDFhYw,NAME_SEARCH,29X0?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12127 |The Richards Group | |Roldy |OL-Richard |CEO |https://www.linkedin.com/sales/people/ACwAABGYTpsBqfYFntn-sYY-5vUy2ZqQO91pUpI,OUT_OF_NETWORK,ZRbg?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12128 |Media in Sync | |Alexander |Telesco |CEO |https://www.linkedin.com/sales/people/ACwAAAcMlKEBrRa6lxdvPC1M1fW98chQFEkGeJA,NAME_SEARCH,FroP?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12129 |Ikan Technologies | |Fred |Wagner |CEO |https://www.linkedin.com/sales/people/ACwAAAD6OVABOJV3ZlsJBYvfT93ENDuuSybQS_0,NAME_SEARCH,F10T?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12130 |Shemmysgreenery | |Shamika |Pagan |CEO |https://www.linkedin.com/sales/people/ACwAACHsKgsB7rNtlDkoF7g79XpvKUjqoNcPWgE,NAME_SEARCH,qhkA?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12131 |UMMA LLC | |Irina |Proskurina |CEO |https://www.linkedin.com/sales/people/ACwAABJOyrUBIdBaL7-L_Q-KlXjdaUkdmBujTsg,NAME_SEARCH,4NPF?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12132 |Handsome Good Grooming | |Hubert |Guy |CEO |https://www.linkedin.com/sales/people/ACwAAAAjRRwBlk77gKm102CqBkpKMl65E8uX8Iw,NAME_SEARCH,n3VJ?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12133 |nonprofit | |Donna |Bouchard |CEO |https://www.linkedin.com/sales/people/ACwAACX45FIBXcAA9VwgopiJOKlN3Y_fmAr0skg,NAME_SEARCH,W5_a?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12134 |RENCO USA | |Mohamed |Saloudeen |CEO |https://www.linkedin.com/sales/people/ACwAAACs7_QBrsYahK7npetpVB72Mp-nTTUZ7bM,NAME_SEARCH,OhWi?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12135 |PARF Enterprises | |Pat |Festa |CEO |https://www.linkedin.com/sales/people/ACwAAABFPpcB0dBRCBdxie-fa5OyWsRzmTJI0dQ,NAME_SEARCH,5AiR?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12136 |Martha CPR | |Antonio |Hilaire |CEO |https://www.linkedin.com/sales/people/ACwAACNQVFEBbPttJdATKGfg1UBGuSIzEyhMTyE,NAME_SEARCH,3oUF?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12137 |P.U.R.E. DJ And Entertainment | |David |Santamaria |CEO |https://www.linkedin.com/sales/people/ACwAAANB5agBCLX2_bPjXXK_oanYqzL_xaiJisU,NAME_SEARCH,8KjM?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12138 |Health Biologist | |Vaughn |Parker |CEO |https://www.linkedin.com/sales/people/ACwAABJ-jaUBtAFh4MoOtbwIALjR6B9h87raD3s,NAME_SEARCH,GdlN?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12139 |BAISE ENTERPRISES LLC | |Anthony |Bethea |CEO |https://www.linkedin.com/sales/people/ACwAAB2LUaYBGiKDvhz949GOgELUwvKi1_McwW8,OUT_OF_NETWORK,T780?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12140 |CSLLC, CST INC, Morris Investments, Morris Investments 2, PCM LLC | |ivan |morris |CEO |https://www.linkedin.com/sales/people/ACwAAAgRFCoB6uzctkXN8wa7oD6rh4vGzNhQVrI,OUT_OF_NETWORK,Bo04?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12141 |Security Global Investors | |Rich |Goldman |CEO |https://www.linkedin.com/sales/people/ACwAAAKYKxEBkHPjA7cN5DbxHUcCxY-0pBaQk-c,OUT_OF_NETWORK,DUMr?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12142 |N.u.F (NamelessUntilFamousEnt.) | |Lawrence |Harden |CEO |https://www.linkedin.com/sales/people/ACwAAA32lF4B4DuZrdsJm9_d5hLEpmv9sKE2_Ss,NAME_SEARCH,Y8hN?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12143 |Suffolk County Water Authority | |Stephen |Jones |CEO |https://www.linkedin.com/sales/people/ACwAAAG8yswBPsxfCIeNUcY-24-ZJnDODimz_Ns,NAME_SEARCH,EMoA?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12144 |Frisia Group LLC | |Carsten |Buss |CEO |https://www.linkedin.com/sales/people/ACwAABm74iEBruYSYGDvb5iWaaXXBAq7P7-Br-s,NAME_SEARCH,2D_n?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12145 |Yellow Tape Media | |Jacob |Johnson |CEO |https://www.linkedin.com/sales/people/ACwAAAphrAEBvCgOls8c70ypSZ-gwvOwOHK4qLs,NAME_SEARCH,cXI1?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12146 |MedSave USA, Inc. | |Noam |Baruch |CEO |https://www.linkedin.com/sales/people/ACwAAABmQywBsS0nMKQV8HrUWjfAzMoDpGNcuFU,NAME_SEARCH,Hz_x?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12147 |UrZo Entertainment | |Keith |Johnathan |CEO |https://www.linkedin.com/sales/people/ACwAABKjcYsB7tIP16_9cOVWcShWsArteYqt_wM,NAME_SEARCH,YMrN?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12148 |Petland Discounts, Inc. | |Jessica |Sanchez |CEO |https://www.linkedin.com/sales/people/ACwAABJzsYYBmKfsXaOmRVo9NZ34TL0wgDIV6gc,NAME_SEARCH,pKMF?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12149 |Rapid Tee Co. | |Timothy |Oyewole |CEO |https://www.linkedin.com/sales/people/ACwAABmOlR0B2Tezz9ZSiun6a2eazYvgbZtmcPM,NAME_SEARCH,gSm2?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12150 |Make It Happen Network Ministries | |Lisa |Hill |CEO |https://www.linkedin.com/sales/people/ACwAABGCp0wBHM7ktlrk4wco7ujpWABiZVHqPes,NAME_SEARCH,LJwA?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12151 |KEK | |Johnny |Test |CEO |https://www.linkedin.com/sales/people/ACwAACcO-VAB82e6EsEaD7abiTn5JnZrKFSi_zk,OUT_OF_NETWORK,bwtm?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12152 |Self-Employed | |Jaimee |Dianna |CEO |https://www.linkedin.com/sales/people/ACwAAB5pbXgBrAah9MtdzxZICtH6vnPkvJeoMsY,OUT_OF_NETWORK,bTBP?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12153 |Non-Profit | |Victor |Moreno |CEO |https://www.linkedin.com/sales/people/ACwAACWmTqEBphaRPIL1f43kEnaQd2MASvvUk3w,OUT_OF_NETWORK,08W7?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12154 |YPO | |Valeriy |Kutsyy |CEO |https://www.linkedin.com/sales/people/ACwAAAACbgEB58siY6xeWs-_u6SILJwWXxOba98,NAME_SEARCH,NO41?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12155 |Acuative | |Vince |Sciarra |CEO |https://www.linkedin.com/sales/people/ACwAAAVKlfQBfupzpgsBsh6njcFXJsw6UUdRNZg,NAME_SEARCH,3FFm?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12156 |OHL North America | |Ashok |P.E. |CEO |https://www.linkedin.com/sales/people/ACwAAAM43JcBFCYKTU8t_kwzT4rvNaeDPk0JYyg,NAME_SEARCH,8oSW?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12157 |Relationship Science | |Domenic |CFP |CEO |https://www.linkedin.com/sales/people/ACwAAADaV5wBKJDuqkhtd5akY2VXz3N7xDb60IM,NAME_SEARCH,DiPt?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12158 |Spectrum Vision Partners | |Thomas |Burke |CEO |https://www.linkedin.com/sales/people/ACwAAAL68pcBGkKvukfiFENz-JA_ZeNv0vmo1cA,NAME_SEARCH,uv0N?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12159 |Limetree Bay Terminals, LLC | |Darius |Sweet |CEO |https://www.linkedin.com/sales/people/ACwAAAPArtsB53lASQweHArgCxDe2HrnCJ0urOU,NAME_SEARCH,4-pb?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12160 |Cygnet Infotech Pvt. Ltd. | |Sachin |Bedi |CEO |https://www.linkedin.com/sales/people/ACwAAADlOLcBOtoDv2S0FAdvzgopqV-19e8_zIY,NAME_SEARCH,cRdi?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12161 |Rubicon Project | |Michael |Barrett |CEO |https://www.linkedin.com/sales/people/ACwAAAAXN_8Bi_fmBJzWTN0DOJ4nMqDBE2Zp-78,NAME_SEARCH,Yzv1?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12162 |Techs In A Sec, LLC | |Bob |Wahlen |CEO |https://www.linkedin.com/sales/people/ACwAAANkamgBsqUs_nd68fFNHAWcRJPqDgY-X0A,NAME_SEARCH,DaN0?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12163 |Solomon Organzation | |Marshall |Rosen |CEO |https://www.linkedin.com/sales/people/ACwAAAKkz60ByBA_6huVKhkP_KtTIGWFFGYUlGQ,NAME_SEARCH,iL5l?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12164 |Serval Ventures | |June |Choi |CEO |https://www.linkedin.com/sales/people/ACwAAABzXMQBNWPNRXE3rXU0ifDrj4eYxK4R2Zo,NAME_SEARCH,IkvY?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12165 |tcc global | |Perry |Valkenburg |CEO |https://www.linkedin.com/sales/people/ACwAAAAfKNsBLf2lKDKVI5FOZjugcaBX4QlorEE,NAME_SEARCH,JHox?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12166 |BORN Group | |Dilip |Keshu |CEO |https://www.linkedin.com/sales/people/ACwAAAHpC48BayyOApH80apOz8dfZU66EAreOY0,NAME_SEARCH,ftQt?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12167 |SPiN | |Pieter |Vanermen |CEO |https://www.linkedin.com/sales/people/ACwAAABCun8B1NywBP3oI91KYmfn1Mnv_iVBV-A,NAME_SEARCH,t0N4?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12168 |The Arc Rockland | |Carmine |Marchionda |CEO |https://www.linkedin.com/sales/people/ACwAAAbwXV4Bc1A4HaEq5obIStkvZ3iYVAtMr9g,NAME_SEARCH,NoDJ?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12169 |Janitorial International | |Josh |Gould |CEO |https://www.linkedin.com/sales/people/ACwAACOfDVsBXy0caJi6Qk8PVfBIX1quDDDt2fA,NAME_SEARCH,a1yU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12170 |Pure Performance Communications | |Deirdre |Breakenridge |CEO |https://www.linkedin.com/sales/people/ACwAAACRqW8B4UqnolV8uUxL1pYNFQpLEoKvPVM,NAME_SEARCH,Kcaq?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12171 |H-Technologies Group | |Jennie |Hwang |CEO |https://www.linkedin.com/sales/people/ACwAAAITuNIBQYc08jfKqVI9CGzUrKWBQTDJr2w,NAME_SEARCH,PUDe?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12172 |Rutgers Business School | |Lyneir |Richardson |CEO |https://www.linkedin.com/sales/people/ACwAAAFk-UUB62bgqvddI6mN6dYNPtWHSwRxkoU,NAME_SEARCH,vHui?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12173 |Emerging Star Capital, LLC | |Robert |Levin |CEO |https://www.linkedin.com/sales/people/ACwAAAAB2LoBEu-h_YuCYL9fGQBwBkM8NYl8CDk,NAME_SEARCH,OoHO?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12174 |Sunpet Industries Limited | |ALEX |BISHOP |CEO |https://www.linkedin.com/sales/people/ACwAAA_2wYUBBEutwzk44cRwQ7BzjuHanaCDY6k,NAME_SEARCH,yat6?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12175 |Ridgewood Savings Bank | |Susah |Naruk |CEO |https://www.linkedin.com/sales/people/ACwAAA9KkVIBlCOrs2dDXUgE1fEFAgKl6dUsXsM,NAME_SEARCH,RIbh?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12176 |Tosoh Bioscience LLC | |john |toso |CEO |https://www.linkedin.com/sales/people/ACwAAAVonygBYFzNoUbkBgqtdd2UrR6MYPrUAPk,OUT_OF_NETWORK,ozit?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12177 |O'Connor Davies Munns & Dobbins, LLP | |Marc |Rinaldi |CEO |https://www.linkedin.com/sales/people/ACwAAAPrvfYBQJcB_GbjLFKJIWvh3hVZBOpMkHg,OUT_OF_NETWORK,U5lg?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12178 |NAIOP New Jersey Chapter | |Mike |McGuinness |CEO |https://www.linkedin.com/sales/people/ACwAAAhMPzgBZ_-ygD71xgxDdxjCpuzv1Dk0P3o,NAME_SEARCH,YQHW?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12179 |The THRIVE Network | |Charles |6S |CEO |https://www.linkedin.com/sales/people/ACwAAAbGCksBe5XCFxeM07GS6rG24sEmJu52MnE,NAME_SEARCH,T9uE?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12180 |Ecology and Environment, Inc. | |Jason |Goldstein |CEO |https://www.linkedin.com/sales/people/ACwAAAGxoMMBT5mcf1ApvE5vCfcSv3MOV5mzvhs,NAME_SEARCH,lL0w?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12181 |Astor Services for Children and Families | |McGuirk |Jim |CEO |https://www.linkedin.com/sales/people/ACwAAAMHT3cBWlOi8GycCya4gQOfH3e2NQFZ9gk,NAME_SEARCH,YUT_?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12182 |ICC, Inc. | |Christopher |McDonnell |CEO |https://www.linkedin.com/sales/people/ACwAAAk2taIBoLHlCaHnrrqfr2Ygygg0vIuCnTs,NAME_SEARCH,3PCp?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12183 |iMobile US | |Chetan |Krishna |CEO |https://www.linkedin.com/sales/people/ACwAAAA_LcYBBDrr1JKh85b563dMwVRBTAYaNA4,NAME_SEARCH,kdj4?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12184 |Quscient | |Babu |Thiagarajan |CEO |https://www.linkedin.com/sales/people/ACwAAAAnAm0BFotmR_NKK8dqBwfRheECDpPJcao,NAME_SEARCH,W_bV?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12185 |Kia Motors America | |mia |miklj |CEO |https://www.linkedin.com/sales/people/ACwAAAmXbdUBPzy88ccde9XM32FxKrdBzpZ8ag0,OUT_OF_NETWORK,CU6f?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12186 |Daley Supplies LLC | |Anthony |Daley |CEO |https://www.linkedin.com/sales/people/ACwAAAAme_QBl25GLKARFN5NqtMiJ0f44WqgsWg,NAME_SEARCH,Vi1e?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12187 |Star Pediatric Home Care Agency | |Marina |Stengart |CEO |https://www.linkedin.com/sales/people/ACwAAB1DIXsB_4enYMwzWHUZIUNKdN5TGd7BUi0,NAME_SEARCH,hCSL?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12188 |Viewpoint Construction Software | |Piya |Gul |CEO |https://www.linkedin.com/sales/people/ACwAABBbgogBi30At2q63UrAfbjyPSUn8cVltpc,NAME_SEARCH,E1rx?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12189 |Medical Imaging Specialists (MIS) | |Arun |Jethani |CEO |https://www.linkedin.com/sales/people/ACwAAAACeoMBzQgJ-tIe4VyZ0nx11S5ylzVwPdE,NAME_SEARCH,L_CJ?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12190 |Virtu Financial | |Douglas |Cifu |CEO |https://www.linkedin.com/sales/people/ACwAAAWy3CkBHT9hvzsCRaUL_kuwen8B3ucNwPw,NAME_SEARCH,1qYx?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12191 |Cammarata Real Estate Group | |Peter |Cammarata |CEO |https://www.linkedin.com/sales/people/ACwAAALDTL0BRrxwxMTiRegeb43GULHuyF1eaek,NAME_SEARCH,7JIa?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12192 |quick internatonal courier | |robert |mitzman |CEO |https://www.linkedin.com/sales/people/ACwAAACPqv0BftIPIGDxt72AqZxHjr0dje9SXBo,NAME_SEARCH,SE9O?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12193 |Catholic Charities Archdiocese of New York | |Monsignor |Sullivan |CEO |https://www.linkedin.com/sales/people/ACwAAAjXEHEB7KztJUmvRque9YNkpdNYbDjJLso,OUT_OF_NETWORK,BWyc?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12194 |DevelopOnBox, LLC d/b/a Zodiac Interactive | |Brandon |Brown |CEO |https://www.linkedin.com/sales/people/ACwAAAAgyhEB7GtmKz1M4_SaoYL1mCxPFW3KElc,NAME_SEARCH,afOh?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12195 |WATCH GUARD 24/7 LLC | |John |Rafferty |CEO |https://www.linkedin.com/sales/people/ACwAAAVsVbQBrSB-65xRFQhYLlzAwomLBZWelMw,NAME_SEARCH,gA_s?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12196 |Home Helpers | |Mordo |Bono |CEO |https://www.linkedin.com/sales/people/ACwAAAJ4FdsBHj5t26jaik25VVzvGhqPp4iMiC4,NAME_SEARCH,10Sc?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12197 |Two Penny Properties | |Laura |Rogacki |CEO |https://www.linkedin.com/sales/people/ACwAAAFluksBa8iPUddpJ02k9LPnAWafj_Bxjzk,NAME_SEARCH,odSH?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12198 |PassedWord | |Israel |Adler |CEO |https://www.linkedin.com/sales/people/ACwAABCbNlEByuIVlZDJrgicF-wtW51CuIvX2t4,NAME_SEARCH,schr?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12199 |Commercial Realty Nation | |M. |Wazihullah |CEO |https://www.linkedin.com/sales/people/ACwAAAUjdHQBcG-0sBgb7WDjofKDMEGcNPK_r7M,NAME_SEARCH,MZdU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12200 |Paramount Hotel Group LLC | |David |Simon |CEO |https://www.linkedin.com/sales/people/ACwAAA5Gxp8B951t0FhTJoFaCUZlGXu78c2VfyY,NAME_SEARCH,mr9E?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12201 |Great Day to be Alive | |Reggie |Brown |CEO |https://www.linkedin.com/sales/people/ACwAAAS7J1QB6NtDNd7aRq6bWmK8ZkPPvY0K8fc,NAME_SEARCH,fTuP?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12202 |Continuous Good | |Vincent |Brathwaite |CEO |https://www.linkedin.com/sales/people/ACwAAADj1zEBd_sSWoigrAg67aIg6O7m46xIbg0,NAME_SEARCH,ogdX?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12203 |Universidad Tu Wall Street, LLC | |Juan |Dominguez |CEO |https://www.linkedin.com/sales/people/ACwAAAKdf3IBze8gu9nFlyB2wYrCqqCX9oHqLTM,NAME_SEARCH,Ec_A?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12204 |Taconic | |Todd |Little |CEO |https://www.linkedin.com/sales/people/ACwAAAIWnPUB-9ONcCsD0FXKsps6nBDurhjDo3Y,NAME_SEARCH,lID5?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12205 |Zo Brown Speaks / Coaching and Consulting Agency | |Lorenzo |MSW |CEO |https://www.linkedin.com/sales/people/ACwAAAQZOQ8BOn5wyuQTUAo3D7iZVfdERhVvgU4,NAME_SEARCH,dofS?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12206 |Modern lighting group | |Zev |Steinmetz |CEO |https://www.linkedin.com/sales/people/ACwAAAw9tDUB1PIWs22LNRCwOfvI6pj3cgVMkeg,NAME_SEARCH,PFE8?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12207 |NGO Technologies | |Jasel |Patel |CEO |https://www.linkedin.com/sales/people/ACwAAApkyy0BZRuwiGSVzeEAOwypwZIPJrVGFhg,NAME_SEARCH,n9UO?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12208 |W.A.Y II L.I.F.E Network | |Kimbilee |Jonas |CEO |https://www.linkedin.com/sales/people/ACwAABTYrRYBzMSPB6hOR8iv8XDknqZAavK0CFw,NAME_SEARCH,O3fU?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12209 |WBL Global | |Brigitte |Necta |CEO |https://www.linkedin.com/sales/people/ACwAAB8wVOQBH_SJO080fiZLuZEEksw2bpmOEug,NAME_SEARCH,OS0f?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12210 |Luntz Capital | |Scott |Luntz |CEO |https://www.linkedin.com/sales/people/ACwAAAG_ox8BWodgSbnQvVuhRDI_Iokamyq_USs,NAME_SEARCH,fTx-?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12211 |H5 | |Nicolas |Economou |CEO |https://www.linkedin.com/sales/people/ACwAACbUmEUBCDJkP_Cjt4f4QvGKIhyKjruAoEo,NAME_SEARCH,p16d?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12212 |caregiversource.com | |Barry |Greenberg |CEO |https://www.linkedin.com/sales/people/ACwAAASsEdYBIh3kexDustxVPtgYHRsCK1Xhd_A,NAME_SEARCH,wPdC?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12213 |XI Records | |Michael |Funcheon |CEO |https://www.linkedin.com/sales/people/ACwAABgx9_wBuIhGk2JfqXZY6SuZB1bI1OQeXp0,NAME_SEARCH,GCL6?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12214 |MODE30, LLC | |Obinna |Izeogu |CEO |https://www.linkedin.com/sales/people/ACwAAADCWRMB-gtigGmPjR9GjrPcnbwgOUoF_Rg,NAME_SEARCH,NrGE?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12215 |JolliRocka Productions | |Ralph |Collins |CEO |https://www.linkedin.com/sales/people/ACwAAANuGoEBfa0fq0wld4zTfOpUK7b3MmDIoJ0,NAME_SEARCH,jp6A?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12216 |Old Man Rafting Inc. | |Old |Rafting |CEO |https://www.linkedin.com/sales/people/ACwAABTw-qkBHDpf7iTb7bqAV7N5E4LbUg7VUFo,NAME_SEARCH,4PIe?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12217 |Tech Geeks, LLC | |Aparup |Chowdhury |CEO |https://www.linkedin.com/sales/people/ACwAACchGZABVvZDXZsdf2qd5ywiHKundeZmQ0w,NAME_SEARCH,g0qH?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12218 |Tiffany Booker & Associates | |Tiffany |REALTOR® |CEO |https://www.linkedin.com/sales/people/ACwAAAaNvUMBTS17Xo-wBpMhA0UV79cxDNcR9QI,NAME_SEARCH,aCHl?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12219 |Preferred Homes | |Roy |Sipel |CEO |https://www.linkedin.com/sales/people/ACwAAAP1tTkBJta8L6kdg4nvN3Uy49DkIV_WRiM,NAME_SEARCH,TWXk?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12220 |Cristina's Party Productions | |Manuel |Torres |CEO |https://www.linkedin.com/sales/people/ACwAAAWhpTwBxc3lAmFD5HixbGl_eEC43Gl3Yos,NAME_SEARCH,Uex2?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12221 |. | |Anthony |Maher |CEO |https://www.linkedin.com/sales/people/ACwAAAAQPQUBtwnSFA0y1JL7kKokcprIUcmU1Aw,NAME_SEARCH,3mXb?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12222 |X-Bite | |Benjamin |Huser |CEO |https://www.linkedin.com/sales/people/ACwAAAuqfl8BVW7rvZljFZ5nMmQ1FT9XlK0IgoA,NAME_SEARCH,j1Tr?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12223 |Bizzy Bee Productions | |Bernard |Smith |CEO |https://www.linkedin.com/sales/people/ACwAAAe4UJ8BjW0S3aPP3Sv2drQt-4xBikIG5Xc,NAME_SEARCH,j4iQ?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12224 |Jersey J's Entertainment | |Joe |DiSarno |CEO |https://www.linkedin.com/sales/people/ACwAABD1AM4B5xpdCHmTdTcnOjc-z-muYnUttdU,NAME_SEARCH,j8iB?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12225 |No Half Steppin Entertainment | |Elijah |Degraffenreidt |CEO |https://www.linkedin.com/sales/people/ACwAAAHPnNUBbHR__K279ePmIrtDxaEpIAdLalY,NAME_SEARCH,lE1S?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12226 |NJoy Life Travel | |Nicole |Johnson |CEO |https://www.linkedin.com/sales/people/ACwAAB3PEzkBrRG7TXvc0vGQH9MzymocgRiEHik,NAME_SEARCH,L3Gj?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12227 |Virtual Supernova Computing | |Lee |Wielgolinski |CEO |https://www.linkedin.com/sales/people/ACwAAADmsUcBRLtlrw_8XP1CqRBLACRWrrk9CSE,NAME_SEARCH,kJV3?_ntb=8lIhL1IJQ7mlJixWJ4pgBw%3D%3D |Greater New York City Area |Internet | | 
+12289 |Pivt White Label Solutions |https://www.pivtapp.com/white-label/ |Lynn |Greenberg |CEO |https://www.linkedin.com/sales/people/ACwAAAyLDm0BEOaQowylapFIBu9CX8TUoTHdjxg,NAME_SEARCH,YA4Z?_ntb=VdPA3WOzQoGJFyAJzUJdAQ%3D%3D |Greater New York City Area |Internet | | 
+12290 |Alice Financial |http://www.thisisalice.com/ |Avi |Karnani |CEO |https://www.linkedin.com/sales/people/ACwAAABlBsoBHg5GYdh4nrHRInqFnJ3RFHWNdg8,NAME_SEARCH,Ey58?_ntb=VdPA3WOzQoGJFyAJzUJdAQ%3D%3D |Greater New York City Area |Internet | | 
+12291 |Kard |http://www.getkard.com/ |Ben |Mackinnon |CEO |https://www.linkedin.com/sales/people/ACwAAA90KRkBCsW8SUPItutTzJTo49ace8ksPGI,NAME_SEARCH,GIx3?_ntb=VdPA3WOzQoGJFyAJzUJdAQ%3D%3D |Greater New York City Area |Internet | | 
+12292 |Starship |http://www.starshiphsa.com/ |Sean |E. |CEO |https://www.linkedin.com/sales/people/ACwAAAD3DTABRQJiP4m--AJAKQpKAEUUGI8cS_I,NAME_SEARCH,MLaq?_ntb=VdPA3WOzQoGJFyAJzUJdAQ%3D%3D |Greater New York City Area |Internet | | 
+12293 |ClearFactr |http://www.clearfactr.com/ |Dean |Zarras |CEO |https://www.linkedin.com/sales/people/ACwAAAB63m4B-RSO0fjNDEm1HkRZMSM9oRsKtnQ,NAME_SEARCH,3B5U?_ntb=VdPA3WOzQoGJFyAJzUJdAQ%3D%3D |Greater New York City Area |Internet | | 
+12294 |SparkConnect |http://www.sparkconnect.com.au/ |Zalman |Notik |CEO |https://www.linkedin.com/sales/people/ACwAAAcxkckB_yFGSJAUdCaf2Y1InHa88NcjQik,NAME_SEARCH,VRMw?_ntb=VdPA3WOzQoGJFyAJzUJdAQ%3D%3D |Greater New York City Area |Internet | | 
+12295 |Unicorn Wellness Studio |http://www.unicornwellness.studio/ |M |Gutierrez |CEO |https://www.linkedin.com/sales/people/ACwAAACYyysBGpBRZeNOg3KRydgk1zg2zdse5no,NAME_SEARCH,lbPb?_ntb=VdPA3WOzQoGJFyAJzUJdAQ%3D%3D |Greater New York City Area |Internet | | 
+12296 |L&L Innovation Labs |http://www.l2il.com/ |Matt |Lane |CEO |https://www.linkedin.com/sales/people/ACwAAAI14YMBdFdYCY9eXvuqLYB7ofAMLd-3E5M,NAME_SEARCH,1mEM?_ntb=VdPA3WOzQoGJFyAJzUJdAQ%3D%3D |Greater New York City Area |Internet | | 

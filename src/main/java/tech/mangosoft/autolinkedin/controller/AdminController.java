@@ -12,10 +12,13 @@ import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 
 import java.util.List;
 
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ADMIN_CONTROLLER;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ALL_BY_PAGE;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_ID;
 import static tech.mangosoft.autolinkedin.controller.LinkedinContactController.COUNT_TO_PAGE;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping(ADMIN_CONTROLLER)
 public class AdminController {
 
     @Autowired
@@ -25,7 +28,7 @@ public class AdminController {
     private AccountService accountService;
 
     @CrossOrigin
-    @GetMapping("/all/{page}")
+    @GetMapping(ALL_BY_PAGE)
     public ResponseEntity<PageImpl<Account>> getAllAccount(@PathVariable Integer page) {
         List<Account> accounts = accountService.getAllAccounts(page);
         if (accounts == null) {
@@ -37,7 +40,7 @@ public class AdminController {
     }
 
     @CrossOrigin
-    @GetMapping("/{id}")
+    @GetMapping(BY_ID)
     public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
         Account account = accountRepository.getById(id);
         return account == null
@@ -46,7 +49,7 @@ public class AdminController {
 
     @CrossOrigin
     @DeleteMapping
-    public ResponseEntity<Account> deleteAccount(@RequestBody String login) {
+    public ResponseEntity<HttpStatus> deleteAccount(@RequestBody String login) {
         Account accountDB = accountRepository.getAccountByUsername(login);
         if (accountDB == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

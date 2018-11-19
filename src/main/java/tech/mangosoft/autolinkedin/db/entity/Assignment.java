@@ -100,7 +100,7 @@ public class Assignment {
     )
     private Set<CompanyHeadcount> headcounts = new HashSet<>();
 
-    @ManyToMany(cascade = {CascadeType.MERGE , CascadeType.PERSIST}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.MERGE , CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "assignment_groups",
             joinColumns = {@JoinColumn(name = "assignment_id")},
@@ -304,8 +304,9 @@ public class Assignment {
         contacts.add(lc);
     }
 
-    public void removeLinkedInContact(LinkedInContact lc) {
+    public Assignment removeLinkedInContact(LinkedInContact lc) {
         contacts.remove(lc);
+        return this;
     }
 
     public void addContactProcessing(ContactProcessing cp) {
@@ -340,5 +341,13 @@ public class Assignment {
 
     public void setGroups(Set<Group> groups) {
         this.groups = groups;
+    }
+
+    public Set<LinkedInContact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(Set<LinkedInContact> contacts) {
+        this.contacts = contacts;
     }
 }

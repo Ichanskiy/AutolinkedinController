@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
 import tech.mangosoft.autolinkedin.db.entity.Location;
@@ -69,4 +70,6 @@ public interface ILinkedInContactRepository extends JpaRepository<LinkedInContac
     List<LinkedInContact> findAllByStatusAndLocation(int statusNew, Location location);
 
     Page<LinkedInContact> getAllByAssignments(Assignment assignment, Pageable pageable);
+
+    LinkedInContact getFirstByEmailIsNullAndCompanyWebsiteNotNullAndGrabbedEmailIsNullOrderByIdDesc();
 }
