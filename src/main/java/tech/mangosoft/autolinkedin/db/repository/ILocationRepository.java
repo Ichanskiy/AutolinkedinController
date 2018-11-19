@@ -11,8 +11,6 @@ public interface ILocationRepository extends CrudRepository<Location, Long> {
 
     List<Location> findAll();
 
-    Location getById(Long id);
-
     Location getLocationByLocation(@Param("location") String location);
 
     Location getLocationByLocationLike(String location);

@@ -246,16 +246,6 @@ public class ContactService {
         return query.getResultList();
     }
 
-    public List<LinkedInContact> getContactsByParams(ContactsMessage message){
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
-        Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
-        getPredicatesByParam(message, root, builder);
-        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
-        TypedQuery<LinkedInContact> query = entityManager.createQuery(criteriaQuery);
-        return query.getResultList();
-    }
-
 
     /**
      * @author  Ichanskiy
