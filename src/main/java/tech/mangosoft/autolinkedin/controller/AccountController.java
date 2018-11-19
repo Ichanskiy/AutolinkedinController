@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.mangosoft.autolinkedin.service.AccountService;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
+import tech.mangosoft.autolinkedin.service.AccountService;
 
-import static tech.mangosoft.autolinkedin.controller.ControllerAPI.ACCOUNT_CONTROLLER;
-import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_ID;
-import static tech.mangosoft.autolinkedin.controller.ControllerAPI.BY_PASSWORD;
+import static tech.mangosoft.autolinkedin.controller.ControllerAPI.*;
 
 
 @RestController

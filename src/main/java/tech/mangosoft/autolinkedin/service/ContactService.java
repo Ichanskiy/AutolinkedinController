@@ -8,11 +8,16 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.ContactsMessage;
-import tech.mangosoft.autolinkedin.controller.messages.ProcessedContactMessage;
 import tech.mangosoft.autolinkedin.controller.messages.UpdateContactMessage;
-import tech.mangosoft.autolinkedin.db.entity.*;
+import tech.mangosoft.autolinkedin.db.entity.Account;
+import tech.mangosoft.autolinkedin.db.entity.Assignment;
+import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
+import tech.mangosoft.autolinkedin.db.entity.Location;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
-import tech.mangosoft.autolinkedin.db.repository.*;
+import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
+import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
+import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
+import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 import tech.mangosoft.autolinkedin.utils.CSVUtils;
 
 import javax.persistence.EntityManager;
@@ -29,7 +34,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import static tech.mangosoft.autolinkedin.utils.CSVUtils.parseLine;
@@ -89,7 +93,7 @@ public class ContactService {
         writeToCSVFile(contacts);
     }
 
-    private List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
+    List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
         if (message == null || message.getPage() == null) {
             return null;
         }
@@ -224,6 +228,21 @@ public class ContactService {
         query.setMaxResults(COUNT_FOR_PAGE);
 
         return new PageImpl<>(query.getResultList(), PageRequest.of(message.getPage(), COUNT_FOR_PAGE), getCountContactsByPredicates(predicates));
+    }
+
+    public List<LinkedInContact> getContactsByParams(ContactsMessage message){
+
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
+        Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
+
+        getPredicatesByParam(message, root, builder);
+
+        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        TypedQuery<LinkedInContact> query = entityManager.createQuery(criteriaQuery);
+
+
+        return query.getResultList();
     }
 
     /**

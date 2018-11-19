@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.ContactProcessing;
-import tech.mangosoft.autolinkedin.db.entity.enums.Status;
+import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
 
 import java.util.List;
 
@@ -25,5 +25,9 @@ public interface IContactProcessingRepository extends CrudRepository<ContactProc
     List<ContactProcessing> getAllByAssignmentId(Long id);
 
     ContactProcessing findFirstByAccountIdAndContactId(Long accountId, Long contactId);
+
+    ContactProcessing getByContact(LinkedInContact contact);
+
+    List<ContactProcessing> getAllByContact(LinkedInContact contact);
 
 }
