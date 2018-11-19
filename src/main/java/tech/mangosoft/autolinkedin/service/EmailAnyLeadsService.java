@@ -25,7 +25,8 @@ import java.util.logging.Logger;
 public class EmailAnyLeadsService {
 
     private static final Logger logger = Logger.getLogger(EmailAnyLeadsService.class.getName());
-    private static final String KEY_VALUE = "8068597d2a925704743974f6b587e990ac";
+    //    private static final String KEY_VALUE = "8068597d2a925704743974f6b587e990ac";
+    private static final String KEY_VALUE = "0ee7b95a2a00b58028215164c875677b3f";
     private static final String URL = "https://api.anyleads.com/v1/permutation/?first_name=FN&last_name=LS&domain=DOM&api_key=KEY";
     private static final String FIRST_NAME = "FN";
     private static final String LAST_NAME = "LS";
@@ -45,10 +46,11 @@ public class EmailAnyLeadsService {
         if (linkedInContact.getCompanyWebsite() == null) {
             contactRepository.save(linkedInContact.setGrabbedEmail(false));
         }
+        String domain = getDomain(linkedInContact.getCompanyWebsite());
         HttpUriRequest request = new HttpGet(URL
                 .replace(FIRST_NAME, linkedInContact.getFirstName())
                 .replace(LAST_NAME, linkedInContact.getLastName())
-                .replace(DOMAIN, getDomain(linkedInContact.getCompanyWebsite()))
+                .replace(DOMAIN, domain)
                 .replace(API_KEY, KEY_VALUE));
         logger.info("Id = " + linkedInContact.getId() + " " + request.toString());
         HttpResponse response = null;
@@ -87,13 +89,17 @@ public class EmailAnyLeadsService {
     }
 
     @Transactional
-    void setEmailAndSaveContact(LinkedInContact contact, String email){
+    void setEmailAndSaveContact(LinkedInContact contact, String email) {
         LinkedInContact linkedInContact = contactRepository.getById(contact.getId());
         contactRepository.save(linkedInContact.setEmail(email));
     }
 
     private String getDomain(String companyWebsite) {
-        return companyWebsite.replace("http://www.", "").replace("/", "");
+        return companyWebsite.replace("http:", "")
+                .replace("https:", "")
+                .replace("/", "")
+                .replace("www.", "")
+                .replace("//www.:", "");
     }
 
 }
