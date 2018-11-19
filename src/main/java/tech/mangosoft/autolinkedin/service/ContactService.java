@@ -133,10 +133,9 @@ public class ContactService {
             Optional<Assignment> assignment = assignments.stream()
                     .filter(a -> !a.getTask().equals(Task.TASK_CONNECTION))
                     .min(Comparator.comparing(Assignment::getUpdateTime));
-            if(assignment.isPresent()){
+            if (assignment.isPresent()) {
                 return assignment.get().getAccount() != null ? assignment.get().getAccount().getCaption() : " ";
             }
-
         }
         return " ";
     }
@@ -226,6 +225,17 @@ public class ContactService {
 
         return new PageImpl<>(query.getResultList(), PageRequest.of(message.getPage(), COUNT_FOR_PAGE), getCountContactsByPredicates(predicates));
     }
+
+    public List<LinkedInContact> getContactsByParams(ContactsMessage message){
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
+        Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
+        getPredicatesByParam(message, root, builder);
+        criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
+        TypedQuery<LinkedInContact> query = entityManager.createQuery(criteriaQuery);
+        return query.getResultList();
+    }
+
 
     /**
      * @author  Ichanskiy

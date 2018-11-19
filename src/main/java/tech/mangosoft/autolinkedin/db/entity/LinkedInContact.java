@@ -79,7 +79,8 @@ public class LinkedInContact {
     @JoinColumn(name = "headcount_id")
     private CompanyHeadcount headcount;
 
-    @ManyToMany(mappedBy = "contacts")
+    @ManyToMany(mappedBy = "contacts", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.LAZY)
     private Set<Assignment> assignments = new HashSet<>();
 
     @JsonIgnore
@@ -101,7 +102,7 @@ public class LinkedInContact {
 */
 
     @Column(name = "creation_time")
-    @Type(type="java.sql.Timestamp")
+    @Type(type = "java.sql.Timestamp")
     private Timestamp createTime;
 
     public LinkedInContact(String companyName, String companyWebsite, String companyLinkedin, String firstName, String lastName, String role, String linkedin, String email, Date updateTime) {
@@ -204,6 +205,7 @@ public class LinkedInContact {
         this.email = email;
         return this;
     }
+
     public Integer getStatus() {
         return status;
     }
@@ -274,12 +276,13 @@ public class LinkedInContact {
         return this;
     }
 
-    public void addAssignment(Assignment assignment){
+    public void addAssignment(Assignment assignment) {
         assignments.add(assignment);
     }
 
-    public void removeAssignment(Assignment assignment){
+    public void removeAssignment(Assignment assignment) {
         assignments.remove(assignment);
+        assignment.getContacts().remove(this);
     }
 }
 
