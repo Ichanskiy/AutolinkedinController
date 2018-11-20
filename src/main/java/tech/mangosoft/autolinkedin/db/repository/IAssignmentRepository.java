@@ -2,6 +2,7 @@ package tech.mangosoft.autolinkedin.db.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
@@ -28,6 +29,9 @@ public interface IAssignmentRepository extends CrudRepository<Assignment, Long> 
                                                                          Task task,
                                                                          Date from,
                                                                          Date to);
+
+    @Query("select distinct a.industries from Assignment a where a.industries is not null")
+    List<String> getAllIndustries();
 
     Page<Assignment> getAllByAccount(Account account, Pageable pageable);
 

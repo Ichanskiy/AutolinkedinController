@@ -20,6 +20,7 @@ public class ControllerAPI{
     static final String CREATE_CONNECTION = "/createConnection";
     static final String GET_STATISTICS = "/getStatistics";
     static final String GET_GROUPS = "/getGroups";
+    static final String GET_INDUSTRIES = "/getIndustries";
     static final String GET_LOCATIONS = "/getLocations";
     static final String CHANGE_STATUS = "/changeStatus";
     static final String GET_CONNECTION_INFO_BY_ID_AND_PAGE = "/getConnectionInfo/{id}/{page}";

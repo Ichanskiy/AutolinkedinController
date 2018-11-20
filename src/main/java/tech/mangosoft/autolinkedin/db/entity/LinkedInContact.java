@@ -84,6 +84,7 @@ public class LinkedInContact {
 
     @ManyToMany(mappedBy = "contacts", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Assignment> assignments = new HashSet<>();
 
     @JsonIgnore

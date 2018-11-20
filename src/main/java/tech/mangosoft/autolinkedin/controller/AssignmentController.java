@@ -149,6 +149,12 @@ public class AssignmentController {
     }
 
     @CrossOrigin
+    @GetMapping(value = GET_INDUSTRIES)
+    public ResponseEntity<List<String>> getIndustries() {
+        return new ResponseEntity<>(assignmentRepository.getAllIndustries(), HttpStatus.OK);
+    }
+
+    @CrossOrigin
     @DeleteMapping(BY_ID)
     public ResponseEntity<HttpStatus> deleteAssignment(@PathVariable Long id) {
         Assignment assignment = assignmentRepository.getById(id);
