@@ -90,20 +90,6 @@ public class LinkedInContact {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact", cascade = CascadeType.ALL)
     private List<ContactProcessing> contactProcessings;
 
-    /*
-    @Column(name = "assigned_linkedin_contact")
-    private String assignedLinkedinContact;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "assigned_time")
-    private Date assignedTime;
-
-
-    private String error;
-    @Column(name = "audit_log")
-    private String auditLog;
-*/
-
     @Column(name = "creation_time")
     @Type(type = "java.sql.Timestamp")
     private Timestamp createTime;

@@ -109,7 +109,7 @@ public class LinkedInService {
         }
 
         Set<CompanyHeadcount> companyHeadcounts = new HashSet<>();
-        for (Long id : message.getCompanyHeadcountsIds()) {
+        for (Long id : message.getIdsHeadcount()) {
             CompanyHeadcount companyHeadcount = companyHeadcountRepository.getById(id);
             if (companyHeadcount != null) {
                 companyHeadcounts.add(companyHeadcount);

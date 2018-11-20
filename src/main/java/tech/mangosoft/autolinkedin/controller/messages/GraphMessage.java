@@ -1,7 +1,17 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
+import lombok.*;
+import lombok.experimental.Accessors;
+
 import java.util.List;
 
+@Getter
+@Setter
+@Accessors(chain = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class GraphMessage {
 
     private List<String> labels;
@@ -9,27 +19,4 @@ public class GraphMessage {
 
     private List<String> accounts;
 
-    public List<String> getLabels() {
-        return labels;
-    }
-
-    public void setLabels(List<String> labels) {
-        this.labels = labels;
-    }
-
-    public List<Integer[]> getSeries() {
-        return series;
-    }
-
-    public void setSeries(List<Integer[]> series) {
-        this.series = series;
-    }
-
-    public List<String> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(List<String> accounts) {
-        this.accounts = accounts;
-    }
 }

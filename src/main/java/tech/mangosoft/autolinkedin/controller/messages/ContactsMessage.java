@@ -1,50 +1,37 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
+import lombok.experimental.Accessors;
 
+
+@Getter
+@Setter
+@Accessors(chain = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class ContactsMessage {
 
     @JsonProperty
+    @Setter
     private String location;
 
     @JsonProperty
+    @Setter
     private String industries;
 
     @JsonProperty
+    @Setter
     private String position;
 
     @JsonProperty
+    @Setter
     private Integer page;
 
-    public String getLocation() {
-        return location;
-    }
+    @JsonProperty
+    @Setter
+    private Long userId;
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getIndustries() {
-        return industries;
-    }
-
-    public void setIndustries(String industries) {
-        this.industries = industries;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public Integer getPage() {
-        return page;
-    }
-
-    public void setPage(Integer page) {
-        this.page = page;
-    }
 }
