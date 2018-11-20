@@ -260,8 +260,8 @@ public class ContactService {
         predicates.clear();
 
         if (!accountIsNullOrIsAdmin(contactsMessage)) {
-            Account account = accountRepository.getById(contactsMessage.getUserId());
-            predicates.add(builder.equal(root.join("assignments").get("account"), account));
+            predicates.add(builder.equal(root.join("assignments").get("account").get("id"),
+                    contactsMessage.getUserId()));
         }
         if (contactsMessage.getPosition() != null && !contactsMessage.getPosition().isEmpty()) {
             predicates.add(builder.like(root.get("role"), "%" + contactsMessage.getPosition() + "%"));
