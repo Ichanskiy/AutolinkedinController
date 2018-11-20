@@ -14,10 +14,7 @@ import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
 import tech.mangosoft.autolinkedin.db.entity.Location;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
-import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
-import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
-import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
-import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
+import tech.mangosoft.autolinkedin.db.repository.*;
 import tech.mangosoft.autolinkedin.utils.CSVUtils;
 
 import javax.persistence.EntityManager;
@@ -42,14 +39,13 @@ import static tech.mangosoft.autolinkedin.utils.CSVUtils.parseLine;
  * <h1> LinkedIn Service!</h1>
  * The LinkedInService implements initial logic application
  * <p>
- *
+ * <p>
  * Method annotate @Scheduled is point to start do assignment
  * user friendly and it is assumed as a high quality code.
  *
- *
- * @author  Ichanskiy
+ * @author Ichanskiy
  * @version 1.0
- * @since   2018-06-06
+ * @since 2018-06-06
  */
 @Service
 public class ContactService {
@@ -77,6 +73,9 @@ public class ContactService {
 
     @Autowired
     private IContactProcessingRepository contactProcessingRepository;
+
+    @Autowired
+    private IAccountRepository accountRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -125,14 +124,14 @@ public class ContactService {
                             isNotNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().replace("|", "/").concat(" ") : " ",
                             contact.getLocation() != null ? contact.getLocation().getLocation().replace("|", "/").concat(" ") : " ",
                             isNotNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().replace("|", "/").concat(" ") : " ",
-                            getUserFullnameWhichAddCurrentContact(contact),
+                            getUserFullNameWhichAddCurrentContact(contact),
                             isNotNullOrEmpty(contact.getEmail()) ? contact.getEmail().replace("|", "/").concat(" ") : " "));
         }
         writer.flush();
         writer.close();
     }
 
-    private String getUserFullnameWhichAddCurrentContact(LinkedInContact contact) {
+    private String getUserFullNameWhichAddCurrentContact(LinkedInContact contact) {
         Set<Assignment> assignments = contact.getAssignments();
         if (!CollectionUtils.isEmpty(assignments)) {
             Optional<Assignment> assignment = assignments.stream()
@@ -179,7 +178,7 @@ public class ContactService {
         return true;
     }
 
-    private boolean setIndexAndCheckIsCorrect(final List<String> line){
+    private boolean setIndexAndCheckIsCorrect(final List<String> line) {
         if (!line.containsAll(Arrays.asList(FIRST_NAME, LAST_NAME, EMAIL))) {
             return false;
         }
@@ -211,7 +210,7 @@ public class ContactService {
         }
     }
 
-    public PageImpl<LinkedInContact> getContactsByParam(ContactsMessage message){
+    public PageImpl<LinkedInContact> getPageContactsByParam(ContactsMessage message) {
         if (message == null || message.getPage() == null) {
             return null;
         }
@@ -231,7 +230,7 @@ public class ContactService {
         return new PageImpl<>(query.getResultList(), PageRequest.of(message.getPage(), COUNT_FOR_PAGE), getCountContactsByPredicates(predicates));
     }
 
-    public List<LinkedInContact> getContactsByParams(ContactsMessage message){
+    public List<LinkedInContact> getListContactsByParams(ContactsMessage message) {
 
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
@@ -248,17 +247,23 @@ public class ContactService {
 
 
     /**
-     * @author  Ichanskiy
-     *
-     * This is the method get predictes by input param.
      * @param contactsMessage input object with param.
-     * @param root root object predicates.
-     * @param builder CriteriaBuilder object.
+     * @param root            root object predicates.
+     * @param builder         CriteriaBuilder object.
+     * @author Ichanskiy
+     * <p>
+     * This is the method get predictes by input param.
      */
-    private void getPredicatesByParam(ContactsMessage contactsMessage, Root<LinkedInContact> root, CriteriaBuilder builder) {
+    private void getPredicatesByParam(ContactsMessage contactsMessage,
+                                      Root<LinkedInContact> root,
+                                      CriteriaBuilder builder) {
         predicates.clear();
+
+        if (!accountIsNullOrIsAdmin(contactsMessage)) {
+            predicates.add(builder.equal(root.join("assignments").get("account").get("id"), contactsMessage.getUserId()));
+        }
         if (contactsMessage.getPosition() != null && !contactsMessage.getPosition().isEmpty()) {
-            predicates.add(builder.like(root.get("role"), "%" + contactsMessage.getPosition() + "%" ));
+            predicates.add(builder.like(root.get("role"), "%" + contactsMessage.getPosition() + "%"));
         }
         if (contactsMessage.getLocation() != null && !contactsMessage.getLocation().isEmpty()) {
             Location location = locationRepository.getLocationByLocation(contactsMessage.getLocation());
@@ -267,18 +272,29 @@ public class ContactService {
             }
         }
         if (contactsMessage.getIndustries() != null && !contactsMessage.getIndustries().isEmpty()) {
-            predicates.add(builder.like(root.get("industries"),"%" + contactsMessage.getIndustries() + "%" ));
+            predicates.add(builder.like(root.get("industries"), "%" + contactsMessage.getIndustries() + "%"));
         }
     }
 
+    boolean accountIsNullOrIsAdmin(ContactsMessage contactsMessage) {
+        if (contactsMessage.getUserId() == null) {
+            return true;
+        }
+        Account account = accountRepository.getById(contactsMessage.getUserId());
+        if (account == null) {
+            return true;
+        }
+        return account.isAdmin();
+    }
+
     /**
-     * @author  Ichanskiy
-     *
-     * This is the method get count contacts by predicates.
      * @param predicates input predicates.
      * @return count contacts
+     * @author Ichanskiy
+     * <p>
+     * This is the method get count contacts by predicates.
      */
-    private Long getCountContactsByPredicates(List<Predicate> predicates){
+    private Long getCountContactsByPredicates(List<Predicate> predicates) {
         CriteriaBuilder qb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> cq = qb.createQuery(Long.class);
         cq.select(qb.count(cq.from(LinkedInContact.class)));
@@ -288,7 +304,7 @@ public class ContactService {
 
     public List<LinkedInContact> getContactsByStatus(Account account, Assignment assignment, Integer status, int page, int size) {
         return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, status, PageRequest.of(page - 1, size,  Sort.Direction.DESC, "id"))
+                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, status, PageRequest.of(page - 1, size, Sort.Direction.DESC, "id"))
                 .stream()
                 .map(contactProcessing -> contactProcessing.getContact().setComments(contactProcessing.getAuditLog()))
                 .collect(Collectors.toList());

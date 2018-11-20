@@ -87,7 +87,7 @@ public class LinkedinContactControllerTest {
         message.setLocation(LOCATION);
         message.setPosition(POSITION);
         message.setPage(0);
-        when(contactService.getContactsByParam(any(ContactsMessage.class))).thenReturn(new PageImpl<>(new ArrayList<>()));
+        when(contactService.getPageContactsByParam(any(ContactsMessage.class))).thenReturn(new PageImpl<>(new ArrayList<>()));
         MockHttpServletResponse response = mockMvc
                 .perform(post(request)
                         .content(Objects.requireNonNull(getJson(message)))
@@ -96,7 +96,7 @@ public class LinkedinContactControllerTest {
                 .andReturn()
                 .getResponse();
         assertNotEquals(response.getContentAsString(), Strings.EMPTY);
-        verify(contactService, times(1)).getContactsByParam(any(ContactsMessage.class));
+        verify(contactService, times(1)).getPageContactsByParam(any(ContactsMessage.class));
         verifyNoMoreInteractions(contactService);
     }
 

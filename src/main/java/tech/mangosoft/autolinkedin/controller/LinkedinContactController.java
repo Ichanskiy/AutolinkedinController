@@ -50,12 +50,10 @@ public class LinkedinContactController {
     @Autowired
     private FileStorage fileStorage;
 
-    private Long linkedInContactId;
-
     @CrossOrigin
     @PostMapping(value = GET_CONTACTS)
     public ResponseEntity<PageImpl<LinkedInContact>> getContacts(@RequestBody ContactsMessage message) {
-        return new ResponseEntity<>(contactService.getContactsByParam(message), HttpStatus.OK);
+        return new ResponseEntity<>(contactService.getPageContactsByParam(message), HttpStatus.OK);
     }
 
     @CrossOrigin
@@ -66,7 +64,6 @@ public class LinkedinContactController {
             logger.log(Level.WARNING, "Param must be not null or error parsing date");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        linkedInContactId = linkedInContact.getId();
         return new ResponseEntity<>(linkedInContact, HttpStatus.OK);
     }
 

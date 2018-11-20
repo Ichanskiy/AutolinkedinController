@@ -38,9 +38,10 @@ public class DeleteContactServices {
         contactsMessage.setIndustries("Financial Services");
         contactsMessage.setLocation(locationRepository.getById(1L).getLocation());
         contactsMessage.setPosition("CTO");
+        contactsMessage.setUserId(2L);
 
         int i = 0;
-        List<LinkedInContact> contacts = contactService.getContactsByParams(contactsMessage);
+        List<LinkedInContact> contacts = contactService.getListContactsByParams(contactsMessage);
         for (LinkedInContact contact : contacts) {
             i++;
             delete(contact);
