@@ -260,7 +260,8 @@ public class ContactService {
         predicates.clear();
 
         if (!accountIsNullOrIsAdmin(contactsMessage)) {
-            predicates.add(builder.equal(root.join("assignments").get("account").get("id"), contactsMessage.getUserId()));
+            Account account = accountRepository.getById(contactsMessage.getUserId());
+            predicates.add(builder.equal(root.join("assignments").get("account"), account));
         }
         if (contactsMessage.getPosition() != null && !contactsMessage.getPosition().isEmpty()) {
             predicates.add(builder.like(root.get("role"), "%" + contactsMessage.getPosition() + "%"));
@@ -299,7 +300,11 @@ public class ContactService {
         CriteriaQuery<Long> cq = qb.createQuery(Long.class);
         cq.select(qb.count(cq.from(LinkedInContact.class)));
         cq.where(predicates.toArray(new Predicate[predicates.size()]));
-        return entityManager.createQuery(cq).getSingleResult();
+        try {
+            return entityManager.createQuery(cq).getSingleResult();
+        } catch (Exception e) {
+            return 0L;
+        }
     }
 
     public List<LinkedInContact> getContactsByStatus(Account account, Assignment assignment, Integer status, int page, int size) {
