@@ -175,7 +175,7 @@ public class LinkedinContactControllerTest {
         when(accountRepository.getAccountByUsername(message.getLogin())).thenReturn(account);
         when(assignmentRepository.getById(message.getAssignmentId())).thenReturn(assignment);
         when(contactService
-                .getContactsByStatus(account, assignment, message.getStatus(), message.getPage(), 40))
+                .getContactsByStatusNotAndPageAndSize(account, assignment, message.getStatus(), message.getPage(), 40))
                 .thenReturn(new ArrayList<>());
         when(contactService.getCountContactsByStatus(account, assignment, message.getStatus())).thenReturn(10);
         MockHttpServletResponse response = mockMvc
@@ -188,7 +188,7 @@ public class LinkedinContactControllerTest {
         verify(accountRepository, times(1)).getAccountByUsername(message.getLogin());
         verify(assignmentRepository, times(1)).getById(message.getAssignmentId());
         verify(contactService, times(1))
-                .getContactsByStatus(account, assignment, message.getStatus(), message.getPage(), 40);
+                .getContactsByStatusNotAndPageAndSize(account, assignment, message.getStatus(), message.getPage(), 40);
         verify(contactService, times(1))
                 .getCountContactsByStatus(account, assignment, message.getStatus());
         verifyNoMoreInteractions(accountRepository, assignmentRepository, contactService);
