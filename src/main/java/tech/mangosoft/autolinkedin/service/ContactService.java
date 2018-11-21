@@ -16,7 +16,10 @@ import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.LinkedInContact;
 import tech.mangosoft.autolinkedin.db.entity.Location;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
-import tech.mangosoft.autolinkedin.db.repository.*;
+import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
+import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
+import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
+import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 import tech.mangosoft.autolinkedin.utils.CSVUtils;
 
 import javax.persistence.EntityManager;
@@ -27,8 +30,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -62,9 +63,6 @@ public class ContactService {
     private Integer ID_POSITION = -1;
 
     private List<Predicate> predicates = new ArrayList<>();
-
-    @Autowired
-    private IAssignmentRepository assignmentRepository;
 
     @Autowired
     private ILinkedInContactRepository contactRepository;
@@ -268,7 +266,8 @@ public class ContactService {
         query.setFirstResult((message.getPage() - 1) * COUNT_FOR_PAGE);
         query.setMaxResults(COUNT_FOR_PAGE);
 
-        return new PageImpl<>(query.getResultList(), PageRequest.of(message.getPage(), COUNT_FOR_PAGE), getCountContactsByPredicates(predicates));
+        return new PageImpl<>(query.getResultList(),
+                PageRequest.of(message.getPage(), COUNT_FOR_PAGE), getCountContactsByPredicates(predicates));
     }
 
     public List<LinkedInContact> getListContactsByParams(ContactsMessage message) {
@@ -318,7 +317,7 @@ public class ContactService {
         }
     }
 
-    boolean accountIsNullOrIsAdmin(ContactsMessage contactsMessage) {
+    private boolean accountIsNullOrIsAdmin(ContactsMessage contactsMessage) {
         if (contactsMessage.getUserId() == null) {
             return true;
         }
@@ -348,9 +347,13 @@ public class ContactService {
         }
     }
 
-    public List<LinkedInContact> getContactsByStatus(Account account, Assignment assignment, Integer status, int page, int size) {
+    public List<LinkedInContact> getContactsByStatusNotAndPageAndSize(Account account,
+                                                                      Assignment assignment,
+                                                                      Integer status,
+                                                                      int page, int size) {
         return contactProcessingRepository
-                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment, status, PageRequest.of(page - 1, size, Sort.Direction.DESC, "id"))
+                .getDistinctByAccountAndAssignmentAndStatusNot(account, assignment,
+                        status, PageRequest.of(page - 1, size, Sort.Direction.DESC, "id"))
                 .stream()
                 .map(contactProcessing -> contactProcessing.getContact().setComments(contactProcessing.getAuditLog()))
                 .collect(Collectors.toList());
@@ -377,17 +380,6 @@ public class ContactService {
                 .setIndustries(updateContactMessage.getIndustries())
                 .setLocation(location)
                 .setComments(updateContactMessage.getComment()));
-    }
-
-    private static Date getDate(String s) {
-        Date date = null;
-        try {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            date = formatter.parse(s);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
     }
 
     private boolean isNotNullOrEmpty(String s) {

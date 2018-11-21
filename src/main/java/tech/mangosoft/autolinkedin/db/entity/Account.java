@@ -95,8 +95,9 @@ public class Account {
         return username;
     }
 
-    public void setUsername(String username) {
+    public Account setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getPassword() {

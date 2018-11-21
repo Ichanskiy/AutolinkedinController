@@ -101,7 +101,7 @@ public class LinkedinContactController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         List<LinkedInContact> contacts = contactService
-                .getContactsByStatus(account, assignment, message.getStatus(), message.getPage(), COUNT_TO_PAGE);
+                .getContactsByStatusNotAndPageAndSize(account, assignment, message.getStatus(), message.getPage(), COUNT_TO_PAGE);
         Integer count = contactService.getCountContactsByStatus(account, assignment, message.getStatus());
         return new ResponseEntity<>(new PageImpl<>(contacts,
                 PageRequest.of(message.getPage() - 1, COUNT_TO_PAGE), count), HttpStatus.OK);

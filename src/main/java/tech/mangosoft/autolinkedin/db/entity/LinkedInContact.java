@@ -192,8 +192,9 @@ public class LinkedInContact {
         return assignments;
     }
 
-    public void setAssignments(Set<Assignment> assignments) {
+    public LinkedInContact setAssignments(Set<Assignment> assignments) {
         this.assignments = assignments;
+        return this;
     }
 
     public String getEmail() {
