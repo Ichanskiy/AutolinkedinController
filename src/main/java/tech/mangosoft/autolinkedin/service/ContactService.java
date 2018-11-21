@@ -1,5 +1,7 @@
 package tech.mangosoft.autolinkedin.service;
 
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageImpl;
@@ -24,10 +26,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -51,6 +50,8 @@ import static tech.mangosoft.autolinkedin.utils.CSVUtils.parseLine;
 public class ContactService {
 
     private static final Integer COUNT_FOR_PAGE = 40;
+    private static final String[] HEADERS = {"id", "company_name", "company_website", "first_name", "last_name",
+            "role", "person_linkedin", "location", "industries", "user", "email", "headcount"};
     private static final String FIRST_NAME = "first_name";
     private static final String LAST_NAME = "last_name";
     private static final String EMAIL = "email";
@@ -90,6 +91,7 @@ public class ContactService {
     public void createCsvFileByParam(ContactsMessage message) throws IOException {
         List<LinkedInContact> contacts = getContactsByParamWithoutBound(message);
         writeToCSVFile(contacts);
+//        writeToExcel(contacts);
     }
 
     List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
@@ -131,6 +133,45 @@ public class ContactService {
         writer.close();
     }
 
+    private void writeToExcel(final List<LinkedInContact> contacts) throws IOException {
+        Workbook workbook = new XSSFWorkbook();
+
+        Sheet sheet = workbook.createSheet("Contacts");
+        Font headerFont = workbook.createFont();
+        headerFont.setBold(true);
+        Row headerRow = sheet.createRow(0);
+        for(int i = 0; i < HEADERS.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(HEADERS[i]);
+        }
+        int rowNum = 1;
+        for(LinkedInContact contact : contacts){
+            Row row = sheet.createRow(rowNum++);
+
+            row.createCell(0).setCellValue(contact.getId());
+            row.createCell(1).setCellValue(contact.getCompanyName());
+            row.createCell(2).setCellValue(contact.getCompanyWebsite());
+            row.createCell(3).setCellValue(contact.getFirstName());
+            row.createCell(4).setCellValue(contact.getLastName());
+            row.createCell(5).setCellValue(contact.getRole());
+            row.createCell(6).setCellValue(contact.getLinkedin());
+            row.createCell(7).setCellValue(contact.getLocation() != null ? contact.getLocation().getLocation() : null);
+            row.createCell(8).setCellValue(contact.getIndustries());
+            row.createCell(9).setCellValue(getUserFullNameWhichAddCurrentContact(contact));
+            row.createCell(10).setCellValue(contact.getEmail());
+            row.createCell(11).setCellValue(contact.getHeadcount() != null ? contact.getHeadcount().getHeadcount() : null);
+        }
+
+        for(int i = 0; i < HEADERS.length; i++) {
+            sheet.autoSizeColumn(i);
+        }
+
+        FileOutputStream fileOut = new FileOutputStream(path + filename);
+        workbook.write(fileOut);
+        fileOut.close();
+        workbook.close();
+    }
+
     private String getUserFullNameWhichAddCurrentContact(LinkedInContact contact) {
         Set<Assignment> assignments = contact.getAssignments();
         if (!CollectionUtils.isEmpty(assignments)) {
@@ -138,10 +179,10 @@ public class ContactService {
                     .filter(a -> !a.getTask().equals(Task.TASK_CONNECTION))
                     .min(Comparator.comparing(Assignment::getUpdateTime));
             if (assignment.isPresent()) {
-                return assignment.get().getAccount() != null ? assignment.get().getAccount().getCaption() : " ";
+                return assignment.get().getAccount() != null ? assignment.get().getAccount().getCaption() : null;
             }
         }
-        return " ";
+        return null;
     }
 
     public boolean exportCSVFilesToDataBaseAndCheckIsCorrect(final File file) throws FileNotFoundException {
