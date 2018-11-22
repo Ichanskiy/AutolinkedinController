@@ -52,17 +52,13 @@ public class FileStorageImpl implements FileStorage{
         try {
             File finalFile = new File(rootLocationUpload.toString().concat(uploadFileName));
             FileUtils.writeByteArrayToFile(finalFile, file.getBytes());
-            if (!contactService.exportCSVFilesToDataBaseAndCheckIsCorrect(finalFile)) {
+            if (!contactService.readFromExcel(finalFile)) {
                 return false;
             }
             return true;
         } catch (IOException e) {
             return false;
         }
-//        try {
-//        } catch (Exception e) {
-//            throw new RuntimeException("FAIL! -> message = " + e.getMessage());
-//        }
     }
 
     @Override

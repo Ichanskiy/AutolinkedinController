@@ -145,10 +145,4 @@ public class LinkedinContactController {
         }
         return new ResponseEntity<>("Done", HttpStatus.OK);
     }
-//
-//    @PostMapping("/test")
-//    public ResponseEntity<String> test() throws FileNotFoundException {
-//        contactService.exportCSVFilesToDataBase(new File("data/uploadFiles.csv"));
-//        return new ResponseEntity<>("Done", HttpStatus.OK);
-//    }
 }

@@ -20,7 +20,6 @@ import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
 import tech.mangosoft.autolinkedin.db.repository.IContactProcessingRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILinkedInContactRepository;
 import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
-import tech.mangosoft.autolinkedin.utils.CSVUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,8 +31,6 @@ import javax.persistence.criteria.Root;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static tech.mangosoft.autolinkedin.utils.CSVUtils.parseLine;
 
 /**
  * <h1> LinkedIn Service!</h1>
@@ -51,17 +48,12 @@ import static tech.mangosoft.autolinkedin.utils.CSVUtils.parseLine;
 public class ContactService {
 
     private static final Integer COUNT_FOR_PAGE = 40;
-    private static final String[] HEADERS = {"id", "company_name", "company_website", "first_name", "last_name",
-            "role", "person_linkedin", "location", "industries", "user", "email", "headcount"};
-    private static final String FIRST_NAME = "first_name";
-    private static final String LAST_NAME = "last_name";
-    private static final String EMAIL = "email";
-    private static final String ID = "id";
-    private Integer FIRST_NAME_POSITION = 1;
-    private Integer LAST_NAME_POSITION = 2;
-    private Integer EMAIL_NAME_POSITION = -1;
-    private Integer ID_POSITION = -1;
-
+    private static final List<String> HEADERS = Arrays.asList("id", "company_name", "company_website", "first_name", "last_name",
+            "role", "person_linkedin", "location", "industries", "user", "email", "headcount");
+    private Integer FIRST_NAME_POSITION = 3;
+    private Integer LAST_NAME_POSITION = 4;
+    private Integer EMAIL_POSITION = 10;
+    private Integer ID_POSITION = 0;
     private List<Predicate> predicates = new ArrayList<>();
 
     @Autowired
@@ -88,8 +80,7 @@ public class ContactService {
 
     public void createCsvFileByParam(ContactsMessage message) throws IOException {
         List<LinkedInContact> contacts = getContactsByParamWithoutBound(message);
-        writeToCSVFile(contacts);
-//        writeToExcel(contacts);
+        writeToExcel(contacts);
     }
 
     List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
@@ -105,42 +96,15 @@ public class ContactService {
         return query.getResultList();
     }
 
-    private void writeToCSVFile(final List<LinkedInContact> contactsFromDb) throws IOException {
-        String csvFile = path.concat(filename);
-        File file = new File(csvFile);
-        FileWriter writer = new FileWriter(file.getAbsoluteFile());
-        CSVUtils.writeLine(writer, Arrays.asList("id", "company_name", "company_website", "first_name", "last_name", "role", "person_linkedin", "location", "industries", "user", "email"));
-        for (LinkedInContact contact : contactsFromDb) {
-            if (!isNotNullOrEmpty(contact.getFirstName(), contact.getLastName())) {
-                continue;
-            }
-            CSVUtils.writeLine(writer, Arrays
-                    .asList(contact.getId() != null ? contact.getId().toString().replace("|", "/").concat(" ") : " ",
-                            isNotNullOrEmpty(contact.getCompanyName()) ? contact.getCompanyName().replace("|", "/").concat(" ") : " ",
-                            isNotNullOrEmpty(contact.getCompanyWebsite()) ? contact.getCompanyWebsite().replace("|", "/").concat(" ") : " ",
-                            isNotNullOrEmpty(contact.getFirstName()) ? contact.getFirstName().replace("|", "/").concat(" ") : " ",
-                            isNotNullOrEmpty(contact.getLastName()) ? contact.getLastName().replace("|", "/").concat(" ") : " ",
-                            isNotNullOrEmpty(contact.getRole()) ? contact.getRole().replace("|", "/").concat(" ") : " ",
-                            isNotNullOrEmpty(contact.getLinkedin()) ? contact.getLinkedin().replace("|", "/").concat(" ") : " ",
-                            contact.getLocation() != null ? contact.getLocation().getLocation().replace("|", "/").concat(" ") : " ",
-                            isNotNullOrEmpty(contact.getIndustries()) ? contact.getIndustries().replace("|", "/").concat(" ") : " ",
-                            getUserFullNameWhichAddCurrentContact(contact),
-                            isNotNullOrEmpty(contact.getEmail()) ? contact.getEmail().replace("|", "/").concat(" ") : " "));
-        }
-        writer.flush();
-        writer.close();
-    }
-
     private void writeToExcel(final List<LinkedInContact> contacts) throws IOException {
         Workbook workbook = new XSSFWorkbook();
 
         Sheet sheet = workbook.createSheet("Contacts");
-        Font headerFont = workbook.createFont();
-        headerFont.setBold(true);
+
         Row headerRow = sheet.createRow(0);
-        for(int i = 0; i < HEADERS.length; i++) {
+        for(int i = 0; i < HEADERS.size(); i++) {
             Cell cell = headerRow.createCell(i);
-            cell.setCellValue(HEADERS[i]);
+            cell.setCellValue(HEADERS.get(i));
         }
         int rowNum = 1;
         for(LinkedInContact contact : contacts){
@@ -160,7 +124,7 @@ public class ContactService {
             row.createCell(11).setCellValue(contact.getHeadcount() != null ? contact.getHeadcount().getHeadcount() : null);
         }
 
-        for(int i = 0; i < HEADERS.length; i++) {
+        for(int i = 0; i < HEADERS.size(); i++) {
             sheet.autoSizeColumn(i);
         }
 
@@ -183,53 +147,47 @@ public class ContactService {
         return null;
     }
 
-    public boolean exportCSVFilesToDataBaseAndCheckIsCorrect(final File file) throws FileNotFoundException {
-        Scanner scanner = new Scanner(file);
-        int i = 0;
-        while (scanner.hasNext()) {
-            List<String> line = parseLine(scanner.nextLine());
-            if (i == 0) {
-                if (!setIndexAndCheckIsCorrect(line)) {
-                    return false;
-                }
-                ++i;
-                continue;
-            }
-            if (line.size() < EMAIL_NAME_POSITION || line.size() < 1) {
-                continue;
-            }
-            String id = "";
-            String firstName = line.get(FIRST_NAME_POSITION);
-            String lastName = line.get(LAST_NAME_POSITION);
-            String email = line.get(EMAIL_NAME_POSITION);
-            if (ID_POSITION != -1) {
-                id = line.get(ID_POSITION);
-            }
-            if (isNotNullOrEmpty(firstName, lastName, email)) {
-                if (isNotNullOrEmpty(id)) {
-                    updateContactEmail(id, email);
-                } else {
-                    updateContactEmail(firstName, lastName, email);
-                }
-            }
-        }
-        scanner.close();
-        return true;
-    }
+    public boolean readFromExcel(final File file) throws IOException {
+        Workbook workbook = WorkbookFactory.create(file);
+        Sheet sheet = workbook.getSheetAt(0);
+        List<String> headers = new ArrayList<>();
+        if(sheet.getPhysicalNumberOfRows() > 0){
+            for(int i = 0; i < sheet.getPhysicalNumberOfRows(); i++){
+                Row row = sheet.getRow(i);
+                if(i == 0){
+                    if(row.getPhysicalNumberOfCells() > 0){
+                        for(Cell cell : row){
+                            headers.add(cell.getStringCellValue());
+                        }
 
-    private boolean setIndexAndCheckIsCorrect(final List<String> line) {
-        if (!line.containsAll(Arrays.asList(FIRST_NAME, LAST_NAME, EMAIL))) {
+                        if(!HEADERS.equals(headers)){
+                            return false;
+                        }
+
+                    }else{
+                        return false;
+                    }
+                }
+
+                if(i > 0){
+                    if(row.getCell(ID_POSITION) != null && row.getCell(EMAIL_POSITION) != null){
+                        updateContactEmail((long)row.getCell(ID_POSITION).getNumericCellValue(),
+                                row.getCell(EMAIL_POSITION).getStringCellValue());
+                    }
+
+                    if(row.getCell(FIRST_NAME_POSITION) != null && row.getCell(LAST_NAME_POSITION) != null
+                            && row.getCell(EMAIL_POSITION) != null){
+                        updateContactEmail(row.getCell(FIRST_NAME_POSITION).getStringCellValue(),
+                                row.getCell(LAST_NAME_POSITION).getStringCellValue(),
+                                row.getCell(EMAIL_POSITION).getStringCellValue());
+                    }
+                }
+
+            }
+            return true;
+        }else{
             return false;
         }
-        EMAIL_NAME_POSITION = line.indexOf("email");
-        FIRST_NAME_POSITION = line.indexOf("first_name");
-        LAST_NAME_POSITION = line.indexOf("last_name");
-        if (line.contains(ID)) {
-            ID_POSITION = line.indexOf("id");
-        } else {
-            ID_POSITION = -1;
-        }
-        return true;
     }
 
     private void updateContactEmail(String firstName, String lastName, String email) {
@@ -240,8 +198,7 @@ public class ContactService {
         }
     }
 
-    private void updateContactEmail(String idString, String email) {
-        Long id = Long.valueOf(idString.trim());
+    private void updateContactEmail(Long id, String email) {
         LinkedInContact linkedInContact = contactRepository.getById(id);
         if (linkedInContact != null) {
             linkedInContact.setEmail(email);
@@ -380,18 +337,5 @@ public class ContactService {
                 .setIndustries(updateContactMessage.getIndustries())
                 .setLocation(location)
                 .setComments(updateContactMessage.getComment()));
-    }
-
-    private boolean isNotNullOrEmpty(String s) {
-        return s != null && !s.isEmpty();
-    }
-
-    private boolean isNotNullOrEmpty(String... s) {
-        for (String s1 : s) {
-            if (s1 == null || s1.isEmpty()) {
-                return false;
-            }
-        }
-        return true;
     }
 }
