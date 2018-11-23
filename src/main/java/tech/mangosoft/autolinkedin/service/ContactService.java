@@ -50,10 +50,10 @@ public class ContactService {
     private static final Integer COUNT_FOR_PAGE = 40;
     private static final List<String> HEADERS = Arrays.asList("id", "company_name", "company_website", "first_name", "last_name",
             "role", "person_linkedin", "location", "industries", "user", "email", "headcount");
-    private Integer FIRST_NAME_POSITION = 3;
-    private Integer LAST_NAME_POSITION = 4;
-    private Integer EMAIL_POSITION = 10;
-    private Integer ID_POSITION = 0;
+    private Integer FIRST_NAME_POSITION = -1;
+    private Integer LAST_NAME_POSITION = -1;
+    private Integer EMAIL_POSITION = -1;
+    private Integer ID_POSITION = -1;
     private List<Predicate> predicates = new ArrayList<>();
 
     @Autowired
@@ -150,18 +150,36 @@ public class ContactService {
     public boolean readFromExcel(final File file) throws IOException {
         Workbook workbook = WorkbookFactory.create(file);
         Sheet sheet = workbook.getSheetAt(0);
-        List<String> headers = new ArrayList<>();
         if(sheet.getPhysicalNumberOfRows() > 0){
             for(int i = 0; i < sheet.getPhysicalNumberOfRows(); i++){
                 Row row = sheet.getRow(i);
                 if(i == 0){
                     if(row.getPhysicalNumberOfCells() > 0){
-                        for(Cell cell : row){
-                            headers.add(cell.getStringCellValue());
-                        }
+                        for(int j = 0; j < row.getPhysicalNumberOfCells(); j++){
+                            if(ID_POSITION == -1){
+                                if(row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(0))){
+                                    ID_POSITION = j;
+                                }
+                            }
 
-                        if(!HEADERS.equals(headers)){
-                            return false;
+                            if(FIRST_NAME_POSITION == -1){
+                                if(row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(3))){
+                                    FIRST_NAME_POSITION = j;
+                                }
+                            }
+
+                            if(LAST_NAME_POSITION == -1){
+                                if(row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(4))){
+                                    LAST_NAME_POSITION = j;
+                                }
+                            }
+
+                            if(EMAIL_POSITION == -1){
+                                if(row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(10))){
+                                    EMAIL_POSITION = j;
+                                }
+                            }
+
                         }
 
                     }else{
@@ -173,9 +191,7 @@ public class ContactService {
                     if(row.getCell(ID_POSITION) != null && row.getCell(EMAIL_POSITION) != null){
                         updateContactEmail((long)row.getCell(ID_POSITION).getNumericCellValue(),
                                 row.getCell(EMAIL_POSITION).getStringCellValue());
-                    }
-
-                    if(row.getCell(FIRST_NAME_POSITION) != null && row.getCell(LAST_NAME_POSITION) != null
+                    }else if(row.getCell(FIRST_NAME_POSITION) != null && row.getCell(LAST_NAME_POSITION) != null
                             && row.getCell(EMAIL_POSITION) != null){
                         updateContactEmail(row.getCell(FIRST_NAME_POSITION).getStringCellValue(),
                                 row.getCell(LAST_NAME_POSITION).getStringCellValue(),

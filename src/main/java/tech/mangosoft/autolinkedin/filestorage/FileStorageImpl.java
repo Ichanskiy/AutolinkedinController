@@ -50,7 +50,7 @@ public class FileStorageImpl implements FileStorage{
     @Override
     public boolean store(MultipartFile file){
         try {
-            File finalFile = new File(rootLocationUpload.toString().concat(uploadFileName));
+            File finalFile = new File(rootLocationUpload.toString().concat("/" + uploadFileName));
             FileUtils.writeByteArrayToFile(finalFile, file.getBytes());
             if (!contactService.readFromExcel(finalFile)) {
                 return false;
