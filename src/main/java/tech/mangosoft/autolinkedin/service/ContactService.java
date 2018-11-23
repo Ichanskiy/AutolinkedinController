@@ -24,10 +24,7 @@ import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -102,12 +99,12 @@ public class ContactService {
         Sheet sheet = workbook.createSheet("Contacts");
 
         Row headerRow = sheet.createRow(0);
-        for(int i = 0; i < HEADERS.size(); i++) {
+        for (int i = 0; i < HEADERS.size(); i++) {
             Cell cell = headerRow.createCell(i);
             cell.setCellValue(HEADERS.get(i));
         }
         int rowNum = 1;
-        for(LinkedInContact contact : contacts){
+        for (LinkedInContact contact : contacts) {
             Row row = sheet.createRow(rowNum++);
 
             row.createCell(0).setCellValue(contact.getId());
@@ -124,7 +121,7 @@ public class ContactService {
             row.createCell(11).setCellValue(contact.getHeadcount() != null ? contact.getHeadcount().getHeadcount() : null);
         }
 
-        for(int i = 0; i < HEADERS.size(); i++) {
+        for (int i = 0; i < HEADERS.size(); i++) {
             sheet.autoSizeColumn(i);
         }
 
@@ -150,58 +147,52 @@ public class ContactService {
     public boolean readFromExcel(final File file) throws IOException {
         Workbook workbook = WorkbookFactory.create(file);
         Sheet sheet = workbook.getSheetAt(0);
-        if(sheet.getPhysicalNumberOfRows() > 0){
-            for(int i = 0; i < sheet.getPhysicalNumberOfRows(); i++){
+        if (sheet.getPhysicalNumberOfRows() > 0) {
+            for (int i = 0; i < sheet.getPhysicalNumberOfRows(); i++) {
                 Row row = sheet.getRow(i);
-                if(i == 0){
-                    if(row.getPhysicalNumberOfCells() > 0){
-                        for(int j = 0; j < row.getPhysicalNumberOfCells(); j++){
-                            if(ID_POSITION == -1){
-                                if(row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(0))){
+                if (i == 0) {
+                    if (row.getPhysicalNumberOfCells() > 0) {
+                        for (int j = 0; j < row.getPhysicalNumberOfCells(); j++) {
+                            if (ID_POSITION == -1) {
+                                if (row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(0))) {
                                     ID_POSITION = j;
                                 }
                             }
-
-                            if(FIRST_NAME_POSITION == -1){
-                                if(row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(3))){
+                            if (FIRST_NAME_POSITION == -1) {
+                                if (row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(3))) {
                                     FIRST_NAME_POSITION = j;
                                 }
                             }
-
-                            if(LAST_NAME_POSITION == -1){
-                                if(row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(4))){
+                            if (LAST_NAME_POSITION == -1) {
+                                if (row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(4))) {
                                     LAST_NAME_POSITION = j;
                                 }
                             }
-
-                            if(EMAIL_POSITION == -1){
-                                if(row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(10))){
+                            if (EMAIL_POSITION == -1) {
+                                if (row.getCell(j).getStringCellValue().equalsIgnoreCase(HEADERS.get(10))) {
                                     EMAIL_POSITION = j;
                                 }
                             }
-
                         }
 
-                    }else{
+                    } else {
                         return false;
                     }
                 }
-
-                if(i > 0){
-                    if(row.getCell(ID_POSITION) != null && row.getCell(EMAIL_POSITION) != null){
-                        updateContactEmail((long)row.getCell(ID_POSITION).getNumericCellValue(),
+                if (i > 0) {
+                    if (row.getCell(ID_POSITION) != null && row.getCell(EMAIL_POSITION) != null) {
+                        updateContactEmail((long) row.getCell(ID_POSITION).getNumericCellValue(),
                                 row.getCell(EMAIL_POSITION).getStringCellValue());
-                    }else if(row.getCell(FIRST_NAME_POSITION) != null && row.getCell(LAST_NAME_POSITION) != null
-                            && row.getCell(EMAIL_POSITION) != null){
+                    } else if (row.getCell(FIRST_NAME_POSITION) != null && row.getCell(LAST_NAME_POSITION) != null
+                            && row.getCell(EMAIL_POSITION) != null) {
                         updateContactEmail(row.getCell(FIRST_NAME_POSITION).getStringCellValue(),
                                 row.getCell(LAST_NAME_POSITION).getStringCellValue(),
                                 row.getCell(EMAIL_POSITION).getStringCellValue());
                     }
                 }
-
             }
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -226,7 +217,6 @@ public class ContactService {
         if (message == null || message.getPage() == null) {
             return null;
         }
-
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
         Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
@@ -238,10 +228,10 @@ public class ContactService {
 
         query.setFirstResult((message.getPage() - 1) * COUNT_FOR_PAGE);
         query.setMaxResults(COUNT_FOR_PAGE);
-
         return new PageImpl<>(query.getResultList(),
-                PageRequest.of(message.getPage(), COUNT_FOR_PAGE), getCountContactsByPredicates(predicates));
+                PageRequest.of(message.getPage(), COUNT_FOR_PAGE), getCountContactsByParams(message));
     }
+
 
     public List<LinkedInContact> getListContactsByParams(ContactsMessage message) {
 
@@ -273,7 +263,7 @@ public class ContactService {
         predicates.clear();
 
         if (!accountIsNullOrIsAdmin(contactsMessage)) {
-            predicates.add(builder.equal(root.join("assignments").get("account").get("id"),
+            predicates.add(builder.equal(root.joinSet("assignments").join("account").get("id"),
                     contactsMessage.getUserId()));
         }
         if (contactsMessage.getPosition() != null && !contactsMessage.getPosition().isEmpty()) {
@@ -302,22 +292,24 @@ public class ContactService {
     }
 
     /**
-     * @param predicates input predicates.
+     * @param message input params.
      * @return count contacts
      * @author Ichanskiy
      * <p>
      * This is the method get count contacts by predicates.
      */
-    private Long getCountContactsByPredicates(List<Predicate> predicates) {
+    private Long getCountContactsByParams(ContactsMessage message) {
         CriteriaBuilder qb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> cq = qb.createQuery(Long.class);
-        cq.select(qb.count(cq.from(LinkedInContact.class)));
-        cq.where(predicates.toArray(new Predicate[predicates.size()]));
-        try {
-            return entityManager.createQuery(cq).getSingleResult();
-        } catch (Exception e) {
-            return 0L;
-        }
+        Root root = cq.from(LinkedInContact.class);
+        cq.select(qb.countDistinct(root));
+
+        predicates.clear();
+        getPredicatesByParam(message, root, qb);
+
+        cq.where(qb.and(predicates.toArray(new Predicate[predicates.size()])));
+        return entityManager.createQuery(cq).getSingleResult();
+
     }
 
     public List<LinkedInContact> getContactsByStatusNotAndPageAndSize(Account account,

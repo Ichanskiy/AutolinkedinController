@@ -71,7 +71,7 @@ public class Assignment {
     @Temporal(TemporalType.DATE)
     private Date updateTime;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "account_id")
     @JsonIgnore
     private Account account;
