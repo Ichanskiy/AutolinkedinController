@@ -59,7 +59,7 @@ class AccountControllerTest {
     @DisplayName("Get account by userName and password")
     void getAccountValid() throws Exception {
         String request = ACCOUNT_CONTROLLER;
-        when(accountRepository.getAccountByUsernameAndPassword(EMAIL, PASSWORD))
+        when(accountRepository.getAccountByUsernameAndPasswordAndConfirmIsTrue(EMAIL, PASSWORD))
                 .thenReturn(new Account());
         MockHttpServletResponse response = mockMvc
                 .perform(get(request).param("login", EMAIL).param("password", PASSWORD))
@@ -68,7 +68,7 @@ class AccountControllerTest {
                 .getResponse();
         assertNotEquals(response.getContentAsString(), Strings.EMPTY);
         verify(accountRepository, times(1))
-                .getAccountByUsernameAndPassword(EMAIL, PASSWORD);
+                .getAccountByUsernameAndPasswordAndConfirmIsTrue(EMAIL, PASSWORD);
         verifyNoMoreInteractions(accountRepository);
     }
 
@@ -76,7 +76,7 @@ class AccountControllerTest {
     @DisplayName("Get account by invalid userName and password")
     void getAccountInvalid() throws Exception {
         String request = ACCOUNT_CONTROLLER;
-        when(accountRepository.getAccountByUsernameAndPassword(EMAIL, PASSWORD)).thenReturn(null);
+        when(accountRepository.getAccountByUsernameAndPasswordAndConfirmIsTrue(EMAIL, PASSWORD)).thenReturn(null);
         MockHttpServletResponse response = mockMvc
                 .perform(get(request).param("login", EMAIL).param("password", PASSWORD))
                 .andExpect(status().isBadRequest())
@@ -84,7 +84,7 @@ class AccountControllerTest {
                 .getResponse();
         assertEquals(response.getContentAsString(), Strings.EMPTY);
         verify(accountRepository, times(1))
-                .getAccountByUsernameAndPassword(EMAIL, PASSWORD);
+                .getAccountByUsernameAndPasswordAndConfirmIsTrue(EMAIL, PASSWORD);
         verifyNoMoreInteractions(accountRepository);
     }
 
