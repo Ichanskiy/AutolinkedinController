@@ -71,5 +71,9 @@ public interface ILinkedInContactRepository extends JpaRepository<LinkedInContac
 
     Page<LinkedInContact> getAllByAssignments(Assignment assignment, Pageable pageable);
 
+    List<LinkedInContact> getAllByAssignments(Assignment assignment);
+
     LinkedInContact getFirstByEmailIsNullAndCompanyWebsiteNotNullAndGrabbedEmailIsNullOrderByIdDesc();
+
+    LinkedInContact getFirstByEmailIsNullAndCompanyWebsiteNotNullAndGrabbedEmailIsNullAndIdLessThanOrderByIdDesc(Long idLes);
 }

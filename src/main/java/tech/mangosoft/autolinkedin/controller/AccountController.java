@@ -23,10 +23,20 @@ public class AccountController {
 
     @CrossOrigin
     @GetMapping
-    public ResponseEntity<Account> getAccount(String login, String password) {
-        Account account = accountRepository.getAccountByUsernameAndPassword(login, password);
+    public ResponseEntity<Account> login(String login, String password) {
+        Account account = accountRepository.getAccountByUsernameAndPasswordAndConfirmIsTrue(login, password);
         return account == null ?
                 new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(account, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PostMapping
+    public ResponseEntity<Account> registration(@RequestBody Account account) {
+        if (accountService.accountNotValid(account)) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Account accountDB = accountService.createAccount(account);
+        return new ResponseEntity<>(accountDB, HttpStatus.OK);
     }
 
     @CrossOrigin
@@ -35,16 +45,6 @@ public class AccountController {
         Account account = accountRepository.getById(id);
         return account == null
                 ? new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(account, HttpStatus.OK);
-    }
-
-    @CrossOrigin
-    @PostMapping
-    public ResponseEntity<Account> createAccount(@RequestBody Account account) {
-        if (accountService.accountNotValid(account)) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        Account accountDB = accountService.createAccount(account);
-        return new ResponseEntity<>(accountDB, HttpStatus.OK);
     }
 
     @CrossOrigin

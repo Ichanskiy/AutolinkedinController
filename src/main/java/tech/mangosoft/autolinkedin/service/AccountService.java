@@ -153,4 +153,9 @@ public class AccountService {
     public List<Account> findAll() {
         return accountRepository.findAll();
     }
+
+    public void confirm(Account accountDB) {
+        Account account = accountRepository.getById(accountDB.getId());
+        accountRepository.save(account.setConfirm(true));
+    }
 }

@@ -18,19 +18,19 @@ public class Account {
     private Long id;
 
     @JsonProperty
-    @Column( length = 50 )
+    @Column(length = 50)
     private String first;
 
     @JsonProperty
-    @Column( length = 50 )
+    @Column(length = 50)
     private String last;
 
     @JsonProperty
-    @Column( length = 50, unique = true)
+    @Column(length = 50, unique = true)
     private String username;
 
     @JsonProperty
-    @Column( length = 50 )
+    @Column(length = 50)
     private String password;
 
 //    @JsonProperty
@@ -38,12 +38,14 @@ public class Account {
 //    private Integer executionLimit;
 
     @JsonProperty
-    @Column( name = "grabbing_limit" )
+    @Column(name = "grabbing_limit")
     private Integer grabbingLimit;
 
     @JsonProperty
-    @Column( name = "last_page" )
+    @Column(name = "last_page")
     private Integer lastPage;
+
+    private boolean confirm;
 
     @JsonProperty
     private Role role;
@@ -108,15 +110,6 @@ public class Account {
         this.password = password;
     }
 
-//    public Integer getExecutionLimit() {
-//        return executionLimit;
-//    }
-//
-//    public Account setExecutionLimit(Integer executionLimit) {
-//        this.executionLimit = executionLimit;
-//        return this;
-//    }
-
     public Integer getGrabbingLimit() {
         return grabbingLimit;
     }
@@ -159,7 +152,16 @@ public class Account {
         this.contactProcessings = contactProcessings;
     }
 
-    public boolean isAdmin(){
+    public boolean isAdmin() {
         return (this.getRole() != null) && this.getRole().equals(Role.ADMIN);
+    }
+
+    public Account setConfirm(boolean confirm) {
+        this.confirm = confirm;
+        return this;
+    }
+
+    public boolean isConfirm() {
+        return confirm;
     }
 }

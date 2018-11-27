@@ -16,6 +16,8 @@ public interface IAccountRepository extends CrudRepository<Account, Long> {
 
     Account getAccountByUsernameAndPassword(String username, String password);
 
+    Account getAccountByUsernameAndPasswordAndConfirmIsTrue(String username, String password);
+
     Page<Account> findAll(Pageable pageable);
 
     List<Account> findAll();
