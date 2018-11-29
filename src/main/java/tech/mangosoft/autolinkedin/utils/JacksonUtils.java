@@ -8,12 +8,9 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import java.util.logging.Logger;
 
-//@Slf4j
 @Component
 public class JacksonUtils {
-
 
 	private static ObjectMapper mapper = getMapper();
 
