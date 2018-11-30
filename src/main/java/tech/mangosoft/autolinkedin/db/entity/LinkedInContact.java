@@ -1,6 +1,8 @@
 package tech.mangosoft.autolinkedin.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -15,7 +17,16 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "contact")
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
 public class LinkedInContact {
+
+    //    TODO delete ths status
     //new statuses
     public static final int STATUS_IMPORTED = 0;
     public static final int STATUS_NEW = 1;
@@ -23,10 +34,8 @@ public class LinkedInContact {
     public static final int STATUS_REQUIRE_EMAIL = 3;
     public static final int STATUS_REQUIRE_LOAD_FROM_OTHER_ACCOUNT = 33;
     public static final int STATUS_ACQUIRED = 5;
-
     //statuses to delete
     public static final int STATUS_PROCESSED = 4;
-
     public static final int STATUS_ERROR = 16;
     public static final int STATUS_PREPROCESS_NEEDED = 33;
 
@@ -105,184 +114,6 @@ public class LinkedInContact {
         this.linkedin = linkedin;
         this.email = email;
         this.updateTime = updateTime;
-    }
-
-    public LinkedInContact() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public LinkedInContact setCompanyName(String companyName) {
-        this.companyName = companyName;
-        return this;
-    }
-
-    public String getCompanyWebsite() {
-        return companyWebsite;
-    }
-
-    public LinkedInContact setCompanyWebsite(String companyWebsite) {
-        this.companyWebsite = companyWebsite;
-        return this;
-    }
-
-    public Boolean getGrabbedEmail() {
-        return grabbedEmail;
-    }
-
-    public LinkedInContact setGrabbedEmail(Boolean grabbedEmail) {
-        this.grabbedEmail = grabbedEmail;
-        return this;
-    }
-
-    public String getCompanyLinkedin() {
-        return companyLinkedin;
-    }
-
-    public void setCompanyLinkedin(String companyLinkedin) {
-        this.companyLinkedin = companyLinkedin;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public LinkedInContact setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public LinkedInContact setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public LinkedInContact setRole(String role) {
-        this.role = role;
-        return this;
-    }
-
-    public String getLinkedin() {
-        return linkedin;
-    }
-
-    public void setLinkedin(String linkedin) {
-        this.linkedin = linkedin;
-    }
-
-    public Set<Assignment> getAssignments() {
-        return assignments;
-    }
-
-    public LinkedInContact setAssignments(Set<Assignment> assignments) {
-        this.assignments = assignments;
-        return this;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public LinkedInContact setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public LinkedInContact setStatus(Integer status) {
-        this.status = status;
-        return this;
-    }
-
-
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-
-    public String getIndustries() {
-        return industries;
-    }
-
-    public LinkedInContact setIndustries(String industries) {
-        this.industries = industries;
-        return this;
-    }
-
-    public CompanyHeadcount getHeadcount() {
-        return headcount;
-    }
-
-    public LinkedInContact setHeadcount(CompanyHeadcount headcount) {
-        this.headcount = headcount;
-        return this;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public LinkedInContact setLocation(Location location) {
-        this.location = location;
-        return this;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public List<ContactProcessing> getContactProcessings() {
-        return contactProcessings;
-    }
-
-    public void setContactProcessings(List<ContactProcessing> contactProcessings) {
-        this.contactProcessings = contactProcessings;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public LinkedInContact setComments(String comments) {
-        this.comments = comments;
-        return this;
     }
 
     public void addAssignment(Assignment assignment) {

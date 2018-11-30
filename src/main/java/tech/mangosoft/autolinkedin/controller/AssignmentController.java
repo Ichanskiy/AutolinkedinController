@@ -191,22 +191,6 @@ public class AssignmentController {
         return new ResponseEntity<>(statistics, HttpStatus.OK);
     }
 
-//    @CrossOrigin
-//    @DeleteMapping(value = "/deleteContactsFromAssignment")
-//    public ResponseEntity<HttpStatus> deleteContactsFromAssignment(Long id, List<Long> contactsIds) {
-//        Assignment assignment = assignmentRepository.getById(id);
-//        if (assignment == null) {
-//            logger.log(Level.WARNING, "Assignment must be not null");
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        if (CollectionUtils.isEmpty(contactsIds)) {
-//            logger.log(Level.WARNING, "List must be not null or empty");
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        linkedInService.deleteContactsFromAssignment(assignment, contactsIds);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-
     @CrossOrigin
     @GetMapping(value = GET_ASSIGNMENT_BY_USER_AND_STATUS)
     public ResponseEntity<PageImpl<Assignment>> getAssignmentByUserAndStatus(String email, Integer status, Integer count) {
@@ -229,17 +213,6 @@ public class AssignmentController {
         return new ResponseEntity<>(linkedInService.getAssignmentByParam(message, account), HttpStatus.OK);
     }
 
- /*   @CrossOrigin
-    @GetMapping(value = "/getGraph")
-    public ResponseEntity<GraphMessage> getGraphByAccount(String email) {
-        Account account = accountRepository.getAccountByUsername(email);
-        if (account == null) {
-            logger.log(Level.WARNING, "Account must be not null");
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(linkedInService.getGraphByAccount(account), HttpStatus.OK);
-    }
-*/
     @CrossOrigin
     @GetMapping(value = GET_GRAPH_BY_TYPE)
     public ResponseEntity<GraphMessage> getGraphByType(String email, String type, String period) {
@@ -248,17 +221,14 @@ public class AssignmentController {
             logger.log(Level.WARNING, "Account must be not null");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
         int periodLength = 7;
         if (period != null && period.equals("monthly")) {
             periodLength = 30;
         }
-
         if (type.equals("links") || type.equals("messages") || type.equals("errors") ) {
             return new ResponseEntity<>(linkedInService.getGraphByType(account, type, periodLength), HttpStatus.OK);
 
         }
-
         logger.log(Level.WARNING, "graph type " + type + " is unsupported");
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
