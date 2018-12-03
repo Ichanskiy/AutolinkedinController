@@ -27,6 +27,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.io.*;
 import java.util.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
@@ -43,6 +44,8 @@ import java.util.stream.Collectors;
  */
 @Service
 public class ContactService {
+
+    private static Logger logger = Logger.getLogger(ContactService.class.getName());
 
     private static final Integer COUNT_FOR_PAGE = 40;
     private static final List<String> HEADERS = Arrays.asList("id", "company_name", "company_website", "first_name", "last_name",
@@ -75,11 +78,26 @@ public class ContactService {
     private String filename;
 
 
-    public void createCsvFileByParam(ContactsMessage message) throws IOException {
+    /**
+     * @param message input object with param.
+     * @author Ichanskiy
+     * This method get all contacts by param ant write this lisct to exel file
+     * <p>
+     */
+    public void createExcelFileByParam(ContactsMessage message) throws IOException {
+        logger.info("Starting create excel file by param...");
         List<LinkedInContact> contacts = getContactsByParamWithoutBound(message);
+        logger.info("Contacts size by param = " + contacts.size());
         writeToExcel(contacts);
     }
 
+
+    /**
+     * @param message input object with param.
+     * @return all contacts by param from message without limit
+     * @author Ichanskiy
+     * <p>
+     */
     List<LinkedInContact> getContactsByParamWithoutBound(ContactsMessage message) {
         if (message == null || message.getPage() == null) {
             return null;
@@ -93,7 +111,17 @@ public class ContactService {
         return query.getResultList();
     }
 
+    /**
+     * @author VestDev
+     * This method write to exel contacts info (id, contact's companyName, contact's company website,
+     * contact's first name, contact's last name, contact's position, contact's linkedin,
+     * contact's location, contact's industries, account full name who add this contact to database,
+     * contact's email, contact's headcount
+     * <p>
+     */
     private void writeToExcel(final List<LinkedInContact> contacts) throws IOException {
+        logger.info("Starting write to excel...");
+
         Workbook workbook = new XSSFWorkbook();
 
         Sheet sheet = workbook.createSheet("Contacts");
@@ -116,7 +144,7 @@ public class ContactService {
             row.createCell(6).setCellValue(contact.getLinkedin());
             row.createCell(7).setCellValue(contact.getLocation() != null ? contact.getLocation().getLocation() : null);
             row.createCell(8).setCellValue(contact.getIndustries());
-            row.createCell(9).setCellValue(getUserFullNameWhichAddCurrentContact(contact));
+            row.createCell(9).setCellValue(getAccountFullNameWhichAddCurrentContact(contact));
             row.createCell(10).setCellValue(contact.getEmail());
             row.createCell(11).setCellValue(contact.getHeadcount() != null ? contact.getHeadcount().getHeadcount() : null);
         }
@@ -129,9 +157,16 @@ public class ContactService {
         workbook.write(fileOut);
         fileOut.close();
         workbook.close();
+        logger.info("Write to excel is success");
     }
 
-    private String getUserFullNameWhichAddCurrentContact(LinkedInContact contact) {
+    /**
+     * @param contact input
+     * @author VestDev
+     * @return account full name who add this contact to database
+     * <p>
+     */
+    private String getAccountFullNameWhichAddCurrentContact(LinkedInContact contact) {
         Set<Assignment> assignments = contact.getAssignments();
         if (!CollectionUtils.isEmpty(assignments)) {
             Optional<Assignment> assignment = assignments.stream()
@@ -144,7 +179,15 @@ public class ContactService {
         return null;
     }
 
+    /**
+     * @param file input file
+     * @author VestDev
+     * This methid read and set position index to variable
+     * @return if successfully - true, else - false
+     * <p>
+     */
     public boolean readFromExcel(final File file) throws IOException {
+        logger.info("Read From Excel started");
         Workbook workbook = WorkbookFactory.create(file);
         Sheet sheet = workbook.getSheetAt(0);
         if (sheet.getPhysicalNumberOfRows() > 0) {
@@ -174,8 +217,10 @@ public class ContactService {
                                 }
                             }
                         }
-
+                        logger.info("Read position : id = " + ID_POSITION + "firstName = " + FIRST_NAME_POSITION +
+                                "lastName = " + LAST_NAME_POSITION + "email = " + EMAIL_POSITION);
                     } else {
+                        logger.info("Error read from excel");
                         return false;
                     }
                 }
@@ -193,10 +238,19 @@ public class ContactService {
             }
             return true;
         } else {
+            logger.info("Error read from excel file");
             return false;
         }
     }
 
+    /**
+     * @param firstName contact.
+     * @param lastName contact.
+     * @param email contact.
+     * @author Ichanskiy
+     * This  method update first contact`s email by firstName and lastName.
+     * <p>
+     */
     private void updateContactEmail(String firstName, String lastName, String email) {
         LinkedInContact linkedInContact = contactRepository.getFirstByFirstNameAndLastName(firstName, lastName);
         if (linkedInContact != null) {
@@ -205,6 +259,13 @@ public class ContactService {
         }
     }
 
+    /**
+     * @param id contact.
+     * @param email contact.
+     * @author Ichanskiy
+     * This  method update contact`s email by id.
+     * <p>
+     */
     private void updateContactEmail(Long id, String email) {
         LinkedInContact linkedInContact = contactRepository.getById(id);
         if (linkedInContact != null) {
@@ -213,6 +274,12 @@ public class ContactService {
         }
     }
 
+    /**
+     * @param message input object with param.
+     * @return page with contacts by param from message
+     * @author Ichanskiy
+     * <p>
+     */
     public PageImpl<LinkedInContact> getPageContactsByParam(ContactsMessage message) {
         if (message == null || message.getPage() == null) {
             return null;
@@ -220,12 +287,9 @@ public class ContactService {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
         Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
-
         getPredicatesByParam(message, root, builder);
-
         criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
         TypedQuery<LinkedInContact> query = entityManager.createQuery(criteriaQuery);
-
         query.setFirstResult((message.getPage() - 1) * COUNT_FOR_PAGE);
         query.setMaxResults(COUNT_FOR_PAGE);
         return new PageImpl<>(query.getResultList(),
@@ -233,21 +297,21 @@ public class ContactService {
     }
 
 
+    /**
+     * @param message input object with param.
+     * @return contacts by param from message
+     * @author Ichanskiy
+     * <p>
+     */
     public List<LinkedInContact> getListContactsByParams(ContactsMessage message) {
-
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<LinkedInContact> criteriaQuery = builder.createQuery(LinkedInContact.class);
         Root<LinkedInContact> root = criteriaQuery.from(LinkedInContact.class);
-
         getPredicatesByParam(message, root, builder);
-
         criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]));
         TypedQuery<LinkedInContact> query = entityManager.createQuery(criteriaQuery);
-
-
         return query.getResultList();
     }
-
 
     /**
      * @param contactsMessage input object with param.
@@ -255,7 +319,7 @@ public class ContactService {
      * @param builder         CriteriaBuilder object.
      * @author Ichanskiy
      * <p>
-     * This is the method get predictes by input param.
+     * This method get predictes by input param.
      */
     private void getPredicatesByParam(ContactsMessage contactsMessage,
                                       Root<LinkedInContact> root,
@@ -280,14 +344,25 @@ public class ContactService {
         }
     }
 
+
+    /**
+     * @param contactsMessage input params.
+     * @return boolean true if userId or account equals null, or account is admin, else - return false
+     * @author Ichanskiy
+     * <p>
+     * This method return.
+     */
     private boolean accountIsNullOrIsAdmin(ContactsMessage contactsMessage) {
         if (contactsMessage.getUserId() == null) {
+            logger.info("User id is null");
             return true;
         }
         Account account = accountRepository.getById(contactsMessage.getUserId());
         if (account == null) {
+            logger.info("Account is null");
             return true;
         }
+        logger.info("Account is admin = " + account.isAdmin());
         return account.isAdmin();
     }
 
@@ -296,7 +371,7 @@ public class ContactService {
      * @return count contacts
      * @author Ichanskiy
      * <p>
-     * This is the method get count contacts by predicates.
+     * This method get count contacts by predicates.
      */
     private Long getCountContactsByParams(ContactsMessage message) {
         CriteriaBuilder qb = entityManager.getCriteriaBuilder();
@@ -312,6 +387,18 @@ public class ContactService {
 
     }
 
+    /**
+     * @param account input account
+     * @param assignment input assignment
+     * @param status input status
+     * @param page returned page
+     * @param size count for page
+     * @return list contacts by params
+     * @author Ichanskiy
+     * <p>
+     * This method get sorted contacts (by 'id')
+     * by status not equals input status, account, assignment and number page with size contacts per page
+     * */
     public List<LinkedInContact> getContactsByStatusNotAndPageAndSize(Account account,
                                                                       Assignment assignment,
                                                                       Integer status,
@@ -324,12 +411,29 @@ public class ContactService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param account input account
+     * @param assignment input assignment
+     * @param status input status
+     * @return count contacts by params
+     * @author Ichanskiy
+     * <p>
+     * This method get count contacts by input account, assignment and status
+     * */
     public Integer getCountContactsByStatus(Account account, Assignment assignment, Integer status) {
         return contactProcessingRepository
                 .countDistinctByAccountAndAssignmentAndStatus(account, assignment, status);
     }
 
 
+    /**
+     * @param linkedInContactDB input contact
+     * @param updateContactMessage input object with new params
+     * @return updated contact
+     * @author Ichanskiy
+     * <p>
+     * This method set to contact new value from input object
+     */
     public LinkedInContact update(LinkedInContact linkedInContactDB, UpdateContactMessage updateContactMessage) {
         Location location = locationRepository.getLocationByLocationLike(updateContactMessage.getLocation());
         if (location == null) {

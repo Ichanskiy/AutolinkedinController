@@ -263,7 +263,7 @@ public class LinkedinContactControllerTest {
         message.setLocation(LOCATION);
         message.setIndustries(INDUSTRIES);
         message.setPage(1);
-        doNothing().when(contactService).createCsvFileByParam(any(ContactsMessage.class));
+        doNothing().when(contactService).createExcelFileByParam(any(ContactsMessage.class));
         when(fileStorage.loadFiles()).thenReturn(Stream.empty());
         MockHttpServletResponse response = mockMvc
                 .perform(post(request).content(Objects.requireNonNull(getJson(message)))
@@ -272,7 +272,7 @@ public class LinkedinContactControllerTest {
                 .andReturn()
                 .getResponse();
         assertNotEquals(response.getContentAsString(), Strings.EMPTY);
-        verify(contactService, times(1)).createCsvFileByParam(any(ContactsMessage.class));
+        verify(contactService, times(1)).createExcelFileByParam(any(ContactsMessage.class));
         verify(fileStorage, times(1)).loadFiles();
         verifyNoMoreInteractions(contactService, fileStorage);
     }
