@@ -10,8 +10,11 @@ public interface ILinkedInContactRepositoryCustom {
 
     LinkedInContact getNextAvailableContact(Assignment assignment);
 
-    boolean updateContactStatus(Assignment assignment, LinkedInContact contactId, Account account, int status, String error, String audit, Long processingReportId);
+    boolean updateContactStatus(Assignment assignment,
+                                LinkedInContact contactId, Account account, int status,
+                                String error, String audit, Long processingReportId);
 
-    boolean saveNewContactsBatch(Account account, Long assignmentId, List<LinkedInContact> contacts, Long processingReportId, String log);
+    boolean saveNewContactsBatch(Account account, Long assignmentId,
+                                 List<LinkedInContact> contacts, Long processingReportId, String log);
 
 }

@@ -14,7 +14,6 @@ public class AutolinkedinControllerApplication extends SpringBootServletInitiali
         SpringApplication.run(AutolinkedinControllerApplication.class, args);
     }
 
-
     @Override
     public void run(String... args) throws Exception {
     }

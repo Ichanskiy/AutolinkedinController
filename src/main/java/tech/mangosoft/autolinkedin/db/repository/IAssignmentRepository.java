@@ -42,6 +42,7 @@ public interface IAssignmentRepository extends CrudRepository<Assignment, Long> 
     Integer countAllByAccount(Account account);
 
     List<Assignment> getAllByUpdateTimeBetween(Date from, Date to);
+
     List<Assignment> getAllByAccountAndStatusAndUpdateTimeBetween(Account account, Status status, Date from, Date to);
 
     List<Assignment> getAllByAccountAndTaskAndStatus(Account account, Task taskGrabbing, Status status);

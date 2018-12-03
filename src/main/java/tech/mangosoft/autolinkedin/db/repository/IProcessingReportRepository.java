@@ -2,7 +2,6 @@ package tech.mangosoft.autolinkedin.db.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import tech.mangosoft.autolinkedin.db.entity.Account;
-import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.ProcessingReport;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 
