@@ -47,12 +47,12 @@ public class AdminController {
 
     @CrossOrigin
     @PutMapping(CONFIRM)
-    public ResponseEntity<HttpStatus> confirmAccount(@RequestBody String login) {
+    public ResponseEntity<HttpStatus> confirmAccount(@RequestBody String login, @PathVariable("confirmation") boolean isConfirm) {
         Account accountDB = accountRepository.getAccountByUsername(login);
         if (accountDB == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        accountService.confirm(accountDB);
+        accountService.confirm(accountDB, isConfirm);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

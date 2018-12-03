@@ -9,7 +9,7 @@ public class ControllerAPI{
     //ADMIN
     static final String ADMIN_CONTROLLER = "/admin";
     static final String ALL_BY_PAGE = "/all/{page}";
-    static final String CONFIRM = "/confirm";
+    static final String CONFIRM = "/confirm/{confirmation}";
 
     //COMPANY
     static final String COMPANY_CONTROLLER = "/company";
