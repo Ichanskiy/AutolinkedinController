@@ -160,9 +160,9 @@ public class AccountService {
         return accountRepository.findAll();
     }
 
-    public void confirm(Account accountDB) {
+    public void confirm(Account accountDB, boolean isConfirm) {
         Account account = accountRepository.getById(accountDB.getId());
-        accountRepository.save(account.setConfirm(true));
+        accountRepository.save(account.setConfirm(isConfirm));
         logger.info("Confirm account " + account.getUsername());
     }
 }
