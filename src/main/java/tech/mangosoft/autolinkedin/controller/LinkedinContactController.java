@@ -114,7 +114,7 @@ public class LinkedinContactController {
     @PostMapping(ALL)
     public List<String> getListFiles(@RequestBody ContactsMessage message) {
         try {
-            contactService.createCsvFileByParam(message);
+            contactService.createExcelFileByParam(message);
         } catch (IOException e) {
             logger.log(Level.WARNING, "Error create csv");
             return null;

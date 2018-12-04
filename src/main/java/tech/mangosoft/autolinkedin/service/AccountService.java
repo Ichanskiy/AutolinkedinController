@@ -61,6 +61,7 @@ public class AccountService {
      * @return updated object
      */
     public Account update(Account account) {
+        logger.info("Update account " + account.getUsername());
         Account accountDb = accountRepository.getById(account.getId());
         accountDb.setGrabbingLimit(account.getGrabbingLimit());
         if (account.getCompany() != null && account.getCompany().getName() != null){
@@ -87,13 +88,16 @@ public class AccountService {
     public boolean updatePasswordSuccesses(String username, String oldPassword, String newPassword) {
         Account account = accountRepository.getAccountByUsername(username);
         if (account == null) {
+            logger.info("Account not found");
             return false;
         }
         if (!passwordEquals(account, oldPassword)) {
+            logger.info("Password not equals " + account.getUsername());
             return false;
         }
         account.setPassword(newPassword);
         accountRepository.save(account);
+        logger.info("Update password " + account.getUsername());
         return true;
     }
 
@@ -121,6 +125,7 @@ public class AccountService {
         Company company = companyRepository.getByName(account.getCompany().getName());
         account.setCompany(company);
         account.setRole(Role.USER);
+        logger.info("Create user account " + account.getUsername());
         return accountRepository.save(account);
     }
 
@@ -137,6 +142,7 @@ public class AccountService {
             assignment.setAccount(null);
             assignmentRepository.save(assignment);
         }
+        logger.info("Delete account " + account.getUsername());
         accountRepository.delete(accountRepository.save(account));
     }
 
@@ -157,5 +163,6 @@ public class AccountService {
     public void confirm(Account accountDB, boolean isConfirm) {
         Account account = accountRepository.getById(accountDB.getId());
         accountRepository.save(account.setConfirm(isConfirm));
+        logger.info("Confirm account " + account.getUsername());
     }
 }
