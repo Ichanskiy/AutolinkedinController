@@ -6,15 +6,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.mangosoft.autolinkedin.db.repository.IGroupRepository;
+import tech.mangosoft.autolinkedin.db.repository.*;
 import tech.mangosoft.autolinkedin.controller.messages.*;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.Location;
 import tech.mangosoft.autolinkedin.db.entity.Group;
-import tech.mangosoft.autolinkedin.db.repository.IAccountRepository;
-import tech.mangosoft.autolinkedin.db.repository.IAssignmentRepository;
-import tech.mangosoft.autolinkedin.db.repository.ILocationRepository;
+import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
 import tech.mangosoft.autolinkedin.service.LinkedInService;
 
 import java.util.ArrayList;

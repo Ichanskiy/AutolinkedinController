@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
 import tech.mangosoft.autolinkedin.db.entity.Account;
 import tech.mangosoft.autolinkedin.db.entity.Assignment;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
@@ -33,7 +34,7 @@ public interface IAssignmentRepository extends CrudRepository<Assignment, Long> 
     @Query("select distinct a.industries from Assignment a where a.industries is not null")
     List<String> getAllIndustries();
 
-    Page<Assignment> getAllByAccount(Account account, Pageable pageable);
+    Page<StatisticResponse> getAllByAccount(Account account, Pageable pageable);
 
     List<Assignment> getAllByAccount(Account account);
 

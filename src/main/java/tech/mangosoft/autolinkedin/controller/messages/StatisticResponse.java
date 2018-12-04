@@ -1,47 +1,30 @@
 package tech.mangosoft.autolinkedin.controller.messages;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
-import lombok.experimental.Accessors;
-import tech.mangosoft.autolinkedin.db.entity.Assignment;
+import org.springframework.beans.factory.annotation.Value;
+import tech.mangosoft.autolinkedin.db.entity.CompanyHeadcount;
+import tech.mangosoft.autolinkedin.db.entity.Group;
+import tech.mangosoft.autolinkedin.db.entity.ProcessingReport;
+import tech.mangosoft.autolinkedin.db.entity.enums.Status;
+import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 
-@Getter
-@Setter
-@Accessors(chain = true)
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
-@ToString
-public class StatisticResponse {
+import java.util.Date;
+import java.util.HashSet;
 
-    @JsonProperty
-    private Assignment assignment;
+public interface StatisticResponse {
+    Long getId();
+    String getPosition();
+    String getFullLocationString();
+    String getIndustries();
+    String getErrorMessage();
+    Task getTask();
+    Status getStatus();
+    Integer getCountsFound();
+    Integer getPage();
+    Date getUpdateTime();
+    HashSet<CompanyHeadcount> getHeadcounts();
+    HashSet<Group> getGroups();
 
-    @JsonProperty
-    private String assignmentName;
-
-    @JsonProperty
-    private String status;
-
-    @JsonProperty
-    private String errorMessage;
-
-    @JsonProperty
-    private Integer countsFound;
-
-    @JsonProperty
-    private long processed;
-
-    @JsonProperty
-    private long saved;
-
-    @JsonProperty
-    private long successed;
-
-    @JsonProperty
-    private long failed;
-
-    @JsonProperty
-    private int page;
+    @Value("#{target.processingReports.get(target.processingReports.size() - 1)}")
+    ProcessingReport getLastProcessingReport();
 
 }

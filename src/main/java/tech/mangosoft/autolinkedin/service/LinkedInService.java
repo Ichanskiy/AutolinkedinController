@@ -6,12 +6,12 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 import tech.mangosoft.autolinkedin.controller.messages.*;
 import tech.mangosoft.autolinkedin.db.entity.*;
 import tech.mangosoft.autolinkedin.db.entity.enums.Status;
 import tech.mangosoft.autolinkedin.db.entity.enums.Task;
 import tech.mangosoft.autolinkedin.db.repository.*;
+import tech.mangosoft.autolinkedin.controller.messages.StatisticResponse;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -348,31 +348,10 @@ public class LinkedInService {
      * This method create statistic.
      */
     public List<StatisticResponse> getStatistics(Account account, Integer page, Integer size) {
-        List<StatisticResponse> statisticResponses = new ArrayList<>();
-        List<Assignment> assignments = assignmentRepository.findAllByAccount(account,
+        List<StatisticResponse> statisticsResponse = assignmentRepository.getAllByAccount(account,
                 PageRequest.of(page - 1, size, Sort.Direction.DESC, ID)).getContent();
-        for (Assignment a : assignments) {
-            StatisticResponse statistic = new StatisticResponse();
-            statistic.setAssignment(a);
-            statistic.setCountsFound(a.getCountsFound());
-            statistic.setAssignmentName(concatAllString(a.getTask().name(),
-                    a.getPosition(),
-                    a.getIndustries(),
-                    a.getFullLocationString(),
-                    !a.getHeadcounts().isEmpty() ? getHeadcounts(a.getHeadcounts()) : null));
-            statistic.setErrorMessage(a.getErrorMessage());
-            statistic.setStatus(a.getStatus().name());
-            statistic.setPage(a.getPage());
-            if (!CollectionUtils.isEmpty(a.getProcessingReports())) {
-                int maxIndex = a.getProcessingReports().size() - 1;
-                statistic.setProcessed(a.getProcessingReports().get(maxIndex).getProcessed());
-                statistic.setSaved(a.getProcessingReports().get(maxIndex).getSaved());
-                statistic.setSuccessed(a.getProcessingReports().get(maxIndex).getSuccessed());
-                statistic.setFailed(a.getProcessingReports().get(maxIndex).getFailed());
-            }
-            statisticResponses.add(statistic);
-        }
-        return statisticResponses;
+
+        return statisticsResponse;
     }
 
     private String getHeadcounts(Set<CompanyHeadcount> companyHeadcounts){
