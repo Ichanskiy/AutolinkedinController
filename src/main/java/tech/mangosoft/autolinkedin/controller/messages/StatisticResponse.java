@@ -24,7 +24,7 @@ public interface StatisticResponse {
     HashSet<CompanyHeadcount> getHeadcounts();
     HashSet<Group> getGroups();
 
-    @Value("#{target.processingReports.get(target.processingReports.size() - 1)}")
+    @Value("#{!target.processingReports.isEmpty() ? target.processingReports.get(target.processingReports.size() - 1) : null}")
     ProcessingReport getLastProcessingReport();
 
 }
